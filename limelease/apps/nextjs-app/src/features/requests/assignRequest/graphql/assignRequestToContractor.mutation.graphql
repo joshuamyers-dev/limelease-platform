@@ -1,0 +1,19 @@
+mutation assignRequestToContractor(
+  $contractorId: ID!
+  $contractorMessage: String!
+  $bookingDateStart: DateTime!
+  $bookingDateEnd: DateTime!
+  $description: String!
+  $requestId: ID!
+) {
+  contractorJobCreate(
+    requestId: $requestId
+    contractorId: $contractorId
+    bookingDateStart: $bookingDateStart
+    bookingDateEnd: $bookingDateEnd
+    contractorMessage: $contractorMessage
+    description: $description
+  ) {
+    ...ContractorJobBase
+  }
+}

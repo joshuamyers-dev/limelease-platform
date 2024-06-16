@@ -1,0 +1,19 @@
+mutation createContractor(
+  $address: CreateAddress
+  $areasServed: [String]!
+  $businessName: String!
+  $contactEmail: String!
+  $contactNumber: String!
+  $websiteUrl: String
+) {
+  createContractor(
+    address: $address
+    areasServed: $areasServed
+    businessName: $businessName
+    contactEmail: $contactEmail
+    contactNumber: $contactNumber
+    websiteUrl: $websiteUrl
+  ) {
+    ...ContractorBase
+  }
+}

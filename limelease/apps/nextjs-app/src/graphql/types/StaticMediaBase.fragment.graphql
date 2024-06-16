@@ -1,0 +1,6 @@
+fragment StaticMediaBase on StaticMedia {
+  id
+  s3Key
+  uploadUrl
+  url
+}

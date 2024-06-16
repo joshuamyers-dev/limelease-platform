@@ -1,0 +1,15 @@
+query searchContractorsByName($name: String!, $first: Int!, $after: String) {
+  searchContractors(first: $first, after: $after, searchTerm: $name) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...ContractorBase
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+fragment ContractorJobBase on ContractorJob {
+  id
+  state
+  description
+  bookingDateStart
+  bookingDateEnd
+  contractor {
+    ...ContractorBase
+  }
+}

@@ -1,0 +1,3 @@
+mutation updateRequestState($requestIds: [ID!]!, $state: PropertyRequestState!) {
+  requestUpdateState(requestIds: $requestIds, state: $state)
+}

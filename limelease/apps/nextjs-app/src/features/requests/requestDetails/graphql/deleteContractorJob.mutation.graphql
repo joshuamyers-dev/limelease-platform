@@ -1,0 +1,5 @@
+mutation deleteContractorJob($id: ID!) {
+  contractorJobDelete(id: $id) {
+    ...ContractorJobBase
+  }
+}

@@ -1,0 +1,15 @@
+query fetchPropertyRequests($first: Int, $after: String, $propertyId: ID!, $state: PropertyRequestFilter) {
+  requestsForProperty(first: $first, after: $after, propertyId: $propertyId, state: $state) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...RequestBase
+      }
+    }
+  }
+}

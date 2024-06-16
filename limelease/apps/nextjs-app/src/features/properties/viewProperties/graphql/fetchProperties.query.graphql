@@ -1,0 +1,21 @@
+query fetchProperties($first: Int!, $after: String, $before: String, $last: Int, $filter: PropertyFilter, $searchKeywords: String) {
+  myProperties(first: $first, after: $after, before: $before, last: $last, filter: $filter, searchKeywords: $searchKeywords) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        ...PropertyBase
+        notificationCount {
+          messagesCount
+          urgentCount
+          midHighCount
+        }
+      }
+    }
+  }
+}

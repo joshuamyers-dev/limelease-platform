@@ -1,0 +1,7 @@
+fragment LandlordBase on PropertyLandlord {
+  id
+  email
+  firstName
+  lastName
+  phoneNumber
+}

@@ -1,0 +1,5 @@
+mutation updateRequestUrgency($requestId: ID!, $urgency: PropertyRequestUrgency!) {
+  requestUpdateUrgency(requestId: $requestId, urgency: $urgency) {
+    ...RequestBase
+  }
+}

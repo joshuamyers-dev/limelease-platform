@@ -1,0 +1,5 @@
+mutation createStaticMedia($s3Key: String, $fileName: String, $mimeType: String!) {
+  staticMediaCreate(s3Key: $s3Key, fileName: $fileName, mimeType: $mimeType) {
+    ...StaticMediaBase
+  }
+}

@@ -1,0 +1,5 @@
+query fetchActiveJobForRequest($requestId: ID!) {
+  contractorJobActive(requestId: $requestId) {
+    ...ContractorJobBase
+  }
+}

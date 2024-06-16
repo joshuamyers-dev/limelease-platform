@@ -1,0 +1,9 @@
+fragment UserBase on User {
+  id
+  email
+  agency {
+    ...AgencyBase
+  }
+  firstName
+  lastName
+}

@@ -1,0 +1,21 @@
+mutation updateProperty(
+  $propertyId: ID!
+  $propertyDetails: PropertyDetails!
+  $leaseDetails: LeaseDetails
+  $files: [File]
+  $photos: [CreatePhoto!]
+  $tenants: [TenantObject!]
+  $landlords: [Landlord!]!
+) {
+  updateProperty(
+    propertyId: $propertyId
+    propertyDetails: $propertyDetails
+    leaseDetails: $leaseDetails
+    files: $files
+    photos: $photos
+    tenants: $tenants
+    landlords: $landlords
+  ) {
+    ...PropertyBase
+  }
+}

@@ -1,0 +1,5 @@
+query fetchContractor($contractorId: ID!) {
+  fetchContractor(contractorId: $contractorId) {
+    ...ContractorBase
+  }
+}

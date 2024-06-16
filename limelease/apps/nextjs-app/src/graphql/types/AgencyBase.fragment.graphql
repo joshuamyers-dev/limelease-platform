@@ -1,0 +1,4 @@
+fragment AgencyBase on Agency {
+  id
+  name
+}

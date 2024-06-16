@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+#__next {
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto;
+}
+
+* {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.upload-list-inline .ant-upload-list-item {
+  float: left;
+  width: auto;
+  margin-inline-end: 6px;
+}
+
+.ant-upload-rtl.upload-list-inline .ant-upload-list-item {
+  float: right;
+}
+
+/* Ant Overrides */
+
+.ant-tabs-top > .ant-tabs-nav,
+.ant-tabs-bottom > .ant-tabs-nav,
+.ant-tabs-top > div > .ant-tabs-nav,
+.ant-tabs-bottom > div > .ant-tabs-nav {
+  margin: 0 0 0 0;
+}
+
+.ant-tabs-card.ant-tabs-large > .ant-tabs-nav .ant-tabs-tab {
+  padding: 16px 16px 16px;
+}
+
+button.ant-btn.ant-btn-primary {
+  color: #254000;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.ant-modal-confirm-btns .ant-btn-primary {
+  background-color: #254000 !important;
+  color: white !important;
+}
+
+.ant-modal-confirm-btns .ant-btn-dangerous {
+  background-color: #A8071A !important;
+  color: white !important;
+}
+
+button.ant-btn.ant-btn-ghost {
+  color: #254000;
+  font-weight: 700;
+  box-shadow: none;
+}
+
+button.ant-btn.ant-btn-link {
+  color: #254000;
+  font-weight: 700;
+  box-shadow: none;
+  padding: 0;
+}
+
+button.ant-btn.ant-btn-dangerous {
+  color: #A8071A;
+}
+
+.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+  border-color: #d9d9d9;
+  background-color: #f5f5f5;
+  border-radius: 0;
+}
+
+.ant-input-search-large .ant-input-search-button {
+  box-shadow: none;
+}
+
+.ant-segmented-item {
+  padding: 16px;
+}
+
+.ant-segmented-item-label {
+  font-weight: 600;
+}
+
+.ant-segmented .ant-segmented-item:is(.ant-segmented-item-selected):checked {
+  color: #BAE637 !important;
+}
+
+.ant-pagination-item-active {
+  font-weight: 700;
+  font-size: 14px;
+  color: #bae637;
+  background: #254000 !important;
+  border-color: #bae637 !important;
+}
+
+.ant-steps-navigation .ant-steps-item::before {
+  background-color: #254000;
+}
+
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
+  background: #254000;
+  border-color: #254000;
+  color: #bae637;
+}
+
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon .ant-steps-icon {
+  color: #bae637;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.ant-form-vertical .ant-form-item-label {
+  color: #262626;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.ant-upload-list {
+  padding-top: 16px;
+}
+
+.ant-tag span {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.ant-breadcrumb-link {
+  text-decoration: none;
+  color: #254000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+}

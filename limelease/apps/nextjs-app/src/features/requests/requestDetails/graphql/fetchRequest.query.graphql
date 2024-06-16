@@ -1,0 +1,11 @@
+query fetchRequest($id: ID!) {
+  fetchRequest(id: $id) {
+    ...RequestBase
+    property {
+      ...PropertyBase
+    }
+    tenant {
+      ...TenantBase
+    }
+  }
+}

@@ -1,0 +1,11 @@
+fragment ContractorBase on Contractor {
+  id
+  businessName
+  websiteUrl
+  contactEmail
+  contactNumber
+  areasServed
+  address {
+    ...AddressBase
+  }
+}

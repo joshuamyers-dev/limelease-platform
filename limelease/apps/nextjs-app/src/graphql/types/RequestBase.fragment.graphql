@@ -1,0 +1,17 @@
+fragment RequestBase on PropertyRequest {
+  id
+  ticketNumber
+  category {
+    ...PropertyRequestCategoryBase
+  }
+  state
+  title
+  details
+  urgency
+  insertedAt
+  photos {
+    staticMedia {
+      url
+    }
+  }
+}

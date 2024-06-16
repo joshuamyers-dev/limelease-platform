@@ -1,0 +1,11 @@
+query fetchRequestByTicketNumber($ticketNumber: String!) {
+  fetchRequestByTicketNumber(ticketNumber: $ticketNumber) {
+    ...RequestBase
+    property {
+      ...PropertyBase
+    }
+    tenant {
+      ...TenantBase
+    }
+  }
+}

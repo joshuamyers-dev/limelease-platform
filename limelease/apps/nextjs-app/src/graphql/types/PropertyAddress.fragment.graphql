@@ -1,0 +1,9 @@
+fragment AddressBase on Address {
+  postcode
+  state
+  streetName
+  unitNumber
+  streetNumber
+  streetType
+  suburb
+}

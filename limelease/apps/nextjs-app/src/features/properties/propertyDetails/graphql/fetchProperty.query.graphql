@@ -1,0 +1,17 @@
+query fetchProperty($id: ID!) {
+  fetchProperty(id: $id) {
+    ...PropertyBase
+    lease {
+      ...LeaseBase
+    }
+    tenants {
+      ...TenantBase
+    }
+    landlords {
+      ...LandlordBase
+    }
+    files {
+      ...FileBase
+    }
+  }
+}

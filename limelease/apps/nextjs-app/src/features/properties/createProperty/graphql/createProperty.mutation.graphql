@@ -1,0 +1,12 @@
+mutation createProperty(
+  $propertyDetails: PropertyDetails!
+  $leaseDetails: LeaseDetails
+  $files: [File]
+  $photos: [CreatePhoto!]
+  $tenants: [TenantObject!]
+  $landlords: [Landlord!]!
+) {
+  createProperty(propertyDetails: $propertyDetails, leaseDetails: $leaseDetails, files: $files, photos: $photos, tenants: $tenants, landlords: $landlords) {
+    ...PropertyBase
+  }
+}

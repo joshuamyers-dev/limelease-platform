@@ -1,0 +1,18 @@
+query fetchContractorJobs($contractorId: ID!, $state: PropertyRequestFilter, $first: Int!, $after: String, $before: String, $last: Int) {
+  jobsForContractor(contractorId: $contractorId, state: $state, first: $first, after: $after, before: $before, last: $last) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...ContractorJobBase
+        request {
+          ...RequestBase
+        }
+      }
+    }
+  }
+}
