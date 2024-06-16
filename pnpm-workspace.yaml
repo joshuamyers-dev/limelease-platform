@@ -1,0 +1,4 @@
+packages:
+  - 'limelease/apps/*'
+  - 'limelease/services/*'
+  - 'limelease/packages/*'

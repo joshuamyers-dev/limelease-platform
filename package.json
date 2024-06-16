@@ -1,0 +1,31 @@
+{
+  "name": "@limelease/root",
+  "version": "1.0.0",
+  "description": "A monorepo containing a Next.js web app and an Elixir API",
+  "author": "Joshua Nissenbaum \u003cREDACTED_EMAIL\u003e",
+  "private": true,
+  "pnpm": {
+    "workspaces": [
+      "packages/*",
+      "services/*",
+      "apps/*"
+    ]
+  },
+  "scripts": {
+    "deploy:playwright": "cd limelease/services/playwright \u0026\u0026 sam build \u0026\u0026 sam deploy --no-confirm-changeset",
+    "start:elixir-api": "cd limelease/services/elixir-api \u0026\u0026 iex -S mix phx.server",
+    "start:nextjs": "pnpm --filter @limelease/nextjs-app dev"
+  },
+  "dependencies": {
+    "sst": "ion"
+  },
+  "preconstruct": {
+    "packages": [
+      "packages/*",
+      "services/*"
+    ]
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.138"
+  }
+}

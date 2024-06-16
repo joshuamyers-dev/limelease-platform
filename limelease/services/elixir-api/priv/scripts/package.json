@@ -1,0 +1,11 @@
+{
+  "name": "puppeteer",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "main": "puppeteer.js",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^21.7.0"
+  }
+}

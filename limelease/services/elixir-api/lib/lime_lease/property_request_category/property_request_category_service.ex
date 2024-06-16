@@ -1,0 +1,3 @@
+defmodule LimeLease.PropertyRequestCategory.PropertyRequestCategoryService do
+
+end

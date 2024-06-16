@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "✨ @limelease/root",
+			"path": "."
+		},
+		{
+			"name": "@limelease/nextjs-app",
+			"path": "limelease/apps/nextjs-app"
+		},
+		{
+			"name": "@limelease/playwright-service",
+			"path": "limelease/services/playwright"
+		}
+	],
+	"settings": {}
+}

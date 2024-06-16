@@ -1,0 +1,2 @@
+defmodule LimeLease.AgencyAgent.AgencyAgentResolver do
+end
