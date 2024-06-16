@@ -25,7 +25,6 @@ const Tenants = ({ form, propertyDetails }: TenantsProps) => {
 
   useEffect(() => {
     if (propertyDetails) {
-      debugger;
       const leaseDetails = propertyDetails?.lease;
       const tenantsFormValues = {
         leaseTerm: [dayjs(leaseDetails?.startDate), dayjs(leaseDetails?.endDate)],
@@ -35,15 +34,16 @@ const Tenants = ({ form, propertyDetails }: TenantsProps) => {
             id: tenant.id,
             firstName: tenant.firstName,
             lastName: tenant.lastName,
-            emailAddress: tenant.email,
+            email: tenant.email,
             phoneNumber: formatMobileNumber(tenant.phoneNumber),
           };
         }),
       };
 
-      if (leaseDetails) setHasLease(true);
-
-      form.setFieldsValue(tenantsFormValues);
+      if (leaseDetails) {
+        setHasLease(true);
+        form.setFieldsValue(tenantsFormValues);
+      }
     }
   }, [propertyDetails]);
 

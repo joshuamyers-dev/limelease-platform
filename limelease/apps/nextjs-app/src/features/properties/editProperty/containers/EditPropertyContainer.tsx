@@ -76,36 +76,6 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
     }
   };
 
-  useEffect(() => {
-    if (property?.fetchProperty) {
-      // const leaseDetails = propertyDetails?.lease;
-      // const tenantsFormValues = {
-      //   leaseTerm: [dayjs(leaseDetails?.startDate), dayjs(leaseDetails?.endDate)],
-      //   leasePcm: leaseDetails?.rentPcm,
-      //   tenants: propertyDetails?.tenants?.map((tenant) => {
-      //     return {
-      //       firstName: tenant.firstName,
-      //       lastName: tenant.lastName,
-      //       emailAddress: tenant.email,
-      //       phoneNumber: tenant.phoneNumber,
-      //     };
-      //   }),
-      // };
-      // const landlordsFormValues = propertyDetails?.landlords.map((landlord) => {
-      //   return {
-      //     id: landlord.id,
-      //     firstName: landlord.firstName,
-      //     lastName: landlord.lastName,
-      //     email: landlord.email,
-      //     phoneNumber: landlord.phoneNumber,
-      //   };
-      // });
-      // forms[0].setFieldsValue(overviewFormValues);
-      // forms[1].setFieldsValue(tenantsFormValues);
-      // forms[3].setFieldsValue(landlordsFormValues);
-    }
-  }, [property, forms]);
-
   const onFormFinish = async (name: string, info: FormFinishInfo) => {
     const nameIndex: number = parseInt(name);
     const newForms: Array<FormInstance> = [...forms];
@@ -177,6 +147,8 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
           uri_path: photo?.response?.temp_path,
         };
       });
+
+      console.log(photos);
 
       const files = formValues?.files?.map((file, index) => {
         return {

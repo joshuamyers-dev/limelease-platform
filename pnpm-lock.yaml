@@ -154,23 +154,29 @@ importers:
         specifier: 4.7.4
         version: 4.7.4
 
-  limelease/services/playwright:
+  limelease/services/playwright-scraper:
     dependencies:
       '@sparticuz/chromium':
         specifier: ^123.0.1
         version: 123.0.1
-      playwright:
-        specifier: ^1.44.1
-        version: 1.44.1
       playwright-core:
         specifier: ^1.44.1
         version: 1.44.1
       playwright-extra:
         specifier: ^4.3.6
-        version: 4.3.6(playwright-core@1.44.1)(playwright@1.44.1)
+        version: 4.3.6(playwright-core@1.44.1)
       slugify:
         specifier: ^1.6.6
         version: 1.6.6
+
+  limelease/services/playwright-snapshotter:
+    dependencies:
+      '@sparticuz/chromium':
+        specifier: ^123.0.1
+        version: 123.0.1
+      playwright-core:
+        specifier: ^1.44.1
+        version: 1.44.1
 
 packages:
 
@@ -5095,14 +5101,6 @@ packages:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-    requiresBuild: true
-    dev: false
-    optional: true
-
   /function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
     dev: true
@@ -6421,7 +6419,7 @@ packages:
     hasBin: true
     dev: false
 
-  /playwright-extra@4.3.6(playwright-core@1.44.1)(playwright@1.44.1):
+  /playwright-extra@4.3.6(playwright-core@1.44.1):
     resolution: {integrity: sha512-q2rVtcE8V8K3vPVF1zny4pvwZveHLH8KBuVU2MoE3Jw4OKVoBWsHI9CH9zPydovHHOCDxjGN2Vg+2m644q3ijA==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -6434,20 +6432,9 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.5
-      playwright: 1.44.1
       playwright-core: 1.44.1
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /playwright@1.44.1:
-    resolution: {integrity: sha512-qr/0UJ5CFAtloI3avF95Y0L1xQo6r3LQArLIg/z/PoGJ6xa+EwzrwO5lpNr/09STxdHuUoP2mvuELJS+hLdtgg==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dependencies:
-      playwright-core: 1.44.1
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: false
 
   /possible-typed-array-names@1.0.0:

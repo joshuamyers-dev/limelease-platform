@@ -6,7 +6,7 @@ import { Form, Input, Col, Row, Upload, Button, Select, FormInstance } from 'ant
 import { PlusCircleFilled } from '@ant-design/icons';
 import { Colours } from '../../../../utils/Colours';
 import axios from 'axios';
-import { debounce } from '../../../../utils/Helpers';
+import { debounce, formatMobileNumber } from '../../../../utils/Helpers';
 import { AddPropertyContext } from '../containers/CreatePropertyContainer';
 import { EMAIL_ADDRESS_FIELD_RULES, PHONE_NUMBER_FIELD_RULES } from '../helpers/Constants';
 
@@ -30,11 +30,9 @@ const Owners = ({ form, propertyDetails }: OwnersProps) => {
           firstName: landlord.firstName,
           lastName: landlord.lastName,
           emailAddress: landlord.email,
-          phoneNumber: landlord.phoneNumber,
+          phoneNumber: formatMobileNumber(landlord.phoneNumber),
         };
       });
-
-      console.log(landlordsFormValues);
 
       form.setFieldsValue({ owners: landlordsFormValues });
     }

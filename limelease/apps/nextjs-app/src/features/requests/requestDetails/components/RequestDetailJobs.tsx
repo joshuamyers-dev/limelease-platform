@@ -114,7 +114,7 @@ const RequestDetailJobs: React.FC<RequestDetailJobsProps> = ({ requestId }) => {
       <ContainerHeader>
         <ContainerTitle>Active Job</ContainerTitle>
         <AddCommentButton>
-          <Button type="default" icon={<PlusOutlined />} onClick={onClickAddJob}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={onClickAddJob}>
             Create Job
           </Button>
         </AddCommentButton>

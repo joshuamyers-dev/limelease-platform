@@ -1,6 +1,10 @@
 {
 	"folders": [
 		{
+			"name": "@limelease/playwright-service",
+			"path": "limelease/services/playwright"
+		},
+		{
 			"name": "✨ @limelease/root",
 			"path": "."
 		},
@@ -9,9 +13,15 @@
 			"path": "limelease/apps/nextjs-app"
 		},
 		{
-			"name": "@limelease/playwright-service",
-			"path": "limelease/services/playwright"
+			"name": "@limelease/playwright-scraper",
+			"path": "limelease/services/playwright-scraper"
+		},
+		{
+			"name": "@limelease/playwright-snapshotter",
+			"path": "limelease/services/playwright-snapshotter"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"elixirLS.projectDir": "limelease/services/elixir-api/"
+	}
 }

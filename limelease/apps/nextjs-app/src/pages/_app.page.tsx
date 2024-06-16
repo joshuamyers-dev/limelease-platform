@@ -10,13 +10,26 @@ import useStorage from '../hooks/useLocalStorage';
 import { LOCAL_STORAGE_AUTH_KEY } from '../utils/Constants';
 
 import Head from 'next/head';
-import { Roboto } from 'next/font/google';
 
 import 'react-image-lightbox/style.css';
 
 import { Colours } from '@utils/Colours';
 import { ConfigProvider } from 'antd';
-import { useEffect, useState } from 'react';
+
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import localeData from 'dayjs/plugin/localeData';
+import weekday from 'dayjs/plugin/weekday';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
+import weekYear from 'dayjs/plugin/weekYear';
+
+dayjs.extend(customParseFormat);
+dayjs.extend(advancedFormat);
+dayjs.extend(weekday);
+dayjs.extend(localeData);
+dayjs.extend(weekOfYear);
+dayjs.extend(weekYear);
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [getAuthToken] = useStorage();

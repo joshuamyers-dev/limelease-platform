@@ -27,8 +27,8 @@ const PropertyLease: React.FC<PropertyLeaseProps> = ({ leaseDetails, tenants }) 
   }, [leaseDetails?.startDate]);
 
   const leaseDuration = useMemo(() => {
-    return dayjs(leaseDetails.endDate).diff(dayjs(leaseDetails.startDate), 'months');
-  }, [leaseDetails.startDate, leaseDetails.endDate]);
+    return dayjs(leaseDetails?.endDate).diff(dayjs(leaseDetails?.startDate), 'months');
+  }, [leaseDetails?.startDate, leaseDetails?.endDate]);
 
   return (
     <AnimatedContainer {...fadeInOutProps}>

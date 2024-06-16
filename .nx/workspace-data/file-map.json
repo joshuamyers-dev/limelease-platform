@@ -11,6 +11,10 @@
   "fileMap": {
     "nonProjectFiles": [
       {
+        "file": ".formatter.exs",
+        "hash": "10064084336676422674"
+      },
+      {
         "file": ".gitignore",
         "hash": "522695080465470678"
       },
@@ -27,12 +31,20 @@
         "hash": "12409233796713625049"
       },
       {
+        "file": "limelease/services/elixir-api/.credo.exs",
+        "hash": "16210346608563009821"
+      },
+      {
+        "file": "limelease/services/elixir-api/.dockerignore",
+        "hash": "8434872515162186046"
+      },
+      {
         "file": "limelease/services/elixir-api/.gitignore",
-        "hash": "2730424015572821285"
+        "hash": "3653321599975873675"
       },
       {
         "file": "limelease/services/elixir-api/Dockerfile",
-        "hash": "18348360344506043602"
+        "hash": "7714472652387184097"
       },
       {
         "file": "limelease/services/elixir-api/README.md",
@@ -300,7 +312,7 @@
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_service.ex",
-        "hash": "14471936483062299589"
+        "hash": "5225572479136971586"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category.ex",
@@ -563,16 +575,12 @@
         "hash": "10463642700705146294"
       },
       {
-        "file": "limelease/services/elixir-api/priv/scripts/package.json",
-        "hash": "17904149429863398648"
+        "file": "limelease/services/elixir-api/priv/static/assets/app.css",
+        "hash": "16041730416092170690"
       },
       {
-        "file": "limelease/services/elixir-api/priv/scripts/pnpm-lock.yaml",
-        "hash": "16120405066301550336"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/scripts/puppeteer.js",
-        "hash": "10643900342529744517"
+        "file": "limelease/services/elixir-api/priv/static/assets/app.js",
+        "hash": "16718180441250678120"
       },
       {
         "file": "limelease/services/elixir-api/priv/static/favicon.ico",
@@ -664,11 +672,11 @@
       },
       {
         "file": "platform.code-workspace",
-        "hash": "3961779588852354470"
+        "hash": "17439107149036516146"
       },
       {
         "file": "pnpm-lock.yaml",
-        "hash": "11418151734571890306"
+        "hash": "3843870093239319266"
       },
       {
         "file": "pnpm-workspace.yaml",
@@ -680,7 +688,7 @@
       },
       {
         "file": "sst.config.ts",
-        "hash": "3748090214318363819"
+        "hash": "2054395968249588929"
       },
       {
         "file": "tsconfig.json",
@@ -688,6 +696,22 @@
       }
     ],
     "projectFileMap": {
+      "@limelease/playwright-scraper": [
+        {
+          "file": "limelease/services/playwright-scraper/index.mjs",
+          "hash": "5271568375669412665"
+        },
+        {
+          "file": "limelease/services/playwright-scraper/package.json",
+          "hash": "16641934768572420783",
+          "deps": [
+            "npm:@sparticuz/chromium",
+            "npm:playwright-core",
+            "npm:playwright-extra",
+            "npm:slugify"
+          ]
+        }
+      ],
       "@limelease/nextjs-app": [
         {
           "file": "limelease/apps/nextjs-app/.env.production",
@@ -699,7 +723,7 @@
         },
         {
           "file": "limelease/apps/nextjs-app/.gitignore",
-          "hash": "12238858965376950587"
+          "hash": "7038436565577413459"
         },
         {
           "file": "limelease/apps/nextjs-app/.prettierrc",
@@ -999,11 +1023,11 @@
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Owners.tsx",
-          "hash": "6306715853425628835"
+          "hash": "16852794780406298893"
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Tenants.tsx",
-          "hash": "16174612402460054198"
+          "hash": "4181020159464710319"
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/containers/CreatePropertyContainer.tsx",
@@ -1023,7 +1047,7 @@
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/properties/editProperty/containers/EditPropertyContainer.tsx",
-          "hash": "298420124399327996"
+          "hash": "11601941656397550369"
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/properties/editProperty/graphql/updateProperty.mutation.graphql",
@@ -1035,7 +1059,7 @@
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyLease.tsx",
-          "hash": "5300218821853231177"
+          "hash": "2426921745736051237"
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyRequests.tsx",
@@ -1131,7 +1155,7 @@
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestActionsDropdown.tsx",
-          "hash": "17611866921463681358"
+          "hash": "15843765451563436065"
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailComment.tsx",
@@ -1139,11 +1163,11 @@
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailComments.tsx",
-          "hash": "10160886382890477211"
+          "hash": "1430659842859220217"
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailJobs.tsx",
-          "hash": "6484719386758616218"
+          "hash": "6039169783120976663"
         },
         {
           "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailPhotos.tsx",
@@ -1315,7 +1339,7 @@
         },
         {
           "file": "limelease/apps/nextjs-app/src/pages/_app.page.tsx",
-          "hash": "5078678517521887278"
+          "hash": "11091091063411121805"
         },
         {
           "file": "limelease/apps/nextjs-app/src/pages/_document.page.tsx",
@@ -1403,44 +1427,25 @@
         },
         {
           "file": "limelease/apps/nextjs-app/src/utils/Helpers.tsx",
-          "hash": "15444782796500399305"
+          "hash": "10068645119284530298"
         },
         {
           "file": "limelease/apps/nextjs-app/tsconfig.json",
           "hash": "189448523812700608"
         }
       ],
-      "@limelease/playwright-service": [
+      "@limelease/playwright-snapshotter": [
         {
-          "file": "limelease/services/playwright/.aws-sam/build.toml",
-          "hash": "9952418371890418621"
+          "file": "limelease/services/playwright-snapshotter/index.mjs",
+          "hash": "5193071167106785303"
         },
         {
-          "file": "limelease/services/playwright/.aws-sam/build/template.yaml",
-          "hash": "15042568688339218026"
-        },
-        {
-          "file": "limelease/services/playwright/index.mjs",
-          "hash": "5271568375669412665"
-        },
-        {
-          "file": "limelease/services/playwright/package.json",
-          "hash": "6812829039065984990",
+          "file": "limelease/services/playwright-snapshotter/package.json",
+          "hash": "9494194713932308549",
           "deps": [
             "npm:@sparticuz/chromium",
-            "npm:playwright",
-            "npm:playwright-core",
-            "npm:playwright-extra",
-            "npm:slugify"
+            "npm:playwright-core"
           ]
-        },
-        {
-          "file": "limelease/services/playwright/samconfig.toml",
-          "hash": "7785567797826915249"
-        },
-        {
-          "file": "limelease/services/playwright/template.yaml",
-          "hash": "9946246833222610424"
         }
       ]
     }

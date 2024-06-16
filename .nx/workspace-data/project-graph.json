@@ -1,12 +1,52 @@
 {
   "nodes": {
-    "@limelease/playwright-service": {
-      "name": "@limelease/playwright-service",
+    "@limelease/playwright-snapshotter": {
+      "name": "@limelease/playwright-snapshotter",
       "type": "lib",
       "data": {
-        "root": "limelease/services/playwright",
-        "sourceRoot": "limelease/services/playwright",
-        "name": "@limelease/playwright-service",
+        "root": "limelease/services/playwright-snapshotter",
+        "sourceRoot": "limelease/services/playwright-snapshotter",
+        "name": "@limelease/playwright-snapshotter",
+        "projectType": "library",
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "test"
+            ]
+          }
+        },
+        "targets": {
+          "test": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "test"
+            },
+            "metadata": {
+              "scriptContent": "echo \"Error: no test specified\" && exit 1",
+              "runCommand": "pnpm run test"
+            },
+            "configurations": {}
+          },
+          "nx-release-publish": {
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "executor": "@nx/js:release-publish",
+            "options": {},
+            "configurations": {}
+          }
+        },
+        "implicitDependencies": [],
+        "tags": []
+      }
+    },
+    "@limelease/playwright-scraper": {
+      "name": "@limelease/playwright-scraper",
+      "type": "lib",
+      "data": {
+        "root": "limelease/services/playwright-scraper",
+        "sourceRoot": "limelease/services/playwright-scraper",
+        "name": "@limelease/playwright-scraper",
         "projectType": "library",
         "metadata": {
           "targetGroups": {
@@ -4679,15 +4719,6 @@
         "hash": "sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw=="
       }
     },
-    "npm:fsevents": {
-      "type": "npm",
-      "name": "npm:fsevents",
-      "data": {
-        "version": "2.3.2",
-        "packageName": "fsevents",
-        "hash": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
-      }
-    },
     "npm:function-bind": {
       "type": "npm",
       "name": "npm:function-bind",
@@ -6432,15 +6463,6 @@
         "version": "4.3.6",
         "packageName": "playwright-extra",
         "hash": "sha512-q2rVtcE8V8K3vPVF1zny4pvwZveHLH8KBuVU2MoE3Jw4OKVoBWsHI9CH9zPydovHHOCDxjGN2Vg+2m644q3ijA=="
-      }
-    },
-    "npm:playwright": {
-      "type": "npm",
-      "name": "npm:playwright",
-      "data": {
-        "version": "1.44.1",
-        "packageName": "playwright",
-        "hash": "sha512-qr/0UJ5CFAtloI3avF95Y0L1xQo6r3LQArLIg/z/PoGJ6xa+EwzrwO5lpNr/09STxdHuUoP2mvuELJS+hLdtgg=="
       }
     },
     "npm:possible-typed-array-names": {
@@ -8479,29 +8501,36 @@
     }
   },
   "dependencies": {
-    "@limelease/playwright-service": [
+    "@limelease/playwright-snapshotter": [
       {
-        "source": "@limelease/playwright-service",
+        "source": "@limelease/playwright-snapshotter",
         "target": "npm:@sparticuz/chromium",
         "type": "static"
       },
       {
-        "source": "@limelease/playwright-service",
-        "target": "npm:playwright",
+        "source": "@limelease/playwright-snapshotter",
+        "target": "npm:playwright-core",
+        "type": "static"
+      }
+    ],
+    "@limelease/playwright-scraper": [
+      {
+        "source": "@limelease/playwright-scraper",
+        "target": "npm:@sparticuz/chromium",
         "type": "static"
       },
       {
-        "source": "@limelease/playwright-service",
+        "source": "@limelease/playwright-scraper",
         "target": "npm:playwright-core",
         "type": "static"
       },
       {
-        "source": "@limelease/playwright-service",
+        "source": "@limelease/playwright-scraper",
         "target": "npm:playwright-extra",
         "type": "static"
       },
       {
-        "source": "@limelease/playwright-service",
+        "source": "@limelease/playwright-scraper",
         "target": "npm:slugify",
         "type": "static"
       }
@@ -19261,24 +19290,7 @@
       },
       {
         "source": "npm:playwright-extra",
-        "target": "npm:playwright",
-        "type": "static"
-      },
-      {
-        "source": "npm:playwright-extra",
         "target": "npm:playwright-core",
-        "type": "static"
-      }
-    ],
-    "npm:playwright": [
-      {
-        "source": "npm:playwright",
-        "target": "npm:playwright-core",
-        "type": "static"
-      },
-      {
-        "source": "npm:playwright",
-        "target": "npm:fsevents",
         "type": "static"
       }
     ],

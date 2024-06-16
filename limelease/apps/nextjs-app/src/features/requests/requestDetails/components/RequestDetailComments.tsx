@@ -123,7 +123,7 @@ const RequestDetailComments: React.FC<RequestDetailCommentsProps> = ({ requestId
       <ContainerHeader>
         <ContainerTitle>Updates {commentsCountData?.propertyRequestCommentsCount && `(${commentsCountData?.propertyRequestCommentsCount})`}</ContainerTitle>
         <AddCommentButton>
-          <Button type="default" icon={<PlusOutlined />} onClick={onClickAddComment}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={onClickAddComment}>
             Add a Comment
           </Button>
         </AddCommentButton>

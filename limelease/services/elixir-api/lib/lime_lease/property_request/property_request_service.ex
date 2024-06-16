@@ -24,7 +24,7 @@ defmodule LimeLease.PropertyRequest.PropertyRequestService do
       end
       |> case do
         photos when is_list(photos) ->
-          Helpers.upload_temporary_photos(photos)
+          Helpers.upload_temporary_fs_photos(photos)
 
         _ ->
           []

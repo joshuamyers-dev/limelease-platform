@@ -173,7 +173,7 @@ const RequestActionsDropdown = () => {
 
   return (
     <Dropdown menu={menuProps}>
-      <Button>
+      <Button type="primary">
         <Space>
           Actions
           <DownOutlined />

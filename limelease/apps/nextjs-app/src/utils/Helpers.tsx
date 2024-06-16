@@ -29,9 +29,10 @@ export const renderAddressLabel = (address: Address, withLocality: boolean = fal
   }
 };
 
-export const formatMobileNumber = (number: string): string => {
+export const formatMobileNumber = (number: string, includeSpaces: boolean = false): string => {
   const numberWithoutCountryCode = number.startsWith('+614') ? number.slice(4) : number;
-  const formattedNumber = '04' + numberWithoutCountryCode.replace(/(\d{2})(\d{3})(\d{3})/, '$1 $2 $3');
+  const maybeSpaces = includeSpaces ? '$1 $2 $3' : '$1$2$3';
+  const formattedNumber = '04' + numberWithoutCountryCode.replace(/(\d{2})(\d{3})(\d{3})/, maybeSpaces);
 
   return formattedNumber;
 };
