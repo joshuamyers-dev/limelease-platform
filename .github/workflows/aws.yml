@@ -69,6 +69,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}
+        DOCKERFILE_PATH: limelease/services/elixir-api/Dockerfile
         BUILD_CONTEXT: limelease/services/elixir-api/
       run: |
         # Build a docker container and
