@@ -39,6 +39,12 @@ export default $config({
           toPort: 443,
           cidrBlocks: ["0.0.0.0/0"],
         },
+        {
+          fromPort: 3000,
+          toPort: 3000,
+          protocol: "tcp",
+          cidrBlocks: ["0.0.0.0/0"],
+        },
       ],
       egress: [
         {
@@ -276,24 +282,45 @@ export default $config({
       privateZone: false,
     });
 
-    const certificate = new aws.acm.Certificate("ApiCertificate", {
+    const apiCertificate = new aws.acm.Certificate("ApiCertificate", {
       domainName: "api.limelease.com",
       validationMethod: "DNS",
     });
 
-    const validationRecord = new aws.route53.Record("ApiValidationRecord", {
+    const appCertificate = new aws.acm.Certificate("AppCertificate", {
+      domainName: "app.limelease.com",
+      validationMethod: "DNS",
+    });
+
+    const apiValidationRecord = new aws.route53.Record("ApiValidationRecord", {
       zoneId: zone.id,
-      name: certificate.domainValidationOptions[0].resourceRecordName,
-      type: certificate.domainValidationOptions[0].resourceRecordType,
-      records: [certificate.domainValidationOptions[0].resourceRecordValue],
+      name: apiCertificate.domainValidationOptions[0].resourceRecordName,
+      type: apiCertificate.domainValidationOptions[0].resourceRecordType,
+      records: [apiCertificate.domainValidationOptions[0].resourceRecordValue],
       ttl: 300,
     });
 
-    const certificateValidation = new aws.acm.CertificateValidation(
+    const appValidationRecord = new aws.route53.Record("AppValidationRecord", {
+      zoneId: zone.id,
+      name: appCertificate.domainValidationOptions[0].resourceRecordName,
+      type: appCertificate.domainValidationOptions[0].resourceRecordType,
+      records: [appCertificate.domainValidationOptions[0].resourceRecordValue],
+      ttl: 300,
+    });
+
+    const apiCertificateValidation = new aws.acm.CertificateValidation(
       "ApiCertificateValidation",
       {
-        certificateArn: certificate.arn,
-        validationRecordFqdns: [validationRecord.fqdn],
+        certificateArn: apiCertificate.arn,
+        validationRecordFqdns: [apiValidationRecord.fqdn],
+      }
+    );
+
+    const appCertificateValidation = new aws.acm.CertificateValidation(
+      "AppCertificateValidation",
+      {
+        certificateArn: appCertificate.arn,
+        validationRecordFqdns: [appValidationRecord.fqdn],
       }
     );
 
@@ -319,7 +346,7 @@ export default $config({
       port: 443,
       protocol: "HTTPS",
       sslPolicy: "ELBSecurityPolicy-2016-08",
-      certificateArn: certificateValidation.certificateArn,
+      certificateArn: apiCertificateValidation.certificateArn,
       defaultActions: [
         {
           type: "forward",
@@ -364,28 +391,142 @@ export default $config({
       { dependsOn: [taskDefinition, listener] }
     );
 
-    // new aws.ecs.Service(
-    //   "NextjsAppFargateService",
-    //   {
-    //     cluster: cluster.arn,
-    //     desiredCount: 1,
-    //     launchType: "FARGATE",
-    //     taskDefinition: taskDefinition.arn,
-    //     networkConfiguration: {
-    //       assignPublicIp: true,
-    //       subnets: vpc.publicSubnets,
-    //       securityGroups: [securityGroup.id],
-    //     },
-    //     loadBalancers: [
-    //       {
-    //         targetGroupArn: targetGroup.arn,
-    //         containerName: apiRepoistory.name,
-    //         containerPort: 80,
-    //       },
-    //     ],
-    //   },
-    //   { dependsOn: [taskDefinition, listener] }
-    // );
+    const nextAppTaskDefinition = new aws.ecs.TaskDefinition(
+      "NextjsAppECSTask",
+      {
+        family: "nextjs-app-ecs-tasks",
+        cpu: "256", // Adjust based on your needs
+        memory: "512", // Adjust based on your needs
+        networkMode: "awsvpc",
+        requiresCompatibilities: ["FARGATE"],
+        executionRoleArn: ecsTaskExecutionRole.arn,
+        containerDefinitions: pulumi
+          .all([nextAppRepository.repositoryUrl, api.url])
+          .apply(([repoUrl, lambdaUrl]) => {
+            return JSON.stringify([
+              {
+                name: "nextjs-app",
+                image: `${repoUrl}:9d09a9736d2b8e56e43c8b7ae56cd86851b3daf4`,
+                portMappings: [
+                  {
+                    containerPort: 3000,
+                    hostPort: 3000,
+                    protocol: "tcp",
+                  },
+                ],
+                logConfiguration: {
+                  logDriver: "awslogs",
+                  options: {
+                    "awslogs-group": "/ecs/ElixirApi",
+                    "awslogs-region": "ap-southeast-2",
+                    "awslogs-stream-prefix": "ElixirApi",
+                  },
+                },
+                healthCheck: {
+                  command: [
+                    "CMD-SHELL",
+                    "curl -f http://127.0.0.1:3000/login || exit 1",
+                  ],
+                  interval: 30,
+                  timeout: 5,
+                  retries: 3,
+                  startPeriod: 10,
+                },
+                environment: [
+                  {
+                    name: "NEXT_PUBLIC_API_URL",
+                    value: `https://api.limelease.com`,
+                  },
+                  {
+                    name: "NEXT_PUBLIC_WS_ADDRESS",
+                    value: "api.limelease.com",
+                  },
+                  {
+                    name: "NEXT_PUBLIC_DOMAIN_API_KEY",
+                    value: "REDACTED_DOMAIN_API_KEY",
+                  },
+                  {
+                    name: "NEXT_PUBLIC_FRONT_END_URL",
+                    value: "https://app.limelease.com",
+                  },
+                  {
+                    name: "NEXT_PUBLIC_PROPERTY_FETCHER_LAMBDA_URL",
+                    value: `${lambdaUrl}/scrape`,
+                  },
+                ],
+              },
+            ]);
+          }),
+      },
+      { dependsOn: [nextAppRepository, api] }
+    );
+
+    const appAlb = new aws.lb.LoadBalancer("AppAlb", {
+      securityGroups: [securityGroup.id],
+      subnets: vpc.publicSubnets,
+      loadBalancerType: "application",
+    });
+
+    const appTargetGroup = new aws.lb.TargetGroup("AppTargetGroup", {
+      port: 80,
+      protocol: "HTTP",
+      targetType: "ip",
+      vpcId: vpc.id,
+      healthCheck: {
+        path: "/login",
+        enabled: true,
+      },
+    });
+
+    const appListener = new aws.lb.Listener("AppListener", {
+      loadBalancerArn: appAlb.arn,
+      port: 443,
+      protocol: "HTTPS",
+      sslPolicy: "ELBSecurityPolicy-2016-08",
+      certificateArn: appCertificateValidation.certificateArn,
+      defaultActions: [
+        {
+          type: "forward",
+          targetGroupArn: appTargetGroup.arn,
+        },
+      ],
+    });
+
+    new aws.ecs.Service(
+      "NextjsAppFargateService",
+      {
+        cluster: cluster.arn,
+        desiredCount: 1,
+        launchType: "FARGATE",
+        taskDefinition: nextAppTaskDefinition.arn,
+        networkConfiguration: {
+          assignPublicIp: true,
+          subnets: vpc.publicSubnets,
+          securityGroups: [securityGroup.id],
+        },
+        loadBalancers: [
+          {
+            targetGroupArn: appTargetGroup.arn,
+            containerName: "nextjs-app",
+            containerPort: 3000,
+          },
+        ],
+      },
+      { dependsOn: [nextAppTaskDefinition, appListener] }
+    );
+
+    const appSubdomainRecord = new aws.route53.Record("LimeLeaseAppSubDomain", {
+      zoneId: zone.id,
+      name: "app.limelease.com",
+      type: "A",
+      aliases: [
+        {
+          name: appAlb.dnsName,
+          zoneId: appAlb.zoneId,
+          evaluateTargetHealth: false,
+        },
+      ],
+    });
 
     api.route("POST /scrape", {
       handler: "limelease/services/playwright-scraper/index.handler",
