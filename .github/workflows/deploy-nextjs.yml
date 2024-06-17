@@ -79,24 +79,24 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    # - name: Fetch latest task definition JSON and write to file
-    #   id: fetch-latest-task-def-json
-    #   run: |
-    #     aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query 'taskDefinition' --output json > task-def.json
-    #     echo "::set-output name=task_def_path::$(pwd)/task-def.json"
+    - name: Fetch latest task definition JSON and write to file
+      id: fetch-latest-task-def-json
+      run: |
+        aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query 'taskDefinition' --output json > task-def.json
+        echo "::set-output name=task_def_path::$(pwd)/task-def.json"
 
-    # - name: Render Amazon ECS task definition
-    #   id: render-web-container
-    #   uses: aws-actions/amazon-ecs-render-task-definition@v1
-    #   with:
-    #     task-definition: ${{ steps.fetch-latest-task-def-json.outputs.task_def_path }}
-    #     container-name: ${{ env.CONTAINER_NAME }}
-    #     image: ${{ steps.build-image.outputs.image }}
-    #     environment-variables: "LOG_LEVEL=info"
+    - name: Render Amazon ECS task definition
+      id: render-web-container
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: ${{ steps.fetch-latest-task-def-json.outputs.task_def_path }}
+        container-name: ${{ env.CONTAINER_NAME }}
+        image: ${{ steps.build-image.outputs.image }}
+        environment-variables: "LOG_LEVEL=info"
 
-    # - name: Deploy to Amazon ECS service
-    #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-    #   with:
-    #     task-definition: ${{ steps.render-web-container.outputs.task-definition }}
-    #     service: ${{ env.ECS_SERVICE }}
-    #     cluster: ${{ env.ECS_CLUSTER }}
+    - name: Deploy to Amazon ECS service
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.render-web-container.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE }}
+        cluster: ${{ env.ECS_CLUSTER }}
