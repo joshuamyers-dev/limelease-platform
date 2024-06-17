@@ -96,4 +96,4 @@ WORKDIR "/app"
 
 # USER nobody
 
-CMD ["/app/bin/lime_lease eval LimeLease.Release.migrate && /app/bin/server"]
+CMD ["/bin/sh", "-c", "/app/bin/lime_lease eval LimeLease.Release.migrate && /app/bin/server"]
