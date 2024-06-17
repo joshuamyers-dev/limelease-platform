@@ -78,19 +78,26 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f $DOCKERFILE_PATH $BUILD_CONTEXT
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+        
+    - name: Fetch latest task definition JSON
+      id: fetch-latest-task-def-json
+      run: |
+        TASK_DEF_JSON=$(aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query 'taskDefinition' --output json)
+        echo "TASK_DEF_JSON=$(echo $TASK_DEF_JSON)" > task_def.json
 
-    - name: Fill in the new image ID in the Amazon ECS task definition
-      id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
-      with:
-        task-definition: ${{ env.ECS_TASK_DEFINITION }}
-        container-name: ${{ env.CONTAINER_NAME }}
-        image: ${{ steps.build-image.outputs.image }}
+    - name: Modify the task definition with the new image
+      id: modify-task-def
+      run: |
+        NEW_TASK_DEF_JSON=$(jq '.containerDefinitions[].image |= if . | contains("${{ env.CONTAINER_NAME }}") then "${{ steps.build-image.outputs.image }}" else . end' task_def.json)
+        echo "NEW_TASK_DEF_JSON=$(echo $NEW_TASK_DEF_JSON)" > modified_task_def.json
 
-    - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: ${{ env.ECS_SERVICE }}
-        cluster: ${{ env.ECS_CLUSTER }}
-        wait-for-service-stability: true
+    - name: Register the new task definition
+      id: register-task-def
+      run: |
+        REGISTERED_TASK_DEF=$(aws ecs register-task-definition --cli-input-json file://modified_task_def.json)
+        NEW_TASK_DEF_ARN=$(echo $REGISTERED_TASK_DEF | jq -r '.taskDefinition.taskDefinitionArn')
+        echo "NEW_TASK_DEF_ARN=$NEW_TASK_DEF_ARN" >> $GITHUB_ENV
+
+    - name: Deploy to ECS
+      run: |
+        aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE }} --task-definition $NEW_TASK_DEF_ARN
