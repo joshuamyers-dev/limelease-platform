@@ -79,20 +79,17 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: Fetch latest task definition JSON
+    - name: Fetch latest task definition JSON and write to file
       id: fetch-latest-task-def-json
       run: |
-        TASK_DEF_JSON=$(aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query 'taskDefinition' --output json)
-        echo "::set-output name=task_def_json::$TASK_DEF_JSON"
-
-    - name: Print task definition JSON
-      run: echo "${{ steps.fetch-latest-task-def-json.outputs.task_def_json }}"
+        aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query 'taskDefinition' --output json > task-def.json
+        echo "::set-output name=task_def_path::$(pwd)/task-def.json"
 
     - name: Render Amazon ECS task definition
       id: render-web-container
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: ${{ steps.fetch-latest-task-def-json.outputs.task_def_json }}
+        task-definition: ${{ steps.fetch-latest-task-def-json.outputs.task_def_path }}
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
         environment-variables: "LOG_LEVEL=info"
