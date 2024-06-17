@@ -1,7 +1,6 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 
 import * as pulumi from "@pulumi/pulumi";
-import * as docker from "@pulumi/docker";
 
 export default $config({
   app(input) {
@@ -207,6 +206,16 @@ export default $config({
                     "awslogs-region": "ap-southeast-2",
                     "awslogs-stream-prefix": "ElixirApi",
                   },
+                },
+                healthCheck: {
+                  command: [
+                    "CMD-SHELL",
+                    "curl -f http://127.0.0.1/health || exit 1",
+                  ],
+                  interval: 30,
+                  timeout: 5,
+                  retries: 3,
+                  startPeriod: 10,
                 },
                 environment: [
                   {
