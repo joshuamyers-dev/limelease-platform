@@ -6,7 +6,6 @@ defmodule LimeLease.Repo.Migrations.CreateTenants do
       add :id, :uuid, primary_key: true
       add :property_id, references(:properties, on_delete: :delete_all, type: :uuid)
       add :user_id, references(:users, on_delete: :nilify_all, type: :uuid)
-      add :lease_id, references(:leases, on_delete: :delete_all, type: :uuid)
       add :first_name, :string
       add :last_name, :string
       add :phone_number, :string, null: false
