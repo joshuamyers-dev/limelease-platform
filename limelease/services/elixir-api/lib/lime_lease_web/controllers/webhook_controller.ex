@@ -16,6 +16,11 @@ defmodule LimeLeaseWeb.WebhookController do
 
   def front_end_url, do: Application.get_env(:lime_lease, :front_end_url)
 
+  def health_check(conn, _args) do
+    conn
+    |> send_resp(200, "")
+  end
+
   def inbound_sms(conn, %{"originalmessage" => original_message_body, "body" => response_body, "sms" => from_number}) do
     ticket_number =
       original_message_body

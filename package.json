@@ -2,7 +2,7 @@
   "name": "@limelease/root",
   "version": "1.0.0",
   "description": "A monorepo containing a Next.js web app and an Elixir API",
-  "author": "Joshua Nissenbaum \u003cREDACTED_EMAIL\u003e",
+  "author": "Joshua Nissenbaum <REDACTED_EMAIL>",
   "private": true,
   "pnpm": {
     "workspaces": [
@@ -12,11 +12,13 @@
     ]
   },
   "scripts": {
-    "deploy:playwright": "cd limelease/services/playwright \u0026\u0026 sam build \u0026\u0026 sam deploy --no-confirm-changeset",
-    "start:elixir-api": "cd limelease/services/elixir-api \u0026\u0026 iex -S mix phx.server",
+    "deploy:playwright": "cd limelease/services/playwright && sam build && sam deploy --no-confirm-changeset",
+    "start:elixir-api": "cd limelease/services/elixir-api && iex -S mix phx.server",
     "start:nextjs": "pnpm --filter @limelease/nextjs-app dev"
   },
   "dependencies": {
+    "@pulumi/docker": "^4.5.4",
+    "@pulumi/pulumi": "^3.120.0",
     "sst": "ion"
   },
   "preconstruct": {

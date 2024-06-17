@@ -115,7 +115,7 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
 
       let tenants = [];
 
-      if (formValues.tenants.length > 0) {
+      if (formValues?.tenants?.length > 0) {
         tenants = formValues.tenants
           .filter((formValue: any) => formValue[0] === undefined)
           .flatMap((tenant) => {
@@ -147,8 +147,6 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
           uri_path: photo?.response?.temp_path,
         };
       });
-
-      console.log(photos);
 
       const files = formValues?.files?.map((file, index) => {
         return {

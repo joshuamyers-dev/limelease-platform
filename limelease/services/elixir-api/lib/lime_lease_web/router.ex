@@ -43,6 +43,10 @@ defmodule LimeLeaseWeb.Router do
   end
 
   scope "/" do
+    get("/health", LimeLeaseWeb.WebhookController, :health_check)
+  end
+
+  scope "/" do
     pipe_through :api
 
     post("/webhook/clicksend", LimeLeaseWeb.WebhookController, :inbound_sms)
