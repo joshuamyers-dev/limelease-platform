@@ -12,7 +12,7 @@ defmodule LimeLease.Repo.Migrations.CreateLeases do
       timestamps(type: :utc_datetime_usec)
     end
 
-    alter table(:tenants) do
+    alter table(:tenants, primary_key: false) do
       add :lease_id, references(:leases, on_delete: :delete_all, type: :uuid)
     end
   end
