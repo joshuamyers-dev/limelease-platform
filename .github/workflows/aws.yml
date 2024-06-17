@@ -85,6 +85,9 @@ jobs:
         TASK_DEF_JSON=$(aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query 'taskDefinition' --output json)
         echo "TASK_DEF_JSON=$(echo $TASK_DEF_JSON)" > task_def.json
 
+    - name: Print task definition JSON
+      run: cat task_def.json
+
     - name: Modify the task definition with the new image
       id: modify-task-def
       run: |
