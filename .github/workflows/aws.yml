@@ -78,7 +78,7 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f $DOCKERFILE_PATH $BUILD_CONTEXT
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-        
+
     - name: Fetch latest task definition JSON
       id: fetch-latest-task-def-json
       run: |
@@ -88,7 +88,8 @@ jobs:
     - name: Modify the task definition with the new image
       id: modify-task-def
       run: |
-        NEW_TASK_DEF_JSON=$(jq '.containerDefinitions[].image |= if . | contains("${{ env.CONTAINER_NAME }}") then "${{ steps.build-image.outputs.image }}" else . end' task_def.json)
+        NEW_IMAGE="192810222061/elixir_api:${{ steps.build-image.outputs.image }}"
+        NEW_TASK_DEF_JSON=$(jq --arg newImage "$NEW_IMAGE" '.containerDefinitions[].image = $newImage' task_def.json)
         echo "NEW_TASK_DEF_JSON=$(echo $NEW_TASK_DEF_JSON)" > modified_task_def.json
 
     - name: Register the new task definition

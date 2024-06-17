@@ -13,272 +13,348 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "limelease/services/elixir-api/test/support/conn_case.ex",
-        "hash": "4707761268754749650"
+        "file": "package.json",
+        "hash": "7379333760837970304"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/endpoint.ex",
-        "hash": "595956666445684972"
+        "file": "pnpm-workspace.yaml",
+        "hash": "14340327533138106280"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_resolver.ex",
-        "hash": "5832154761511024420"
+        "file": "limelease/services/elixir-api/priv/static/favicon.ico",
+        "hash": "6023468761092867883"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job.ex",
-        "hash": "17710081297282532176"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_resolver.ex",
-        "hash": "364844563914533556"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/helpers/helpers.ex",
-        "hash": "14912350736774836981"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/static/robots.txt",
-        "hash": "14731786011069331828"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20220626051651_create_users.exs",
-        "hash": "4574941158271255226"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment.ex",
-        "hash": "14701262025721156290"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_schema.ex",
-        "hash": "10996087220193635487"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property.ex",
-        "hash": "4741785180975214577"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/telemetry.ex",
-        "hash": "2822188886042883138"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_service.ex",
-        "hash": "9585145851151266470"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent_context.ex",
-        "hash": "6435358804456943332"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media.ex",
-        "hash": "13456145352359080097"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/env.bat.eex",
-        "hash": "13912121852897936892"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_resolver.ex",
-        "hash": "8278219537108133746"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/user/user.ex",
-        "hash": "6628897298223631729"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/test.exs",
-        "hash": "5993718528677352560"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_context.ex",
-        "hash": "6438769617638805164"
-      },
-      {
-        "file": "limelease/package.json",
-        "hash": "12409233796713625049"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification.ex",
-        "hash": "9342313892835528039"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_context.ex",
-        "hash": "7512472132636686392"
-      },
-      {
-        "file": "limelease/services/elixir-api/assets/vendor/topbar.js",
-        "hash": "7136826511606975709"
-      },
-      {
-        "file": "limelease/services/elixir-api/test/test_helper.exs",
-        "hash": "16041478222342623843"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20230220023134_create_property_requests.exs",
-        "hash": "7269161698063613412"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20231125124842_create_agency_agents.exs",
-        "hash": "4446265377921629464"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_resolver.ex",
-        "hash": "13830193069332507094"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_resolver.ex",
-        "hash": "4683236110266350967"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/plugs/context.ex",
-        "hash": "9749912721141204749"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/middleware/ecto_errors.ex",
-        "hash": "15751924785005853428"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20220705004657_create_tenants.exs",
-        "hash": "6062170532226404248"
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505131329_create_leases.exs",
+        "hash": "13906040995985628588"
       },
       {
         "file": "limelease/services/elixir-api/test/lime_lease_web/views/error_view_test.exs",
         "hash": "10713011789687845386"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/emails/property_request_emails.ex",
-        "hash": "3376432210045750689"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/overlays/bin/migrate.bat",
-        "hash": "18306995304897643395"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/photo/property_request_photo.ex",
-        "hash": "12386671537166808147"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20231112134016_create_contractors.exs",
-        "hash": "11846335115270080947"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency.ex",
-        "hash": "13476950534310381650"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_schema.ex",
-        "hash": "1216452943597259878"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_context.ex",
-        "hash": "12127128627572480097"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant.ex",
-        "hash": "10063961788524698395"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/middleware/authorize.ex",
-        "hash": "9764086592954276625"
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/user_socket.ex",
+        "hash": "10059169003753529574"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_context.ex",
         "hash": "5563144475594529984"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/schema.ex",
-        "hash": "226853189061302771"
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20231126071418_create_property_agents.exs",
+        "hash": "4112741568583979505"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_schema.ex",
-        "hash": "10731449916748508958"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/photo/property_photo.ex",
+        "hash": "2533350667428801233"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_service.ex",
-        "hash": "14731602826363955658"
+        "file": "nx.bat",
+        "hash": "16119536321561623970"
       },
       {
-        "file": ".github/workflows/aws.yml",
-        "hash": "4122301937660309897"
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_context.ex",
+        "hash": "17820998926697746218"
       },
       {
-        "file": "limelease/services/elixir-api/priv/static/assets/app.css",
-        "hash": "16041730416092170690"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property.ex",
+        "hash": "4741785180975214577"
       },
       {
-        "file": "limelease/services/elixir-api/rel/vm.args.eex",
-        "hash": "2097317746300665737"
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_schema.ex",
+        "hash": "4111133822940397105"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_service.ex",
+        "hash": "5448138152299037823"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_resolver.ex",
         "hash": "11650711422411536949"
       },
       {
-        "file": ".vscode/launch.json",
-        "hash": "8065499820749323915"
+        "file": "limelease/services/elixir-api/assets/vendor/topbar.js",
+        "hash": "7136826511606975709"
       },
       {
-        "file": "limelease/services/elixir-api/priv/static/images/phoenix.png",
-        "hash": "3019631266252354651"
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/schema.ex",
+        "hash": "226853189061302771"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_service.ex",
-        "hash": "558174817345312770"
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency.ex",
+        "hash": "13476950534310381650"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20230701053500_create_static_media.exs",
-        "hash": "9119362719629989254"
+        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media.ex",
+        "hash": "13456145352359080097"
       },
       {
-        "file": "limelease/services/elixir-api/mix.lock",
-        "hash": "758222211992328938"
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20220705004657_create_tenants.exs",
+        "hash": "6062170532226404248"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_resolver.ex",
-        "hash": "7356588341758469370"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment.ex",
+        "hash": "14701262025721156290"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/.formatter.exs",
-        "hash": "1193860905016756508"
-      },
-      {
-        "file": "limelease/services/elixir-api/.credo.exs",
-        "hash": "16210346608563009821"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_context.ex",
-        "hash": "9472714700518321216"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_context.ex",
-        "hash": "14364894297331905998"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/mix/tasks/generate_graph_model.ex",
-        "hash": "8011880538444179184"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/static/assets/app.js",
-        "hash": "16718180441250678120"
-      },
-      {
-        "file": "limelease/services/elixir-api/README.md",
-        "hash": "12898494106830850149"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/services/aws.ex",
-        "hash": "7735125015329791794"
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_resolver.ex",
+        "hash": "364844563914533556"
       },
       {
         "file": "limelease/services/elixir-api/lib/services/clicksend.ex",
         "hash": "14143259489110198711"
       },
       {
-        "file": "limelease/services/elixir-api/test/lime_lease_web/controllers/page_controller_test.exs",
-        "hash": "13665472437324351469"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_service.ex",
+        "hash": "14812774832812845404"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505132030_create_property_agent_tasks.exs",
-        "hash": "3073912589627385140"
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_service.ex",
+        "hash": "11034371511831153696"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/middleware/ecto_errors.ex",
+        "hash": "15751924785005853428"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/runtime.exs",
+        "hash": "17482824069494343569"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/overlays/bin/server.bat",
+        "hash": "7186082622226334684"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/address/property_address.ex",
+        "hash": "8483578924246225002"
+      },
+      {
+        "file": "limelease/services/elixir-api/Dockerfile",
+        "hash": "7714472652387184097"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_schema.ex",
+        "hash": "8372032184181404565"
+      },
+      {
+        "file": "limelease/package.json",
+        "hash": "12409233796713625049"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/guardian.ex",
+        "hash": "8472704270570881546"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/dev.exs",
+        "hash": "1373966777888658186"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/middleware/authorize.ex",
+        "hash": "9764086592954276625"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/changeset_helpers.ex",
+        "hash": "12222837089150833981"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_context.ex",
+        "hash": "6438769617638805164"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor.ex",
+        "hash": "7295023085803886707"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/photo/property_request_photo.ex",
+        "hash": "12386671537166808147"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/test.exs",
+        "hash": "5993718528677352560"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "15753941481085060538"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "3384034927285416210"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_service.ex",
+        "hash": "14731602826363955658"
+      },
+      {
+        "file": "limelease/services/elixir-api/test/support/conn_case.ex",
+        "hash": "4707761268754749650"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_service.ex",
+        "hash": "9554622565696157296"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20231112134016_create_contractors.exs",
+        "hash": "11846335115270080947"
+      },
+      {
+        "file": "limelease/services/elixir-api/assets/css/phoenix.css",
+        "hash": "11026573209544566604"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease.ex",
+        "hash": "13895555995395162257"
+      },
+      {
+        "file": "platform.code-workspace",
+        "hash": "17439107149036516146"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category.ex",
+        "hash": "17974310196427712904"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_resolver.ex",
+        "hash": "8278219537108133746"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/mix/tasks/generate_graph_model.ex",
+        "hash": "8011880538444179184"
+      },
+      {
+        "file": "limelease/services/elixir-api/mix.lock",
+        "hash": "758222211992328938"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web.ex",
+        "hash": "2817699519865152073"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240116031001_create_property_request_comments.exs",
+        "hash": "9303053891003715097"
+      },
+      {
+        "file": "limelease/services/elixir-api/test/support/data_case.ex",
+        "hash": "810525928442134349"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/env.bat.eex",
+        "hash": "13912121852897936892"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/genservers/sms_queue.ex",
+        "hash": "6604308996418136822"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_service.ex",
+        "hash": "13250594469443577159"
+      },
+      {
+        "file": "limelease/services/elixir-api/dets_simple_storage",
+        "hash": "5906269353803615872"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent.ex",
+        "hash": "641104386659945604"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "8065499820749323915"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job.ex",
+        "hash": "17710081297282532176"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_schema.ex",
+        "hash": "14940349113372779741"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20230701053500_create_static_media.exs",
+        "hash": "9119362719629989254"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/gettext.ex",
+        "hash": "15666655883781585187"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/notifications.ex",
+        "hash": "16784985589721532575"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240203071242_create_property_request_categories.exs",
+        "hash": "5514820781445661975"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_resolver.ex",
+        "hash": "10294042417918702402"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/emails/property_request_emails.ex",
+        "hash": "3376432210045750689"
+      },
+      {
+        "file": "sst-env.d.ts",
+        "hash": "7566613066544671273"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/env.sh.eex",
+        "hash": "3675901051954639316"
+      },
+      {
+        "file": "limelease/services/elixir-api/mix.exs",
+        "hash": "6086366692669567775"
+      },
+      {
+        "file": "limelease/services/elixir-api/.dockerignore",
+        "hash": "8434872515162186046"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent_context.ex",
+        "hash": "6435358804456943332"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_schema.ex",
+        "hash": "7331691126253999988"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/user/user.ex",
+        "hash": "6628897298223631729"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_resolver.ex",
+        "hash": "5832154761511024420"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505132634_create_property_files.exs",
+        "hash": "9567834531936720127"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/plugs/context.ex",
+        "hash": "9749912721141204749"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/repo.ex",
+        "hash": "15905800990111941406"
+      },
+      {
+        "file": "limelease/services/elixir-api/README.md",
+        "hash": "12898494106830850149"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/overlays/bin/migrate.bat",
+        "hash": "18306995304897643395"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_resolver.ex",
+        "hash": "13830193069332507094"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/prod.exs",
+        "hash": "956029149973821960"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_resolver.ex",
+        "hash": "4683236110266350967"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/release.ex",
@@ -289,412 +365,336 @@
         "hash": "3994680859115452241"
       },
       {
-        "file": "limelease/services/elixir-api/.dockerignore",
-        "hash": "8434872515162186046"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_context.ex",
-        "hash": "14933518050889564112"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_schema.ex",
-        "hash": "8123445472358555890"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease.ex",
-        "hash": "13337791236213480130"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240116031001_create_property_request_comments.exs",
-        "hash": "9303053891003715097"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505132634_create_property_files.exs",
-        "hash": "9567834531936720127"
-      },
-      {
-        "file": "sst-env.d.ts",
-        "hash": "7566613066544671273"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/photo/property_photo.ex",
-        "hash": "2533350667428801233"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_service.ex",
-        "hash": "13250594469443577159"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/static/favicon.ico",
-        "hash": "6023468761092867883"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request.ex",
-        "hash": "11696032542666849896"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_service.ex",
-        "hash": "9554622565696157296"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/prod.exs",
-        "hash": "956029149973821960"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/gettext/en/LC_MESSAGES/errors.po",
-        "hash": "6133952066058840805"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_context.ex",
-        "hash": "9105259498136050238"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_service.ex",
-        "hash": "11034371511831153696"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_context.ex",
-        "hash": "13423893541245994233"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web.ex",
-        "hash": "2817699519865152073"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_service.ex",
-        "hash": "5448138152299037823"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_resolver.ex",
-        "hash": "18058815246440190855"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/guardian.ex",
-        "hash": "8472704270570881546"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/remote.vm.args.eex",
-        "hash": "2097317746300665737"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_resolver.ex",
-        "hash": "6533365222975432203"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_resolver.ex",
-        "hash": "4966599111287381139"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_context.ex",
-        "hash": "1914018249837884115"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505131824_create_tasks.exs",
-        "hash": "16090001544565891314"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/config.exs",
-        "hash": "9197357137833245160"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_context.ex",
-        "hash": "17820998926697746218"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/genservers/sms_queue.ex",
-        "hash": "6604308996418136822"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_service.ex",
-        "hash": "8907750759368055964"
-      },
-      {
-        "file": "limelease/services/elixir-api/dets_simple_storage",
-        "hash": "5906269353803615872"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20231125124422_create_agencies.exs",
-        "hash": "940943738801526795"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease.ex",
-        "hash": "13895555995395162257"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/landlord/property_landlord.ex",
-        "hash": "14832580723318023148"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/repo.ex",
-        "hash": "15905800990111941406"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20231126071418_create_property_agents.exs",
-        "hash": "4112741568583979505"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/gettext.ex",
-        "hash": "15666655883781585187"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_resolver.ex",
-        "hash": "4470366750048744844"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_service.ex",
-        "hash": "14812774832812845404"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/overlays/bin/migrate",
-        "hash": "13312743066005289560"
-      },
-      {
-        "file": "limelease/services/elixir-api/test/lime_lease_web/views/layout_view_test.exs",
-        "hash": "17601084256278205655"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/overlays/bin/server",
-        "hash": "16996218216023068191"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor.ex",
-        "hash": "7295023085803886707"
-      },
-      {
-        "file": "package.json",
-        "hash": "7379333760837970304"
-      },
-      {
-        "file": "limelease/services/elixir-api/assets/js/app.js",
-        "hash": "8230686138974658220"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/file/property_file.ex",
-        "hash": "17303101767284045986"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/gettext/errors.pot",
-        "hash": "6760033418897232752"
-      },
-      {
-        "file": "limelease/services/elixir-api/test/support/data_case.ex",
-        "hash": "810525928442134349"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20231112134325_create_contractor_jobs.exs",
-        "hash": "16272881438924081716"
-      },
-      {
-        "file": "limelease/services/elixir-api/Dockerfile",
-        "hash": "7714472652387184097"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_service.ex",
-        "hash": "943408915494219724"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20220629084738_create_properties.exs",
-        "hash": "1810522452714673199"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/dev.exs",
-        "hash": "1373966777888658186"
-      },
-      {
-        "file": "limelease/services/elixir-api/assets/css/phoenix.css",
-        "hash": "11026573209544566604"
-      },
-      {
-        "file": "limelease/services/elixir-api/mix.exs",
-        "hash": "6086366692669567775"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_schema.ex",
-        "hash": "6040627178823616217"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_schema.ex",
-        "hash": "4111133822940397105"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/seeds.exs",
-        "hash": "10463642700705146294"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_service.ex",
-        "hash": "5225572479136971586"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240203071242_create_property_request_categories.exs",
-        "hash": "5514820781445661975"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/overlays/bin/server.bat",
-        "hash": "7186082622226334684"
-      },
-      {
-        "file": "limelease/services/elixir-api/.gitignore",
-        "hash": "3653321599975873675"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_schema.ex",
-        "hash": "1665019786919194303"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_schema.ex",
-        "hash": "7331691126253999988"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_context.ex",
-        "hash": "3411275133700692922"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_resolver.ex",
-        "hash": "6106835798889845708"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/runtime.exs",
-        "hash": "17482824069494343569"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/controllers/temp_file_controller.ex",
-        "hash": "17399506440583702144"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_schema.ex",
-        "hash": "14940349113372779741"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_schema.ex",
-        "hash": "11579414116391998185"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent.ex",
-        "hash": "641104386659945604"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/application.ex",
-        "hash": "947857131482277924"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/changeset_helpers.ex",
-        "hash": "12222837089150833981"
+        "file": "limelease/services/elixir-api/priv/static/robots.txt",
+        "hash": "14731786011069331828"
       },
       {
         "file": "nx",
         "hash": "17165975525224888679"
       },
       {
-        "file": "tsconfig.json",
-        "hash": "15753941481085060538"
+        "file": "limelease/services/elixir-api/priv/repo/seeds.exs",
+        "hash": "10463642700705146294"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/controllers/webhook_controller.ex",
-        "hash": "13222865154685399550"
+        "file": "limelease/services/elixir-api/config/config.exs",
+        "hash": "9197357137833245160"
       },
       {
-        "file": "sst.config.ts",
-        "hash": "2854189200832052053"
+        "file": "limelease/services/elixir-api/test/test_helper.exs",
+        "hash": "16041478222342623843"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notifications.ex",
-        "hash": "16784985589721532575"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request.ex",
+        "hash": "11696032542666849896"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent.ex",
-        "hash": "2219612515769769749"
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_schema.ex",
+        "hash": "11579414116391998185"
       },
       {
-        "file": "pnpm-lock.yaml",
-        "hash": "3384034927285416210"
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_context.ex",
+        "hash": "9105259498136050238"
       },
       {
-        "file": "nx.json",
-        "hash": "1184888047097634593"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_resolver.ex",
+        "hash": "7356588341758469370"
       },
       {
-        "file": ".formatter.exs",
-        "hash": "10064084336676422674"
-      },
-      {
-        "file": "nx.bat",
-        "hash": "16119536321561623970"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_schema.ex",
-        "hash": "15834087005583334841"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_service.ex",
-        "hash": "15720306733355588447"
-      },
-      {
-        "file": "limelease/services/elixir-api/assets/css/app.css",
-        "hash": "2570088715272531702"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/mailer.ex",
-        "hash": "10182955616692000419"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "6940911551554899110"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/user_socket.ex",
-        "hash": "10059169003753529574"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/auth_error_handler.ex",
-        "hash": "1785204057003526197"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/env.sh.eex",
-        "hash": "3675901051954639316"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_context.ex",
-        "hash": "3644539986847810207"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category.ex",
-        "hash": "17974310196427712904"
-      },
-      {
-        "file": "pnpm-workspace.yaml",
-        "hash": "14340327533138106280"
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20231125124842_create_agency_agents.exs",
+        "hash": "4446265377921629464"
       },
       {
         "file": "limelease/services/elixir-api/test/lime_lease_web/views/page_view_test.exs",
         "hash": "642541566557949161"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_resolver.ex",
-        "hash": "10294042417918702402"
+        "file": "limelease/services/elixir-api/test/lime_lease_web/views/layout_view_test.exs",
+        "hash": "17601084256278205655"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/address/property_address.ex",
-        "hash": "8483578924246225002"
+        "file": "limelease/services/elixir-api/assets/css/app.css",
+        "hash": "2570088715272531702"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505131329_create_leases.exs",
-        "hash": "13906040995985628588"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_schema.ex",
+        "hash": "1216452943597259878"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_schema.ex",
-        "hash": "8372032184181404565"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_context.ex",
+        "hash": "9472714700518321216"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/landlord/property_landlord.ex",
+        "hash": "14832580723318023148"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/endpoint.ex",
+        "hash": "595956666445684972"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505132030_create_property_agent_tasks.exs",
+        "hash": "3073912589627385140"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/.formatter.exs",
+        "hash": "1193860905016756508"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_resolver.ex",
+        "hash": "18058815246440190855"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/overlays/bin/migrate",
+        "hash": "13312743066005289560"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_context.ex",
+        "hash": "12127128627572480097"
+      },
+      {
+        "file": "limelease/services/elixir-api/test/lime_lease_web/controllers/page_controller_test.exs",
+        "hash": "13665472437324351469"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/auth_error_handler.ex",
+        "hash": "1785204057003526197"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/gettext/errors.pot",
+        "hash": "6760033418897232752"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/remote.vm.args.eex",
+        "hash": "2097317746300665737"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_schema.ex",
+        "hash": "10731449916748508958"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_resolver.ex",
+        "hash": "4470366750048744844"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_schema.ex",
+        "hash": "10996087220193635487"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_resolver.ex",
+        "hash": "6106835798889845708"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_context.ex",
+        "hash": "13423893541245994233"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/controllers/webhook_controller.ex",
+        "hash": "13222865154685399550"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_schema.ex",
+        "hash": "15834087005583334841"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20231125124422_create_agencies.exs",
+        "hash": "940943738801526795"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/services/aws.ex",
+        "hash": "7735125015329791794"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_context.ex",
+        "hash": "14364894297331905998"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_service.ex",
+        "hash": "8907750759368055964"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_context.ex",
+        "hash": "3411275133700692922"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/static/assets/app.js",
+        "hash": "16718180441250678120"
+      },
+      {
+        "file": ".formatter.exs",
+        "hash": "10064084336676422674"
+      },
+      {
+        "file": "limelease/services/elixir-api/assets/js/app.js",
+        "hash": "8230686138974658220"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_service.ex",
+        "hash": "15720306733355588447"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/controllers/temp_file_controller.ex",
+        "hash": "17399506440583702144"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20230220023134_create_property_requests.exs",
+        "hash": "7269161698063613412"
+      },
+      {
+        "file": ".github/workflows/aws.yml",
+        "hash": "17175392728652191670"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease.ex",
+        "hash": "13337791236213480130"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease_web/router.ex",
         "hash": "12571423540495391334"
       },
       {
-        "file": "platform.code-workspace",
-        "hash": "17439107149036516146"
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20220629084738_create_properties.exs",
+        "hash": "1810522452714673199"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent.ex",
+        "hash": "2219612515769769749"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_resolver.ex",
+        "hash": "6533365222975432203"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_service.ex",
+        "hash": "943408915494219724"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_service.ex",
+        "hash": "9585145851151266470"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/static/images/phoenix.png",
+        "hash": "3019631266252354651"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505131824_create_tasks.exs",
+        "hash": "16090001544565891314"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification.ex",
+        "hash": "9342313892835528039"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_service.ex",
+        "hash": "5225572479136971586"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_context.ex",
+        "hash": "7512472132636686392"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_schema.ex",
+        "hash": "6040627178823616217"
+      },
+      {
+        "file": "limelease/services/elixir-api/.gitignore",
+        "hash": "3653321599975873675"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/helpers/helpers.ex",
+        "hash": "14912350736774836981"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_schema.ex",
+        "hash": "8123445472358555890"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/telemetry.ex",
+        "hash": "2822188886042883138"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_service.ex",
+        "hash": "558174817345312770"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/user/user_schema.ex",
         "hash": "2155895067187773085"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_context.ex",
+        "hash": "1914018249837884115"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/application.ex",
+        "hash": "947857131482277924"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20220626051651_create_users.exs",
+        "hash": "4574941158271255226"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/file/property_file.ex",
+        "hash": "17303101767284045986"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_schema.ex",
+        "hash": "1665019786919194303"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "6940911551554899110"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant.ex",
+        "hash": "10063961788524698395"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/vm.args.eex",
+        "hash": "2097317746300665737"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/static/assets/app.css",
+        "hash": "16041730416092170690"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/gettext/en/LC_MESSAGES/errors.po",
+        "hash": "6133952066058840805"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_context.ex",
+        "hash": "14933518050889564112"
+      },
+      {
+        "file": "nx.json",
+        "hash": "1184888047097634593"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_context.ex",
+        "hash": "3644539986847810207"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/overlays/bin/server",
+        "hash": "16996218216023068191"
+      },
+      {
+        "file": "sst.config.ts",
+        "hash": "14319206149172668272"
+      },
+      {
+        "file": "limelease/services/elixir-api/.credo.exs",
+        "hash": "16210346608563009821"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/mailer.ex",
+        "hash": "10182955616692000419"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_resolver.ex",
+        "hash": "4966599111287381139"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20231112134325_create_contractor_jobs.exs",
+        "hash": "16272881438924081716"
       }
     ],
     "projectFileMap": {

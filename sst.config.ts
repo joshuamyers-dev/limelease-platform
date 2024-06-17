@@ -187,8 +187,8 @@ export default $config({
           .apply(([endpoint, dbName]) => {
             return JSON.stringify([
               {
-                name: apiRepoistory.name,
-                image: `${apiRepoistory.repositoryUrl}:latest`,
+                name: "elixir-api",
+                image: `192810222061/elixir_api:c059957d4a4556320388b0b4ebdfe09ac7570298`,
                 portMappings: [
                   {
                     containerPort: 80,
@@ -343,7 +343,7 @@ export default $config({
         loadBalancers: [
           {
             targetGroupArn: targetGroup.arn,
-            containerName: apiRepoistory.name,
+            containerName: "elixir-api",
             containerPort: 80,
           },
         ],
