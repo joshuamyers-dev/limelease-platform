@@ -422,16 +422,6 @@ export default $config({
                     "awslogs-stream-prefix": "ElixirApi",
                   },
                 },
-                healthCheck: {
-                  command: [
-                    "CMD-SHELL",
-                    "curl -f http://127.0.0.1:3000/health || exit 1",
-                  ],
-                  interval: 30,
-                  timeout: 5,
-                  retries: 3,
-                  startPeriod: 5,
-                },
                 environment: [
                   {
                     name: "NEXT_PUBLIC_API_URL",
