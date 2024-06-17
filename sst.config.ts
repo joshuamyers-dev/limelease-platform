@@ -183,12 +183,16 @@ export default $config({
         requiresCompatibilities: ["FARGATE"],
         executionRoleArn: ecsTaskExecutionRole.arn,
         containerDefinitions: pulumi
-          .all([database.endpoint, database.dbName])
-          .apply(([endpoint, dbName]) => {
+          .all([
+            database.endpoint,
+            database.dbName,
+            apiRepoistory.repositoryUrl,
+          ])
+          .apply(([endpoint, dbName, repoUrl]) => {
             return JSON.stringify([
               {
                 name: "elixir-api",
-                image: `192810222061/elixir_api:c059957d4a4556320388b0b4ebdfe09ac7570298`,
+                image: `${repoUrl}:latest`,
                 portMappings: [
                   {
                     containerPort: 80,
