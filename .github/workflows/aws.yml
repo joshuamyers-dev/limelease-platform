@@ -88,9 +88,9 @@ jobs:
     - name: Modify the task definition with the new image
       id: modify-task-def
       run: |
-        NEW_IMAGE="192810222061.dkr.ecr.ap-southeast-2.amazonaws.com/elixir-api:${{ steps.build-image.outputs.image }}"
-        NEW_TASK_DEF_JSON=$(jq --arg newImage "$NEW_IMAGE" '.containerDefinitions[] | select(.image | contains("elixir-api")).image = $newImage' task_def.json)
-        echo "NEW_TASK_DEF_JSON=$(echo $NEW_TASK_DEF_JSON)" > modified_task_def.json
+       NEW_IMAGE="***.dkr.ecr.ap-southeast-2.amazonaws.com/elixir-api:e60e8e14418ca5dd320ecefb66d11723ac8be9c8"
+       NEW_TASK_DEF_JSON=$(jq --arg newImage "$NEW_IMAGE" '.containerDefinitions[] | select(.image | contains("elixir-api")).image = $newImage' task_def.json)
+       echo "NEW_TASK_DEF_JSON=$(echo $NEW_TASK_DEF_JSON)" > modified_task_def.json
 
 
     - name: Register the new task definition
