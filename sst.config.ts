@@ -425,12 +425,12 @@ export default $config({
                 healthCheck: {
                   command: [
                     "CMD-SHELL",
-                    "curl -f http://127.0.0.1:3000/login || exit 1",
+                    "curl -f http://127.0.0.1:3000/health || exit 1",
                   ],
                   interval: 30,
                   timeout: 5,
                   retries: 3,
-                  startPeriod: 10,
+                  startPeriod: 5,
                 },
                 environment: [
                   {
