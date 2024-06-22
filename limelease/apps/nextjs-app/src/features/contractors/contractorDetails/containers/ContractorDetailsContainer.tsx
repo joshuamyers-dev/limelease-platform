@@ -64,19 +64,24 @@ const ContractorDetailsContainer: React.FC<ContractorDetailsContainerProps> = ({
 
         {fetchingContractor && <LoadingSpinner />}
         {!fetchingContractor && (
-          <>
+          <Container>
             <ContractorDetails {...contractor} />
             <ContractorJobs isFetching={fetchingJobs} jobs={contractorJobs} onChangeFilter={(filter) => setFilter(filter)} />
             <PaginationButtonsContainer>
               <Button type="primary" icon={<LeftOutlined />} onClick={onClickBack} disabled={!jobsData?.jobsForContractor?.pageInfo.hasPreviousPage} />
               <Button type="primary" icon={<RightOutlined />} onClick={onClickForward} disabled={!jobsData?.jobsForContractor?.pageInfo.hasNextPage} />
             </PaginationButtonsContainer>
-          </>
+          </Container>
         )}
       </>
     </DashboardContainer>
   );
 };
+
+const Container = styled.div`
+  width: 80%;
+  margin: 0 auto;
+`;
 
 const PaginationButtonsContainer = styled.div`
   gap: 8px;

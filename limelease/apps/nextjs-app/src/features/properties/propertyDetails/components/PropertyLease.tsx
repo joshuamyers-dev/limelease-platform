@@ -32,7 +32,7 @@ const PropertyLease: React.FC<PropertyLeaseProps> = ({ leaseDetails, tenants }) 
 
   return (
     <AnimatedContainer {...fadeInOutProps}>
-      <SectionTitle>Lease Overview</SectionTitle>
+      <SectionTitle>Lease Details</SectionTitle>
 
       <LeaseStatusWrapper>
         <DetailRow>

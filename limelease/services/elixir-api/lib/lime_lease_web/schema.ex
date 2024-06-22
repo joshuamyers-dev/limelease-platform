@@ -4,6 +4,7 @@ defmodule LimeLeaseWeb.Schema do
 
   import_types(LimeLease.User.UserSchema)
   import_types(LimeLease.Property.PropertySchema)
+  import_types(LimeLease.Property.PropertyFile.PropertyFileSchema)
   import_types(LimeLease.Tenant.TenantSchema)
   import_types(LimeLease.PropertyRequest.PropertyRequestSchema)
   import_types(LimeLease.StaticMedia.StaticMediaSchema)
@@ -38,6 +39,7 @@ defmodule LimeLeaseWeb.Schema do
   def dataloader() do
     alias LimeLease.User.UserContext
     alias LimeLease.Property.PropertyContext
+    alias LimeLease.Property.PropertyFile.PropertyFileContext
     alias LimeLease.Tenant.TenantContext
     alias LimeLease.PropertyRequest.PropertyRequestContext
     alias LimeLease.StaticMedia.StaticMediaContext
@@ -51,6 +53,7 @@ defmodule LimeLeaseWeb.Schema do
     Dataloader.new()
     |> Dataloader.add_source(UserContext, UserContext.data())
     |> Dataloader.add_source(PropertyContext, PropertyContext.data())
+    |> Dataloader.add_source(PropertyFileContext, PropertyFileContext.data())
     |> Dataloader.add_source(TenantContext, TenantContext.data())
     |> Dataloader.add_source(PropertyRequestContext, PropertyRequestContext.data())
     |> Dataloader.add_source(StaticMediaContext, StaticMediaContext.data())

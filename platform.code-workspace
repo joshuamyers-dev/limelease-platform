@@ -5,28 +5,23 @@
 			"path": "."
 		},
 		{
-			"name": "@limelease/nextjs-app",
+			"name": "💻 @limelease/web",
 			"path": "limelease/apps/nextjs-app"
 		},
 		{
-			"name": "@limelease/elixir-api",
+			"name": "🧪 @limelease/api",
 			"path": "limelease/services/elixir-api"
 		},
 		{
-			"name": "@limelease/playwright-service",
-			"path": "limelease/services/playwright"
-		},
-		{
-			"name": "@limelease/playwright-scraper",
+			"name": "🕵️‍♂️ @limelease/scraper",
 			"path": "limelease/services/playwright-scraper"
 		},
 		{
-			"name": "@limelease/playwright-snapshotter",
+			"name": "📷 @limelease/snapshotter",
 			"path": "limelease/services/playwright-snapshotter"
 		}
 	],
 	"settings": {
-		"elixirLS.projectDir": "limelease/services/elixir-api/",
-		"monorepoWorkspace.folders.regex.libs": "^common|package|lib|private|api"
+		"elixirLS.projectDir": "limelease/services/elixir-api/"
 	}
 }

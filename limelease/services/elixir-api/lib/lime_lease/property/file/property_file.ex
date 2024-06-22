@@ -17,10 +17,18 @@ defmodule LimeLease.Property.PropertyFile do
     timestamps(type: :utc_datetime_usec)
   end
 
-  def create_changeset(tenant, attrs) do
-    tenant
-    |> cast(attrs, [:file_name, :property_id, :static_media_id])
-    |> validate_required([:file_name, :property_id, :static_media_id])
+  def create_changeset(file, attrs) do
+    file
+    |> cast(attrs, [:file_name, :static_media_id])
+    |> validate_required([:file_name, :static_media_id])
+    |> foreign_key_constraint(:property_id)
+    |> foreign_key_constraint(:static_media_id)
+  end
+
+  def update_changeset(file, attrs) do
+    file
+    |> cast(attrs, [:file_name, :static_media_id])
+    |> validate_required([:file_name])
     |> foreign_key_constraint(:property_id)
     |> foreign_key_constraint(:static_media_id)
   end

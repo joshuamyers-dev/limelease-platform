@@ -96,6 +96,31 @@ defmodule LimeLease.Helpers do
     |> Task.await_many(:timer.seconds(60))
   end
 
+  def upload_temporary_fs_files(files) do
+    files
+    |> Enum.with_index()
+    |> Enum.map(fn {file, index} ->
+      Task.async(fn ->
+        with {:ok, file_contents} <- File.read(file.uri),
+             {:ok, %StaticMedia{} = static_media} <- StaticMediaService.create_static_media(file.name, file.type),
+             {:ok, put_url} <- AWS.generate_presigned_put_url(static_media.s3_key, static_media.mime_type),
+             {:ok, %Req.Response{status: 200}} <- Req.put(put_url, body: file_contents) do
+          %{
+            file_name: file.name,
+            static_media_id: static_media.id,
+          }
+        else
+          {:ok, %Req.Response{status: status_code} = error_response} when status_code !== 200 ->
+            {:error, error_response.body}
+
+          error ->
+            {:error, error}
+        end
+      end)
+    end)
+    |> Task.await_many(:timer.seconds(60))
+  end
+
   def upload_external_photos(photos) do
     photos
     |> Enum.with_index()

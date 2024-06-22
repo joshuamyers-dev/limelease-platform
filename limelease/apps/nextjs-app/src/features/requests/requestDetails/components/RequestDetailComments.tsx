@@ -11,13 +11,14 @@ import {
 } from '@graphql/generated';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
 import { fadeInOutProps } from '@utils/AnimationsProps';
-import { Button, Form, Input, message } from 'antd';
+import { Badge, Button, Form, Input, message } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import TextArea from 'antd/lib/input/TextArea';
 import { AnimatePresence } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import RequestDetailComment from './RequestDetailComment';
+import { Colours } from '@utils/Colours';
 
 interface RequestDetailCommentsProps {
   requestId: string;
@@ -121,7 +122,10 @@ const RequestDetailComments: React.FC<RequestDetailCommentsProps> = ({ requestId
   return (
     <Container>
       <ContainerHeader>
-        <ContainerTitle>Updates {commentsCountData?.propertyRequestCommentsCount && `(${commentsCountData?.propertyRequestCommentsCount})`}</ContainerTitle>
+        <ContainerTitle>
+          Updates&nbsp;
+          <Badge count={commentsCountData?.propertyRequestCommentsCount ? commentsCountData?.propertyRequestCommentsCount : 0} showZero color={Colours.NAVY} />
+        </ContainerTitle>
         <AddCommentButton>
           <Button type="primary" icon={<PlusOutlined />} onClick={onClickAddComment}>
             Add a Comment

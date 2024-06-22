@@ -151,7 +151,7 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
       const files = formValues?.files?.map((file, index) => {
         return {
           id: file?.id,
-          url: file.response.temp_path,
+          uri: file?.response?.temp_path,
           name: file.name,
           type: file.type,
         };

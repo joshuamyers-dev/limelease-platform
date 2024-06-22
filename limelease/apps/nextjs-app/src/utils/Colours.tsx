@@ -28,4 +28,5 @@ export const Colours = {
   ORANGE_DARK: '#D97500',
   LIGHT_GREEN: '#F6FFED',
   DARK_GREEN: '#389E0D',
+  NAVY: '#151D38',
 };

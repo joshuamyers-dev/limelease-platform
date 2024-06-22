@@ -30,11 +30,6 @@ defmodule LimeLease.Property.PropertySchema do
     field(:email, non_null(:string))
   end
 
-  object :property_file do
-    field(:id, non_null(:id))
-    field(:file_name, non_null(:string))
-  end
-
   object :property_notification_counts do
     field(:messages_count, non_null(:integer))
     field(:urgent_count, non_null(:integer))
@@ -65,8 +60,6 @@ defmodule LimeLease.Property.PropertySchema do
     field(:carspaces, non_null(:integer))
     field(:photos, non_null(list_of(non_null(:property_photo))))
     field(:landlords, non_null(list_of(non_null(:property_landlord))))
-    field(:tenants, list_of(non_null(:tenant)))
-    field(:files, list_of(:property_file))
 
     field(:notification_count, :property_notification_counts) do
       resolve(&LimeLease.Property.PropertyResolver.property_notification_counts_field/3)
@@ -74,6 +67,14 @@ defmodule LimeLease.Property.PropertySchema do
 
     field(:requests, list_of(:property_request)) do
       resolve(dataloader(LimeLease.Property.PropertyContext, :requests))
+    end
+
+    field(:tenants, list_of(:tenant)) do
+      resolve(dataloader(LimeLease.Property.PropertyContext, :tenants))
+    end
+
+    field(:files, list_of(:property_file)) do
+      resolve(dataloader(LimeLease.Property.PropertyContext, :files))
     end
 
     field(:lease, :lease) do
@@ -166,7 +167,7 @@ defmodule LimeLease.Property.PropertySchema do
 
   input_object :file do
     field(:id, :id)
-    field(:url, non_null(:string))
+    field(:uri, :string)
     field(:name, non_null(:string))
     field(:type, non_null(:string))
   end

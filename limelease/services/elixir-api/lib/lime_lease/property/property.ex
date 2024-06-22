@@ -44,6 +44,7 @@ defmodule LimeLease.Property.Property do
     |> cast_embed(:address, with: &LimeLease.Property.Address.create_changeset/2)
     |> cast_embed(:landlords, with: &LimeLease.Property.PropertyLandlord.changeset/2)
     |> cast_assoc(:tenants, with: &LimeLease.Tenant.Tenant.create_changeset/2)
+    |> cast_assoc(:files, with: &LimeLease.Property.PropertyFile.create_changeset/2)
     |> cast_assoc(:lease, with: &LimeLease.Lease.Lease.create_changeset/2)
     |> put_assoc(:property_agents, [property_agents])
   end
@@ -55,6 +56,7 @@ defmodule LimeLease.Property.Property do
     |> put_embed(:photos, attrs[:photos])
     |> cast_embed(:landlords, with: &LimeLease.Property.PropertyLandlord.changeset/2)
     |> cast_assoc(:tenants, with: &LimeLease.Tenant.Tenant.update_changeset/2)
+    |> cast_assoc(:files, with: &LimeLease.Property.PropertyFile.update_changeset/2)
     |> cast_assoc(:lease, with: &LimeLease.Lease.Lease.create_changeset/2)
   end
 

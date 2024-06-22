@@ -19,6 +19,7 @@ import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 import RentalProviders from '../components/RentalProviders';
+import PropertyFiles from '../components/PropertyFiles';
 
 const PropertyDetails = dynamic(() => import('../components/PropertyDetails'));
 
@@ -35,6 +36,8 @@ interface ViewPropertyContainerProps {
 
 const ViewPropertyContainer: React.FC<ViewPropertyContainerProps> = ({ propertyId }) => {
   const { data: propertyData, loading, error } = useFetchPropertyQuery({ variables: { id: propertyId as string }, fetchPolicy: 'cache-and-network' });
+
+  console.log(propertyData);
 
   const [selectedTab, setSelectedTab] = useState(OVERVIEW_SCREEN);
   const [addRequestModalVisible, showAddRequestModal] = useState(false);
@@ -122,6 +125,7 @@ const ViewPropertyContainer: React.FC<ViewPropertyContainerProps> = ({ propertyI
               {selectedTab === OVERVIEW_SCREEN && <PropertyDetails key={1} property={property} addressLabel={addressLabel} />}
               {selectedTab === LEASE_SCREEN && <PropertyLease key={2} leaseDetails={property?.lease} tenants={property?.tenants} />}
               {selectedTab === RENTAL_PROVIDERS_SCREEN && <RentalProviders key={2} landlords={property?.landlords} />}
+              {selectedTab === FILES_SCREEN && <PropertyFiles key={2} files={property?.files} />}
             </AnimatePresence>
           </StyledCard>
 

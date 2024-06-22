@@ -15,8 +15,6 @@ interface RentalProvidersProps {
 const RentalProviders: React.FC<RentalProvidersProps> = ({ landlords }) => {
   return (
     <AnimatedContainer {...fadeInOutProps}>
-      <SectionTitle>Rental Providers</SectionTitle>
-
       {landlords.map((landlord) => {
         return (
           <>
@@ -42,16 +40,6 @@ const RentalProviders: React.FC<RentalProvidersProps> = ({ landlords }) => {
     </AnimatedContainer>
   );
 };
-
-const LeaseStatusWrapper = styled.div`
-  margin-top: 24px;
-`;
-
-const SectionTitle = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  color: ${Colours.GRAY_8};
-`;
 
 const DetailRow = styled.div`
   display: flex;

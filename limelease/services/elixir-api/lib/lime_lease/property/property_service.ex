@@ -13,32 +13,27 @@ defmodule LimeLease.Property.PropertyService do
 
   def create_property(
         %User{} = user,
-        %{address: _address, bathrooms: _bathrooms, bedrooms: _bedrooms, carspaces: _carspaces} = property_details,
+        %{address: _address, bathrooms: _bathrooms, bedrooms: _bedrooms, carspaces: _carspaces} =
+          property_details,
         lease_details,
         photos,
         tenants,
         landlords,
         files
       ) do
-    photos = prepare_photos(photos)
-    changeset = build_changeset(nil, property_details, landlords, tenants, photos, lease_details, user)
+    with {:ok, photos} <- prepare_photos(photos),
+         {:ok, files} <- prepare_files(files) do
+      changeset =
+        build_changeset(nil, property_details, landlords, tenants, photos, files, lease_details, user)
 
-    with %Ecto.Changeset{valid?: true} <- changeset do
-      case Enum.empty?(files) do
-        true ->
-          Repo.insert(changeset)
-          |> Repo.ok_error()
-
-        false ->
-          {:ok, files} = upload_property_files(files)
-
-          changeset
-          |> Ecto.Changeset.put_embed(:files, files)
-          |> Repo.insert()
-          |> Repo.ok_error()
+      with %Ecto.Changeset{valid?: true} <- changeset do
+        changeset
+        |> Ecto.Changeset.put_assoc(:files, files, with: &LimeLease.Property.PropertyFile.create_changeset/2)
+        |> Repo.insert()
+        |> Repo.ok_error()
+      else
+        _ -> {:error, changeset}
       end
-    else
-      _ -> {:error, changeset}
     end
   end
 
@@ -48,27 +43,47 @@ defmodule LimeLease.Property.PropertyService do
 
     case length(for_user_upload) > 0 do
       true ->
-        Helpers.upload_temporary_fs_photos(for_user_upload)
+        photos = Helpers.upload_temporary_fs_photos(for_user_upload)
+
+        {:ok, photos}
 
       false ->
         case length(for_system_upload) > 1 do
           true ->
-            Helpers.upload_external_photos(for_system_upload)
+            photos = Helpers.upload_external_photos(for_system_upload)
+
+            {:ok, photos}
 
           false ->
-            photos
+            {:ok, photos}
         end
     end
   end
 
   defp prepare_photos(photos), do: photos
 
-  defp build_changeset(property, property_details, landlords, tenants, photos, lease_details, user) do
+  defp prepare_files(files) do
+    files = Helpers.upload_temporary_fs_files(files)
+
+    {:ok, files}
+  end
+
+  defp build_changeset(
+         property,
+         property_details,
+         landlords,
+         tenants,
+         photos,
+         files,
+         lease_details,
+         user
+       ) do
     params =
       Map.merge(property_details, %{
         landlords: landlords,
         tenants: tenants,
         photos: photos,
+        files: files,
         lease: lease_details
       })
 
@@ -83,49 +98,37 @@ defmodule LimeLease.Property.PropertyService do
     end
   end
 
-  defp upload_property_files(files) do
-    files = Enum.map(files, &Task.async(fn -> upload_file(&1) end)) |> Task.await_many()
-
-    {:ok, files}
-  end
-
-  defp upload_file(file) do
-    {:ok, image_id} = AWS.upload_multipart!(file.url, file.name, file.type)
-
-    {:ok,
-     %{
-       url: AWS.build_bucket_url() <> image_id,
-       name: file.name
-     }}
-  end
-
   def update_property(
         property_id,
         %User{} = user,
-        %{address: _address, bathrooms: _bathrooms, bedrooms: _bedrooms, carspaces: _carspaces} = property_details,
+        %{address: _address, bathrooms: _bathrooms, bedrooms: _bedrooms, carspaces: _carspaces} =
+          property_details,
         lease_details,
         photos,
         tenants,
         landlords,
         files
       ) do
-    with {:ok, %Property{} = property} <- PropertyContext.get_property_by_id_for_user(user, property_id) do
-      photos = prepare_photos(photos)
-      changeset = build_changeset(property, property_details, landlords, tenants, photos, lease_details, user)
+    with {:ok, %Property{} = property} <-
+           PropertyContext.get_property_by_id_for_user(user, property_id),
+         {:ok, photos} <- prepare_photos(photos),
+         {:ok, files} <- prepare_files(files) do
+      changeset =
+        build_changeset(
+          property,
+          property_details,
+          landlords,
+          tenants,
+          photos,
+          files,
+          lease_details,
+          user
+        )
 
       with %Ecto.Changeset{valid?: true} <- changeset do
-        case Enum.empty?(files) do
-          true ->
-            Repo.update(changeset) |> Repo.ok_error()
-
-          false ->
-            {:ok, files} = upload_property_files(files)
-
-            changeset
-            |> Ecto.Changeset.put_embed(:files, files)
-            |> Repo.update()
-            |> Repo.ok_error()
-        end
+        changeset
+        |> Repo.update()
+        |> Repo.ok_error()
       else
         _ -> {:error, changeset}
       end

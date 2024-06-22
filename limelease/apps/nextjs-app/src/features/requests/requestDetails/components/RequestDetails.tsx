@@ -114,7 +114,7 @@ const RequestDetails: React.FC<RequestDetailsProps> = ({ request }) => {
 };
 
 const Container = styled(AnimatedContainer)`
-  width: 100%;
+  width: 80%;
   margin: 2rem auto;
 
   @media ${deviceSize.mobile} {

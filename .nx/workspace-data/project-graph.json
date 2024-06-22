@@ -4638,22 +4638,13 @@
         "hash": "sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g=="
       }
     },
-    "npm:dayjs@1.11.11": {
-      "type": "npm",
-      "name": "npm:dayjs@1.11.11",
-      "data": {
-        "version": "1.11.11",
-        "packageName": "dayjs",
-        "hash": "sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg=="
-      }
-    },
     "npm:dayjs": {
       "type": "npm",
       "name": "npm:dayjs",
       "data": {
-        "version": "1.11.3",
+        "version": "1.11.11",
         "packageName": "dayjs",
-        "hash": "sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A=="
+        "hash": "sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg=="
       }
     },
     "npm:debounce": {
@@ -17865,7 +17856,7 @@
       },
       {
         "source": "npm:antd",
-        "target": "npm:dayjs@1.11.11",
+        "target": "npm:dayjs",
         "type": "static"
       },
       {
@@ -23855,7 +23846,7 @@
       },
       {
         "source": "npm:rc-picker",
-        "target": "npm:dayjs@1.11.11",
+        "target": "npm:dayjs",
         "type": "static"
       },
       {
