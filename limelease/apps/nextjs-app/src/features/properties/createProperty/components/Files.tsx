@@ -5,6 +5,8 @@ import { Button, Col, Form, FormInstance, Row, Upload } from 'antd';
 import { Colours } from '../../../../utils/Colours';
 import { AddPropertyContext } from '../containers/CreatePropertyContainer';
 import { normFile } from '@utils/Helpers';
+import useStorage from '@hooks/useLocalStorage';
+import { LOCAL_STORAGE_AUTH_KEY } from '@utils/Constants';
 
 interface FilesProps {
   form: FormInstance;
@@ -14,6 +16,10 @@ interface FilesProps {
 
 const Files = ({ form, loading, isUpdating = false }: FilesProps) => {
   const context = useContext(AddPropertyContext);
+
+  const [getAuthToken] = useStorage();
+
+  const authToken = getAuthToken(LOCAL_STORAGE_AUTH_KEY, 'local');
 
   const onClickBack = useCallback(() => {
     () => {
@@ -28,8 +34,9 @@ const Files = ({ form, loading, isUpdating = false }: FilesProps) => {
           <Upload.Dragger
             multiple
             name="files"
+            accept=".pdf,.doc,.docx,.xls,.xlsx"
             action={`${process.env.NEXT_PUBLIC_API_URL}/temp-file`}
-            // headers={{ Authorization: `Bearer ${jwt}` }}
+            headers={{ Authorization: `Bearer ${authToken}` }}
             listType="text"
           >
             <p className="ant-upload-drag-icon">

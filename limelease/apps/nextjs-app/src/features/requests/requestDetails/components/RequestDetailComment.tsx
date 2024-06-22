@@ -98,9 +98,9 @@ const GeneratedText = styled.div`
 `;
 
 const CommentContainer = styled(motion.div)<{ systemGenerated: boolean }>`
-  border-radius: 4px;
+  border-radius: 10px;
   background: #fafafa;
-  padding: 24px;
+  padding: 16px;
   margin-bottom: 24px;
   position: relative;
   ${(props) => props.systemGenerated && `background: #f0f0f0;`}
@@ -117,7 +117,7 @@ const CommentDate = styled.div<{ isHighlighted: boolean }>`
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  ${(props) => props.isHighlighted && `color: ${Colours.LIME_8};`}
+  ${(props) => props.isHighlighted && `color: ${Colours.LIME_5};`}
 `;
 
 const AuthorName = styled.div`

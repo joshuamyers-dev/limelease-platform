@@ -49,7 +49,7 @@ const ContractorsTableList: React.FC<ContractorsTableListProps> = ({ contractors
       return {
         key: contractor?.id,
         businessName: contractor?.businessName,
-        contactNumber: contractor?.contactNumber ? formatMobileNumber(contractor.contactNumber) : 'N/A',
+        contactNumber: contractor?.contactNumber ? formatMobileNumber(contractor.contactNumber, true) : 'N/A',
         contactEmail: contractor?.contactEmail,
         messages: 0,
       };

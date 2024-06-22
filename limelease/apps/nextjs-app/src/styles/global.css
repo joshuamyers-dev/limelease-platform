@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
 #__next {
   height: 100%;
@@ -11,13 +11,14 @@ body {
   margin: 0;
 }
 
-body {
-  font-family: Roboto;
-}
 
 * {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.ant-card {
+  box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.04);
 }
 
 .upload-list-inline .ant-upload-list-item {
@@ -29,6 +30,12 @@ body {
 .ant-upload-rtl.upload-list-inline .ant-upload-list-item {
   float: right;
 }
+
+.ant-dropdown-menu-title-content {
+  font-family: Figtree;
+}
+
+
 
 /* Ant Overrides */
 
@@ -43,13 +50,18 @@ body {
   padding: 16px 16px 16px;
 }
 
-button.ant-btn.ant-btn-primary {
+.ant-segmented-item-selected {
+  border-bottom: 2px solid #2E0CFF;
+}
+
+
+/* button.ant-btn.ant-btn-primary {
   color: #254000;
   font-weight: 600;
   box-shadow: none;
-}
+} */
 
-.ant-modal-confirm-btns .ant-btn-primary {
+/* .ant-modal-confirm-btns .ant-btn-primary {
   background-color: #254000 !important;
   color: white !important;
 }
@@ -57,9 +69,9 @@ button.ant-btn.ant-btn-primary {
 .ant-modal-confirm-btns .ant-btn-dangerous {
   background-color: #A8071A !important;
   color: white !important;
-}
+} */
 
-button.ant-btn.ant-btn-ghost {
+/* button.ant-btn.ant-btn-ghost {
   color: #254000;
   font-weight: 700;
   box-shadow: none;
@@ -70,16 +82,10 @@ button.ant-btn.ant-btn-link {
   font-weight: 700;
   box-shadow: none;
   padding: 0;
-}
+} */
 
 button.ant-btn.ant-btn-dangerous {
   color: #A8071A;
-}
-
-.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
-  border-color: #d9d9d9;
-  background-color: #f5f5f5;
-  border-radius: 0;
 }
 
 .ant-input-search-large .ant-input-search-button {
@@ -95,35 +101,35 @@ button.ant-btn.ant-btn-dangerous {
 }
 
 .ant-segmented .ant-segmented-item:is(.ant-segmented-item-selected):checked {
-  color: #BAE637 !important;
+  color: #2E0CFF !important;
 }
 
 .ant-pagination-item-active {
   font-weight: 700;
   font-size: 14px;
-  color: #bae637;
-  background: #254000 !important;
-  border-color: #bae637 !important;
+  color: #2E0CFF;
+  background: #2E0CFF !important;
+  border-color: #2E0CFF !important;
 }
 
 .ant-steps-navigation .ant-steps-item::before {
-  background-color: #254000;
+  background-color: #2E0CFF;
 }
 
 .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
-  background: #254000;
-  border-color: #254000;
-  color: #bae637;
+  background: #2E0CFF;
+  border-color: #2E0CFF;
+  color: #2E0CFF;
 }
 
 .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon .ant-steps-icon {
-  color: #bae637;
+  color: #2E0CFF;
   font-weight: 500;
   font-size: 16px;
 }
 
 .ant-form-vertical .ant-form-item-label {
-  color: #262626;
+  color: #2E0CFF;
   font-weight: 700;
   font-size: 16px;
 }
@@ -140,7 +146,7 @@ button.ant-btn.ant-btn-dangerous {
 
 .ant-breadcrumb-link {
   text-decoration: none;
-  color: #254000;
+  color: #2E0CFF;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

@@ -151,7 +151,7 @@ const SubHeaderItemContainer = styled.div`
 
 const SubHeaderItemText = styled.div`
   color: ${Colours.GRAY_10};
-  font-family: Roboto;
+  font-family: Figtree;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -184,7 +184,7 @@ const RequestDetailTitle = styled.div`
 
 const RequestDetailDescription = styled.div`
   color: ${Colours.GRAY_10};
-  font-family: Roboto;
+  font-family: Figtree;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -193,7 +193,7 @@ const RequestDetailDescription = styled.div`
 `;
 
 const DescriptionHintText = styled.span`
-  font-family: Roboto;
+  font-family: Figtree;
   color: ${Colours.GRAY_7};
   font-size: 16px;
   font-style: normal;

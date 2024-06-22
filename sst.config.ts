@@ -292,6 +292,11 @@ export default $config({
       validationMethod: "DNS",
     });
 
+    const rootCertificate = new aws.acm.Certificate("RootCertificate", {
+      domainName: "limelease.com",
+      validationMethod: "DNS",
+    });
+
     const apiValidationRecord = new aws.route53.Record("ApiValidationRecord", {
       zoneId: zone.id,
       name: apiCertificate.domainValidationOptions[0].resourceRecordName,
@@ -308,6 +313,19 @@ export default $config({
       ttl: 300,
     });
 
+    const rootValidationRecord = new aws.route53.Record(
+      "RootValidationRecord",
+      {
+        zoneId: zone.id,
+        name: rootCertificate.domainValidationOptions[0].resourceRecordName,
+        type: rootCertificate.domainValidationOptions[0].resourceRecordType,
+        records: [
+          rootCertificate.domainValidationOptions[0].resourceRecordValue,
+        ],
+        ttl: 300,
+      }
+    );
+
     const apiCertificateValidation = new aws.acm.CertificateValidation(
       "ApiCertificateValidation",
       {
@@ -321,6 +339,14 @@ export default $config({
       {
         certificateArn: appCertificate.arn,
         validationRecordFqdns: [appValidationRecord.fqdn],
+      }
+    );
+
+    const rootCertificateValidation = new aws.acm.CertificateValidation(
+      "RootCertificateValidation",
+      {
+        certificateArn: rootCertificate.arn,
+        validationRecordFqdns: [rootValidationRecord.fqdn],
       }
     );
 
@@ -482,6 +508,22 @@ export default $config({
       ],
     });
 
+    const httpRedirectListener = new aws.lb.Listener("HttpRedirectListener", {
+      loadBalancerArn: appAlb.arn,
+      port: 80,
+      protocol: "HTTP",
+      defaultActions: [
+        {
+          type: "redirect",
+          redirect: {
+            protocol: "HTTPS",
+            port: "443",
+            statusCode: "HTTP_301",
+          },
+        },
+      ],
+    });
+
     new aws.ecs.Service(
       "NextjsAppFargateService",
       {
@@ -513,6 +555,132 @@ export default $config({
         {
           name: appAlb.dnsName,
           zoneId: appAlb.zoneId,
+          evaluateTargetHealth: false,
+        },
+      ],
+    });
+
+    const wordpressSg = new aws.ec2.SecurityGroup("WordpressSecurityGroup2", {
+      vpcId: vpc.id,
+      ingress: [
+        {
+          protocol: "tcp",
+          fromPort: 80,
+          toPort: 80,
+          cidrBlocks: ["0.0.0.0/0"],
+        },
+        {
+          protocol: "tcp",
+          fromPort: 443,
+          toPort: 443,
+          cidrBlocks: ["0.0.0.0/0"],
+        },
+        {
+          protocol: "tcp",
+          fromPort: 22,
+          toPort: 22,
+          cidrBlocks: ["0.0.0.0/0"],
+        },
+      ],
+      egress: [
+        { protocol: "-1", fromPort: 0, toPort: 0, cidrBlocks: ["0.0.0.0/0"] },
+      ],
+    });
+
+    // Wordpress Website
+    const wordpress = new aws.ec2.Instance(
+      "Wordpress",
+      {
+        instanceType: "t2.small",
+        ami: "ami-076fe60835f136dc9",
+        vpcSecurityGroupIds: [wordpressSg.id],
+        subnetId: vpc.publicSubnets.apply((subnets) => subnets[0]),
+      },
+      { dependsOn: [wordpressSg, vpc] }
+    );
+
+    // const eip = new aws.ec2.Eip("WordpressEip", {
+    //   instance: wordpress.id,
+    // });
+
+    const wordpressAlb = new aws.lb.LoadBalancer("WordpressAlb", {
+      securityGroups: [securityGroup.id],
+      subnets: vpc.publicSubnets,
+      loadBalancerType: "application",
+    });
+
+    const wordpressTargetGroup = new aws.lb.TargetGroup(
+      "WordpressTargetGroup",
+      {
+        port: 80,
+        protocol: "HTTP",
+        targetType: "instance",
+        vpcId: vpc.id,
+        healthCheck: {
+          path: "/",
+          enabled: true,
+        },
+      }
+    );
+
+    const wordpressListener = new aws.lb.Listener("WordpressListener", {
+      loadBalancerArn: wordpressAlb.arn,
+      port: 443,
+      protocol: "HTTPS",
+      sslPolicy: "ELBSecurityPolicy-2016-08",
+      certificateArn: rootCertificateValidation.certificateArn,
+      defaultActions: [
+        {
+          type: "forward",
+          targetGroupArn: wordpressTargetGroup.arn,
+        },
+      ],
+    });
+
+    // const wordpressListener2 = new aws.lb.Listener("WordpressListener2", {
+    //   loadBalancerArn: wordpressAlb.arn,
+    //   port: 80,
+    //   protocol: "HTTP",
+    //   defaultActions: [
+    //     {
+    //       type: "forward",
+    //       targetGroupArn: wordpressTargetGroup.arn,
+    //     },
+    //   ],
+    // });
+
+    new aws.lb.TargetGroupAttachment("WordpressTargetGroupAttachment", {
+      targetGroupArn: wordpressTargetGroup.arn,
+      targetId: wordpress.id,
+    });
+
+    // const wordpressHttpRedirectListener = new aws.lb.Listener(
+    //   "WordpressHttpRedirectListener",
+    //   {
+    //     loadBalancerArn: wordpressAlb.arn,
+    //     port: 80,
+    //     protocol: "HTTP",
+    //     defaultActions: [
+    //       {
+    //         type: "redirect",
+    //         redirect: {
+    //           protocol: "HTTPS",
+    //           port: "443",
+    //           statusCode: "HTTP_301",
+    //         },
+    //       },
+    //     ],
+    //   }
+    // );
+
+    new aws.route53.Record("LimeLeaseRootDomain", {
+      zoneId: zone.id,
+      name: "limelease.com",
+      type: "A",
+      aliases: [
+        {
+          name: wordpressAlb.dnsName,
+          zoneId: wordpressAlb.zoneId,
           evaluateTargetHealth: false,
         },
       ],

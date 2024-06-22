@@ -27,42 +27,42 @@ const StatusTag: React.FC<StatusTagProps> = ({ status }) => {
 };
 
 const AwaitingResponseTag = styled(Tag)`
-  background-color: ${Colours.BACKGROUND_1};
-  color: ${Colours.GRAY_10};
+  background-color: ${Colours.ORANGE_LIGHT};
+  color: ${Colours.ORANGE_DARK};
   font-weight: 500;
-  border: 1px solid ${Colours.GRAY_10};
+  border: 1px solid ${Colours.ORANGE_LIGHT};
   font-size: 12px;
 `;
 
 const AwaitingTag = styled(Tag)`
-  background-color: ${Colours.GOLD_8};
-  color: white;
+  background-color: ${Colours.ORANGE_LIGHT};
+  color: ${Colours.ORANGE_DARK};
   font-weight: 500;
-  border: 1px solid ${Colours.GOLD_8};
+  border: 1px solid ${Colours.ORANGE_LIGHT};
   font-size: 12px;
 `;
 
 const JobAcceptedTag = styled(Tag)`
-  background-color: ${Colours.GEEK_BLUE_3};
-  color: ${Colours.GEEK_BLUE_8};
+  background-color: ${Colours.LIGHT_GREEN};
+  color: ${Colours.DARK_GREEN};
   font-weight: 500;
-  border: 1px solid ${Colours.GEEK_BLUE_3};
+  border: 1px solid ${Colours.LIGHT_GREEN};
   font-size: 12px;
 `;
 
 const JobResolvedTag = styled(Tag)`
-  background-color: ${Colours.LIME_8};
-  color: white;
+  background-color: ${Colours.LIGHT_GREEN};
+  color: ${Colours.DARK_GREEN};
   font-weight: 500;
-  border: 1px solid ${Colours.LIME_8};
+  border: 1px solid ${Colours.LIGHT_GREEN};
   font-size: 12px;
 `;
 
 const JobCancelledTag = styled(Tag)`
-  background-color: ${Colours.GRAY_10};
-  color: white;
+  background-color: ${Colours.LIGHT_RED};
+  color: ${Colours.RED_8};
   font-weight: 500;
-  border: 1px solid ${Colours.GRAY_10};
+  border: 1px solid ${Colours.LIGHT_RED};
   font-size: 12px;
 `;
 

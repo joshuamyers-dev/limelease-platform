@@ -73,7 +73,7 @@ const ViewRequestsContainer = () => {
             options={segmentedOptions}
             onChange={(value: SegmentedValue) => onChangeFilter(value as PropertyRequestFilter)}
           />
-          <Divider style={{ color: Colours.GRAY_5, margin: '-2px 2px 0 2px' }} />
+          <Divider style={{ color: Colours.GRAY_5, margin: '0px 2px 0 2px' }} />
         </SegmentedContainer>
       </AnimatedContainer>
 
@@ -90,7 +90,8 @@ const ViewRequestsContainer = () => {
 };
 
 const SegmentedContainer = styled.div`
-  margin-top: 2rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const PaginationButtonsContainer = styled.div`

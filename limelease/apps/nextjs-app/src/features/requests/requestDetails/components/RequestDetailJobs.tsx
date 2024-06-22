@@ -196,7 +196,7 @@ const RequestDetailTitle = styled.div`
 
 const RequestDetailDescription = styled.div`
   color: ${Colours.GRAY_10};
-  font-family: Roboto;
+  font-family: Figtree;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

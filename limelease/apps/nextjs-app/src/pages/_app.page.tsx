@@ -40,31 +40,35 @@ const App = ({ Component, pageProps }: AppProps) => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#BAE637',
+          colorPrimary: '#2E0CFF',
           colorPrimaryHover: '#3F6600',
-          colorText: '#254000',
-          colorLink: '#262626',
+          colorText: '#151D38',
+          colorLink: '#2E0CFF',
           linkDecoration: 'underline',
+          fontFamily: 'Figtree',
         },
         components: {
           Button: {
-            colorPrimary: '#BAE637',
+            colorPrimary: '#2E0CFF',
             colorPrimaryHover: '#3F6600',
-          },
-          Modal: {
-            colorPrimary: '#BAE637',
-            colorPrimaryHover: '#3F6600',
+            colorPrimaryActive: '#2E0CFF',
           },
           Input: {
-            activeBorderColor: '#BAE637',
+            activeBorderColor: '#2E0CFF',
+            addonBg: '#2E0CFF',
           },
           Card: {
             borderRadius: 10,
           },
+          Checkbox: {},
           Segmented: {
-            itemSelectedBg: '#254000',
-            itemHoverColor: '#BAE637',
-            itemSelectedColor: '#BAE637',
+            itemSelectedBg: '#F5F5F5',
+            itemHoverColor: '#2E0CFF',
+            itemActiveBg: '#FAFAFA',
+            itemColor: '#151D38',
+            itemSelectedColor: '#2E0CFF',
+            trackBg: '#FAFAFA',
+            borderRadius: 0,
           },
         },
       }}
@@ -75,7 +79,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           <title key="title">LimeLease</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        <NextNProgress color={Colours.LIME_8} />
         <Component {...pageProps} />
       </ApolloProvider>
     </ConfigProvider>

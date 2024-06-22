@@ -102,7 +102,7 @@ const FindCreateContractor = () => {
           <DetailRow>
             <DetailRowTitle>Contact Number</DetailRowTitle>
             <DetailRowValue>
-              {context?.selectedContractor?.contactNumber ? formatMobileNumber(context?.selectedContractor?.contactNumber) : 'N/A'}
+              {context?.selectedContractor?.contactNumber ? formatMobileNumber(context?.selectedContractor?.contactNumber, true) : 'N/A'}
             </DetailRowValue>
           </DetailRow>
           <DetailRow>
@@ -132,7 +132,7 @@ const DetailRow = styled.div`
 
 const DetailRowTitle = styled.div`
   color: #8c8c8c;
-  font-family: Roboto;
+  font-family: Figtree;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -142,7 +142,7 @@ const DetailRowTitle = styled.div`
 
 const DetailRowValue = styled.div`
   color: #262626;
-  font-family: Roboto;
+  font-family: Figtree;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

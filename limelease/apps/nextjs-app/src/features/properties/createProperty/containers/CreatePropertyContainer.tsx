@@ -99,7 +99,7 @@ const CreatePropertyContainer = () => {
       }
 
       const tenants = Object.values(tenantsFormValues)
-        .filter((formValue: any) => formValue[0] === undefined)
+        .filter((tenant) => tenant === undefined)
         .flatMap((tenant: TenantObject) => {
           return {
             email: tenant.emailAddress,

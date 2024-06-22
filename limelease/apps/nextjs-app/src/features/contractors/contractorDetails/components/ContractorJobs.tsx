@@ -159,7 +159,7 @@ const StyledCard = styled(Card)`
 
 const CardTitle = styled.div`
   color: #262626;
-  font-family: Roboto;
+  font-family: Figtree;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;

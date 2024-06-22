@@ -86,7 +86,7 @@ const ViewPropertyContainer: React.FC<ViewPropertyContainerProps> = ({ propertyI
       </Modal>
       {loading && <LoadingSpinner />}
       {!loading && (
-        <>
+        <Container>
           <AnimatedContainer {...cardAnimationProps}>
             <Breadcrumb separator="/">
               <Breadcrumb.Item onClick={() => router.back()}>
@@ -128,11 +128,16 @@ const ViewPropertyContainer: React.FC<ViewPropertyContainerProps> = ({ propertyI
           <AnimatedContainer {...cardAnimationProps}>
             <PropertyRequests property={property} onClickAddRequest={onClickAddRequest} />
           </AnimatedContainer>
-        </>
+        </Container>
       )}
     </DashboardContainer>
   );
 };
+
+const Container = styled.div`
+  padding-top: 50px;
+  padding-bottom: 20px;
+`;
 
 const SegmentedContainer = styled.div`
   margin-top: 24px;

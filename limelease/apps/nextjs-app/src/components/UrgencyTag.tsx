@@ -12,19 +12,19 @@ interface UrgencyTagProps {
 const UrgencyTag: React.FC<UrgencyTagProps> = ({ urgency }) => {
   if (urgency === PropertyRequestUrgency.Emergency) {
     return (
-      <Tag color={Colours.RED_8} icon={<FireOutlined />}>
+      <EmergencyTag color={Colours.LIGHT_RED} icon={<FireOutlined />}>
         Emergency
-      </Tag>
+      </EmergencyTag>
     );
   } else if (urgency === PropertyRequestUrgency.MidHigh) {
     return (
-      <MidHighTag color={Colours.ORANGE_1} icon={<ExclamationCircleOutlined />}>
+      <MidHighTag color={Colours.ORANGE_LIGHT} icon={<ExclamationCircleOutlined />}>
         Mid-High
       </MidHighTag>
     );
   } else if (urgency === PropertyRequestUrgency.Low) {
     return (
-      <LowTag color={Colours.GRAY_7} icon={<FlagOutlined />}>
+      <LowTag color={Colours.GRAY_3} icon={<FlagOutlined />}>
         Low
       </LowTag>
     );
@@ -33,10 +33,17 @@ const UrgencyTag: React.FC<UrgencyTagProps> = ({ urgency }) => {
   }
 };
 
-const LowTag = styled(Tag)``;
+const LowTag = styled(Tag)`
+  color: ${Colours.GRAY_8} !important;
+`;
 
 const MidHighTag = styled(Tag)`
-  color: ${Colours.GRAY_11} !important;
+  color: ${Colours.ORANGE_DARK} !important;
 `;
+
+const EmergencyTag = styled(Tag)`
+  color: ${Colours.RED_8} !important;
+`;
+
 
 export default UrgencyTag;

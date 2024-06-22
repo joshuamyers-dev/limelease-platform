@@ -11,7 +11,7 @@ import { useMeQuery } from '@graphql/generated';
 import { deviceSize } from '@utils/DeviceSizes';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import logo from '../../public/images/logo.png';
+import logo from '../../public/images/logo.svg';
 import { Colours } from '../utils/Colours';
 
 const { Header, Content, Footer } = Layout;
@@ -86,7 +86,7 @@ const DashboardContainer = ({ children }: DashboardContainerProps) => {
               mode="horizontal"
               selectedKeys={[currentMenuItem]}
               items={menuItems}
-              style={{ float: 'left' }}
+              style={{ float: 'left', flex: 1, display: 'flex' }}
             />
             <StyledMenu
               theme="light"
@@ -109,6 +109,11 @@ const DashboardContainer = ({ children }: DashboardContainerProps) => {
 const StyledLayout = styled(Layout)`
   min-height: 100%;
   padding-bottom: 50px;
+  background: #fafafa !important;
+
+  .ant-layout-header {
+    display: flex;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -132,7 +137,8 @@ const StyledContent = styled(Content)`
 
 const StyledMenu = styled(Menu)`
   .ant-menu-item-selected {
-    background-color: ${Colours.LIME_10} !important;
+    background-color: white;
+    color: ${Colours.LIME_10};
   }
 
   .ant-menu-item::after {

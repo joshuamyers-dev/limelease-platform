@@ -5,15 +5,16 @@ import { Card, Col, Row } from 'antd';
 
 import { EditOutlined, EllipsisOutlined } from '@ant-design/icons';
 
-import bathroomIcon from '../assets/bathroom-icon.png';
-import bedroomIcon from '../assets/bedroom-icon.png';
-import carIcon from '../assets/car-icon.png';
+import bathroomIcon from '@public/images/bathrooms-icon.svg';
+import bedroomIcon from '@public/images/bedrooms-icon.svg';
+import carIcon from '@public/images/carspace-icon.svg';
 
 import styled from 'styled-components';
 
 import { Colours } from '../../../../utils/Colours';
 import { PropertyNotificationCounts } from '@graphql/generated';
 import ImagePlaceholder from '@components/ImagePlaceholder';
+import { useRouter } from 'next/router';
 
 interface PropertyCardProps {
   id: string;
@@ -28,6 +29,8 @@ interface PropertyCardProps {
 }
 
 const PropertyCard = ({ id, addressLabel, imageUrl, suburb, bedrooms, bathrooms, carspaces, notificationCounts, onClickProperty }: PropertyCardProps) => {
+  const router = useRouter();
+
   return (
     <Card style={{ width: '100%', cursor: 'pointer' }} onClick={() => onClickProperty(id)}>
       <HeaderContainer>
@@ -36,7 +39,7 @@ const PropertyCard = ({ id, addressLabel, imageUrl, suburb, bedrooms, bathrooms,
           <LocationText>{suburb}</LocationText>
         </AddressLocationContainer>
 
-        <ActionButton>
+        <ActionButton onClick={() => router.push(`/properties/edit/${id}`)}>
           <EditOutlined width={18} height={18} color={Colours.LIME_10} />
         </ActionButton>
 
@@ -60,13 +63,7 @@ const PropertyCard = ({ id, addressLabel, imageUrl, suburb, bedrooms, bathrooms,
         </DwellingInfo>
       </DwellingInfoContainer>
 
-      <CoverPhoto
-        placeholder="blur"
-        blurDataURL="https://i2.au.reastatic.net/50x50-format=webp/fffbbc7ed32bd7a152dfe1d82f2064675340749f422f14da184cdd1996e859c1/image.jpg"
-        src={imageUrl}
-        width={600}
-        height={200}
-      />
+      <CoverPhoto alt="Photo of this property" src={imageUrl} width={600} height={200} />
 
       <StatsRow>
         <StatsCol span={8}>
@@ -120,12 +117,16 @@ const DwellingInfo = styled.div`
   align-items: center;
   flex-direction: row;
   padding-right: 10px;
+
+  img {
+    fill: ${Colours.GRAY_8};
+  }
 `;
 
 const DwellingInfoText = styled.div`
   font-weight: 600;
   font-size: 14px;
-  color: ${Colours.GRAY_6};
+  color: ${Colours.GRAY_8};
   padding-left: 4px;
 `;
 
@@ -137,8 +138,14 @@ const CoverPhoto = styled(ImagePlaceholder)`
 `;
 
 const ActionButton = styled.div`
-  cursor: poRoboto;
+  cursor: pointer;
   margin-left: 16px;
+
+  svg {
+    fill: ${Colours.LIME_5};
+    width: 18px;
+    height: 18px;
+  }
 `;
 
 const StatsRow = styled(Row)`

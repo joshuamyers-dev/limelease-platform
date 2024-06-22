@@ -97,7 +97,7 @@ const PropertyLease: React.FC<PropertyLeaseProps> = ({ leaseDetails, tenants }) 
                   </DetailRow>
                   <DetailRow>
                     <DetailRowTitle>Phone Number</DetailRowTitle>
-                    <DetailRowValue>{formatMobileNumber(tenant.phoneNumber)}</DetailRowValue>
+                    <DetailRowValue>{formatMobileNumber(tenant.phoneNumber, true)}</DetailRowValue>
                   </DetailRow>
                 </TenantContainer>
               </>
@@ -145,7 +145,7 @@ const TenantContainer = styled.div``;
 
 const TenantName = styled.div`
   font-size: 16px;
-  font-family: Roboto;
+  font-family: Figtree;
   font-weight: 600;
   color: ${Colours.GRAY_10};
   padding-bottom: 16px;
