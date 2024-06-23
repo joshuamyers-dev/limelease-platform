@@ -104,7 +104,8 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
 
       let leaseDetails: LeaseDetails | null = null;
 
-      if (formValues.leasePcm) {
+
+      if (formValues.isLeased) {
         leaseDetails = {
           id: property?.fetchProperty?.lease?.id,
           startDate: formValues.leaseTerm[0].toISOString(),

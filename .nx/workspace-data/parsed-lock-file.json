@@ -3006,6 +3006,15 @@
         "hash": "sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA=="
       }
     },
+    "npm:@types/react-lottie": {
+      "type": "npm",
+      "name": "npm:@types/react-lottie",
+      "data": {
+        "version": "1.2.10",
+        "packageName": "@types/react-lottie",
+        "hash": "sha512-rCd1p3US4ELKJlqwVnP0h5b24zt5p9OCvKUoNpYExLqwbFZMWEiJ6EGLMmH7nmq5V7KomBIbWO2X/XRFsL0vCA=="
+      }
+    },
     "npm:@types/react": {
       "type": "npm",
       "name": "npm:@types/react",
@@ -6732,6 +6741,15 @@
         "hash": "sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q=="
       }
     },
+    "npm:lottie-web": {
+      "type": "npm",
+      "name": "npm:lottie-web",
+      "data": {
+        "version": "5.12.2",
+        "packageName": "lottie-web",
+        "hash": "sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg=="
+      }
+    },
     "npm:lower-case-first": {
       "type": "npm",
       "name": "npm:lower-case-first",
@@ -8314,6 +8332,15 @@
         "version": "3.0.4",
         "packageName": "react-lifecycles-compat",
         "hash": "sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA=="
+      }
+    },
+    "npm:react-lottie": {
+      "type": "npm",
+      "name": "npm:react-lottie",
+      "data": {
+        "version": "1.2.4",
+        "packageName": "react-lottie",
+        "hash": "sha512-kBGxI+MIZGBf4wZhNCWwHkMcVP+kbpmrLWH/SkO0qCKc7D7eSPcxQbfpsmsCo8v2KCBYjuGSou+xTqK44D/jMg=="
       }
     },
     "npm:react-modal": {
@@ -16386,6 +16413,11 @@
       "type": "static"
     },
     {
+      "source": "npm:@types/react-lottie",
+      "target": "npm:@types/react",
+      "type": "static"
+    },
+    {
       "source": "npm:@types/react",
       "target": "npm:@types/prop-types",
       "type": "static"
@@ -22838,6 +22870,21 @@
     {
       "source": "npm:react-image-lightbox",
       "target": "npm:react-modal",
+      "type": "static"
+    },
+    {
+      "source": "npm:react-lottie",
+      "target": "npm:babel-runtime",
+      "type": "static"
+    },
+    {
+      "source": "npm:react-lottie",
+      "target": "npm:lottie-web",
+      "type": "static"
+    },
+    {
+      "source": "npm:react-lottie",
+      "target": "npm:react",
       "type": "static"
     },
     {

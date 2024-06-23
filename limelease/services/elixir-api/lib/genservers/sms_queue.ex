@@ -47,29 +47,16 @@ defmodule LimeLease.GenServers.SmsQueue do
     end
   end
 
-  defp send_sms(phone_number, message_body, static_media_url) do
+  defp send_sms(phone_number, message_body, _static_media_url) do
     phone_number = Helpers.format_phone_number(phone_number)
 
-    case static_media_url == nil do
-      true ->
-        case ClickSend.send_sms(phone_number, message_body) do
-          {:ok, :delivered} ->
-            :ok
+    case ClickSend.send_sms(phone_number, message_body) do
+      {:ok, :delivered} ->
+        :ok
 
-          {:error, reason} ->
-            Logger.error("Error sending SMS: #{inspect(reason)}")
-            Process.send_after(self(), {:retry_send_sms, phone_number, message_body}, :timer.seconds(30))
-        end
-
-      false ->
-        case ClickSend.send_mms(phone_number, message_body, static_media_url) do
-          {:ok, :delivered} ->
-            :ok
-
-          {:error, reason} ->
-            Logger.error("Error sending SMS: #{inspect(reason)}")
-            Process.send_after(self(), {:retry_send_sms, phone_number, message_body}, :timer.seconds(30))
-        end
+      {:error, reason} ->
+        Logger.error("Error sending SMS: #{inspect(reason)}")
+        Process.send_after(self(), {:retry_send_sms, phone_number, message_body}, :timer.seconds(30))
     end
   end
 

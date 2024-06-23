@@ -1,41 +1,59 @@
-import React, { useState } from 'react';
-import { Table, Button, Modal, Form, Input } from 'antd';
-
+import React, { useMemo, useState } from 'react';
+import { Table, Button, Modal, Form, Input, Card } from 'antd';
+import { styled } from 'styled-components';
+import { useMyTeamQuery } from '@graphql/generated';
+import { Maybe } from '@types/Maybe';
+import { formatSnakeCase, toProperCase } from '@utils/Helpers';
 interface User {
   id: number;
   name: string;
   email: string;
 }
 
+const columns = [
+  { title: 'Name', dataIndex: 'name', key: 'name' },
+  { title: 'Email Address', dataIndex: 'email', key: 'email' },
+  { title: 'Role', dataIndex: 'role', key: 'role' },
+  { title: 'Assigned Properties', dataIndex: 'properties', key: 'properties' },
+];
+
 const ManageUsers: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<Maybe<string>>(null);
 
-  const columns = [
-    { title: 'ID', dataIndex: 'id', key: 'id' },
-    { title: 'Name', dataIndex: 'name', key: 'name' },
-    { title: 'Email', dataIndex: 'email', key: 'email' },
-  ];
+  const { data: myTeamData, loading: isLoadingTeam } = useMyTeamQuery({
+    variables: {
+      first: 10,
+      searchTerm,
+    },
+    fetchPolicy: 'cache-and-network',
+  });
 
-  const handleAddUser = (values: User) => {
-    const newUser: User = {
-      id: users.length + 1,
-      ...values,
-    };
-    setUsers([...users, newUser]);
-    setIsModalVisible(false);
-  };
+  const data = useMemo(() => {
+    return myTeamData?.myTeam?.edges
+      ?.map((edge) => edge?.node)
+      .map((node, index) => {
+        return {
+          key: index,
+          name: node?.user.firstName + ' ' + node?.user.lastName,
+          email: node?.user.email,
+          role: formatSnakeCase(node?.role),
+        };
+      });
+  }, [myTeamData]);
 
   return (
-    <div>
-      <Button type="primary" onClick={() => setIsModalVisible(true)}>
-        Add User
-      </Button>
+    <Card>
+      <AddAgentContainer>
+        <Button type="primary" onClick={() => setIsModalVisible(true)}>
+          Add Team Member
+        </Button>
+      </AddAgentContainer>
 
-      <Table dataSource={users} columns={columns} />
+      <Table dataSource={data} columns={columns} />
 
       <Modal title="Add User" visible={isModalVisible} onCancel={() => setIsModalVisible(false)} footer={null}>
-        <Form onFinish={handleAddUser}>
+        <Form>
           <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please enter a name' }]}>
             <Input />
           </Form.Item>
@@ -58,8 +76,13 @@ const ManageUsers: React.FC = () => {
           </Form.Item>
         </Form>
       </Modal>
-    </div>
+    </Card>
   );
 };
+
+const AddAgentContainer = styled.div`
+  float: right;
+  margin-bottom: 20px;
+`;
 
 export default ManageUsers;

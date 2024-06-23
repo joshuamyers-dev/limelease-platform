@@ -1,6 +1,8 @@
 import React from 'react';
 import { Avatar, Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
+import { hexToRGBA } from '@utils/Helpers';
+import { Colours } from '@utils/Colours';
 
 interface EditAvatarProps {
   avatarUrl: string;
@@ -11,6 +13,7 @@ const EditAvatar: React.FC<EditAvatarProps> = ({ avatarUrl, onEditClick }) => {
   return (
     <div style={{ position: 'relative', display: 'inline-block' }}>
       <Avatar size={80} src={avatarUrl} />
+
       <Button
         type="text"
         shape="circle"
@@ -19,8 +22,8 @@ const EditAvatar: React.FC<EditAvatarProps> = ({ avatarUrl, onEditClick }) => {
           position: 'absolute',
           bottom: 0,
           right: 0,
-          background: 'rgba(186, 230, 55, 1.0)',
-          color: 'black',
+          backgroundColor: hexToRGBA(Colours.NAVY, 0.8),
+          color: 'white',
         }}
         onClick={onEditClick}
       />

@@ -59,6 +59,7 @@ defmodule LimeLease.MixProject do
       {:timex, "~> 3.7"},
       {:ex_aws, "~> 2.1"},
       {:ex_aws_s3, "~> 2.0"},
+      {:ex_aws_sns, "~> 2.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
       {:temp, "~> 0.4"},

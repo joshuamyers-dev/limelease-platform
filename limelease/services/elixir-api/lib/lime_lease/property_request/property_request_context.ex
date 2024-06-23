@@ -19,7 +19,7 @@ defmodule LimeLease.PropertyRequest.PropertyRequestContext do
   end
 
   def get_paginated_requests_for_user(state, pagination_args, %User{} = user) do
-    {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_user(user)
+    {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_agent(user.agency_agent)
 
     PropertyRequest
     |> PropertyRequest.translate_state_into_filter(state)

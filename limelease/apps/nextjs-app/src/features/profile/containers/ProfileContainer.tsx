@@ -13,34 +13,50 @@ import UpdateDetails from '../components/UpdateDetails';
 import { SegmentedValue } from 'antd/es/segmented';
 import ManageUsers from '../components/ManageUsers';
 
+const UPDATE_DETAILS_SEGMENT = 'Update Profile';
+const MANAGE_USERS_SEGMENT = 'Manage Team';
+const SETTINGS_SEGMENT = 'Settings';
+
 const ProfileContainer = () => {
   const { data: meData } = useMeQuery({ fetchPolicy: 'cache-first' });
 
-  const [selectedSegment, setSelectedSegment] = useState<SegmentedValue>('Update Details');
+  const [selectedSegment, setSelectedSegment] = useState<SegmentedValue>(UPDATE_DETAILS_SEGMENT);
 
   return (
-    <>
+    <ProfileWrapper>
       <AnimatedContainer {...cardAnimationProps}>
-        <Card>
-          <NamePhotoContainer>
-            <EditAvatar />
-            <ProfilePrimaryDetails>
-              <CardTitleText>
-                {meData?.me?.firstName} {meData?.me?.lastName}
-              </CardTitleText>
-              <CompanyNameText>Property Manager &middot; {meData?.me?.agency?.name}</CompanyNameText>
-            </ProfilePrimaryDetails>
-          </NamePhotoContainer>
-          <SegmentedContainer>
-            <Segmented value={selectedSegment} options={['Update Details', 'Manage Users', 'Settings']} onChange={setSelectedSegment} size="small" />
-          </SegmentedContainer>
+        <NamePhotoContainer>
+          <EditAvatar />
+          <ProfilePrimaryDetails>
+            <CardTitleText>
+              {meData?.me?.firstName} {meData?.me?.lastName}
+            </CardTitleText>
+            <CompanyNameText>Property Manager &middot; {meData?.me?.agency?.name}</CompanyNameText>
+          </ProfilePrimaryDetails>
+        </NamePhotoContainer>
 
-          {selectedSegment === 'Update'}
-        </Card>
+        <Divider />
+
+        <SegmentedContainer>
+          <Segmented
+            value={selectedSegment}
+            options={[UPDATE_DETAILS_SEGMENT, MANAGE_USERS_SEGMENT, SETTINGS_SEGMENT]}
+            onChange={setSelectedSegment}
+            size="small"
+          />
+        </SegmentedContainer>
+
+        {selectedSegment === UPDATE_DETAILS_SEGMENT && <UpdateDetails />}
+        {selectedSegment === MANAGE_USERS_SEGMENT && <ManageUsers />}
       </AnimatedContainer>
-    </>
+    </ProfileWrapper>
   );
 };
+
+const ProfileWrapper = styled.div`
+  width: 80%;
+  margin: 20px auto;
+`;
 
 const NamePhotoContainer = styled.div`
   display: flex;
@@ -48,7 +64,7 @@ const NamePhotoContainer = styled.div`
 `;
 
 const SegmentedContainer = styled.div`
-  margin-top: 56px;
+  margin-top: 20px;
 `;
 
 const CompanyNameText = styled.div`

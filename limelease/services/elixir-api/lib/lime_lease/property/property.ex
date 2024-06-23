@@ -6,6 +6,7 @@ defmodule LimeLease.Property.Property do
   import Ecto.Changeset
   import Ecto.Query
 
+  alias LimeLease.AgencyAgent.AgencyAgent
   alias LimeLease.User.User
   alias LimeLease.PropertyAgent.PropertyAgent
 
@@ -24,18 +25,18 @@ defmodule LimeLease.Property.Property do
     embeds_many :landlords, LimeLease.Property.PropertyLandlord
     embeds_one :address, LimeLease.Property.Address
 
-    has_one :lease, LimeLease.Lease.Lease
+    has_one :lease, LimeLease.Lease.Lease, on_replace: :delete
 
     has_many :files, LimeLease.Property.PropertyFile
     has_many :requests, LimeLease.PropertyRequest.PropertyRequest
-    has_many :tenants, LimeLease.Tenant.Tenant
+    has_many :tenants, LimeLease.Tenant.Tenant, on_replace: :delete_if_exists
     has_many(:property_agents, LimeLease.PropertyAgent.PropertyAgent, on_replace: :delete)
 
     timestamps(type: :utc_datetime_usec)
   end
 
-  def create_changeset(property, attrs, %User{} = user) do
-    property_agents = %PropertyAgent{} |> PropertyAgent.create_changeset(%{}) |> put_assoc(:user, user)
+  def create_changeset(property, attrs, %AgencyAgent{} = agent) do
+    property_agents = %PropertyAgent{} |> PropertyAgent.create_changeset(%{}) |> put_assoc(:agent, agent)
 
     property
     |> cast(attrs, [:bedrooms, :bathrooms, :carspaces])

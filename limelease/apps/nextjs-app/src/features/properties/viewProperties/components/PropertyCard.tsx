@@ -39,7 +39,14 @@ const PropertyCard = ({ id, addressLabel, imageUrl, suburb, bedrooms, bathrooms,
           <LocationText>{suburb}</LocationText>
         </AddressLocationContainer>
 
-        <ActionButton onClick={() => router.push(`/properties/edit/${id}`)}>
+        <ActionButton
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            router.push(`/properties/edit/${id}`);
+          }}
+        >
           <EditOutlined width={18} height={18} color={Colours.LIME_10} />
         </ActionButton>
 

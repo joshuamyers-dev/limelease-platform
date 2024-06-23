@@ -10,7 +10,7 @@ defmodule LimeLease.Property.PropertyContext do
   require IEx
 
   def get_paginated_properties_for_user(%User{} = user, filter, search_keywords, pagination_args) do
-    {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_user(user)
+    {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_agent(user.agency_agent)
 
     Property
     |> Property.with_id_in(property_ids)
@@ -21,8 +21,7 @@ defmodule LimeLease.Property.PropertyContext do
   end
 
   def get_property_by_id_for_user(%User{} = user, id) do
-    {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_user(user)
-
+    {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_agent(user.agency_agent)
 
     Property
     |> Property.with_id(id)

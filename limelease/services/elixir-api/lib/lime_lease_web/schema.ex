@@ -10,6 +10,7 @@ defmodule LimeLeaseWeb.Schema do
   import_types(LimeLease.StaticMedia.StaticMediaSchema)
   import_types(LimeLease.Contractor.ContractorSchema)
   import_types(LimeLease.Agency.AgencySchema)
+  import_types(LimeLease.AgencyAgent.AgencyAgentSchema)
   import_types(LimeLease.ContractorJob.ContractorJobSchema)
   import_types(LimeLease.PropertyRequestComment.PropertyRequestCommentSchema)
   import_types(LimeLease.PropertyRequestCategory.PropertyRequestCategorySchema)
@@ -24,6 +25,7 @@ defmodule LimeLeaseWeb.Schema do
     import_fields(:contractor_job_queries)
     import_fields(:property_request_comment_queries)
     import_fields(:property_request_category_queries)
+    import_fields(:agency_agent_queries)
   end
 
   mutation do
@@ -45,6 +47,7 @@ defmodule LimeLeaseWeb.Schema do
     alias LimeLease.StaticMedia.StaticMediaContext
     alias LimeLease.Contractor.ContractorContext
     alias LimeLease.Agency.AgencyContext
+    alias LimeLease.AgencyAgent.AgencyAgentContext
     alias LimeLease.ContractorJob.ContractorJobContext
     alias LimeLease.PropertyRequestComment.PropertyRequestCommentContext
     alias LimeLease.PropertyRequestCategory.PropertyRequestCategoryContext
@@ -62,6 +65,7 @@ defmodule LimeLeaseWeb.Schema do
     |> Dataloader.add_source(ContractorJobContext, ContractorJobContext.data())
     |> Dataloader.add_source(PropertyRequestCommentContext, PropertyRequestCommentContext.data())
     |> Dataloader.add_source(PropertyRequestCategoryContext, PropertyRequestCategoryContext.data())
+    |> Dataloader.add_source(AgencyAgentContext, AgencyAgentContext.data())
     |> Dataloader.add_source(LeaseContext, LeaseContext.data())
   end
 

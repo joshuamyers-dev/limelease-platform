@@ -6,11 +6,15 @@ import { LOCAL_STORAGE_AUTH_KEY } from '@utils/Constants';
 import { Button, Col, Form, FormInstance, Input, Row, Select, Upload, message, notification } from 'antd';
 import axios from 'axios';
 import { Colours } from '../../../../utils/Colours';
-import { debounce, normFile, renderAddressLabel, resizeFile } from '../../../../utils/Helpers';
+import { debounce, hexToRGBA, normFile, renderAddressLabel, resizeFile } from '../../../../utils/Helpers';
 import { AddPropertyContext } from '../containers/CreatePropertyContainer';
 import { REAL_ESTATE_SEARCH_API, UPLOAD_IMAGE_API_URL } from '../helpers/Constants';
-import { Address } from '@graphql/generated';
-import { useForm } from 'antd/lib/form/Form';
+
+import Lottie from 'react-lottie';
+
+import * as animationData from '@public/animations/house-building.json';
+import styled from 'styled-components';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const { Search } = Input;
 
@@ -20,10 +24,18 @@ interface OverviewProps {
   isEditing?: Boolean;
 }
 
+import dynamic from 'next/dynamic';
+
+const AUTO_POPULATING_INITIAL = 'Grabbing some details on this property...';
+
+const PlayerWithNoSSR = dynamic(() => import('react-lottie').then((module) => module.default), { ssr: false });
+
 const Overview = ({ form, isEditing = false, propertyDetails }: OverviewProps) => {
   const [loadingSearch, setLoadingSearch] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState({});
   const [fileList, setFileList] = useState([]);
+  const [autoPopulatingProperty, setAutoPopulatingProperty] = useState(false);
+  const [autoPopulatingText, setAutoPopulatingText] = useState(AUTO_POPULATING_INITIAL);
 
   const context = useContext(AddPropertyContext);
   const [getAuthToken] = useStorage();
@@ -84,7 +96,7 @@ const Overview = ({ form, isEditing = false, propertyDetails }: OverviewProps) =
         addressObject: context?.searchResults[addressIndex]?.source,
       });
 
-      const hide = message.loading('Grabbing some details and photos for you...', 0);
+      setAutoPopulatingProperty(true);
 
       try {
         const {
@@ -107,13 +119,16 @@ const Overview = ({ form, isEditing = false, propertyDetails }: OverviewProps) =
           photos: photos,
         });
 
-        hide();
+        setAutoPopulatingProperty(false);
+        setAutoPopulatingText(AUTO_POPULATING_INITIAL);
+
         notification.success({
           message: "We've pre-filled details for this property.",
         });
       } catch (err) {
         console.log(err);
-        hide();
+        setAutoPopulatingProperty(false);
+        setAutoPopulatingText(AUTO_POPULATING_INITIAL);
         notification.info({
           message: "We couldn't pre-fill any details for this property.",
         });
@@ -124,12 +139,40 @@ const Overview = ({ form, isEditing = false, propertyDetails }: OverviewProps) =
 
   const searchAddress = useCallback(debounce(onSearchAddress), []);
 
+  useEffect(() => {
+    if (autoPopulatingProperty && autoPopulatingText === AUTO_POPULATING_INITIAL) {
+      setTimeout(() => {
+        setAutoPopulatingText('Discovering property features...');
 
+        setTimeout(() => {
+          setAutoPopulatingText("Hang tight, we're just grabbing photos of the property...");
+        }, 4000);
+      }, 6000);
+    }
+  }, [autoPopulatingProperty, autoPopulatingText]);
 
   return (
     <Form layout="vertical" size="large" name="0" form={form} requiredMark={false}>
       <Form.Item name="addressObject" hidden />
       <Form.Item name="uploadedPhotos" hidden />
+
+      <AnimatePresence mode="wait">
+        {autoPopulatingProperty && (
+          <ContainerLoader animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+            <PlayerWithNoSSR
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData,
+              }}
+              height={250}
+              width={400}
+            />
+
+            <AutoPopulaterHeader>{autoPopulatingText}</AutoPopulaterHeader>
+          </ContainerLoader>
+        )}
+      </AnimatePresence>
 
       {!isEditing && (
         <Form.Item name="address" label="Address:" rules={[{ required: true, message: 'Address is a required field.' }]}>
@@ -239,5 +282,27 @@ const Overview = ({ form, isEditing = false, propertyDetails }: OverviewProps) =
     </Form>
   );
 };
+
+const ContainerLoader = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: ${hexToRGBA(Colours.NAVY, 0.8)};
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 100;
+`;
+
+const AutoPopulaterHeader = styled.div`
+  font-size: 22px;
+  color: white;
+  font-weight: 600;
+  margin: 80px auto;
+  text-align: center;
+`;
 
 export default Overview;

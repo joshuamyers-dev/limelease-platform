@@ -1,0 +1,16 @@
+query myTeam($first: Int!, $after: String, $before: String, $last: Int, $searchTerm: String) {
+  myTeam(first: $first, after: $after, before: $before, last: $last, searchTerm: $searchTerm) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        ...AgencyAgentBase
+      }
+    }
+  }
+}

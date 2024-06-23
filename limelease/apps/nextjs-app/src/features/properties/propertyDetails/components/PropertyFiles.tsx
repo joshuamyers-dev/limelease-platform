@@ -3,6 +3,7 @@ import { PropertyFile } from '@graphql/generated';
 import { fadeInOutProps } from '@utils/AnimationsProps';
 import { Colours } from '@utils/Colours';
 import { dayjs } from '@utils/DayjsTimezone';
+import { Empty } from 'antd';
 import axios from 'axios';
 
 import React, { useCallback } from 'react';
@@ -38,6 +39,8 @@ const PropertyFiles: React.FC<PropertyFilesProps> = ({ files }) => {
           </>
         );
       })}
+
+      {files?.length === 0 && <Empty description="No files have been added yet" />}
     </AnimatedContainer>
   );
 };

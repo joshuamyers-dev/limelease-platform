@@ -76,7 +76,7 @@ defmodule LimeLease.Property.PropertyService do
          photos,
          files,
          lease_details,
-         user
+         %User{} = user
        ) do
     params =
       Map.merge(property_details, %{
@@ -90,7 +90,7 @@ defmodule LimeLease.Property.PropertyService do
     case property do
       nil ->
         %Property{}
-        |> Property.create_changeset(params, user)
+        |> Property.create_changeset(params, user.agency_agent)
 
       %Property{} = property ->
         property

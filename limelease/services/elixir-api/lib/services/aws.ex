@@ -1,6 +1,8 @@
 defmodule LimeLease.Services.AWS do
   alias ExAws.S3
 
+  require Logger
+
   def upload_multipart!(file_path, file_name, file_type) do
     image_id = generate_image_id(file_name)
 
@@ -49,7 +51,7 @@ defmodule LimeLease.Services.AWS do
       secret_access_key: bucket_config().secret_access_key,
       region: bucket_config().region
     })
-    |> ExAws.S3.presigned_url(:get, bucket_config().bucket_name, s3_key, expires_in: 604800)
+    |> ExAws.S3.presigned_url(:get, bucket_config().bucket_name, s3_key, expires_in: 604_800)
   end
 
   def generate_image_id(file_name) do
@@ -65,5 +67,17 @@ defmodule LimeLease.Services.AWS do
       |> Integer.to_string(36)
 
     id <> "_" <> Integer.to_string(Timex.now() |> Timex.to_unix()) <> extension
+  end
+
+  def send_sms(phone_number, body) do
+    with {:ok, response} <-
+           ExAws.SNS.publish(body, phone_number: phone_number)
+           |> ExAws.request() do
+            Logger.info(response)
+      {:ok, :delivered}
+    else
+      {:error, reason} ->
+        {:error, reason}
+    end
   end
 end

@@ -19,6 +19,37 @@ export const debounce = function (func) {
   };
 };
 
+/**
+ * Converts a hex color string to an RGBA string.
+ * 
+ * @param hex The hex color string (e.g., "#FFFFFF" or "#FFF").
+ * @param opacity The opacity value (0-1).
+ * @returns The RGBA color string.
+ */
+export const hexToRGBA = (hex: string, opacity: number) => {
+  // Remove the hash at the start if it's there
+  hex = hex.replace(/^#/, '');
+  
+  // Parse the hex string
+  let r: number, g: number, b: number;
+  if (hex.length === 3) {
+    // If it's a shorthand hex color
+    r = parseInt(hex[0] + hex[0], 16);
+    g = parseInt(hex[1] + hex[1], 16);
+    b = parseInt(hex[2] + hex[2], 16);
+  } else if (hex.length === 6) {
+    // If it's a full hex color
+    r = parseInt(hex.substring(0, 2), 16);
+    g = parseInt(hex.substring(2, 4), 16);
+    b = parseInt(hex.substring(4, 6), 16);
+  } else {
+    throw new Error('Invalid hex color: ' + hex);
+  }
+
+  // Return the RGBA color string
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+}
+
 export const renderAddressLabel = (address: Address, withLocality: boolean = false) => {
   const unitNumber = address.unitNumber ? `${address.unitNumber}/` : '';
 
@@ -51,6 +82,10 @@ export const formatStatusTitle = (title: PropertyRequestState) => {
   }
 };
 
+export const formatSnakeCase = (subject) => {
+  return toProperCase(subject.replace(/_/g, ' '));
+};
+
 export const toProperCase = (subject) => {
   return subject.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -79,6 +114,8 @@ export const resizeFile = (file) => {
       });
   });
 };
+
+
 
 async function dataURLtoFile(dataUrl, fileName, fileType) {
   var bs = atob(dataUrl);

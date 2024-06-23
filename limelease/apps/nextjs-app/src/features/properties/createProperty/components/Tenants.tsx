@@ -104,8 +104,15 @@ const Tenants = ({ form, propertyDetails }: TenantsProps) => {
         Lease Details
       </Typography.Title>
 
-      <Form.Item label="Does the property have a current lease?">
-        <Checkbox checked={hasLease} onChange={(e) => onChangeLeasedCheckbox(e)}>
+      <Form.Item name="isLeased" label="Does the property have a current lease?">
+        <Checkbox
+          checked={hasLease}
+          defaultChecked={false}
+          onChange={(e) => {
+            onChangeLeasedCheckbox(e);
+            form.setFieldValue('isLeased', e.target.checked);
+          }}
+        >
           This property is leased
         </Checkbox>
       </Form.Item>

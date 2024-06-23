@@ -11,7 +11,7 @@ interface LoadingSpinnerProps {
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 50, containerStyle = {} }) => {
   return (
     <Container style={containerStyle}>
-      <SyncLoader size={size} color={Colours.LIME_8} />
+      <SyncLoader size={size} color={Colours.LIME_10} />
     </Container>
   );
 };

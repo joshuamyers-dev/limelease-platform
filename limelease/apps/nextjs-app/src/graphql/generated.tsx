@@ -37,6 +37,25 @@ export type Agency = {
   name: Scalars['String']['output'];
 };
 
+export type AgencyAgent = {
+  __typename?: 'AgencyAgent';
+  id: Scalars['ID']['output'];
+  role: Scalars['String']['output'];
+  user: User;
+};
+
+export type AgencyAgentConnection = {
+  __typename?: 'AgencyAgentConnection';
+  edges?: Maybe<Array<Maybe<AgencyAgentEdge>>>;
+  pageInfo: PageInfo;
+};
+
+export type AgencyAgentEdge = {
+  __typename?: 'AgencyAgentEdge';
+  cursor?: Maybe<Scalars['String']['output']>;
+  node?: Maybe<AgencyAgent>;
+};
+
 export type Contractor = {
   __typename?: 'Contractor';
   address?: Maybe<Address>;
@@ -466,6 +485,8 @@ export type RootQueryType = {
   myProperties?: Maybe<PropertyConnection>;
   /** Fetch all requests, filtered by a state. Expected errors: unauthorized */
   myRequests?: Maybe<PropertyRequestConnection>;
+  /** Get a list of team members for your agency. */
+  myTeam?: Maybe<AgencyAgentConnection>;
   /** Fetch a list of property request categories. */
   propertyRequestCategories?: Maybe<Array<Maybe<PropertyRequestCategory>>>;
   /** Fetch a paginated list of property request comments by ID */
@@ -539,6 +560,15 @@ export type RootQueryTypeMyRequestsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   state?: InputMaybe<PropertyRequestFilter>;
+};
+
+
+export type RootQueryTypeMyTeamArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  searchTerm?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -672,6 +702,17 @@ export type UserLoginMutationVariables = Exact<{
 
 
 export type UserLoginMutation = { __typename?: 'RootMutationType', userLogin: { __typename?: 'Session', token: string, user: { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null } } };
+
+export type MyTeamQueryVariables = Exact<{
+  first: Scalars['Int']['input'];
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  searchTerm?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type MyTeamQuery = { __typename?: 'RootQueryType', myTeam?: { __typename?: 'AgencyAgentConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'AgencyAgentEdge', cursor?: string | null, node?: { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null } | null> | null } | null };
 
 export type CreatePropertyMutationVariables = Exact<{
   propertyDetails: PropertyDetails;
@@ -855,6 +896,8 @@ export type UpdateRequestStateMutationVariables = Exact<{
 
 export type UpdateRequestStateMutation = { __typename?: 'RootMutationType', requestUpdateState: boolean };
 
+export type AgencyAgentBaseFragment = { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null } };
+
 export type AgencyBaseFragment = { __typename?: 'Agency', id: string, name: string };
 
 export type ContractorBaseFragment = { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null };
@@ -883,6 +926,32 @@ export type TenantBaseFragment = { __typename?: 'Tenant', id: string, email: str
 
 export type UserBaseFragment = { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null };
 
+export const AgencyBaseFragmentDoc = gql`
+    fragment AgencyBase on Agency {
+  id
+  name
+}
+    `;
+export const UserBaseFragmentDoc = gql`
+    fragment UserBase on User {
+  id
+  email
+  agency {
+    ...AgencyBase
+  }
+  firstName
+  lastName
+}
+    ${AgencyBaseFragmentDoc}`;
+export const AgencyAgentBaseFragmentDoc = gql`
+    fragment AgencyAgentBase on AgencyAgent {
+  id
+  role
+  user {
+    ...UserBase
+  }
+}
+    ${UserBaseFragmentDoc}`;
 export const AddressBaseFragmentDoc = gql`
     fragment AddressBase on Address {
   postcode
@@ -1023,23 +1092,6 @@ export const TenantBaseFragmentDoc = gql`
   phoneNumber
 }
     `;
-export const AgencyBaseFragmentDoc = gql`
-    fragment AgencyBase on Agency {
-  id
-  name
-}
-    `;
-export const UserBaseFragmentDoc = gql`
-    fragment UserBase on User {
-  id
-  email
-  agency {
-    ...AgencyBase
-  }
-  firstName
-  lastName
-}
-    ${AgencyBaseFragmentDoc}`;
 export const FetchContractorDocument = gql`
     query fetchContractor($contractorId: ID!) {
   fetchContractor(contractorId: $contractorId) {
@@ -1356,6 +1408,67 @@ export function useUserLoginMutation(baseOptions?: ApolloReactHooks.MutationHook
 export type UserLoginMutationHookResult = ReturnType<typeof useUserLoginMutation>;
 export type UserLoginMutationResult = ApolloReactCommon.MutationResult<UserLoginMutation>;
 export type UserLoginMutationOptions = ApolloReactCommon.BaseMutationOptions<UserLoginMutation, UserLoginMutationVariables>;
+export const MyTeamDocument = gql`
+    query myTeam($first: Int!, $after: String, $before: String, $last: Int, $searchTerm: String) {
+  myTeam(
+    first: $first
+    after: $after
+    before: $before
+    last: $last
+    searchTerm: $searchTerm
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        ...AgencyAgentBase
+      }
+    }
+  }
+}
+    ${AgencyAgentBaseFragmentDoc}`;
+
+/**
+ * __useMyTeamQuery__
+ *
+ * To run a query within a React component, call `useMyTeamQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMyTeamQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMyTeamQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *      before: // value for 'before'
+ *      last: // value for 'last'
+ *      searchTerm: // value for 'searchTerm'
+ *   },
+ * });
+ */
+export function useMyTeamQuery(baseOptions: ApolloReactHooks.QueryHookOptions<MyTeamQuery, MyTeamQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<MyTeamQuery, MyTeamQueryVariables>(MyTeamDocument, options);
+      }
+export function useMyTeamLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MyTeamQuery, MyTeamQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<MyTeamQuery, MyTeamQueryVariables>(MyTeamDocument, options);
+        }
+export function useMyTeamSuspenseQuery(baseOptions?: ApolloReactHooks.SuspenseQueryHookOptions<MyTeamQuery, MyTeamQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<MyTeamQuery, MyTeamQueryVariables>(MyTeamDocument, options);
+        }
+export type MyTeamQueryHookResult = ReturnType<typeof useMyTeamQuery>;
+export type MyTeamLazyQueryHookResult = ReturnType<typeof useMyTeamLazyQuery>;
+export type MyTeamSuspenseQueryHookResult = ReturnType<typeof useMyTeamSuspenseQuery>;
+export type MyTeamQueryResult = ApolloReactCommon.QueryResult<MyTeamQuery, MyTeamQueryVariables>;
 export const CreatePropertyDocument = gql`
     mutation createProperty($propertyDetails: PropertyDetails!, $leaseDetails: LeaseDetails, $files: [File], $photos: [CreatePhoto!], $tenants: [TenantObject!], $landlords: [Landlord!]!) {
   createProperty(

@@ -1,0 +1,7 @@
+fragment AgencyAgentBase on AgencyAgent {
+  id
+  role
+  user {
+    ...UserBase
+  }
+}
