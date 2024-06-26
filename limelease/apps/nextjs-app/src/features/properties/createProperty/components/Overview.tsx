@@ -43,7 +43,7 @@ const Overview = ({ form, isEditing = false, propertyDetails }: OverviewProps) =
   const authToken = getAuthToken(LOCAL_STORAGE_AUTH_KEY, 'local');
 
   const onSearchAddress = useCallback(async (address: string) => {
-    if (!address || address === '' || address === ' ') return;
+    if (!address || address === '' || address === ' ' || address.length < 5) return;
 
     setLoadingSearch(true);
 

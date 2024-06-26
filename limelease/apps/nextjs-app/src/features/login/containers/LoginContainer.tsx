@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
-import backgroundImage from '@public/images/login-background.png';
+import backgroundImage from '@public/images/login-background.jpg';
 
 import { Form, message } from 'antd';
 
@@ -72,7 +72,7 @@ const LoginContainer = () => {
 
   return (
     <Container>
-      <Image src={backgroundImage} layout="fill" />
+      <Image src={backgroundImage} layout="fill" alt="House in Australia" />
       <FormContainer>
         <LoginForm form={form} isLoading={loading} canSubmitForm={canSubmitForm} onFormSubmit={onFormSubmit} onValuesChange={onValuesChange} />
       </FormContainer>
@@ -88,7 +88,7 @@ const Container = styled.div`
 `;
 
 const FormContainer = styled.div`
-  width: 30%;
+  max-width: 500px;
   margin: 20% auto;
   height: auto;
 `;

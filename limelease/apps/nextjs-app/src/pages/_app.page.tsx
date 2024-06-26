@@ -41,7 +41,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       theme={{
         token: {
           colorPrimary: '#2E0CFF',
-          colorPrimaryHover: '#3F6600',
+          colorPrimaryHover: '#2E0CFF',
           colorText: '#151D38',
           colorLink: '#2E0CFF',
           linkDecoration: 'underline',
@@ -50,7 +50,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         components: {
           Button: {
             colorPrimary: '#2E0CFF',
-            colorPrimaryHover: '#3F6600',
+            colorPrimaryHover: '#2E0CFF',
             colorPrimaryActive: '#2E0CFF',
           },
           Input: {
@@ -59,6 +59,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           },
           Card: {
             borderRadius: 10,
+          },
+          Form: {
+            colorError: Colours.RED_7,
           },
           Checkbox: {},
           Segmented: {

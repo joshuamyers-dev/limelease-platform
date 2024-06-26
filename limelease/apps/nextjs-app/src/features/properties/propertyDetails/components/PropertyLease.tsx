@@ -114,9 +114,12 @@ const LeaseStatusWrapper = styled.div`
 `;
 
 const SectionTitle = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  color: ${Colours.GRAY_8};
+  color: ${Colours.NAVY};
+  font-family: Figtree;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
 `;
 
 const DetailRow = styled.div`

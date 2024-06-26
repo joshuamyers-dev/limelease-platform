@@ -1,9 +1,12 @@
-import React, { useMemo, useState } from 'react';
-import { Table, Button, Modal, Form, Input, Card } from 'antd';
+import React, { useCallback, useMemo, useState } from 'react';
+import { Table, Button, Modal, Form, Input, Card, Row, Col, Select } from 'antd';
 import { styled } from 'styled-components';
-import { useMyTeamQuery } from '@graphql/generated';
+import { useFetchPropertiesQuery, useMyTeamQuery } from '@graphql/generated';
 import { Maybe } from '@types/Maybe';
-import { formatSnakeCase, toProperCase } from '@utils/Helpers';
+import { formatSnakeCase, renderAddressLabel, toProperCase } from '@utils/Helpers';
+import { EMAIL_ADDRESS_FIELD_RULES, PHONE_NUMBER_FIELD_RULES } from '@features/properties/createProperty/helpers/Constants';
+import { useDebounce } from '@hooks/useDebounce';
+import AddTeamMemberForm from './AddTeamMemberForm';
 interface User {
   id: number;
   name: string;
@@ -50,32 +53,11 @@ const ManageUsers: React.FC = () => {
         </Button>
       </AddAgentContainer>
 
-      <Table dataSource={data} columns={columns} />
-
-      <Modal title="Add User" visible={isModalVisible} onCancel={() => setIsModalVisible(false)} footer={null}>
-        <Form>
-          <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please enter a name' }]}>
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              { required: true, message: 'Please enter an email' },
-              { type: 'email', message: 'Please enter a valid email' },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Add
-            </Button>
-          </Form.Item>
-        </Form>
+      <Modal title="" open={isModalVisible} destroyOnClose onCancel={() => setIsModalVisible(false)} footer={null}>
+        {isModalVisible && <AddTeamMemberForm />}
       </Modal>
+
+      <Table dataSource={data} columns={columns} pagination={false} />
     </Card>
   );
 };

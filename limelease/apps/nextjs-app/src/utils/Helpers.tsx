@@ -1,6 +1,5 @@
 import { Address, PropertyRequestState } from '@graphql/generated';
-
-import Compress from 'compress.js';
+import dynamic from 'next/dynamic';
 import { IMAGE_QUALITY, MAX_IMAGE_HEIGHT, MAX_IMAGE_WIDTH } from './Constants';
 
 export const pxToRem = (px: number) => {
@@ -21,7 +20,7 @@ export const debounce = function (func) {
 
 /**
  * Converts a hex color string to an RGBA string.
- * 
+ *
  * @param hex The hex color string (e.g., "#FFFFFF" or "#FFF").
  * @param opacity The opacity value (0-1).
  * @returns The RGBA color string.
@@ -29,7 +28,7 @@ export const debounce = function (func) {
 export const hexToRGBA = (hex: string, opacity: number) => {
   // Remove the hash at the start if it's there
   hex = hex.replace(/^#/, '');
-  
+
   // Parse the hex string
   let r: number, g: number, b: number;
   if (hex.length === 3) {
@@ -48,7 +47,7 @@ export const hexToRGBA = (hex: string, opacity: number) => {
 
   // Return the RGBA color string
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-}
+};
 
 export const renderAddressLabel = (address: Address, withLocality: boolean = false) => {
   const unitNumber = address.unitNumber ? `${address.unitNumber}/` : '';
@@ -92,7 +91,27 @@ export const toProperCase = (subject) => {
   });
 };
 
-export const resizeFile = (file) => {
+declare global {
+  interface Array<T> {
+    mapNotNull<U>(callback: (value: T, index: number, array: T[]) => U | null | undefined, thisArg?: any): U[];
+  }
+}
+
+if (!Array.prototype.mapNotNull) {
+  Array.prototype.mapNotNull = function <T, U>(this: T[], callback: (value: T, index: number, array: T[]) => U | null | undefined, thisArg?: any): U[] {
+    return this.reduce((acc: U[], current: T, index: number, array: T[]) => {
+      const result = callback.call(thisArg, current, index, array);
+      if (result != null) {
+        acc.push(result);
+      }
+      return acc;
+    }, []);
+  };
+}
+
+export const resizeFile = async (file) => {
+  const Compress = (await import('compress.js')).default;
+
   return new Promise((resolve) => {
     const compress = new Compress();
 
@@ -102,7 +121,6 @@ export const resizeFile = (file) => {
         maxWidth: MAX_IMAGE_WIDTH,
         maxHeight: MAX_IMAGE_HEIGHT,
         resize: true,
-        rotate: false,
       })
       .then((files) => {
         const file = files[0];

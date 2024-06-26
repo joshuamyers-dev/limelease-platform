@@ -20,15 +20,15 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 import RentalProviders from '../components/RentalProviders';
 import PropertyFiles from '../components/PropertyFiles';
+import PropertyCompliance from '../components/PropertyCompliance';
 
 const PropertyDetails = dynamic(() => import('../components/PropertyDetails'));
 
-const MotionCard = motion(Card);
-
 export const OVERVIEW_SCREEN = 'Overview';
-export const LEASE_SCREEN = 'Lease';
+export const LEASE_SCREEN = 'Lease & Tenancy';
 export const RENTAL_PROVIDERS_SCREEN = 'Rental Providers';
 export const FILES_SCREEN = 'Files';
+export const COMPLIANCE_SCREEN = 'Safety & Compliance';
 
 interface ViewPropertyContainerProps {
   propertyId: Maybe<string>;
@@ -36,8 +36,6 @@ interface ViewPropertyContainerProps {
 
 const ViewPropertyContainer: React.FC<ViewPropertyContainerProps> = ({ propertyId }) => {
   const { data: propertyData, loading, error } = useFetchPropertyQuery({ variables: { id: propertyId as string }, fetchPolicy: 'cache-and-network' });
-
-  console.log(propertyData);
 
   const [selectedTab, setSelectedTab] = useState(OVERVIEW_SCREEN);
   const [addRequestModalVisible, showAddRequestModal] = useState(false);
@@ -117,7 +115,12 @@ const ViewPropertyContainer: React.FC<ViewPropertyContainerProps> = ({ propertyI
             </CardHeaderRow>
 
             <SegmentedContainer>
-              <Segmented size="small" options={['Overview', 'Lease', 'Rental Providers', 'Files']} value={selectedTab} onChange={onChangeSegmented} />
+              <Segmented
+                size="small"
+                options={[OVERVIEW_SCREEN, LEASE_SCREEN, COMPLIANCE_SCREEN, RENTAL_PROVIDERS_SCREEN, FILES_SCREEN]}
+                value={selectedTab}
+                onChange={onChangeSegmented}
+              />
               <Divider style={{ color: Colours.GRAY_5, margin: '0px 2px 0 2px' }} />
             </SegmentedContainer>
 
@@ -126,6 +129,7 @@ const ViewPropertyContainer: React.FC<ViewPropertyContainerProps> = ({ propertyI
               {selectedTab === LEASE_SCREEN && <PropertyLease key={2} leaseDetails={property?.lease} tenants={property?.tenants} />}
               {selectedTab === RENTAL_PROVIDERS_SCREEN && <RentalProviders key={2} landlords={property?.landlords} />}
               {selectedTab === FILES_SCREEN && <PropertyFiles key={2} files={property?.files} />}
+              {selectedTab === COMPLIANCE_SCREEN && <PropertyCompliance key={2} property={property} />}
             </AnimatePresence>
           </StyledCard>
 

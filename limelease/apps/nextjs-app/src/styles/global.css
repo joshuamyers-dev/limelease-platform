@@ -9,16 +9,24 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
+  text-rendering: optimizeLegibility;
 }
 
 
 * {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
+  shape-rendering:geometricPrecision;
 }
+
 
 .ant-card {
   box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.04);
+}
+
+.ant-btn-link {
+  font-weight: bold;
+  padding-left: 0;
 }
 
 .upload-list-inline .ant-upload-list-item {
@@ -34,8 +42,6 @@ body {
 .ant-dropdown-menu-title-content {
   font-family: Figtree;
 }
-
-
 
 /* Ant Overrides */
 

@@ -94,8 +94,8 @@ const CreateContractorContainer = () => {
         <AnimatePresence mode="wait">
           {!contractorAdded && (
             <AddContractorContainer key={0} {...fadeInOutProps}>
-              <Heading3 style={{ textAlign: 'center' }}>Add A New Contractor</Heading3>
-              <GeneralInformationForm isLoading={isLoading} form={form} onFormComplete={onFormComplete} />
+              <Heading3 style={{ textAlign: 'center' }}>Add New Contractor</Heading3>
+              <GeneralInformationForm isLoading={isLoading} form={form} onFormComplete={onFormComplete} onPressCancel={onClickReturnHome} />
             </AddContractorContainer>
           )}
 

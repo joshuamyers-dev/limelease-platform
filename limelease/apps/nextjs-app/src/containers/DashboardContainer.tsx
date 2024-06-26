@@ -5,7 +5,19 @@ import { Affix, FloatButton, Layout, Menu } from 'antd';
 import type { MenuProps } from 'antd';
 import styled from 'styled-components';
 
-import { HomeOutlined, NotificationOutlined, ProfileOutlined, QuestionCircleOutlined, ToolOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  ContactsOutlined,
+  CustomerServiceOutlined,
+  FileSearchOutlined,
+  HomeOutlined,
+  InteractionOutlined,
+  ManOutlined,
+  NotificationOutlined,
+  ProfileOutlined,
+  QuestionCircleOutlined,
+  ToolOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 
 import { useMeQuery } from '@graphql/generated';
 import { deviceSize } from '@utils/DeviceSizes';
@@ -101,7 +113,12 @@ const DashboardContainer = ({ children }: DashboardContainerProps) => {
       )}
       <StyledContent>{children}</StyledContent>
 
-      <FloatButton icon={<QuestionCircleOutlined />} tooltip="Support" style={{ right: 24 }} />
+      <FloatButton icon={<CustomerServiceOutlined />} tooltip="Support" style={{ left: 24 }} />
+      <FloatButton.Group trigger="hover" type="primary" tooltip="Quick Actions" style={{ left: 92 }} icon={<InteractionOutlined />}>
+        <FloatButton icon={<FileSearchOutlined />} tooltip="Visit 5 Apollo Rd, Taylors Lakes" />
+        <FloatButton icon={<ToolOutlined />} tooltip="Add a New Contractor" onClick={() => router.push('/contractors/create')} />
+        <FloatButton icon={<HomeOutlined />} tooltip="Add a New Property" onClick={() => router.push('/properties/create')} />
+      </FloatButton.Group>
     </StyledLayout>
   );
 };

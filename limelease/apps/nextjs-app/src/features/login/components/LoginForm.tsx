@@ -1,7 +1,7 @@
 import { Button, Card, Form, FormInstance, Input } from 'antd';
 import Image from 'next/image';
 
-import limeLeaseLogo from '@public/images/logo.png';
+import limeLeaseLogo from '@public/images/logo.svg';
 import { Heading1 } from '@components/Headings';
 import { LoginFormValues } from '../containers/LoginContainer';
 
@@ -18,7 +18,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, isLoading, canSubmitForm, o
     <Card>
       <Image src={limeLeaseLogo} height={32} width={169} layout="fixed" priority />
 
-      <Heading1>Welcome! Sign in to start.</Heading1>
+      <Heading1>Welcome back &middot; Sign in to continue</Heading1>
 
       <Form form={form} layout="vertical" size="large" onFinish={onFormSubmit} requiredMark={false} onValuesChange={onValuesChange}>
         <Form.Item name="email" rules={[{ required: true, message: 'Please enter your email address.' }]}>

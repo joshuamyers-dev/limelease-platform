@@ -10,6 +10,7 @@ import { fadeInOutProps } from '@utils/AnimationsProps';
 import dayjs from 'dayjs';
 import { Tenant } from '@graphql/generated';
 import { formatMobileNumber } from '@utils/Helpers';
+import { useForm } from 'antd/lib/form/Form';
 
 const { RangePicker } = DatePicker;
 
@@ -29,6 +30,7 @@ const Tenants = ({ form, propertyDetails }: TenantsProps) => {
       const tenantsFormValues = {
         leaseTerm: [dayjs(leaseDetails?.startDate), dayjs(leaseDetails?.endDate)],
         leasePcm: leaseDetails?.rentPcm,
+        isLeased: leaseDetails !== null,
         tenants: propertyDetails?.tenants?.map((tenant: Tenant) => {
           return {
             id: tenant.id,
@@ -110,7 +112,7 @@ const Tenants = ({ form, propertyDetails }: TenantsProps) => {
           defaultChecked={false}
           onChange={(e) => {
             onChangeLeasedCheckbox(e);
-            form.setFieldValue('isLeased', e.target.checked);
+            form?.setFieldValue('isLeased', e.target.checked);
           }}
         >
           This property is leased

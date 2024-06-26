@@ -67,7 +67,7 @@ const ViewContractorsContainer = () => {
           <TabsContainer>
             <RightContainer>
               <Space>
-                <Search enterButton placeholder="Search" style={{ width: 320, marginRight: 16 }} size="large" onChange={onSearchChange} />
+                <Search enterButton placeholder="Search" style={{ width: 320 }} size="large" onChange={onSearchChange} />
 
                 <Link href="/contractors/create">
                   <Button type="primary" icon={<PlusOutlined />} size="large">
@@ -96,7 +96,7 @@ const TabsContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 32px;
+  margin-top: 50px;
 `;
 
 const RightContainer = styled.div`

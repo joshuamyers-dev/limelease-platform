@@ -89,25 +89,24 @@ const CreatePropertyContainer = () => {
       };
 
       let leaseDetails: LeaseDetails | null = null;
+      let tenants = [];
 
-      if (tenantsFormValues.leaseTerm) {
+      if (tenantsFormValues.leasePcm) {
         leaseDetails = {
           startDate: tenantsFormValues.leaseTerm[0].toISOString(),
           endDate: tenantsFormValues.leaseTerm[1].toISOString(),
           rentPcm: parseInt(tenantsFormValues.leasePcm),
         };
-      }
 
-      const tenants = Object.values(tenantsFormValues)
-        .filter((tenant) => tenant === undefined)
-        .flatMap((tenant: TenantObject) => {
+        tenants = tenantsFormValues.tenants.map((tenant: TenantObject) => {
           return {
-            email: tenant.emailAddress,
+            email: tenant.email,
             firstName: tenant.firstName,
             lastName: tenant.lastName,
             phoneNumber: tenant.phoneNumber,
           };
         });
+      }
 
       const landlords = Object.values(landlordsFormValues).flatMap((landlord) => {
         return {
@@ -129,7 +128,7 @@ const CreatePropertyContainer = () => {
 
       const files = filesFormValues?.files?.map((file, index) => {
         return {
-          url: file.response.temp_path,
+          uri: file?.response?.temp_path,
           name: file.name,
           type: file.type,
         };
