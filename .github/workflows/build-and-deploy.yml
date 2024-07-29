@@ -35,20 +35,6 @@ jobs:
       - name: Log in to DigitalOcean Container Registry with short-lived credentials
         run: doctl registry login --expiry-seconds 600
 
-      - name: Set up Elixir
-        uses: actions/setup-elixir@v1
-        with:
-          elixir-version: '1.16.3' # Specify your Elixir version
-          otp-version: '26.0'      # Specify your OTP version
-
-      - name: Cache Hex packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.hex
-          key: ${{ runner.os }}-hex-${{ hashFiles('**/mix.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-hex-
-
       # Build and push Elixir API image
       - name: Build Elixir API container image
         run: docker build -f ./limelease/services/elixir-api/Dockerfile -t $REGISTRY/$ELIXIR_IMAGE_NAME:latest ./limelease/services/elixir-api
@@ -56,9 +42,18 @@ jobs:
       # Build and push Next.js web app image
       - name: Build Next.js web app container image
         run: docker build -f ./limelease/apps/nextjs-app/Dockerfile -t $REGISTRY/$WEB_IMAGE_NAME:latest ./limelease/apps/nextjs-app
-
+        
       - name: Remove all old images
-        run: if [ ! -z "$(doctl registry repository list | grep "$(echo $IMAGE_NAME)")" ]; then doctl registry repository delete-manifest $(echo $IMAGE_NAME) $(doctl registry repository list-tags $(echo $IMAGE_NAME) | grep -o "sha.*") --force; else echo "No repository"; fi
+        run: |
+          IMAGE_NAME=$REGISTRY/$WEB_IMAGE_NAME
+          if [ ! -z "$(doctl registry repository list | grep "$(echo $IMAGE_NAME)")" ]; then
+            TAGS=$(doctl registry repository list-tags $(echo $IMAGE_NAME) --format Tag --no-header | grep -o "sha.*")
+            for TAG in $TAGS; do
+              doctl registry repository delete-manifest $(echo $IMAGE_NAME) $TAG --force
+            done
+          else
+            echo "No repository"
+          fi
 
       - name: Push Next.js web app image to DigitalOcean Container Registry
         run: docker push $REGISTRY/$WEB_IMAGE_NAME:latest
