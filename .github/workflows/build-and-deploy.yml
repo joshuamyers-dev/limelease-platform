@@ -80,6 +80,6 @@ jobs:
             # Login to registry
             docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
             # Pull the new image
-            docker-compose pull
+            docker compose pull
             # Stop and remove old containers, then run new ones
-            docker-compose down && docker-compose up -d
+            docker compose down && docker compose up -d
