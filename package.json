@@ -8,7 +8,8 @@
     "workspaces": [
       "packages/*",
       "services/*",
-      "apps/*"
+      "apps/*",
+      "infra/*"
     ]
   },
   "scripts": {
@@ -17,9 +18,13 @@
     "start:nextjs": "pnpm --filter @limelease/nextjs-app dev"
   },
   "dependencies": {
+    "@pulumi/digitalocean": "^4.30.2",
     "@pulumi/docker": "^4.5.4",
     "@pulumi/pulumi": "^3.120.0",
     "sst": "ion"
+  },
+  "resolutions": {
+    "ts-invariant": "^0.5.0"
   },
   "preconstruct": {
     "packages": [

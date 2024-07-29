@@ -1,6 +1,12 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 
 import * as pulumi from "@pulumi/pulumi";
+import * as digitalocean from "@pulumi/digitalocean";
+
+
+/*
+
+// Future AWS IaC
 
 export default $config({
   app(input) {
@@ -717,3 +723,5 @@ export default $config({
     });
   },
 });
+
+*/

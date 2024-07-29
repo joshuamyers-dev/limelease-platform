@@ -1,0 +1,76 @@
+name: CI
+
+# 1
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push events but only for the master branch
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Image version'
+        required: true
+#2
+env:
+  REGISTRY: "registry.digitalocean.com/limelease"
+  ELIXIR_IMAGE_NAME: "elixir-api"
+  WEB_IMAGE_NAME: "nextjs-app"
+
+#3
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo 
+        uses: actions/checkout@v2
+        
+      - name: Build container image
+        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):latest .
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    
+      - name: Log in to DigitalOcean Container Registry with short-lived credentials
+        run: doctl registry login --expiry-seconds 600
+
+      # Build and push Elixir API image
+      - name: Build Elixir API container image
+        run: docker build -f ./limelease/services/elixir-api/Dockerfile -t $REGISTRY/$ELIXIR_IMAGE_NAME:latest ./limelease/services/elixir-api
+
+      # Build and push Next.js web app image
+      - name: Build Next.js web app container image
+        run: docker build -f ./limelease/apps/nextjs-app/Dockerfile -t $REGISTRY/$WEB_IMAGE_NAME:latest ./limelease/apps/nextjs-app
+
+      - name: Remove all old images
+        run: if [ ! -z "$(doctl registry repository list | grep "$(echo $IMAGE_NAME)")" ]; then doctl registry repository delete-manifest $(echo $IMAGE_NAME) $(doctl registry repository list-tags $(echo $IMAGE_NAME) | grep -o "sha.*") --force; else echo "No repository"; fi
+
+      - name: Push Next.js web app image to DigitalOcean Container Registry
+        run: docker push $REGISTRY/$WEB_IMAGE_NAME:latest
+
+      - name: Push Elixir API image to DigitalOcean Container Registry
+        run: docker push $REGISTRY/$ELIXIR_IMAGE_NAME:latest
+        
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build_and_push
+    
+    steps:
+      - name: Deploy to Digital Ocean droplet via SSH action
+        uses: fifsky/ssh-action@v0.0.6
+        with:
+          host: ${{ secrets.HOST }}
+          user: root
+          key: ${{ secrets.SSHKEY }}
+          command: |
+            cd ~/apps/web
+            # Login to registry
+            docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
+            # Pull the new image
+            docker-compose pull
+            # Stop and remove old containers, then run new ones
+            docker-compose down && docker-compose up -d
