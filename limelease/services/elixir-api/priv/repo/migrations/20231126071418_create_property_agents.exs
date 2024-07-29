@@ -10,6 +10,6 @@ defmodule LimeLease.Repo.Migrations.CreatePropertyAgents do
       timestamps(type: :utc_datetime_usec)
     end
 
-    create unique_index(:property_agents, [:user_id, :property_id])
+    create unique_index(:property_agents, [:agent_id, :property_id])
   end
 end
