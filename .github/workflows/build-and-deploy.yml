@@ -60,6 +60,9 @@ jobs:
 
       - name: Push Elixir API image to DigitalOcean Container Registry
         run: docker push $REGISTRY/$ELIXIR_IMAGE_NAME:latest
+
+      - name: Run registry garbage collection
+        run: doctl registry garbage-collection start --include-untagged-manifests --force
         
   deploy:
     runs-on: ubuntu-latest
