@@ -41,4 +41,4 @@ npm-debug.log
 /assets/node_modules/
 /priv/scripts/node_modules/
 
-.nx
+/.nx

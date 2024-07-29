@@ -27,9 +27,6 @@ jobs:
       - name: Checkout the repo 
         uses: actions/checkout@v2
         
-      - name: Build container image
-        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):latest .
-
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
