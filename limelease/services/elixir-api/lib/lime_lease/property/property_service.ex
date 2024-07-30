@@ -14,7 +14,7 @@ defmodule LimeLease.Property.PropertyService do
   def create_property(
         %User{} = user,
         %{address: _address, bathrooms: _bathrooms, bedrooms: _bedrooms, carspaces: _carspaces} =
-          property_details,
+        property_details,
         lease_details,
         photos,
         tenants,

@@ -41,6 +41,7 @@ defmodule LimeLease.Property.Property do
     property
     |> cast(attrs, [:bedrooms, :bathrooms, :carspaces])
     |> validate_required([:bedrooms, :bathrooms, :carspaces])
+    |> put_change(:agency_id, agent.agency_id)
     |> put_embed(:photos, attrs[:photos])
     |> cast_embed(:address, with: &LimeLease.Property.Address.create_changeset/2)
     |> cast_embed(:landlords, with: &LimeLease.Property.PropertyLandlord.changeset/2)
