@@ -97032,3 +97032,37 @@ Failed to process project graph. Run "nx reset" to fix this. Please report the i
 [NX Daemon Server] - 2024-07-30T02:36:44.667Z - Done responding to the client project-graph
 [NX Daemon Server] - 2024-07-30T02:36:44.667Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
 [NX Daemon Server] - 2024-07-30T02:36:44.670Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-07-30T03:04:44.159Z - [WATCHER]: limelease/services/elixir-api/lib/lime_lease/property/property.ex was modified
+[NX Daemon Server] - 2024-07-30T03:04:44.159Z - [REQUEST]: Responding to the client. File watch changed
+[NX Daemon Server] - 2024-07-30T03:04:44.159Z - Done responding to the client File watch changed
+[NX Daemon Server] - 2024-07-30T03:04:44.159Z - Handled FILE-WATCH-CHANGED. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-07-30T03:04:44.159Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-07-30T03:04:44.159Z - Time taken for 'changed-projects' 0.04791593551635742ms
+[NX Daemon Server] - 2024-07-30T03:04:44.260Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-07-30T03:04:44.260Z - [REQUEST]: limelease/services/elixir-api/lib/lime_lease/property/property.ex
+[NX Daemon Server] - 2024-07-30T03:04:44.260Z - [REQUEST]: 
+[NX Daemon Server] - 2024-07-30T03:04:44.281Z - Time taken for 'hash changed files from watcher' 0.4077920913696289ms
+[NX Daemon Server] - 2024-07-30T03:04:45.162Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-07-30T03:04:45.162Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-07-30T03:04:45.164Z - Time taken for 'total for creating and serializing project graph' 0.0968329906463623ms
+[NX Daemon Server] - 2024-07-30T03:04:45.166Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-07-30T03:04:45.166Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-07-30T03:04:45.170Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX Daemon Server] - 2024-07-30T03:04:45.171Z - Done responding to the client handleContextFileData
+[NX Daemon Server] - 2024-07-30T03:04:45.171Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-07-30T03:04:45.171Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-07-30T03:04:45.225Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-07-30T03:04:45.227Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-07-30T03:04:45.227Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-07-30T03:04:45.227Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-07-30T03:04:45.227Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-07-30T03:04:45.228Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-07-30T03:04:45.229Z - Time taken for 'total for creating and serializing project graph' 0.055916786193847656ms
+[NX Daemon Server] - 2024-07-30T03:04:45.231Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-07-30T03:04:45.231Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 3.
+[NX Daemon Server] - 2024-07-30T03:04:45.234Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-07-30T03:04:45.234Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-07-30T03:04:45.236Z - Time taken for 'total for creating and serializing project graph' 0.07479190826416016ms
+[NX Daemon Server] - 2024-07-30T03:04:45.237Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-07-30T03:04:45.237Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-07-30T03:04:45.240Z - Established a connection. Number of open connections: 2
