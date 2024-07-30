@@ -35,13 +35,30 @@ jobs:
       - name: Log in to DigitalOcean Container Registry with short-lived credentials
         run: doctl registry login --expiry-seconds 600
 
-      # Build and push Elixir API image
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Set up Docker Buildx
+        run: |
+          docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+          docker buildx create --use --name builder
+
+        # Build and push Elixir API image
       - name: Build Elixir API container image
-        run: docker build -f ./limelease/services/elixir-api/Dockerfile -t $REGISTRY/$ELIXIR_IMAGE_NAME:latest ./limelease/services/elixir-api
+        run: |
+          docker buildx build --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new -f ./limelease/services/elixir-api/Dockerfile -t $REGISTRY/$ELIXIR_IMAGE_NAME:latest ./limelease/services/elixir-api
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
       # Build and push Next.js web app image
       - name: Build Next.js web app container image
-        run: docker build -f ./limelease/apps/nextjs-app/Dockerfile -t $REGISTRY/$WEB_IMAGE_NAME:latest ./limelease/apps/nextjs-app
+        run: |
+          docker buildx build --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new -f ./limelease/apps/nextjs-app/Dockerfile -t $REGISTRY/$WEB_IMAGE_NAME:latest ./limelease/apps/nextjs-app
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
         
       - name: Remove all old images
         run: |
