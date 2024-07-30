@@ -32,6 +32,8 @@ defmodule LimeLease.Property.Property do
     has_many :tenants, LimeLease.Tenant.Tenant, on_replace: :delete_if_exists
     has_many(:property_agents, LimeLease.PropertyAgent.PropertyAgent, on_replace: :delete)
 
+    belongs_to :agency, LimeLease.Agency.Agency
+
     timestamps(type: :utc_datetime_usec)
   end
 
