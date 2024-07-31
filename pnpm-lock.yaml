@@ -22,7 +22,7 @@ importers:
         version: 3.120.0(ts-node@10.9.2(typescript@5.4.5))(typescript@5.4.5)
       sst:
         specifier: ion
-        version: 3.0.37
+        version: 0.1.64
     devDependencies:
       '@types/aws-lambda':
         specifier: 8.10.138
@@ -299,6 +299,9 @@ importers:
       playwright-core:
         specifier: ^1.44.1
         version: 1.44.1
+      playwright-extra:
+        specifier: ^4.3.6
+        version: 4.3.6(playwright-core@1.44.1)
 
 packages:
 
@@ -2692,9 +2695,6 @@ packages:
 
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
-
-  '@tsconfig/node20@20.1.4':
-    resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
 
   '@tufjs/canonical-json@2.0.0':
     resolution: {integrity: sha512-yVtV8zsdo8qFHe+/3kw81dSLyF7D576A5cCFCi4X7B39tWT7SekaEFUnvnWJHz+9qO7qJTah1JbrDjWKqFtdWA==}
@@ -6861,8 +6861,34 @@ packages:
     resolution: {integrity: sha512-MGrFH9Z4NP9Iyhqn16sDtBpRRNJ0Y2hNa6D65h736fVSaPCHr4DM4sWUNvVaSuC+0OBGhwsrydQwmgfg5LncqQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  sst@3.0.37:
-    resolution: {integrity: sha512-FgZIvBMEtGKO2UtS47YryfDAoK+4IPAYJYftDRjCM2Dmxh+0HHocCAXW/A2ZpNOK36y9hT9w+Naycq2OhtLCNg==}
+  sst-darwin-arm64@0.1.64:
+    resolution: {integrity: sha512-fV8bV6Fs9sm/qtJ3Wmizzp4fU71G/xwIV115CUQxaqQtXLe05GKfRWddbE3bf+o6sWOTUJTGwPXGHEy54rlnpQ==}
+    cpu: [arm64]
+    os: [darwin]
+
+  sst-darwin-x64@0.1.64:
+    resolution: {integrity: sha512-Ks76OXXHZeLxw/7YVe+StNhd4Hd5vKb/5sSlhbeIHEHarqCyxKG5BthWXCICo4F338qO5v5M6T1kLIvXY6Hl/Q==}
+    cpu: [x64]
+    os: [darwin]
+
+  sst-linux-arm64@0.1.64:
+    resolution: {integrity: sha512-bF8hDGCQVe6d4kvkH3Mxs/0ZbmoFvGlcXF5wHr12pEYdSiDcHMvw94krHvOsh/XJhCNwSP3LPf0O16hE+a5NiQ==}
+    cpu: [arm64]
+    os: [linux]
+
+  sst-linux-x64@0.1.64:
+    resolution: {integrity: sha512-rr2oVoTX/1d4mNY9ERAma3ShN46EtvQR1MwROvUqR2yShDWbO91lFw2NgJQQEGbtUpqN4f2BUwtmJL5aUqqEpw==}
+    cpu: [x64]
+    os: [linux]
+
+  sst-linux-x86@0.1.64:
+    resolution: {integrity: sha512-3S/G7VD22SMFr7xmGZ+FR1Ob39vm3BjWtfj3oPo2SWVfjTCF49iPIID2WwN+vr3IewTqRGrcWMQaNOOw9ghKhQ==}
+    cpu: [x86]
+    os: [linux]
+
+  sst@0.1.64:
+    resolution: {integrity: sha512-FXs68NtAKnZ3ts26uPGltzExVDnXw78mDI2dsGs80uoZ6o4QDtQ1O0qmSUheviJulGz+4Vgw1iBhxJDnw5FaZA==}
+    hasBin: true
     peerDependencies:
       hono: 4.x
       valibot: 0.30.x
@@ -11474,8 +11500,6 @@ snapshots:
   '@tsconfig/node14@1.0.3': {}
 
   '@tsconfig/node16@1.0.4': {}
-
-  '@tsconfig/node20@20.1.4': {}
 
   '@tufjs/canonical-json@2.0.0': {}
 
@@ -16691,13 +16715,33 @@ snapshots:
     dependencies:
       minipass: 7.1.2
 
-  sst@3.0.37:
+  sst-darwin-arm64@0.1.64:
+    optional: true
+
+  sst-darwin-x64@0.1.64:
+    optional: true
+
+  sst-linux-arm64@0.1.64:
+    optional: true
+
+  sst-linux-x64@0.1.64:
+    optional: true
+
+  sst-linux-x86@0.1.64:
+    optional: true
+
+  sst@0.1.64:
     dependencies:
       '@aws-sdk/client-lambda': 3.478.0
-      '@tsconfig/node20': 20.1.4
       aws4fetch: 1.0.18
       jose: 5.2.3
       openid-client: 5.6.4
+    optionalDependencies:
+      sst-darwin-arm64: 0.1.64
+      sst-darwin-x64: 0.1.64
+      sst-linux-arm64: 0.1.64
+      sst-linux-x64: 0.1.64
+      sst-linux-x86: 0.1.64
     transitivePeerDependencies:
       - aws-crt
 

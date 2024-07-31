@@ -18,6 +18,10 @@ defmodule LimeLease.User.UserSchema do
     field :agency, :agency do
       resolve(dataloader(LimeLease.User.UserContext, :agency))
     end
+
+    field :is_admin, non_null(:boolean) do
+      resolve(&LimeLease.User.UserResolver.is_admin_field/3)
+    end
   end
 
   object :session do

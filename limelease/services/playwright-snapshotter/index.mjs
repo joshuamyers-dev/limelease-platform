@@ -1,17 +1,16 @@
-import { chromium as playwright } from "playwright-core";
+import { chromium as playwright } from "playwright-extra";
 import chromium from "@sparticuz/chromium";
 
 export const handler = async (event) => {
-  let result = null;
-  let browser = null;
-
   const { url } = JSON.parse(event.body);
 
+  let result;
+
   try {
-    browser = await playwright.chromium.launch({
+    const browser = await playwright.launch({
       args: chromium.args,
-      executablePath: await chromium.executablePath,
-      headless: chromium.headless,
+      executablePath: await chromium.executablePath(),
+      headless: true,
     });
 
     const page = await browser.newPage();

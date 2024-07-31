@@ -22,15 +22,22 @@ defmodule LimeLease.User.UserContext do
     |> Repo.ok_error()
   end
 
-  @spec can_assign_request_to_contractor(LimeLease.User.User.t(), LimeLease.Contractor.Contractor.t()) :: {:error, :unauthorized} | {:ok, :can_assign_request_to_contractor}
-  def can_assign_request_to_contractor(%User{} = user, %Contractor{} = contractor) do
+  @spec can_assign_request_to_contractor?(LimeLease.User.User.t(), LimeLease.Contractor.Contractor.t()) :: {:error, :unauthorized} | {:ok, :can_assign_request_to_contractor}
+  def can_assign_request_to_contractor?(%User{} = user, %Contractor{} = contractor) do
     case contractor.agency_id == user.agency.id do
       true -> {:ok, :can_assign_request_to_contractor}
       false -> {:error, :unauthorized}
     end
   end
 
-  def can_delete_contractor_job(%User{} = user, %ContractorJob{} = contractor_job) do
+  def admin_of_agency?(%LimeLease.User.User{} = user) do
+    case user.agency_agent.role == "admin" do
+      true -> {:ok, :is_admin_of_agency}
+      false -> {:error, :unauthorized}
+    end
+  end
+
+  def can_delete_contractor_job?(%User{} = user, %ContractorJob{} = contractor_job) do
     case contractor_job.contractor.agency_id == user.agency.id do
       true -> {:ok, :can_delete_contractor_job}
       false -> {:error, :unauthorized}

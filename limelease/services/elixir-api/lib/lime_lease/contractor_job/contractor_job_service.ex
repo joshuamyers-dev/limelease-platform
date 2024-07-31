@@ -17,7 +17,7 @@ defmodule LimeLease.ContractorJob.ContractorJobService do
   def create_contractor_job(contractor_id, request_id, booking_date_start, booking_date_end, description, contractor_message, %User{} = user) do
     with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.get_request_by_id(request_id),
          {:ok, %Contractor{} = contractor} <- ContractorContext.get_contractor_by_id(contractor_id, user),
-         {:ok, :can_assign_request_to_contractor} <- UserContext.can_assign_request_to_contractor(user, contractor) do
+         {:ok, :can_assign_request_to_contractor} <- UserContext.can_assign_request_to_contractor?(user, contractor) do
       comment_changeset =
         PropertyRequestComment.create_changeset(
           %PropertyRequestComment{},
@@ -73,7 +73,7 @@ defmodule LimeLease.ContractorJob.ContractorJobService do
 
   def delete_contractor_job(id, %User{} = user) do
     with {:ok, %ContractorJob{} = contractor_job} <- ContractorJobContext.get_contractor_job_by_id(id),
-         {:ok, :can_delete_contractor_job} <- UserContext.can_delete_contractor_job(user, contractor_job) do
+         {:ok, :can_delete_contractor_job} <- UserContext.can_delete_contractor_job?(user, contractor_job) do
       changeset_attrs = %{
         message_body: "The job assigned to #{contractor_job.contractor.business_name} was removed.",
         author_name: "#{user.first_name} #{user.last_name}",

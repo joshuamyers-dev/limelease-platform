@@ -19,7 +19,7 @@ export default $config({
     };
   },
   async run() {
-    const api = new sst.aws.ApiGatewayV2("Services");
+    const api = new sst.aws.ApiGatewayV2("Api");
 
     api.route("POST /scrape", {
       handler: "limelease/services/playwright-scraper/index.handler",

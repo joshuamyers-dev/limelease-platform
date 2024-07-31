@@ -88,8 +88,9 @@ config :ex_aws,
   secret_access_key: "REDACTED_AWS_SECRET_KEY",
   region: "ap-southeast-2",
   bucket: "limelease",
-  static_folder: "static-files"
+  static_folder: "static-files",
+  api_gateway_endpoint: "https://0e0zk4oupa.execute-api.ap-southeast-2.amazonaws.com"
 
 config :lime_lease, LimeLease.Mailer,
   adapter: Swoosh.Adapters.Postmark,
-  api_key: "REDACTED_POSTMARK_KEY_1"
+  api_key: "REDACTED_POSTMARK_KEY_2"

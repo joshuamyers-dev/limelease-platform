@@ -1,0 +1,21 @@
+functions:
+  scrape:
+    handler: limelease/services/playwright-scraper/index.handler
+    runtime: nodejs:18
+    memory: 2048
+    timeout: 60
+    cors: true
+    install:
+      - "@sparticuz/chromium"
+      - "playwright-core"
+      - "puppeteer-extra-plugin-stealth"
+
+  snapshot:
+    handler: limelease/services/playwright-snapshotter/index.handler
+    runtime: nodejs:18
+    memory: 2048
+    timeout: 60
+    cors: true
+    install:
+      - "@sparticuz/chromium"
+      - "playwright-core"

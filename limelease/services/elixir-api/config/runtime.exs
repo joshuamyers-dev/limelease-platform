@@ -77,7 +77,8 @@ if config_env() == :prod do
     secret_access_key: System.fetch_env!("AWS_SECRET_KEY"),
     region: "ap-southeast-2",
     bucket: System.fetch_env!("AWS_BUCKET"),
-    static_folder: System.fetch_env!("AWS_STATIC_FOLDER")
+    static_folder: System.fetch_env!("AWS_STATIC_FOLDER"),
+    api_gateway_endpoint: System.fetch_env!("API_GATEWAY_ENDPOINT")
 
   config :lime_lease, LimeLease.Mailer,
     adapter: Swoosh.Adapters.Postmark,

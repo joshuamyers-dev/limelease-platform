@@ -4437,15 +4437,6 @@
         "hash": "sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA=="
       }
     },
-    "npm:@tsconfig/node20": {
-      "type": "npm",
-      "name": "npm:@tsconfig/node20",
-      "data": {
-        "version": "20.1.4",
-        "packageName": "@tsconfig/node20",
-        "hash": "sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg=="
-      }
-    },
     "npm:@tufjs/canonical-json": {
       "type": "npm",
       "name": "npm:@tufjs/canonical-json",
@@ -13599,13 +13590,58 @@
         "hash": "sha512-MGrFH9Z4NP9Iyhqn16sDtBpRRNJ0Y2hNa6D65h736fVSaPCHr4DM4sWUNvVaSuC+0OBGhwsrydQwmgfg5LncqQ=="
       }
     },
+    "npm:sst-darwin-arm64": {
+      "type": "npm",
+      "name": "npm:sst-darwin-arm64",
+      "data": {
+        "version": "0.1.64",
+        "packageName": "sst-darwin-arm64",
+        "hash": "sha512-fV8bV6Fs9sm/qtJ3Wmizzp4fU71G/xwIV115CUQxaqQtXLe05GKfRWddbE3bf+o6sWOTUJTGwPXGHEy54rlnpQ=="
+      }
+    },
+    "npm:sst-darwin-x64": {
+      "type": "npm",
+      "name": "npm:sst-darwin-x64",
+      "data": {
+        "version": "0.1.64",
+        "packageName": "sst-darwin-x64",
+        "hash": "sha512-Ks76OXXHZeLxw/7YVe+StNhd4Hd5vKb/5sSlhbeIHEHarqCyxKG5BthWXCICo4F338qO5v5M6T1kLIvXY6Hl/Q=="
+      }
+    },
+    "npm:sst-linux-arm64": {
+      "type": "npm",
+      "name": "npm:sst-linux-arm64",
+      "data": {
+        "version": "0.1.64",
+        "packageName": "sst-linux-arm64",
+        "hash": "sha512-bF8hDGCQVe6d4kvkH3Mxs/0ZbmoFvGlcXF5wHr12pEYdSiDcHMvw94krHvOsh/XJhCNwSP3LPf0O16hE+a5NiQ=="
+      }
+    },
+    "npm:sst-linux-x64": {
+      "type": "npm",
+      "name": "npm:sst-linux-x64",
+      "data": {
+        "version": "0.1.64",
+        "packageName": "sst-linux-x64",
+        "hash": "sha512-rr2oVoTX/1d4mNY9ERAma3ShN46EtvQR1MwROvUqR2yShDWbO91lFw2NgJQQEGbtUpqN4f2BUwtmJL5aUqqEpw=="
+      }
+    },
+    "npm:sst-linux-x86": {
+      "type": "npm",
+      "name": "npm:sst-linux-x86",
+      "data": {
+        "version": "0.1.64",
+        "packageName": "sst-linux-x86",
+        "hash": "sha512-3S/G7VD22SMFr7xmGZ+FR1Ob39vm3BjWtfj3oPo2SWVfjTCF49iPIID2WwN+vr3IewTqRGrcWMQaNOOw9ghKhQ=="
+      }
+    },
     "npm:sst": {
       "type": "npm",
       "name": "npm:sst",
       "data": {
-        "version": "3.0.37",
+        "version": "0.1.64",
         "packageName": "sst",
-        "hash": "sha512-FgZIvBMEtGKO2UtS47YryfDAoK+4IPAYJYftDRjCM2Dmxh+0HHocCAXW/A2ZpNOK36y9hT9w+Naycq2OhtLCNg=="
+        "hash": "sha512-FXs68NtAKnZ3ts26uPGltzExVDnXw78mDI2dsGs80uoZ6o4QDtQ1O0qmSUheviJulGz+4Vgw1iBhxJDnw5FaZA=="
       }
     },
     "npm:stack-utils": {
@@ -37522,11 +37558,6 @@
     },
     {
       "source": "npm:sst",
-      "target": "npm:@tsconfig/node20",
-      "type": "static"
-    },
-    {
-      "source": "npm:sst",
       "target": "npm:aws4fetch",
       "type": "static"
     },
@@ -37538,6 +37569,31 @@
     {
       "source": "npm:sst",
       "target": "npm:openid-client",
+      "type": "static"
+    },
+    {
+      "source": "npm:sst",
+      "target": "npm:sst-darwin-arm64",
+      "type": "static"
+    },
+    {
+      "source": "npm:sst",
+      "target": "npm:sst-darwin-x64",
+      "type": "static"
+    },
+    {
+      "source": "npm:sst",
+      "target": "npm:sst-linux-arm64",
+      "type": "static"
+    },
+    {
+      "source": "npm:sst",
+      "target": "npm:sst-linux-x64",
+      "type": "static"
+    },
+    {
+      "source": "npm:sst",
+      "target": "npm:sst-linux-x86",
       "type": "static"
     },
     {
