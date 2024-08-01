@@ -21,7 +21,7 @@ defmodule LimeLease.PropertyAgent.PropertyAgentContext do
   def get_manager_user_ids_for_property(%Property{} = property) do
     PropertyAgent
     |> PropertyAgent.with_property_id(property.id)
-    |> PropertyAgent.select_user_id()
+    |> PropertyAgent.select_user_id_for_property_agent()
     |> Repo.all()
     |> Repo.ok_error()
   end

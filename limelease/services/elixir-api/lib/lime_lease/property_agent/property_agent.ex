@@ -19,6 +19,11 @@ defmodule LimeLease.PropertyAgent.PropertyAgent do
     |> cast(attrs, [:agent_id, :property_id])
   end
 
+  def default_preloads(query) do
+    query
+    |> preload(agent: :user)
+  end
+
   def with_agent_id(query, id) do
     query
     |> where([q], q.agent_id == ^id)
@@ -29,13 +34,15 @@ defmodule LimeLease.PropertyAgent.PropertyAgent do
     |> where([q], q.property_id == ^id)
   end
 
+  def select_user_id_for_property_agent(query) do
+    query
+    |> join(:inner, [pa], a in assoc(pa, :agent))
+    |> join(:inner, [pa, a], u in assoc(a, :user))
+    |> select([pa, a, u], u.id)
+  end
+
   def select_property_id(query) do
     query
     |> select([q], q.property_id)
-  end
-
-  def select_user_id(query) do
-    query
-    |> select([q], q.user_id)
   end
 end
