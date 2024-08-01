@@ -103943,3 +103943,172 @@ Failed to process project graph. Run "nx reset" to fix this. Please report the i
 [NX Daemon Server] - 2024-08-01T10:57:07.024Z - [WATCHER]: Processing file changes in outputs
 [NX Daemon Server] - 2024-08-01T10:57:44.722Z - [WATCHER]: Processing file changes in outputs
 [NX Daemon Server] - 2024-08-01T10:57:45.059Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:04:12.963Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:04:12.967Z - [WATCHER]: limelease/services/elixir-api/Dockerfile was modified
+[NX Daemon Server] - 2024-08-01T11:04:12.967Z - [REQUEST]: Responding to the client. File watch changed
+[NX Daemon Server] - 2024-08-01T11:04:12.967Z - Done responding to the client File watch changed
+[NX Daemon Server] - 2024-08-01T11:04:12.967Z - Handled FILE-WATCH-CHANGED. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-08-01T11:04:12.967Z - Time taken for 'changed-projects' 0.08812499046325684ms
+[NX Daemon Server] - 2024-08-01T11:04:13.069Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-08-01T11:04:13.069Z - [REQUEST]: limelease/services/elixir-api/Dockerfile
+[NX Daemon Server] - 2024-08-01T11:04:13.069Z - [REQUEST]: 
+[NX Daemon Server] - 2024-08-01T11:04:13.110Z - Time taken for 'hash changed files from watcher' 0.8435828685760498ms
+[NX Daemon Server] - 2024-08-01T11:04:13.971Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:04:13.971Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:04:13.973Z - Time taken for 'total for creating and serializing project graph' 0.1154170036315918ms
+[NX Daemon Server] - 2024-08-01T11:04:13.974Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:04:13.974Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-08-01T11:04:13.978Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX Daemon Server] - 2024-08-01T11:04:13.979Z - Done responding to the client handleContextFileData
+[NX Daemon Server] - 2024-08-01T11:04:13.979Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-08-01T11:04:13.979Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:04:14.023Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-08-01T11:04:14.024Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:04:14.024Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-01T11:04:14.024Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:04:14.024Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:04:14.024Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:04:14.026Z - Time taken for 'total for creating and serializing project graph' 0.04674983024597168ms
+[NX Daemon Server] - 2024-08-01T11:04:14.027Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:04:14.027Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-08-01T11:04:14.030Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:04:14.030Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:04:14.032Z - Time taken for 'total for creating and serializing project graph' 0.07941579818725586ms
+[NX Daemon Server] - 2024-08-01T11:04:14.033Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:04:14.033Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-08-01T11:04:14.036Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-01T11:08:54.689Z - [WATCHER]: limelease/services/elixir-api/lib/lime_lease_web/emails/property_request_emails.ex was modified
+[NX Daemon Server] - 2024-08-01T11:08:54.689Z - [REQUEST]: Responding to the client. File watch changed
+[NX Daemon Server] - 2024-08-01T11:08:54.689Z - Done responding to the client File watch changed
+[NX Daemon Server] - 2024-08-01T11:08:54.689Z - Handled FILE-WATCH-CHANGED. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-08-01T11:08:54.690Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:08:54.690Z - Time taken for 'changed-projects' 0.04375004768371582ms
+[NX Daemon Server] - 2024-08-01T11:08:54.791Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-08-01T11:08:54.791Z - [REQUEST]: limelease/services/elixir-api/lib/lime_lease_web/emails/property_request_emails.ex
+[NX Daemon Server] - 2024-08-01T11:08:54.791Z - [REQUEST]: 
+[NX Daemon Server] - 2024-08-01T11:08:54.816Z - Time taken for 'hash changed files from watcher' 0.3848750591278076ms
+[NX Daemon Server] - 2024-08-01T11:08:55.693Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:08:55.693Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:08:55.695Z - Time taken for 'total for creating and serializing project graph' 0.10195803642272949ms
+[NX Daemon Server] - 2024-08-01T11:08:55.696Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:08:55.696Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2024-08-01T11:08:55.699Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX Daemon Server] - 2024-08-01T11:08:55.699Z - Done responding to the client handleContextFileData
+[NX Daemon Server] - 2024-08-01T11:08:55.699Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-08-01T11:08:55.700Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:08:55.747Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-08-01T11:08:55.748Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:08:55.748Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-01T11:08:55.748Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:08:55.748Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:08:55.748Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:08:55.750Z - Time taken for 'total for creating and serializing project graph' 0.04787492752075195ms
+[NX Daemon Server] - 2024-08-01T11:08:55.752Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:08:55.752Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-08-01T11:08:55.755Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:08:55.755Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:08:55.757Z - Time taken for 'total for creating and serializing project graph' 0.08041691780090332ms
+[NX Daemon Server] - 2024-08-01T11:08:55.759Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:08:55.759Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-08-01T11:08:55.762Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-01T11:08:56.046Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:08:56.247Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:08:56.308Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:08:56.360Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:08:56.425Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:08:56.484Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:08:56.566Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:08:56.620Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:01.660Z - [WATCHER]: limelease/services/elixir-api/lib/lime_lease_web/emails/property_request_emails.ex was modified
+[NX Daemon Server] - 2024-08-01T11:09:01.661Z - [REQUEST]: Responding to the client. File watch changed
+[NX Daemon Server] - 2024-08-01T11:09:01.661Z - Done responding to the client File watch changed
+[NX Daemon Server] - 2024-08-01T11:09:01.661Z - Handled FILE-WATCH-CHANGED. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-08-01T11:09:01.661Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:01.661Z - Time taken for 'changed-projects' 0.031083106994628906ms
+[NX Daemon Server] - 2024-08-01T11:09:01.762Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-08-01T11:09:01.762Z - [REQUEST]: limelease/services/elixir-api/lib/lime_lease_web/emails/property_request_emails.ex
+[NX Daemon Server] - 2024-08-01T11:09:01.762Z - [REQUEST]: 
+[NX Daemon Server] - 2024-08-01T11:09:01.786Z - Time taken for 'hash changed files from watcher' 0.36937499046325684ms
+[NX Daemon Server] - 2024-08-01T11:09:02.664Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:09:02.664Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:09:02.665Z - Time taken for 'total for creating and serializing project graph' 0.12837505340576172ms
+[NX Daemon Server] - 2024-08-01T11:09:02.668Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:09:02.668Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-08-01T11:09:02.671Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX Daemon Server] - 2024-08-01T11:09:02.671Z - Done responding to the client handleContextFileData
+[NX Daemon Server] - 2024-08-01T11:09:02.671Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-08-01T11:09:02.672Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:09:02.715Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-08-01T11:09:02.716Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:09:02.716Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-01T11:09:02.716Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:09:02.716Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:09:02.716Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:09:02.717Z - Time taken for 'total for creating and serializing project graph' 0.041374921798706055ms
+[NX Daemon Server] - 2024-08-01T11:09:02.720Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:09:02.720Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-08-01T11:09:02.722Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:09:02.722Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:09:02.724Z - Time taken for 'total for creating and serializing project graph' 0.06887483596801758ms
+[NX Daemon Server] - 2024-08-01T11:09:02.726Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:09:02.726Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-08-01T11:09:02.729Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-01T11:09:04.402Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.064Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.253Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.321Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.378Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.434Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.488Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.543Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.604Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.746Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.812Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.875Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:07.943Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:13.002Z - [WATCHER]: limelease/services/elixir-api/lib/lime_lease_web/emails/property_request_emails.ex was modified
+[NX Daemon Server] - 2024-08-01T11:09:13.002Z - [REQUEST]: Responding to the client. File watch changed
+[NX Daemon Server] - 2024-08-01T11:09:13.002Z - Done responding to the client File watch changed
+[NX Daemon Server] - 2024-08-01T11:09:13.002Z - Handled FILE-WATCH-CHANGED. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-08-01T11:09:13.002Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:13.002Z - Time taken for 'changed-projects' 0.04499983787536621ms
+[NX Daemon Server] - 2024-08-01T11:09:13.104Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-08-01T11:09:13.104Z - [REQUEST]: limelease/services/elixir-api/lib/lime_lease_web/emails/property_request_emails.ex
+[NX Daemon Server] - 2024-08-01T11:09:13.104Z - [REQUEST]: 
+[NX Daemon Server] - 2024-08-01T11:09:13.128Z - Time taken for 'hash changed files from watcher' 0.39583301544189453ms
+[NX Daemon Server] - 2024-08-01T11:09:14.006Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:09:14.006Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:09:14.008Z - Time taken for 'total for creating and serializing project graph' 0.10845804214477539ms
+[NX Daemon Server] - 2024-08-01T11:09:14.010Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:09:14.010Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-08-01T11:09:14.013Z - [REQUEST]: Responding to the client. handleContextFileData
+[NX Daemon Server] - 2024-08-01T11:09:14.013Z - Done responding to the client handleContextFileData
+[NX Daemon Server] - 2024-08-01T11:09:14.013Z - Handled GET_CONTEXT_FILE_DATA. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-08-01T11:09:14.014Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:09:14.069Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-08-01T11:09:14.071Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:09:14.071Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-08-01T11:09:14.071Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-08-01T11:09:14.072Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:09:14.072Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:09:14.074Z - Time taken for 'total for creating and serializing project graph' 0.13324999809265137ms
+[NX Daemon Server] - 2024-08-01T11:09:14.076Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:09:14.076Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-08-01T11:09:14.079Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-08-01T11:09:14.079Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-08-01T11:09:14.081Z - Time taken for 'total for creating and serializing project graph' 0.0770421028137207ms
+[NX Daemon Server] - 2024-08-01T11:09:14.083Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-08-01T11:09:14.083Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 4.
+[NX Daemon Server] - 2024-08-01T11:09:14.086Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-08-01T11:09:15.373Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.028Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.098Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.150Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.213Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.268Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.321Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.383Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.551Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.605Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.669Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-08-01T11:09:18.726Z - [WATCHER]: Processing file changes in outputs
