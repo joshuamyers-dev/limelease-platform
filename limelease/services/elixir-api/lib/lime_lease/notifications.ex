@@ -27,9 +27,13 @@ defmodule LimeLease.Notifications do
 
   def send_email_notification_to_property_managers(%Property{} = property, screenshot_image_url, cta_url) do
     with {:ok, manager_user_ids} <- PropertyAgentContext.get_manager_user_ids_for_property(property) do
+      Logger.info("Sending status update email to property managers (#{manager_user_ids}) for property #{property.id}.")
+
       Flow.from_enumerable(manager_user_ids)
       |> Flow.map(fn user_id ->
         {:ok, %User{} = user} = UserContext.get_user_by_id(user_id)
+
+        Logger.info("Sending email to #{user.email}")
 
         PropertyRequestEmails.status_update(user.email, Helpers.full_user_name(user), Helpers.address_label(property.address), screenshot_image_url, cta_url)
         |> Mailer.deliver()

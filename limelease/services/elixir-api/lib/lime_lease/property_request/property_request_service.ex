@@ -1,5 +1,4 @@
 defmodule LimeLease.PropertyRequest.PropertyRequestService do
-  require Logger
   alias LimeLease.Notifications
   alias LimeLease.StaticMedia.StaticMediaService
   alias LimeLease.StaticMedia.{StaticMedia, StaticMediaContext}
@@ -12,6 +11,7 @@ defmodule LimeLease.PropertyRequest.PropertyRequestService do
   alias LimeLease.Services.AWS
 
   require IEx
+  require Logger
 
   def create_request(args, %User{} = user) do
     photos =
@@ -51,6 +51,8 @@ defmodule LimeLease.PropertyRequest.PropertyRequestService do
          {:ok, put_url} <- AWS.generate_presigned_put_url(static_media.s3_key, static_media.mime_type),
          {:ok, %Req.Response{status: 200}} <- Req.put(put_url, body: screenshot_base64),
          {:ok, get_url} <- AWS.generate_presigned_get_url(static_media.s3_key) do
+      Logger.info("Created screenshot for request #{request.id}. with URL: #{get_url}")
+
       {:ok, get_url}
     else
       {:ok, %Req.Response{status: status_code} = error_response} when status_code !== 200 ->
@@ -62,18 +64,6 @@ defmodule LimeLease.PropertyRequest.PropertyRequestService do
       {:error, _reason} ->
         Logger.error("Failed to create screenshot for request #{request.id}. Error: Node.js did not return a binary. Puppeteer failed. Retrying...")
         create_request_status_screenshot(request)
-    end
-  end
-
-  defp run_puppeteer_script(script_path, url) do
-    try do
-      Exile.stream!(~w(node #{script_path} #{url} ))
-      |> Enum.into("")
-      |> :binary.replace("\n", "")
-      |> Base.decode64()
-    rescue
-      _ ->
-        {:error, "Puppeteer failed to create screenshot. #{url}"}
     end
   end
 

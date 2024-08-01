@@ -38,50 +38,59 @@ defmodule LimeLeaseWeb.WebhookController do
         |> send_resp(200, "")
 
       false ->
-        with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.get_request_by_ticket_number(ticket_number) do
-          with true <- request.state == :awaiting_response do
-            accepted_response = String.downcase(response_body) |> String.contains?("yes")
+        with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.get_request_by_ticket_number(ticket_number),
+             {:ok, true} <- request_is_awaiting_contractor(request) do
+          accepted_response = String.downcase(response_body) |> String.contains?("yes")
 
-            case accepted_response do
-              true ->
-                with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.update_request_state(request, :contractor_appointment_booked),
-                     {:ok, %ContractorJob{} = job} <- ContractorJobContext.get_contractor_job_for_request(request),
-                     {:ok, %ContractorJob{} = _job} <- ContractorJobContext.update_contractor_job_state(job, :job_booked),
-                     {:ok, %PropertyRequestComment{} = _comment} <-
-                       PropertyRequestCommentService.create_system_comment_for_request(
-                         request.id,
-                         job.contractor.business_name,
-                         "The contractor has accepted the job on the requested date and time."
-                       ) do
-                  spawn(fn ->
-                    SmsQueue.enqueue_sms(job.contractor.contact_number, "Thank you. We have sent your confirmation to the property manager.")
-                    Notifications.send_status_update_email(request)
-                  end)
+          case accepted_response do
+            true ->
+              with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.update_request_state(request, :contractor_appointment_booked),
+                   {:ok, %ContractorJob{} = job} <- ContractorJobContext.get_contractor_job_for_request(request),
+                   {:ok, %ContractorJob{} = _job} <- ContractorJobContext.update_contractor_job_state(job, :job_booked),
+                   {:ok, %PropertyRequestComment{} = _comment} <-
+                     PropertyRequestCommentService.create_system_comment_for_request(
+                       request.id,
+                       job.contractor.business_name,
+                       "The contractor has accepted the job on the requested date and time."
+                     ) do
+                spawn(fn ->
+                  SmsQueue.enqueue_sms(job.contractor.contact_number, "Thank you. We have sent your confirmation to the property manager.")
+                end)
 
-                  conn
-                  |> send_resp(200, "")
-                end
+                spawn(fn ->
+                  Notifications.send_status_update_email(request)
+                end)
 
-              false ->
-                with {:ok, %ContractorJob{} = job} <- ContractorJobContext.get_contractor_job_for_request(request),
-                     {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.update_request_state(request, :assigned_to_contractor),
-                     {:ok, %PropertyRequestComment{} = _comment} <-
-                       PropertyRequestCommentContext.create_comment_for_request(request, %{
-                         message_body: "The contractor has declined the job request.",
-                         author_name: job.contractor.business_name,
-                         system_generated: true
-                       }) do
-                  SmsQueue.enqueue_sms(
-                    job.contractor.contact_number,
-                    "Thanks for confirming. Please leave a comment to arrange an alternative time:\n\n#{front_end_url()}/requests/#{request.ticket_number}"
-                  )
+                conn
+                |> send_resp(200, "")
+              end
 
-                  conn
-                  |> send_resp(200, "")
-                end
-            end
+            false ->
+              with {:ok, %ContractorJob{} = job} <- ContractorJobContext.get_contractor_job_for_request(request),
+                   {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.update_request_state(request, :assigned_to_contractor),
+                   {:ok, %PropertyRequestComment{} = _comment} <-
+                     PropertyRequestCommentContext.create_comment_for_request(request, %{
+                       message_body: "The contractor has declined the job request.",
+                       author_name: job.contractor.business_name,
+                       system_generated: true
+                     }) do
+                SmsQueue.enqueue_sms(
+                  job.contractor.contact_number,
+                  "Thanks for confirming. Please leave a comment to arrange an alternative time:\n\n#{front_end_url()}/requests/#{request.ticket_number}"
+                )
+
+                conn
+                |> send_resp(200, "")
+              end
           end
         end
+    end
+  end
+
+  defp request_is_awaiting_contractor(%PropertyRequest{} = request) do
+    case request.state == :assigned_to_contractor do
+      true -> {:ok, true}
+      false -> {:error, "The request has been responded to already and has progressed to the next stage."}
     end
   end
 end
