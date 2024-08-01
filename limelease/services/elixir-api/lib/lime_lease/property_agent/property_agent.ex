@@ -37,8 +37,7 @@ defmodule LimeLease.PropertyAgent.PropertyAgent do
   def select_user_id_for_property_agent(query) do
     query
     |> join(:inner, [pa], a in assoc(pa, :agent))
-    |> join(:inner, [pa, a], u in assoc(a, :user))
-    |> select([pa, a, u], u.id)
+    |> select([pa, a], a.user_id)
   end
 
   def select_property_id(query) do
