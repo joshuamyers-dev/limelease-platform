@@ -45,7 +45,7 @@ defmodule LimeLease.PropertyRequest.PropertyRequestService do
   def create_request_status_screenshot(%PropertyRequest{} = request) do
     url = Application.get_env(:lime_lease, :front_end_url) <> "/requests/#{request.ticket_number}"
 
-    with {:ok, screenshot_base64} <- Req.post("#{Application.get_env(:ex_aws, :api_gateway_endpoint)}/snapshot", body: Jason.encode!(%{url: url})),
+    with {:ok, screenshot_base64} <- Req.post("#{Application.get_env(:ex_aws, :api_gateway_endpoint)}/snapshot", json: %{url: url}),
          {:ok, %StaticMedia{} = static_media} <- StaticMediaService.create_static_media("screenshot.png", "image/png"),
          {:ok, put_url} <- AWS.generate_presigned_put_url(static_media.s3_key, static_media.mime_type),
          {:ok, %Req.Response{status: 200}} <- Req.put(put_url, body: screenshot_base64),

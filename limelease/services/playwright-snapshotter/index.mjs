@@ -2,6 +2,8 @@ import { chromium as playwright } from "playwright-extra";
 import chromium from "@sparticuz/chromium";
 
 export const handler = async (event) => {
+  console.log(event.body);
+
   const { url } = JSON.parse(event.body);
 
   let result;
