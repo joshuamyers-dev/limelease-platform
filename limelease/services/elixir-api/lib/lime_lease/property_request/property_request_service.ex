@@ -47,9 +47,10 @@ defmodule LimeLease.PropertyRequest.PropertyRequestService do
 
     with {:ok, %Req.Response{body: screenshot_base64, status: 200}} <-
            Req.post("#{Application.get_env(:ex_aws, :api_gateway_endpoint)}/snapshot", json: %{url: url}),
+         {:ok, decoded_screenshot_base64} <- Base.decode64(screenshot_base64),
          {:ok, %StaticMedia{} = static_media} <- StaticMediaService.create_static_media("screenshot.png", "image/png"),
          {:ok, put_url} <- AWS.generate_presigned_put_url(static_media.s3_key, static_media.mime_type),
-         {:ok, %Req.Response{status: 200}} <- Req.put(put_url, body: screenshot_base64),
+         {:ok, %Req.Response{status: 200}} <- Req.put(put_url, body: decoded_screenshot_base64),
          {:ok, get_url} <- AWS.generate_presigned_get_url(static_media.s3_key) do
       Logger.info("Created screenshot for request #{request.id}. with URL: #{get_url}")
 

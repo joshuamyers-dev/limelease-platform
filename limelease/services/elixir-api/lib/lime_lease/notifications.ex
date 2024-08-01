@@ -16,8 +16,10 @@ defmodule LimeLease.Notifications do
       {:ok, screenshot_image_url} ->
         cta_url = Application.get_env(:lime_lease, :front_end_url) <> "/requests/#{request.ticket_number}"
 
-        send_email_notification_to_property_managers(request.property, screenshot_image_url, cta_url)
-        send_email_notification_to_landlord(request.property, screenshot_image_url, cta_url)
+        with :ok <- send_email_notification_to_property_managers(request.property, screenshot_image_url, cta_url),
+             :ok <- send_email_notification_to_landlord(request.property, screenshot_image_url, cta_url) do
+          {:ok, "emails_sent"}
+        end
 
       {:error, reason} ->
         Logger.error("Failed to send status update email for request #{request.id}. Error: Failed to create screenshot.")
