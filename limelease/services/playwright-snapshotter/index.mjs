@@ -18,7 +18,11 @@ export const handler = async (event) => {
     const page = await browser.newPage();
     await page.goto(url);
 
-    await page.setViewportSize({ width: 1080, height: 1920 });
+    await page.setViewportSize({
+      width: 100,
+      height: 1000,
+      deviceScaleFactor: 2,
+    });
     await page.waitForLoadState("networkidle");
     await page.waitForSelector("#requestDetails");
 
