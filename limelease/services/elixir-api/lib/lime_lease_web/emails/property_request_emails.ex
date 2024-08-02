@@ -15,7 +15,7 @@ defmodule LimeLeaseWeb.PropertyRequestEmails do
   end
 
   defp morning_or_evening_text() do
-    {:ok, datetime} = DateTime.now("Etc/UTC")
+    {:ok, datetime} = DateTime.now("Australia/Sydney")
 
     case datetime.hour do
       hour when hour in 0..11 -> "Good Morning,"
