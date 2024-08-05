@@ -17,6 +17,7 @@
     "@ant-design/icons": "^5.1.4",
     "@apollo/client": "^3.10.6",
     "@babel/runtime": "^7.23.8",
+    "@intercom/messenger-js-sdk": "^0.0.12",
     "@types/react-lottie": "^1.2.10",
     "antd": "^5.18.3",
     "apollo3-cache-persist": "^0.14.0",

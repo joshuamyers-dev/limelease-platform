@@ -26,6 +26,9 @@ import { useRouter } from 'next/router';
 import logo from '../../public/images/logo.svg';
 import { Colours } from '../utils/Colours';
 
+import Intercom from '@intercom/messenger-js-sdk';
+import { IntercomWrapper } from '@components/IntercomWrapper';
+
 const { Header, Content, Footer } = Layout;
 
 export interface DashboardContainerProps {
@@ -86,6 +89,7 @@ const DashboardContainer = ({ children }: DashboardContainerProps) => {
 
   return (
     <StyledLayout>
+      {userData?.me && <IntercomWrapper user={userData.me} />}
       {userData?.me && (
         <Affix>
           <StyledHeader>
@@ -113,12 +117,12 @@ const DashboardContainer = ({ children }: DashboardContainerProps) => {
       )}
       <StyledContent>{children}</StyledContent>
 
-      <FloatButton icon={<CustomerServiceOutlined />} tooltip="Support" style={{ left: 24 }} />
+      {/* <FloatButton icon={<CustomerServiceOutlined />} tooltip="Support" style={{ left: 24 }} />
       <FloatButton.Group trigger="hover" type="primary" tooltip="Quick Actions" style={{ left: 92 }} icon={<InteractionOutlined />}>
         <FloatButton icon={<FileSearchOutlined />} tooltip="Visit 5 Apollo Rd, Taylors Lakes" />
         <FloatButton icon={<ToolOutlined />} tooltip="Add a New Contractor" onClick={() => router.push('/contractors/create')} />
         <FloatButton icon={<HomeOutlined />} tooltip="Add a New Property" onClick={() => router.push('/properties/create')} />
-      </FloatButton.Group>
+      </FloatButton.Group> */}
     </StyledLayout>
   );
 };

@@ -22,7 +22,7 @@ importers:
         version: 3.120.0(ts-node@10.9.2(typescript@5.4.5))(typescript@5.4.5)
       sst:
         specifier: ion
-        version: 0.1.64
+        version: 0.1.75
     devDependencies:
       '@types/aws-lambda':
         specifier: 8.10.138
@@ -148,6 +148,9 @@ importers:
       '@babel/runtime':
         specifier: ^7.23.8
         version: 7.23.8
+      '@intercom/messenger-js-sdk':
+        specifier: ^0.0.12
+        version: 0.0.12
       '@types/react-lottie':
         specifier: ^1.2.10
         version: 1.2.10
@@ -1818,6 +1821,9 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
     cpu: [x64]
     os: [win32]
+
+  '@intercom/messenger-js-sdk@0.0.12':
+    resolution: {integrity: sha512-xoUGlKLD8nIcZaH7AesR/LfwXH4QQUdPZMV4sApK/zvVFBgAY/A9IWp1ey/jUcp+776ejtZeEqreJZxG4LdEuw==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -6861,33 +6867,33 @@ packages:
     resolution: {integrity: sha512-MGrFH9Z4NP9Iyhqn16sDtBpRRNJ0Y2hNa6D65h736fVSaPCHr4DM4sWUNvVaSuC+0OBGhwsrydQwmgfg5LncqQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  sst-darwin-arm64@0.1.64:
-    resolution: {integrity: sha512-fV8bV6Fs9sm/qtJ3Wmizzp4fU71G/xwIV115CUQxaqQtXLe05GKfRWddbE3bf+o6sWOTUJTGwPXGHEy54rlnpQ==}
+  sst-darwin-arm64@0.1.75:
+    resolution: {integrity: sha512-vbtYFmsl4V8ssqEkGRqo+FM5PLhX0krqMfUjbONPPyrJodK/VasNz0RWWA5MVsm97kW0xSdprNJbFZ3knz+NPQ==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@0.1.64:
-    resolution: {integrity: sha512-Ks76OXXHZeLxw/7YVe+StNhd4Hd5vKb/5sSlhbeIHEHarqCyxKG5BthWXCICo4F338qO5v5M6T1kLIvXY6Hl/Q==}
+  sst-darwin-x64@0.1.75:
+    resolution: {integrity: sha512-8cwJQiB7KXEicCp0QgSJTXqY1vC7qUs777SI+I+DQxkrBRUd50kaevoaBaqQ6jqZ/xkKywT6NaKh/OmCPOv4Ag==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@0.1.64:
-    resolution: {integrity: sha512-bF8hDGCQVe6d4kvkH3Mxs/0ZbmoFvGlcXF5wHr12pEYdSiDcHMvw94krHvOsh/XJhCNwSP3LPf0O16hE+a5NiQ==}
+  sst-linux-arm64@0.1.75:
+    resolution: {integrity: sha512-6oipQmn5xmle6+AGr+c6apa1OyjoNgrK7aGKEsqhwBAql1KTvYgOVY+d+GueII4KnRxhRP1CmJIujfMqxCa7Ow==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@0.1.64:
-    resolution: {integrity: sha512-rr2oVoTX/1d4mNY9ERAma3ShN46EtvQR1MwROvUqR2yShDWbO91lFw2NgJQQEGbtUpqN4f2BUwtmJL5aUqqEpw==}
+  sst-linux-x64@0.1.75:
+    resolution: {integrity: sha512-rrYPtOc0Iakc5o0QBz0tU6m+qS1/6X+rfPNAq0zZShXNi/dpCnEaIOzFxe/1wMfJug3K5SXXI2kxkzwPCIzyqA==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@0.1.64:
-    resolution: {integrity: sha512-3S/G7VD22SMFr7xmGZ+FR1Ob39vm3BjWtfj3oPo2SWVfjTCF49iPIID2WwN+vr3IewTqRGrcWMQaNOOw9ghKhQ==}
+  sst-linux-x86@0.1.75:
+    resolution: {integrity: sha512-yxouihV5Iikq3g4P8B/Dyx912A+iCD3ioEZ15ItGy3bBWyDNqpAj7zpv2Zb9e0AHb2rcpTMGC0NmgAyWyzRR0Q==}
     cpu: [x86]
     os: [linux]
 
-  sst@0.1.64:
-    resolution: {integrity: sha512-FXs68NtAKnZ3ts26uPGltzExVDnXw78mDI2dsGs80uoZ6o4QDtQ1O0qmSUheviJulGz+4Vgw1iBhxJDnw5FaZA==}
+  sst@0.1.75:
+    resolution: {integrity: sha512-+iHHUfgWw9FE4z0CWKMXhZssOaDTX7RWPh7uFvh75OU8UAD07fA+1lC4c/xan3pdtlBoXDU1VHc1Muv9EjF0iw==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -10067,6 +10073,8 @@ snapshots:
 
   '@img/sharp-win32-x64@0.33.2':
     optional: true
+
+  '@intercom/messenger-js-sdk@0.0.12': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -16715,33 +16723,33 @@ snapshots:
     dependencies:
       minipass: 7.1.2
 
-  sst-darwin-arm64@0.1.64:
+  sst-darwin-arm64@0.1.75:
     optional: true
 
-  sst-darwin-x64@0.1.64:
+  sst-darwin-x64@0.1.75:
     optional: true
 
-  sst-linux-arm64@0.1.64:
+  sst-linux-arm64@0.1.75:
     optional: true
 
-  sst-linux-x64@0.1.64:
+  sst-linux-x64@0.1.75:
     optional: true
 
-  sst-linux-x86@0.1.64:
+  sst-linux-x86@0.1.75:
     optional: true
 
-  sst@0.1.64:
+  sst@0.1.75:
     dependencies:
       '@aws-sdk/client-lambda': 3.478.0
       aws4fetch: 1.0.18
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 0.1.64
-      sst-darwin-x64: 0.1.64
-      sst-linux-arm64: 0.1.64
-      sst-linux-x64: 0.1.64
-      sst-linux-x86: 0.1.64
+      sst-darwin-arm64: 0.1.75
+      sst-darwin-x64: 0.1.75
+      sst-linux-arm64: 0.1.75
+      sst-linux-x64: 0.1.75
+      sst-linux-x86: 0.1.75
     transitivePeerDependencies:
       - aws-crt
 
