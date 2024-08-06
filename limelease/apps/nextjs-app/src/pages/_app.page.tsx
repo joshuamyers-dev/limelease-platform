@@ -79,7 +79,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ApolloProvider client={apolloClient}>
         <NextNProgress color={Colours.LIME_5} options={{ showSpinner: false }} />
         <Head>
-          <title key="title">LimeLease</title>
+          <title key="title">OccuPie</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <Component {...pageProps} />
