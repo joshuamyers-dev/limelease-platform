@@ -1,12 +1,13 @@
 defmodule LimeLease.Notifications do
   alias LimeLease.Property.{Property, PropertyLandlord}
+  alias LimeLease.Tenant.Tenant
   alias LimeLease.User.{User, UserContext}
   alias LimeLease.PropertyRequest.{PropertyRequest, PropertyRequestService}
   alias LimeLease.PropertyAgent.PropertyAgentContext
 
   alias LimeLease.{Helpers, Mailer}
 
-  alias LimeLeaseWeb.PropertyRequestEmails
+  alias LimeLeaseWeb.Emails
 
   require IEx
   require Logger
@@ -37,11 +38,26 @@ defmodule LimeLease.Notifications do
 
         Logger.info("Sending email to #{user.email}")
 
-        PropertyRequestEmails.status_update(user.email, Helpers.full_user_name(user), Helpers.address_label(property.address), screenshot_image_url, cta_url)
+        Emails.status_update(user.email, Helpers.full_user_name(user), Helpers.address_label(property.address), screenshot_image_url, cta_url)
         |> Mailer.deliver()
       end)
       |> Flow.run()
     end
+  end
+
+  def send_welcome_email_to_tenants(%Property{} = property, %User{} = agent) do
+    Flow.from_enumerable(property.tenants)
+    |> Flow.map(fn %Tenant{} = tenant ->
+      Emails.tenant_welcome(
+        tenant.user.email,
+        Helpers.full_user_name(tenant.user),
+        Helpers.full_user_name(agent),
+        Helpers.address_label(property.address),
+        "/"
+      )
+      |> Mailer.deliver()
+    end)
+    |> Flow.run()
   end
 
   def send_email_notification_to_landlord(%Property{} = property, screenshot_image_url, cta_url) do

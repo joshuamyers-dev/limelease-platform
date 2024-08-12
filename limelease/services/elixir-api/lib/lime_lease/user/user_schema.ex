@@ -10,13 +10,17 @@ defmodule LimeLease.User.UserSchema do
 
   object :user do
     field :id, non_null(:id)
-    field :email, non_null(:string)
-    field :password, :string
-    field :first_name, :string
-    field :last_name, :string
+
+    field :profile, non_null(:profile) do
+      resolve(dataloader(LimeLease.User.UserContext, :profile))
+    end
 
     field :agency, :agency do
       resolve(dataloader(LimeLease.User.UserContext, :agency))
+    end
+
+    field :tenant, :tenant do
+      resolve(dataloader(LimeLease.User.UserContext, :tenant))
     end
 
     field :is_admin, non_null(:boolean) do
@@ -55,6 +59,21 @@ defmodule LimeLease.User.UserSchema do
       end)
 
       resolve(&LimeLease.User.UserResolver.login_mutation/3)
+    end
+
+    @desc "Send OTP code for user (tenant) login"
+    field :user_send_otp, non_null(:boolean) do
+      arg(:mobile_number, non_null(:string))
+
+      resolve(&LimeLease.User.UserResolver.user_send_otp_mutation/3)
+    end
+
+    @desc "Verify OTP code for user (tenant) login"
+    field :user_verify_otp, non_null(:session) do
+      arg(:mobile_number, non_null(:string))
+      arg(:code, non_null(:string))
+
+      resolve(&LimeLease.User.UserResolver.user_verify_otp_mutation/3)
     end
   end
 end

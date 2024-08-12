@@ -9,25 +9,35 @@ defmodule LimeLease.User.User do
   @primary_key {:id, UUIDv7, autogenerate: true}
 
   schema "users" do
-    field :email, :string
     field :password, :string
-    field :first_name, :string
-    field :last_name, :string
 
+    belongs_to(:profile, LimeLease.Profile.Profile, foreign_key: :profile_id, type: :binary_id)
+    has_one(:tenant, LimeLease.Tenant.Tenant)
     has_one(:agency_agent, LimeLease.AgencyAgent.AgencyAgent)
     has_one(:agency, through: [:agency_agent, :agency])
 
     timestamps(type: :utc_datetime_usec)
   end
 
+  def create_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:password])
+    |> cast_assoc(:profile, with: &LimeLease.Profile.Profile.create_changeset/2, required: true)
+  end
+
   def default_preloads(query) do
     query
-    |> preload(:agency)
+    |> preload([:agency, :tenant, :profile])
   end
 
   def with_email(query, email) do
     query
     |> where([q], q.email == ^email)
+  end
+
+  def with_phone_number(query, phone_number) do
+    query
+    |> where([q], q.phone_number == ^phone_number)
   end
 
   def with_id(query, id) do

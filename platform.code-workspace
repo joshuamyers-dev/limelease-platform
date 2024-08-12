@@ -5,20 +5,24 @@
 			"path": "."
 		},
 		{
-			"name": "💻 @limelease/web",
+			"name": "@limelease/nextjs-app",
 			"path": "limelease/apps/nextjs-app"
+		},
+		{
+			"name": "@limelease/tenant-app",
+			"path": "limelease/apps/tenant-mobile"
+		},
+		{
+			"name": "@limelease/playwright-scraper",
+			"path": "limelease/services/playwright-scraper"
+		},
+		{
+			"name": "@limelease/playwright-snapshotter",
+			"path": "limelease/services/playwright-snapshotter"
 		},
 		{
 			"name": "🧪 @limelease/api",
 			"path": "limelease/services/elixir-api"
-		},
-		{
-			"name": "🕵️‍♂️ @limelease/scraper",
-			"path": "limelease/services/playwright-scraper"
-		},
-		{
-			"name": "📷 @limelease/snapshotter",
-			"path": "limelease/services/playwright-snapshotter"
 		}
 	],
 	"settings": {

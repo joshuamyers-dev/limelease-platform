@@ -1,0 +1,7 @@
+fragment ProfileBase on Profile {
+  id
+  email
+  firstName
+  lastName
+  phoneNumber
+}

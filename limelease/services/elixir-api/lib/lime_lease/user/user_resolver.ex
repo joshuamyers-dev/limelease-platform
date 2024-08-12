@@ -19,6 +19,14 @@ defmodule LimeLease.User.UserResolver do
     UserService.login_with_email(email, password)
   end
 
+  def user_send_otp_mutation(_parent, %{mobile_number: mobile_number}, _resolver) do
+    UserService.send_otp(mobile_number)
+  end
+
+  def user_verify_otp_mutation(_parent, %{mobile_number: mobile_number, code: code}, _resolver) do
+    UserService.verify_otp(mobile_number, code)
+  end
+
   def is_admin_field(%User{} = user, _args, %{context: %{current_user: _current_user}}) do
     user = user |> Ecto.preload(:agency_agent)
 

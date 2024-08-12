@@ -25,6 +25,16 @@ defmodule LimeLease.ContractorJob.ContractorJobContext do
     |> Repo.ok_error()
   end
 
+  def get_contractor_job_for_tenant(%User{} = user) do
+    ContractorJob
+    |> ContractorJob.with_property(user.tenant.property_id)
+    |> ContractorJob.order_by_inserted_desc()
+    |> ContractorJob.with_limit(1)
+    |> ContractorJob.default_preloads()
+    |> Repo.one()
+    |> Repo.ok_error()
+  end
+
   def get_contractor_job_by_id(id) do
     ContractorJob
     |> ContractorJob.with_id(id)

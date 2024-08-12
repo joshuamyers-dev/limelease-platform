@@ -23,6 +23,10 @@ defmodule LimeLease.ContractorJob.ContractorJobResolver do
     ContractorJobService.get_jobs_for_contractor(contractor_id, args, user)
   end
 
+  def my_upcoming_jobs_query(_parent, _args, %{context: %{current_user: user}}) do
+    ContractorJobContext.get_contractor_job_for_tenant(user)
+  end
+
   def contractor_job_active_query(_parent, %{request_id: request_id}, %{context: %{current_user: user}}) do
     ContractorJobService.get_contractor_job_for_request(request_id)
   end

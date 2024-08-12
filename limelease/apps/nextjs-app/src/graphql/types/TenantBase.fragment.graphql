@@ -1,7 +1,6 @@
 fragment TenantBase on Tenant {
   id
-  email
-  firstName
-  lastName
-  phoneNumber
+  user {
+    ...UserBase
+  }
 }

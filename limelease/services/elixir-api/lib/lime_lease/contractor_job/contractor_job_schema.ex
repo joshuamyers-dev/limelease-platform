@@ -52,9 +52,18 @@ defmodule LimeLease.ContractorJob.ContractorJobSchema do
     field :contractor_job_active, :contractor_job do
       arg(:request_id, non_null(:id))
 
+      middleware(Authorize)
       middleware(EctoErrors)
 
       resolve(&LimeLease.ContractorJob.ContractorJobResolver.contractor_job_active_query/3)
+    end
+
+    @desc "Fetch upcoming jobs for a tenant."
+    field :my_upcoming_jobs, :contractor_job do
+      middleware(Authorize)
+      middleware(EctoErrors)
+
+      resolve(&LimeLease.ContractorJob.ContractorJobResolver.my_upcoming_jobs_query/3)
     end
   end
 

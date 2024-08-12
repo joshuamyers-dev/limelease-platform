@@ -185,6 +185,15 @@ export type PageInfo = {
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
+export type Profile = {
+  __typename?: 'Profile';
+  email?: Maybe<Scalars['String']['output']>;
+  firstName?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  lastName?: Maybe<Scalars['String']['output']>;
+  phoneNumber?: Maybe<Scalars['String']['output']>;
+};
+
 export type Property = {
   __typename?: 'Property';
   address: Address;
@@ -370,6 +379,10 @@ export type RootMutationType = {
   updateProperty: Property;
   /** Login a user with email and password */
   userLogin: Session;
+  /** Send OTP code for user (tenant) login */
+  userSendOtp: Scalars['Boolean']['output'];
+  /** Verify OTP code for user (tenant) login */
+  userVerifyOtp: Session;
 };
 
 
@@ -459,6 +472,17 @@ export type RootMutationTypeUpdatePropertyArgs = {
 export type RootMutationTypeUserLoginArgs = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
+};
+
+
+export type RootMutationTypeUserSendOtpArgs = {
+  mobileNumber: Scalars['String']['input'];
+};
+
+
+export type RootMutationTypeUserVerifyOtpArgs = {
+  code: Scalars['String']['input'];
+  mobileNumber: Scalars['String']['input'];
 };
 
 export type RootQueryType = {
@@ -620,11 +644,8 @@ export type StaticMedia = {
 
 export type Tenant = {
   __typename?: 'Tenant';
-  email: Scalars['String']['output'];
-  firstName: Scalars['String']['output'];
   id: Scalars['ID']['output'];
-  lastName: Scalars['String']['output'];
-  phoneNumber: Scalars['String']['output'];
+  user: User;
 };
 
 export type TenantObject = {
@@ -638,11 +659,9 @@ export type TenantObject = {
 export type User = {
   __typename?: 'User';
   agency?: Maybe<Agency>;
-  email: Scalars['String']['output'];
-  firstName?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
-  lastName?: Maybe<Scalars['String']['output']>;
-  password?: Maybe<Scalars['String']['output']>;
+  isAdmin: Scalars['Boolean']['output'];
+  profile: Profile;
 };
 
 export type FetchContractorQueryVariables = Exact<{
@@ -693,7 +712,7 @@ export type FetchContractorsQuery = { __typename?: 'RootQueryType', myContractor
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'RootQueryType', me?: { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null } | null };
+export type MeQuery = { __typename?: 'RootQueryType', me?: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } | null };
 
 export type UserLoginMutationVariables = Exact<{
   email: Scalars['String']['input'];
@@ -701,7 +720,7 @@ export type UserLoginMutationVariables = Exact<{
 }>;
 
 
-export type UserLoginMutation = { __typename?: 'RootMutationType', userLogin: { __typename?: 'Session', token: string, user: { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null } } };
+export type UserLoginMutation = { __typename?: 'RootMutationType', userLogin: { __typename?: 'Session', token: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } };
 
 export type MyTeamQueryVariables = Exact<{
   first: Scalars['Int']['input'];
@@ -712,7 +731,7 @@ export type MyTeamQueryVariables = Exact<{
 }>;
 
 
-export type MyTeamQuery = { __typename?: 'RootQueryType', myTeam?: { __typename?: 'AgencyAgentConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'AgencyAgentEdge', cursor?: string | null, node?: { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null } | null> | null } | null };
+export type MyTeamQuery = { __typename?: 'RootQueryType', myTeam?: { __typename?: 'AgencyAgentConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'AgencyAgentEdge', cursor?: string | null, node?: { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null } | null> | null } | null };
 
 export type CreatePropertyMutationVariables = Exact<{
   propertyDetails: PropertyDetails;
@@ -753,7 +772,7 @@ export type FetchPropertyQueryVariables = Exact<{
 }>;
 
 
-export type FetchPropertyQuery = { __typename?: 'RootQueryType', fetchProperty: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, lease?: { __typename?: 'Lease', id: string, isActive?: boolean | null, startDate?: any | null, endDate?: any | null, rentPcm?: number | null } | null, tenants?: Array<{ __typename?: 'Tenant', id: string, email: string, firstName: string, lastName: string, phoneNumber: string } | null> | null, landlords: Array<{ __typename?: 'PropertyLandlord', id: string, email: string, firstName: string, lastName: string, phoneNumber: string }>, files?: Array<{ __typename?: 'PropertyFile', id: string, fileName: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null } | null> | null, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> } };
+export type FetchPropertyQuery = { __typename?: 'RootQueryType', fetchProperty: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, lease?: { __typename?: 'Lease', id: string, isActive?: boolean | null, startDate?: any | null, endDate?: any | null, rentPcm?: number | null } | null, tenants?: Array<{ __typename?: 'Tenant', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null> | null, landlords: Array<{ __typename?: 'PropertyLandlord', id: string, email: string, firstName: string, lastName: string, phoneNumber: string }>, files?: Array<{ __typename?: 'PropertyFile', id: string, fileName: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null } | null> | null, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> } };
 
 export type FetchPropertyRequestsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -851,14 +870,14 @@ export type FetchRequestQueryVariables = Exact<{
 }>;
 
 
-export type FetchRequestQuery = { __typename?: 'RootQueryType', fetchRequest: { __typename?: 'PropertyRequest', id: string, ticketNumber: string, state: PropertyRequestState, title: string, details: string, urgency: PropertyRequestUrgency, insertedAt: any, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> }, tenant?: { __typename?: 'Tenant', id: string, email: string, firstName: string, lastName: string, phoneNumber: string } | null, category: { __typename?: 'PropertyRequestCategory', id: string, name: string }, photos?: Array<{ __typename?: 'PropertyRequestPhoto', staticMedia: { __typename?: 'StaticMedia', url?: string | null } } | null> | null } };
+export type FetchRequestQuery = { __typename?: 'RootQueryType', fetchRequest: { __typename?: 'PropertyRequest', id: string, ticketNumber: string, state: PropertyRequestState, title: string, details: string, urgency: PropertyRequestUrgency, insertedAt: any, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> }, tenant?: { __typename?: 'Tenant', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null, category: { __typename?: 'PropertyRequestCategory', id: string, name: string }, photos?: Array<{ __typename?: 'PropertyRequestPhoto', staticMedia: { __typename?: 'StaticMedia', url?: string | null } } | null> | null } };
 
 export type FetchRequestByTicketNumberQueryVariables = Exact<{
   ticketNumber: Scalars['String']['input'];
 }>;
 
 
-export type FetchRequestByTicketNumberQuery = { __typename?: 'RootQueryType', fetchRequestByTicketNumber: { __typename?: 'PropertyRequest', id: string, ticketNumber: string, state: PropertyRequestState, title: string, details: string, urgency: PropertyRequestUrgency, insertedAt: any, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> }, tenant?: { __typename?: 'Tenant', id: string, email: string, firstName: string, lastName: string, phoneNumber: string } | null, category: { __typename?: 'PropertyRequestCategory', id: string, name: string }, photos?: Array<{ __typename?: 'PropertyRequestPhoto', staticMedia: { __typename?: 'StaticMedia', url?: string | null } } | null> | null } };
+export type FetchRequestByTicketNumberQuery = { __typename?: 'RootQueryType', fetchRequestByTicketNumber: { __typename?: 'PropertyRequest', id: string, ticketNumber: string, state: PropertyRequestState, title: string, details: string, urgency: PropertyRequestUrgency, insertedAt: any, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> }, tenant?: { __typename?: 'Tenant', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null, category: { __typename?: 'PropertyRequestCategory', id: string, name: string }, photos?: Array<{ __typename?: 'PropertyRequestPhoto', staticMedia: { __typename?: 'StaticMedia', url?: string | null } } | null> | null } };
 
 export type FetchRequestCommentsQueryVariables = Exact<{
   requestId: Scalars['ID']['input'];
@@ -896,7 +915,7 @@ export type UpdateRequestStateMutationVariables = Exact<{
 
 export type UpdateRequestStateMutation = { __typename?: 'RootMutationType', requestUpdateState: boolean };
 
-export type AgencyAgentBaseFragment = { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null } };
+export type AgencyAgentBaseFragment = { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } };
 
 export type AgencyBaseFragment = { __typename?: 'Agency', id: string, name: string };
 
@@ -910,6 +929,8 @@ export type LandlordBaseFragment = { __typename?: 'PropertyLandlord', id: string
 
 export type LeaseBaseFragment = { __typename?: 'Lease', id: string, isActive?: boolean | null, startDate?: any | null, endDate?: any | null, rentPcm?: number | null };
 
+export type ProfileBaseFragment = { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null };
+
 export type AddressBaseFragment = { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string };
 
 export type PropertyBaseFragment = { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> };
@@ -922,10 +943,19 @@ export type RequestBaseFragment = { __typename?: 'PropertyRequest', id: string, 
 
 export type StaticMediaBaseFragment = { __typename?: 'StaticMedia', id: string, s3Key?: string | null, uploadUrl?: string | null, url?: string | null };
 
-export type TenantBaseFragment = { __typename?: 'Tenant', id: string, email: string, firstName: string, lastName: string, phoneNumber: string };
+export type TenantBaseFragment = { __typename?: 'Tenant', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } };
 
-export type UserBaseFragment = { __typename?: 'User', id: string, email: string, firstName?: string | null, lastName?: string | null, agency?: { __typename?: 'Agency', id: string, name: string } | null };
+export type UserBaseFragment = { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null };
 
+export const ProfileBaseFragmentDoc = gql`
+    fragment ProfileBase on Profile {
+  id
+  email
+  firstName
+  lastName
+  phoneNumber
+}
+    `;
 export const AgencyBaseFragmentDoc = gql`
     fragment AgencyBase on Agency {
   id
@@ -935,14 +965,15 @@ export const AgencyBaseFragmentDoc = gql`
 export const UserBaseFragmentDoc = gql`
     fragment UserBase on User {
   id
-  email
+  profile {
+    ...ProfileBase
+  }
   agency {
     ...AgencyBase
   }
-  firstName
-  lastName
 }
-    ${AgencyBaseFragmentDoc}`;
+    ${ProfileBaseFragmentDoc}
+${AgencyBaseFragmentDoc}`;
 export const AgencyAgentBaseFragmentDoc = gql`
     fragment AgencyAgentBase on AgencyAgent {
   id
@@ -1086,12 +1117,11 @@ export const StaticMediaBaseFragmentDoc = gql`
 export const TenantBaseFragmentDoc = gql`
     fragment TenantBase on Tenant {
   id
-  email
-  firstName
-  lastName
-  phoneNumber
+  user {
+    ...UserBase
+  }
 }
-    `;
+    ${UserBaseFragmentDoc}`;
 export const FetchContractorDocument = gql`
     query fetchContractor($contractorId: ID!) {
   fetchContractor(contractorId: $contractorId) {

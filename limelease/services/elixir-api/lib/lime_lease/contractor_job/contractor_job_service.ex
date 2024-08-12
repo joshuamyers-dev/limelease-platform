@@ -21,7 +21,7 @@ defmodule LimeLease.ContractorJob.ContractorJobService do
       comment_changeset =
         PropertyRequestComment.create_changeset(
           %PropertyRequestComment{},
-          %{message_body: "A job was created and assigned to #{contractor.business_name}.", author_name: "#{user.first_name} #{user.last_name}", system_generated: true},
+          %{message_body: "A job was created and assigned to #{contractor.business_name}.", author_name: "#{user.profile.first_name} #{user.profile.last_name}", system_generated: true},
           request
         )
 
@@ -70,6 +70,7 @@ defmodule LimeLease.ContractorJob.ContractorJobService do
       {:error, :not_found} -> {:ok, nil}
     end
   end
+
 
   def delete_contractor_job(id, %User{} = user) do
     with {:ok, %ContractorJob{} = contractor_job} <- ContractorJobContext.get_contractor_job_by_id(id),

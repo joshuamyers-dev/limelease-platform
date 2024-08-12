@@ -1,9 +1,9 @@
 fragment UserBase on User {
   id
-  email
+  profile {
+    ...ProfileBase
+  }
   agency {
     ...AgencyBase
   }
-  firstName
-  lastName
 }

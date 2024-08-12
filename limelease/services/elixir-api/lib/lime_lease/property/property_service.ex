@@ -1,11 +1,14 @@
 defmodule LimeLease.Property.PropertyService do
+  alias LimeLease.Notifications
   alias Hex.HTTP
   alias LimeLease.Property.{Property, PropertyContext}
   alias LimeLease.User.User
+  alias LimeLease.Tenant.Tenant
   alias LimeLease.StaticMedia.{StaticMedia, StaticMediaService}
 
   alias LimeLease.Services.AWS
   alias LimeLease.Helpers
+  alias LimeLeaseWeb.Emails
 
   alias LimeLease.Repo
 
@@ -14,7 +17,7 @@ defmodule LimeLease.Property.PropertyService do
   def create_property(
         %User{} = user,
         %{address: _address, bathrooms: _bathrooms, bedrooms: _bedrooms, carspaces: _carspaces} =
-        property_details,
+          property_details,
         lease_details,
         photos,
         tenants,
@@ -22,15 +25,23 @@ defmodule LimeLease.Property.PropertyService do
         files
       ) do
     with {:ok, photos} <- prepare_photos(photos),
-         {:ok, files} <- prepare_files(files) do
+         {:ok, files} <- prepare_files(files),
+         {:ok, tenants} <- prepare_tenants(tenants) do
       changeset =
-        build_changeset(nil, property_details, landlords, tenants, photos, files, lease_details, user)
-
-      with %Ecto.Changeset{valid?: true} <- changeset do
-        changeset
+        build_changeset(nil, property_details, landlords, photos, files, lease_details, user)
+        |> Ecto.Changeset.put_assoc(:tenants, tenants, with: &LimeLease.Tenant.Tenant.create_changeset/2)
         |> Ecto.Changeset.put_assoc(:files, files, with: &LimeLease.Property.PropertyFile.create_changeset/2)
-        |> Repo.insert()
-        |> Repo.ok_error()
+
+      with %Ecto.Changeset{valid?: true} <- changeset,
+           {:ok, %Property{} = property} <-
+             changeset
+             |> Repo.insert()
+             |> Repo.ok_error() do
+        spawn(fn ->
+          Notifications.send_welcome_email_to_tenants(property, user)
+        end)
+
+        {:ok, property}
       else
         _ -> {:error, changeset}
       end
@@ -68,11 +79,24 @@ defmodule LimeLease.Property.PropertyService do
     {:ok, files}
   end
 
+  defp prepare_tenants(tenants) do
+    tenants =
+      Enum.map(tenants, fn tenant ->
+        %Tenant{}
+        |> Tenant.create_changeset(%{
+          user: %{
+            profile: tenant
+          }
+        })
+      end)
+
+    {:ok, tenants}
+  end
+
   defp build_changeset(
          property,
          property_details,
          landlords,
-         tenants,
          photos,
          files,
          lease_details,
@@ -81,7 +105,6 @@ defmodule LimeLease.Property.PropertyService do
     params =
       Map.merge(property_details, %{
         landlords: landlords,
-        tenants: tenants,
         photos: photos,
         files: files,
         lease: lease_details
@@ -112,13 +135,13 @@ defmodule LimeLease.Property.PropertyService do
     with {:ok, %Property{} = property} <-
            PropertyContext.get_property_by_id_for_user(user, property_id),
          {:ok, photos} <- prepare_photos(photos),
-         {:ok, files} <- prepare_files(files) do
+         {:ok, files} <- prepare_files(files),
+         {:ok, tenants} <- prepare_tenants(tenants) do
       changeset =
         build_changeset(
           property,
           property_details,
           landlords,
-          tenants,
           photos,
           files,
           lease_details,

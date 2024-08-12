@@ -29,7 +29,7 @@ defmodule LimeLease.Property.Property do
 
     has_many :files, LimeLease.Property.PropertyFile
     has_many :requests, LimeLease.PropertyRequest.PropertyRequest
-    has_many :tenants, LimeLease.Tenant.Tenant, on_replace: :delete_if_exists
+    has_many :tenants, LimeLease.Tenant.Tenant
     has_many(:property_agents, LimeLease.PropertyAgent.PropertyAgent, on_replace: :delete)
 
     belongs_to :agency, LimeLease.Agency.Agency, type: :binary_id
@@ -47,7 +47,6 @@ defmodule LimeLease.Property.Property do
     |> put_embed(:photos, attrs[:photos])
     |> cast_embed(:address, with: &LimeLease.Property.Address.create_changeset/2)
     |> cast_embed(:landlords, with: &LimeLease.Property.PropertyLandlord.changeset/2)
-    |> cast_assoc(:tenants, with: &LimeLease.Tenant.Tenant.create_changeset/2)
     |> cast_assoc(:files, with: &LimeLease.Property.PropertyFile.create_changeset/2)
     |> cast_assoc(:lease, with: &LimeLease.Lease.Lease.create_changeset/2)
     |> put_assoc(:property_agents, [property_agents])
@@ -59,7 +58,6 @@ defmodule LimeLease.Property.Property do
     |> validate_required([:bedrooms, :bathrooms, :carspaces])
     |> put_embed(:photos, attrs[:photos])
     |> cast_embed(:landlords, with: &LimeLease.Property.PropertyLandlord.changeset/2)
-    |> cast_assoc(:tenants, with: &LimeLease.Tenant.Tenant.update_changeset/2)
     |> cast_assoc(:files, with: &LimeLease.Property.PropertyFile.update_changeset/2)
     |> cast_assoc(:lease, with: &LimeLease.Lease.Lease.create_changeset/2)
   end

@@ -86,18 +86,18 @@ const PropertyLease: React.FC<PropertyLeaseProps> = ({ leaseDetails, tenants }) 
               <>
                 <TenantContainer>
                   <TenantName>
-                    {tenant.firstName} {tenant.lastName}
+                    {tenant?.user?.profile?.firstName} {tenant?.user?.profile?.lastName}
                   </TenantName>
 
                   <DetailRow>
                     <DetailRowTitle>Email</DetailRowTitle>
                     <DetailRowValue>
-                      <a href={`mailto:${tenant.email}`}>{tenant.email}</a>
+                      <a href={`mailto:${tenant?.user?.profile?.email}`}>{tenant.user?.profile?.email}</a>
                     </DetailRowValue>
                   </DetailRow>
                   <DetailRow>
                     <DetailRowTitle>Phone Number</DetailRowTitle>
-                    <DetailRowValue>{formatMobileNumber(tenant.phoneNumber, true)}</DetailRowValue>
+                    <DetailRowValue>{formatMobileNumber(tenant.user?.profile?.phoneNumber, true)}</DetailRowValue>
                   </DetailRow>
                 </TenantContainer>
               </>

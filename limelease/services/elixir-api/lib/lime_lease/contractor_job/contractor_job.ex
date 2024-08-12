@@ -60,6 +60,12 @@ defmodule LimeLease.ContractorJob.ContractorJob do
     |> limit(^limit)
   end
 
+  def with_property(query, property_id) do
+    query
+    |> join(:inner, [c], r in assoc(c, :request))
+    |> where([c, r], r.property_id == ^property_id)
+  end
+
   def order_by_inserted_desc(query) do
     query
     |> order_by([q], desc: q.inserted_at)

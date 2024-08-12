@@ -5,8 +5,9 @@ defmodule Mix.Tasks.GenerateGraphModel do
 
   def run([name]) do
     app_dir = File.cwd!()
-    app_name = Path.basename(app_dir)
+    app_name = "lime_lease"
     root_folder = "#{app_dir}/lib/#{app_name}/#{name}"
+
     File.mkdir(root_folder)
 
     formatted_app_name =

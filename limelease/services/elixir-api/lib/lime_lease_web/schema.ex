@@ -15,6 +15,7 @@ defmodule LimeLeaseWeb.Schema do
   import_types(LimeLease.PropertyRequestComment.PropertyRequestCommentSchema)
   import_types(LimeLease.PropertyRequestCategory.PropertyRequestCategorySchema)
   import_types(LimeLease.Lease.LeaseSchema)
+  import_types(LimeLease.Profile.ProfileSchema)
   import_types(Absinthe.Type.Custom)
 
   query do
@@ -52,6 +53,7 @@ defmodule LimeLeaseWeb.Schema do
     alias LimeLease.PropertyRequestComment.PropertyRequestCommentContext
     alias LimeLease.PropertyRequestCategory.PropertyRequestCategoryContext
     alias LimeLease.Lease.LeaseContext
+    alias LimeLease.Profile.ProfileContext
 
     Dataloader.new()
     |> Dataloader.add_source(UserContext, UserContext.data())
@@ -67,6 +69,7 @@ defmodule LimeLeaseWeb.Schema do
     |> Dataloader.add_source(PropertyRequestCategoryContext, PropertyRequestCategoryContext.data())
     |> Dataloader.add_source(AgencyAgentContext, AgencyAgentContext.data())
     |> Dataloader.add_source(LeaseContext, LeaseContext.data())
+    |> Dataloader.add_source(ProfileContext, ProfileContext.data())
   end
 
   def plugins do

@@ -8,10 +8,14 @@ defmodule LimeLease.Tenant.TenantSchema do
 
   object :tenant do
     field(:id, non_null(:id))
-    field :first_name, non_null(:string)
-    field :last_name, non_null(:string)
-    field :phone_number, non_null(:string)
-    field :email, non_null(:string)
+
+    field :user, non_null(:user) do
+      resolve(dataloader(LimeLease.Tenant.TenantContext, :user))
+    end
+
+    field :property, non_null(:property) do
+      resolve(dataloader(LimeLease.Tenant.TenantContext, :property))
+    end
   end
 
   connection(node_type: :tenant)

@@ -68,7 +68,7 @@ defmodule LimeLease.Helpers do
 
     random_letter = <<Enum.random(?A..?Z)>>
 
-    "LL" <> random_number <> random_letter
+    "OP" <> random_number <> random_letter
   end
 
   def upload_temporary_fs_photos(photos) do
