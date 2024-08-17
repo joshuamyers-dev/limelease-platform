@@ -1,0 +1,15 @@
+query myRequests($first: Int!, $after: String, $state: PropertyRequestFilter) {
+  myRequests(first: $first, after: $after, state: $state) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...RequestBase
+      }
+    }
+  }
+}

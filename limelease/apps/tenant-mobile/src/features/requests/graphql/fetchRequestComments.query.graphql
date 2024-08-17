@@ -1,0 +1,15 @@
+query fetchRequestComments($requestId: ID!, $after: String, $before: String, $first: Int, $last: Int) {
+  propertyRequestComments(requestId: $requestId, after: $after, before: $before, first: $first, last: $last) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...PropertyRequestCommentBase
+      }
+    }
+  }
+}

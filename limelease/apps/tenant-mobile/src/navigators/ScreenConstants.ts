@@ -1,0 +1,12 @@
+export const SPLASH_SCREEN = 'Splash Screen';
+export const LOGIN_SCREEN = 'Login Screen';
+export const CONFIRM_OTP_SCREEN = 'Confirm OTP Screen';
+export const CONFIRMED_OTP_SCREEN = 'Confirmed OTP Screen';
+export const DASHBOARD_SCREEN = 'Dashboard Screen';
+export const DASHBOARD_NAVIGATOR = 'Dashboard Navigator';
+export const REQUESTS_SCREEN = 'Requests Screen';
+export const REQUESTS_NAVIGATOR = 'Requests Navigator';
+export const MORE_SCREEN = 'More Screen';
+export const LEASE_SCREEN = 'Lease Screen';
+export const REQUEST_REPAIR_SCREEN = 'Request Repair Screen';
+export const VIEW_REQUEST_SCREEN = 'View Request Screen';

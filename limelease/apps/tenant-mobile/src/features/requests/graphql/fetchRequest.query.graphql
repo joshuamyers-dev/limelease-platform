@@ -1,0 +1,28 @@
+query fetchRequest($id: ID!) {
+  fetchRequest(id: $id) {
+    ...RequestBase
+    details
+    category {
+      id
+      name
+    }
+    property {
+      agents {
+        id
+        agent {
+          user {
+            profile {
+              firstName
+              lastName
+            }
+          }
+        }
+      }
+    }
+    photos {
+      staticMedia {
+        url
+      }
+    }
+  }
+}

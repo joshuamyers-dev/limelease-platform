@@ -1,0 +1,9 @@
+fragment UserBase on User {
+  id
+  profile {
+    ...ProfileBase
+  }
+  tenant {
+    ...TenantBase
+  }
+}
