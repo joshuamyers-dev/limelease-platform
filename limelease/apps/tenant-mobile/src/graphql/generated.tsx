@@ -307,6 +307,7 @@ export type PropertyRequestComment = {
   id: Scalars['ID'];
   insertedAt: Scalars['DateTime'];
   messageBody?: Maybe<Scalars['String']>;
+  request: PropertyRequest;
   systemGenerated?: Maybe<Scalars['Boolean']>;
 };
 
@@ -508,6 +509,8 @@ export type RootQueryType = {
   jobsForContractor?: Maybe<ContractorJobConnection>;
   /** Returns the current user's account */
   me?: Maybe<User>;
+  /** Fetch the latest comment activity for a tenant user. */
+  myActivity?: Maybe<PropertyRequestCommentConnection>;
   /** Get a paginated list of contractors for your agency */
   myContractors?: Maybe<ContractorConnection>;
   /** Fetch details about my lease as a tenant. */
@@ -565,6 +568,14 @@ export type RootQueryTypeJobsForContractorArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   state?: InputMaybe<PropertyRequestFilter>;
+};
+
+
+export type RootQueryTypeMyActivityArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -679,6 +690,14 @@ export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MeQuery = { __typename?: 'RootQueryType', me?: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, tenant?: { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } } | null } | null };
+
+export type MyActivityQueryVariables = Exact<{
+  first: Scalars['Int'];
+  after?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type MyActivityQuery = { __typename?: 'RootQueryType', myActivity?: { __typename?: 'PropertyRequestCommentConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'PropertyRequestCommentEdge', node?: { __typename?: 'PropertyRequestComment', id: string, messageBody?: string | null, systemGenerated?: boolean | null, authorName: string, insertedAt: any, request: { __typename?: 'PropertyRequest', id: string, title: string } } | null } | null> | null } | null };
 
 export type MyLeaseQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -908,6 +927,56 @@ export function useMeLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptio
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
+export const MyActivityDocument = gql`
+    query myActivity($first: Int!, $after: String) {
+  myActivity(first: $first, after: $after) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...PropertyRequestCommentBase
+        request {
+          id
+          title
+        }
+      }
+    }
+  }
+}
+    ${PropertyRequestCommentBaseFragmentDoc}`;
+
+/**
+ * __useMyActivityQuery__
+ *
+ * To run a query within a React component, call `useMyActivityQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMyActivityQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMyActivityQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useMyActivityQuery(baseOptions: ApolloReactHooks.QueryHookOptions<MyActivityQuery, MyActivityQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<MyActivityQuery, MyActivityQueryVariables>(MyActivityDocument, options);
+      }
+export function useMyActivityLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MyActivityQuery, MyActivityQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<MyActivityQuery, MyActivityQueryVariables>(MyActivityDocument, options);
+        }
+export type MyActivityQueryHookResult = ReturnType<typeof useMyActivityQuery>;
+export type MyActivityLazyQueryHookResult = ReturnType<typeof useMyActivityLazyQuery>;
+export type MyActivityQueryResult = ApolloReactCommon.QueryResult<MyActivityQuery, MyActivityQueryVariables>;
 export const MyLeaseDocument = gql`
     query myLease {
   myLease {

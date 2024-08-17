@@ -21,6 +21,8 @@ defmodule LimeLease.PropertyRequest.PropertyRequest do
     belongs_to(:tenant, LimeLease.Tenant.Tenant, type: :binary_id)
     belongs_to(:category, LimeLease.PropertyRequestCategory.PropertyRequestCategory, type: :binary_id)
 
+    has_many(:comments, LimeLease.PropertyRequestComment.PropertyRequestComment)
+
     timestamps(type: :utc_datetime_usec)
   end
 

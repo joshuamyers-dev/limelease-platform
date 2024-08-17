@@ -1,0 +1,19 @@
+query myActivity($first: Int!, $after: String) {
+  myActivity(first: $first, after: $after) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...PropertyRequestCommentBase
+        request {
+          id
+          title
+        }
+      }
+    }
+  }
+}

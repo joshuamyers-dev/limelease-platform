@@ -92,6 +92,14 @@ defmodule LimeLease.PropertyRequest.PropertyRequestContext do
      }}
   end
 
+  def get_active_requests_for_tenant(%User{} = user) do
+    PropertyRequest
+    |> PropertyRequest.with_property_id(user.tenant.property_id)
+    |> PropertyRequest.with_active_states()
+    |> Repo.all()
+    |> Repo.ok_error()
+  end
+
   def update_request_state(%PropertyRequest{} = request, state) do
     request
     |> PropertyRequest.update_state_changeset(%{state: state})

@@ -48,7 +48,11 @@ const RoundButton: React.FC<RoundButtonProps> = ({
         },
       ]}
       onPress={onPress}>
-      {loading && <ActivityIndicator color="white" />}
+      {loading && (
+        <ActivityIndicator
+          color={type === ButtonType.CLEAR ? Colours.NAVY : 'white'}
+        />
+      )}
 
       {!loading && (
         <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
