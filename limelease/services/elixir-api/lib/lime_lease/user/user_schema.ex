@@ -8,6 +8,8 @@ defmodule LimeLease.User.UserSchema do
 
   import Absinthe.Resolution.Helpers
 
+
+
   object :user do
     field :id, non_null(:id)
 

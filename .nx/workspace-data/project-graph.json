@@ -1859,6 +1859,15 @@
         "hash": "sha512-XEFXSlxiG5td2EJRe8vOmRbaXVgfcBlszKujvVmWIK/UpywWljQCfzAv3RQCGujWQ1RD4YYWEAqDXfuJiy8f5Q=="
       }
     },
+    "npm:@bam.tech/react-native-image-resizer": {
+      "type": "npm",
+      "name": "npm:@bam.tech/react-native-image-resizer",
+      "data": {
+        "version": "3.0.10",
+        "packageName": "@bam.tech/react-native-image-resizer",
+        "hash": "sha512-IVIBRkgy8eq4g51RjAzh7zk8KpGhiQH6GqLC7SgAUJ0plh2bdqG2l8+D+Q/A0uFe85YutUmHyFioyDEsRGXaCQ=="
+      }
+    },
     "npm:@bcoe/v8-coverage": {
       "type": "npm",
       "name": "npm:@bcoe/v8-coverage",
@@ -1974,6 +1983,24 @@
         "version": "1.4.1",
         "packageName": "@eslint/eslintrc",
         "hash": "sha512-XXrH9Uarn0stsyldqDYq8r++mROmWRI1xKMXa640Bb//SY1+ECYX6VzT6Lcx5frD0V30XieqJ0oX9I2Xj5aoMA=="
+      }
+    },
+    "npm:@expo/react-native-action-sheet": {
+      "type": "npm",
+      "name": "npm:@expo/react-native-action-sheet",
+      "data": {
+        "version": "4.1.0",
+        "packageName": "@expo/react-native-action-sheet",
+        "hash": "sha512-RILoWhREgjMdr1NUSmZa/cHg8onV2YPDAMOy0iIP1c3H7nT9QQZf5dQNHK8ehcLM82sarVxriBJyYSSHAx7j6w=="
+      }
+    },
+    "npm:@gorhom/bottom-sheet": {
+      "type": "npm",
+      "name": "npm:@gorhom/bottom-sheet",
+      "data": {
+        "version": "4.6.4",
+        "packageName": "@gorhom/bottom-sheet",
+        "hash": "sha512-0itLMblLBvepE065w3a60S030c2rNUsGshPC7wbWDm31VyqoaU2xjzh/ojH62YIJOcobBr5QoC30IxBBKDGovQ=="
       }
     },
     "npm:@gorhom/portal": {
@@ -8636,18 +8663,18 @@
         "hash": "sha512-pjzuKtY64GYfWizNAJ0fr9VqttZkNiK2iS430LtIHzjBEr6bX8Am2zm4sW4Ro5wjWW5cAlRL1qAMTcXbjNAO2Q=="
       }
     },
-    "npm:get-stream@5.2.0": {
+    "npm:get-stream": {
       "type": "npm",
-      "name": "npm:get-stream@5.2.0",
+      "name": "npm:get-stream",
       "data": {
         "version": "5.2.0",
         "packageName": "get-stream",
         "hash": "sha512-nBF+F1rAZVCu/p7rjzgA+Yb4lfYXrpl7a6VmJrU8wF9I1CKvP/QwPNZHnOlwbTkY6dvtFIzFMSyQXbLoTQPRpA=="
       }
     },
-    "npm:get-stream": {
+    "npm:get-stream@6.0.1": {
       "type": "npm",
-      "name": "npm:get-stream",
+      "name": "npm:get-stream@6.0.1",
       "data": {
         "version": "6.0.1",
         "packageName": "get-stream",
@@ -10976,18 +11003,18 @@
         "hash": "sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg=="
       }
     },
-    "npm:mimic-response@1.0.1": {
+    "npm:mimic-response": {
       "type": "npm",
-      "name": "npm:mimic-response@1.0.1",
+      "name": "npm:mimic-response",
       "data": {
         "version": "1.0.1",
         "packageName": "mimic-response",
         "hash": "sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ=="
       }
     },
-    "npm:mimic-response": {
+    "npm:mimic-response@3.1.0": {
       "type": "npm",
-      "name": "npm:mimic-response",
+      "name": "npm:mimic-response@3.1.0",
       "data": {
         "version": "3.1.0",
         "packageName": "mimic-response",
@@ -12794,6 +12821,15 @@
         "hash": "sha512-r4F0Sec0BLxWicc7HEyo2x3/2icUTrRmDjaaRyzzn+7aDyFZliszMDOgLVwSnQnYENOlL1o569Ze2HZefk8clA=="
       }
     },
+    "npm:react-hooks-extension": {
+      "type": "npm",
+      "name": "npm:react-hooks-extension",
+      "data": {
+        "version": "1.0.2",
+        "packageName": "react-hooks-extension",
+        "hash": "sha512-fcafLOKxlc3WUbwyIljsEccgNeQdPfl76Be7FT0krP9cIheUXbTnRXCklf2J+52xmFwp600a1tFVNDEkv36vsg=="
+      }
+    },
     "npm:react-image-lightbox": {
       "type": "npm",
       "name": "npm:react-image-lightbox",
@@ -12866,6 +12902,15 @@
         "hash": "sha512-pWfniN6NuVKUq40KACuD3NCMe+bWNQCpD3cmxL6aLSCTwPKYmf7l4Lp0/E/almpjvxhybJZtFLU0w4tmxnIKaA=="
       }
     },
+    "npm:react-native-image-picker": {
+      "type": "npm",
+      "name": "npm:react-native-image-picker",
+      "data": {
+        "version": "7.1.2",
+        "packageName": "react-native-image-picker",
+        "hash": "sha512-b5y5nP60RIPxlAXlptn2QwlIuZWCUDWa/YPUVjgHc0Ih60mRiOg1PSzf0IjHSLeOZShCpirpvSPGnDExIpTRUg=="
+      }
+    },
     "npm:react-native-localize": {
       "type": "npm",
       "name": "npm:react-native-localize",
@@ -12882,6 +12927,15 @@
         "version": "2.12.2",
         "packageName": "react-native-mmkv",
         "hash": "sha512-6058Aq0p57chPrUutLGe9fYoiDVDNMU2PKV+lLFUJ3GhoHvUrLdsS1PDSCLr00yqzL4WJQ7TTzH+V8cpyrNcfg=="
+      }
+    },
+    "npm:react-native-reanimated-viewer": {
+      "type": "npm",
+      "name": "npm:react-native-reanimated-viewer",
+      "data": {
+        "version": "1.4.1",
+        "packageName": "react-native-reanimated-viewer",
+        "hash": "sha512-g3jCDEQSDa0wBwHtzElv0GIDZ8XqKkVRp0z/zcYcnlLFyPEWptQI2ZWDaj0CSDcVuQVYM78HskmXlQiPcISuNg=="
       }
     },
     "npm:react-native-reanimated": {
@@ -12909,6 +12963,15 @@
         "version": "3.32.0",
         "packageName": "react-native-screens",
         "hash": "sha512-wybqZAHX7v8ipOXhh90CqGLkBHw5JYqKNRBX7R/b0c2WQisTOgu0M0yGwBMM6LyXRBT+4k3NTGHdDbpJVpq0yQ=="
+      }
+    },
+    "npm:react-native-wheely": {
+      "type": "npm",
+      "name": "npm:react-native-wheely",
+      "data": {
+        "version": "0.6.0",
+        "packageName": "react-native-wheely",
+        "hash": "sha512-WDnynKOdHZ3m0VnXF5pC11dXSJZDC/6/e9LuZ6UKs4IjIRI1NTTd14pRwKYEnTgWmJdlDjqJvNSIVbd7EuMxHQ=="
       }
     },
     "npm:react-native": {
@@ -14013,54 +14076,54 @@
       "type": "npm",
       "name": "npm:sst-darwin-arm64",
       "data": {
-        "version": "0.1.93",
+        "version": "0.1.111",
         "packageName": "sst-darwin-arm64",
-        "hash": "sha512-xSynGNXOq8BJPpywo2NUbTrTEcExSOhvvrAnBLX3LzRy966dgT9iSlRxJBb1+ypPkzWqQGv+MeEfnYGFd3qNfw=="
+        "hash": "sha512-csu/WU+mvjwXZ9+ugmbbLAPZluSFafv37c+ZHHndMZYaqw/aRS6lzoxUuztCPVJHkZ2NIYRY+vVecI7XgPCP+g=="
       }
     },
     "npm:sst-darwin-x64": {
       "type": "npm",
       "name": "npm:sst-darwin-x64",
       "data": {
-        "version": "0.1.93",
+        "version": "0.1.111",
         "packageName": "sst-darwin-x64",
-        "hash": "sha512-DyM4mlvOxwshSnCfg65XbNX7tZdyPZg0tiEgSJi5XAooQltyQ2h90GdcaWki4rTn3IEs05drwzPlCNNZJIADxA=="
+        "hash": "sha512-hz0nhzI7DD9mygTmkH7P6LZ4f9BLCP5uHrJfp5Yunoxw9W9RPgiK+2Vm6UQCirNkIps/1qW1vuPVTDGHmflh8Q=="
       }
     },
     "npm:sst-linux-arm64": {
       "type": "npm",
       "name": "npm:sst-linux-arm64",
       "data": {
-        "version": "0.1.93",
+        "version": "0.1.111",
         "packageName": "sst-linux-arm64",
-        "hash": "sha512-Mo3ymb11kxHeHGM0MUAzpq/qcFCwXDNFp5JxV25AszYLZpIhOXCbwralgOxik2eLQSJe6ynJ591XLpLINlSxPA=="
+        "hash": "sha512-cTt3RXYXss9oFL2rRpRMEziGgKOUvlZdTuhIvz+pxioIQe/z+jdEauJcD2H4wc8+MMkeH95HH0TAcrHf0tNbdA=="
       }
     },
     "npm:sst-linux-x64": {
       "type": "npm",
       "name": "npm:sst-linux-x64",
       "data": {
-        "version": "0.1.93",
+        "version": "0.1.111",
         "packageName": "sst-linux-x64",
-        "hash": "sha512-v3QEsr+AE9UHztMhiWUC9Ut6bKgmcTbNFm1FPmQz738snePoZQc0EfeM75tOMMK2m1n+tI7KNT441ZY+vqO+uw=="
+        "hash": "sha512-4Wf8OeTyziUeSqWM4C/2OPjMI80KmCK1Paai7Z5opxk7eP3xKK7Fg0f4k15LBXvoBQqancScZffIB4ggBlmmYA=="
       }
     },
     "npm:sst-linux-x86": {
       "type": "npm",
       "name": "npm:sst-linux-x86",
       "data": {
-        "version": "0.1.93",
+        "version": "0.1.111",
         "packageName": "sst-linux-x86",
-        "hash": "sha512-Wjrvxru/yGRagrwKwVqhbaHPC2CvfWv2cnLBln7kj+fCWyOGZKRzLk1jajoXyqe3AGnn3NYI1NAzfiuSYCg9lg=="
+        "hash": "sha512-v2UAE90J6qVEEhvzbhjqPJ+0RvfEvGcaSUd7Qg+628hQklH0wgMTtnmr3mdamwPrcdLJHYi2Uxd7FtSySronNQ=="
       }
     },
     "npm:sst": {
       "type": "npm",
       "name": "npm:sst",
       "data": {
-        "version": "0.1.93",
+        "version": "0.1.111",
         "packageName": "sst",
-        "hash": "sha512-Uxvr1/i/yHX6IkuScXiFFAHGbkTrpnI1MMgu+3z6jeffBjv9t7dksTkXKvTGWZ1+jfI618qbIoA26GKzhLi5pg=="
+        "hash": "sha512-MN33nnLjza7Qu+3Lt6sCpAlV9DhXwdwz6FnL/05+cxW/tV87KTRyzgZUqAX30y515zR5URcuYH3Towgpa53Ibg=="
       }
     },
     "npm:stack-utils": {
@@ -15821,6 +15884,21 @@
       },
       {
         "source": "@limelease/tenant-app",
+        "target": "npm:@bam.tech/react-native-image-resizer",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/tenant-app",
+        "target": "npm:@expo/react-native-action-sheet",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/tenant-app",
+        "target": "npm:@gorhom/bottom-sheet",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/tenant-app",
         "target": "npm:@gorhom/portal",
         "type": "static"
       },
@@ -15842,6 +15920,11 @@
       {
         "source": "@limelease/tenant-app",
         "target": "npm:@react-navigation/stack",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/tenant-app",
+        "target": "npm:axios",
         "type": "static"
       },
       {
@@ -15871,6 +15954,11 @@
       },
       {
         "source": "@limelease/tenant-app",
+        "target": "npm:react-native-image-picker",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/tenant-app",
         "target": "npm:react-native-localize",
         "type": "static"
       },
@@ -15892,6 +15980,11 @@
       {
         "source": "@limelease/tenant-app",
         "target": "npm:react-native-screens",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/tenant-app",
+        "target": "npm:react-native-wheely",
         "type": "static"
       },
       {
@@ -20647,6 +20740,18 @@
         "type": "static"
       }
     ],
+    "npm:@bam.tech/react-native-image-resizer": [
+      {
+        "source": "npm:@bam.tech/react-native-image-resizer",
+        "target": "npm:react",
+        "type": "static"
+      },
+      {
+        "source": "npm:@bam.tech/react-native-image-resizer",
+        "target": "npm:react-native",
+        "type": "static"
+      }
+    ],
     "npm:@cspotcode/source-map-support": [
       {
         "source": "npm:@cspotcode/source-map-support",
@@ -20731,6 +20836,60 @@
       {
         "source": "npm:@eslint/eslintrc",
         "target": "npm:strip-json-comments",
+        "type": "static"
+      }
+    ],
+    "npm:@expo/react-native-action-sheet": [
+      {
+        "source": "npm:@expo/react-native-action-sheet",
+        "target": "npm:@types/hoist-non-react-statics",
+        "type": "static"
+      },
+      {
+        "source": "npm:@expo/react-native-action-sheet",
+        "target": "npm:hoist-non-react-statics",
+        "type": "static"
+      },
+      {
+        "source": "npm:@expo/react-native-action-sheet",
+        "target": "npm:react",
+        "type": "static"
+      }
+    ],
+    "npm:@gorhom/bottom-sheet": [
+      {
+        "source": "npm:@gorhom/bottom-sheet",
+        "target": "npm:@gorhom/portal",
+        "type": "static"
+      },
+      {
+        "source": "npm:@gorhom/bottom-sheet",
+        "target": "npm:invariant",
+        "type": "static"
+      },
+      {
+        "source": "npm:@gorhom/bottom-sheet",
+        "target": "npm:react",
+        "type": "static"
+      },
+      {
+        "source": "npm:@gorhom/bottom-sheet",
+        "target": "npm:react-native",
+        "type": "static"
+      },
+      {
+        "source": "npm:@gorhom/bottom-sheet",
+        "target": "npm:react-native-gesture-handler",
+        "type": "static"
+      },
+      {
+        "source": "npm:@gorhom/bottom-sheet",
+        "target": "npm:react-native-reanimated",
+        "type": "static"
+      },
+      {
+        "source": "npm:@gorhom/bottom-sheet",
+        "target": "npm:@types/react",
         "type": "static"
       }
     ],
@@ -30222,7 +30381,7 @@
       },
       {
         "source": "npm:cacheable-request",
-        "target": "npm:get-stream@5.2.0",
+        "target": "npm:get-stream",
         "type": "static"
       },
       {
@@ -30680,7 +30839,7 @@
     "npm:clone-response": [
       {
         "source": "npm:clone-response",
-        "target": "npm:mimic-response@1.0.1",
+        "target": "npm:mimic-response",
         "type": "static"
       }
     ],
@@ -31113,7 +31272,7 @@
     "npm:decompress-response": [
       {
         "source": "npm:decompress-response",
-        "target": "npm:mimic-response",
+        "target": "npm:mimic-response@3.1.0",
         "type": "static"
       }
     ],
@@ -32596,7 +32755,7 @@
       },
       {
         "source": "npm:execa",
-        "target": "npm:get-stream",
+        "target": "npm:get-stream@6.0.1",
         "type": "static"
       },
       {
@@ -33077,9 +33236,9 @@
         "type": "static"
       }
     ],
-    "npm:get-stream@5.2.0": [
+    "npm:get-stream": [
       {
-        "source": "npm:get-stream@5.2.0",
+        "source": "npm:get-stream",
         "target": "npm:pump",
         "type": "static"
       }
@@ -39051,6 +39210,13 @@
         "type": "static"
       }
     ],
+    "npm:react-hooks-extension": [
+      {
+        "source": "npm:react-hooks-extension",
+        "target": "npm:react",
+        "type": "static"
+      }
+    ],
     "npm:react-image-lightbox": [
       {
         "source": "npm:react-image-lightbox",
@@ -39154,6 +39320,18 @@
         "type": "static"
       }
     ],
+    "npm:react-native-image-picker": [
+      {
+        "source": "npm:react-native-image-picker",
+        "target": "npm:react",
+        "type": "static"
+      },
+      {
+        "source": "npm:react-native-image-picker",
+        "target": "npm:react-native",
+        "type": "static"
+      }
+    ],
     "npm:react-native-localize": [
       {
         "source": "npm:react-native-localize",
@@ -39175,6 +39353,33 @@
       {
         "source": "npm:react-native-mmkv",
         "target": "npm:react-native",
+        "type": "static"
+      }
+    ],
+    "npm:react-native-reanimated-viewer": [
+      {
+        "source": "npm:react-native-reanimated-viewer",
+        "target": "npm:react",
+        "type": "static"
+      },
+      {
+        "source": "npm:react-native-reanimated-viewer",
+        "target": "npm:react-hooks-extension",
+        "type": "static"
+      },
+      {
+        "source": "npm:react-native-reanimated-viewer",
+        "target": "npm:react-native",
+        "type": "static"
+      },
+      {
+        "source": "npm:react-native-reanimated-viewer",
+        "target": "npm:react-native-gesture-handler",
+        "type": "static"
+      },
+      {
+        "source": "npm:react-native-reanimated-viewer",
+        "target": "npm:react-native-reanimated",
         "type": "static"
       }
     ],

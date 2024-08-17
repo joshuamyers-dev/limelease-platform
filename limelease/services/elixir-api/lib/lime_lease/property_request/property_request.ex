@@ -26,11 +26,12 @@ defmodule LimeLease.PropertyRequest.PropertyRequest do
 
   def create_changeset(property_request, attrs) do
     property_request
-    |> cast(attrs, [:title, :category_id, :details, :urgency, :property_id, :state, :ticket_number])
+    |> cast(attrs, [:title, :category_id, :details, :urgency, :property_id, :tenant_id, :state, :ticket_number])
     |> validate_required([:title, :category_id, :details, :urgency, :property_id, :state, :ticket_number])
     |> put_embed(:photos, attrs[:photos], required: false)
     |> foreign_key_constraint(:property_id)
     |> foreign_key_constraint(:category_id)
+    |> foreign_key_constraint(:tenant_id)
   end
 
   def update_state_changeset(property_request, attrs) do

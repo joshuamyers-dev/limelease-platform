@@ -25,4 +25,9 @@ defmodule LimeLease.Lease.Lease do
     |> validate_required([:start_date, :end_date, :rent_pcm])
     |> foreign_key_constraint(:property_id)
   end
+
+  def with_property_id(query, id) do
+    query
+    |> where([q], q.property_id == ^id)
+  end
 end

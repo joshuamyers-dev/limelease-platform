@@ -65,7 +65,7 @@ defmodule LimeLease.Notifications do
     |> Flow.map(fn %PropertyLandlord{} = landlord ->
       PropertyRequestEmails.status_update(
         landlord.email,
-        Helpers.full_user_name(landlord),
+        "#{landlord.first_name} #{landlord.last_name}",
         Helpers.address_label(property.address),
         screenshot_image_url,
         cta_url

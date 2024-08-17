@@ -35,4 +35,13 @@ defmodule LimeLease.User.UserResolver do
       _ -> {:ok, false}
     end
   end
+
+  def role_field(%User{} = user, _args, %{context: %{current_user: _current_user}}) do
+    user = user |> Ecto.preload([:tenant, :agency])
+
+    cond do
+      user.tenant != nil -> {:ok, :tenant}
+      user.agency != nil -> {:ok, :agent}
+    end
+  end
 end

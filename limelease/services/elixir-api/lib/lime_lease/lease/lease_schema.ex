@@ -4,6 +4,8 @@ defmodule LimeLease.Lease.LeaseSchema do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation, :modern
 
+  alias LimeLeaseWeb.Middleware.Authorize
+
   import Absinthe.Resolution.Helpers
 
   object :lease do
@@ -27,8 +29,13 @@ defmodule LimeLease.Lease.LeaseSchema do
 
   connection(node_type: :lease)
 
-  # object :lease_queries do
-  # end
+  object :lease_queries do
+    @desc "Fetch details about my lease as a tenant."
+    field :my_lease, :lease do
+      middleware(Authorize)
+      resolve(&LimeLease.Lease.LeaseResolver.my_lease_query/3)
+    end
+  end
 
   # object :lease_mutations do
   # end

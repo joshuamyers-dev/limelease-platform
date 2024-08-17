@@ -26,8 +26,8 @@ defmodule LimeLease.Helpers do
     end
   end
 
-  def full_user_name(user_landlord) do
-    "#{user_landlord.first_name} #{user_landlord.last_name}"
+  def full_user_name(%User{} = user) do
+    "#{user.profile.first_name} #{user.profile.last_name}"
   end
 
   def address_label(%LimeLease.Property.Address{} = address, with_locality \\ false) do
