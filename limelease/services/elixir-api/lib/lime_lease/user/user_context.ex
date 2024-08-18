@@ -22,6 +22,13 @@ defmodule LimeLease.User.UserContext do
     |> Repo.ok_error()
   end
 
+  def update_user(%User{} = user, attrs) do
+    user
+    |> User.update_changeset(attrs)
+    |> Repo.update()
+    |> Repo.ok_error()
+  end
+
   @spec can_assign_request_to_contractor?(LimeLease.User.User.t(), LimeLease.Contractor.Contractor.t()) :: {:error, :unauthorized} | {:ok, :can_assign_request_to_contractor}
   def can_assign_request_to_contractor?(%User{} = user, %Contractor{} = contractor) do
     case contractor.agency_id == user.agency.id do

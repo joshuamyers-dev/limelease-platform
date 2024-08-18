@@ -1,5 +1,6 @@
 fragment UserBase on User {
   id
+  fcmTokens
   profile {
     ...ProfileBase
   }

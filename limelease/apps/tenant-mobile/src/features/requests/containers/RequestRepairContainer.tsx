@@ -16,7 +16,7 @@ import {
 } from '@graphql/generated';
 import {VIEW_REQUEST_SCREEN} from '@navigators/ScreenConstants';
 import {URGENCY_TYPES} from '@utils/Constants';
-import {layoutAnimate} from '@utils/Helpers';
+import {layoutAnimate, resizeAndUploadPhotos} from '@utils/Helpers';
 import {useGlobalStore} from '@utils/Store';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {
@@ -101,12 +101,24 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
       async (selectedIndex: number) => {
         switch (selectedIndex) {
           case 0:
-            launchCamera({
+            const cameraResponse = await launchCamera({
               mediaType: 'photo',
               cameraType: 'back',
               quality: 1.0,
               saveToPhotos: true,
             });
+
+            if (cameraResponse.assets && cameraResponse.assets.length > 0) {
+              const images = await resizeAndUploadPhotos(
+                cameraResponse.assets,
+                authToken,
+              );
+
+              layoutAnimate();
+              setUploadingPhotos(false);
+              setPhotos(images);
+            }
+
             break;
 
           case 1:
@@ -116,52 +128,20 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
               selectionLimit: 5,
             });
 
-            if (pickerResponse.assets) {
+            if (pickerResponse.assets && pickerResponse.assets.length > 0) {
               setUploadingPhotos(true);
 
-              let images = await Promise.all(
-                pickerResponse.assets.map(async asset => {
-                  return await ImageResizer.createResizedImage(
-                    asset.uri,
-                    2000,
-                    2000,
-                    'JPEG',
-                    80,
-                  );
-                }),
-              );
-
-              images = await Promise.all(
-                images.map(async asset => {
-                  const form = new FormData();
-
-                  form.append('files', {
-                    uri: asset.uri,
-                    name: 'photo.jpg',
-                    type: 'image/jpeg',
-                  });
-
-                  const response = await fetch(`${Config.API_URL}/temp-file`, {
-                    method: 'POST',
-                    body: form,
-                    headers: {
-                      Authorization: `Bearer ${authToken}`,
-                    },
-                  });
-
-                  const responseBody = await response.json();
-
-                  return {
-                    ...asset,
-                    tempPath: responseBody.temp_path,
-                  };
-                }),
+              const images = await resizeAndUploadPhotos(
+                pickerResponse.assets,
+                authToken,
               );
 
               layoutAnimate();
               setUploadingPhotos(false);
               setPhotos(images);
             }
+
+            break;
         }
       },
     );

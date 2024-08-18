@@ -383,6 +383,8 @@ export type RootMutationType = {
   staticMediaCreate: StaticMedia;
   /** Update an existing property */
   updateProperty: Property;
+  /** Add a new FCM token for the current user */
+  userAddFcmToken: Scalars['Boolean'];
   /** Login a user with email and password */
   userLogin: Session;
   /** Send OTP code for user (tenant) login */
@@ -472,6 +474,11 @@ export type RootMutationTypeUpdatePropertyArgs = {
   propertyDetails: PropertyDetails;
   propertyId: Scalars['ID'];
   tenants?: InputMaybe<Array<TenantObject>>;
+};
+
+
+export type RootMutationTypeUserAddFcmTokenArgs = {
+  token: Scalars['String'];
 };
 
 
@@ -680,6 +687,7 @@ export type TenantObject = {
 export type User = {
   __typename?: 'User';
   agency?: Maybe<Agency>;
+  fcmTokens?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['ID'];
   isAdmin: Scalars['Boolean'];
   profile: Profile;
@@ -689,7 +697,7 @@ export type User = {
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'RootQueryType', me?: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, tenant?: { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } } | null } | null };
+export type MeQuery = { __typename?: 'RootQueryType', me?: { __typename?: 'User', id: string, fcmTokens?: Array<string | null> | null, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, tenant?: { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } } | null } | null };
 
 export type MyActivityQueryVariables = Exact<{
   first: Scalars['Int'];
@@ -722,7 +730,14 @@ export type VerifyOtpMutationVariables = Exact<{
 }>;
 
 
-export type VerifyOtpMutation = { __typename?: 'RootMutationType', userVerifyOtp: { __typename?: 'Session', token: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, tenant?: { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } } | null } } };
+export type VerifyOtpMutation = { __typename?: 'RootMutationType', userVerifyOtp: { __typename?: 'Session', token: string, user: { __typename?: 'User', id: string, fcmTokens?: Array<string | null> | null, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, tenant?: { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } } | null } } };
+
+export type AddFcmTokenMutationVariables = Exact<{
+  token: Scalars['String'];
+}>;
+
+
+export type AddFcmTokenMutation = { __typename?: 'RootMutationType', userAddFcmToken: boolean };
 
 export type AddRequestCommentMutationVariables = Exact<{
   authorName: Scalars['String'];
@@ -801,7 +816,7 @@ export type RequestBaseFragment = { __typename?: 'PropertyRequest', id: string, 
 
 export type TenantBaseFragment = { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } };
 
-export type UserBaseFragment = { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, tenant?: { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } } | null };
+export type UserBaseFragment = { __typename?: 'User', id: string, fcmTokens?: Array<string | null> | null, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, tenant?: { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } } | null };
 
 export const ContractorBaseFragmentDoc = gql`
     fragment ContractorBase on Contractor {
@@ -884,6 +899,7 @@ export const TenantBaseFragmentDoc = gql`
 export const UserBaseFragmentDoc = gql`
     fragment UserBase on User {
   id
+  fcmTokens
   profile {
     ...ProfileBase
   }
@@ -1132,6 +1148,37 @@ export function useVerifyOtpMutation(baseOptions?: ApolloReactHooks.MutationHook
 export type VerifyOtpMutationHookResult = ReturnType<typeof useVerifyOtpMutation>;
 export type VerifyOtpMutationResult = ApolloReactCommon.MutationResult<VerifyOtpMutation>;
 export type VerifyOtpMutationOptions = ApolloReactCommon.BaseMutationOptions<VerifyOtpMutation, VerifyOtpMutationVariables>;
+export const AddFcmTokenDocument = gql`
+    mutation addFcmToken($token: String!) {
+  userAddFcmToken(token: $token)
+}
+    `;
+export type AddFcmTokenMutationFn = ApolloReactCommon.MutationFunction<AddFcmTokenMutation, AddFcmTokenMutationVariables>;
+
+/**
+ * __useAddFcmTokenMutation__
+ *
+ * To run a mutation, you first call `useAddFcmTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddFcmTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addFcmTokenMutation, { data, loading, error }] = useAddFcmTokenMutation({
+ *   variables: {
+ *      token: // value for 'token'
+ *   },
+ * });
+ */
+export function useAddFcmTokenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddFcmTokenMutation, AddFcmTokenMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<AddFcmTokenMutation, AddFcmTokenMutationVariables>(AddFcmTokenDocument, options);
+      }
+export type AddFcmTokenMutationHookResult = ReturnType<typeof useAddFcmTokenMutation>;
+export type AddFcmTokenMutationResult = ApolloReactCommon.MutationResult<AddFcmTokenMutation>;
+export type AddFcmTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<AddFcmTokenMutation, AddFcmTokenMutationVariables>;
 export const AddRequestCommentDocument = gql`
     mutation addRequestComment($authorName: String!, $messageBody: String!, $requestId: ID!, $systemGenerated: Boolean) {
   propertyRequestCommentCreate(

@@ -25,15 +25,15 @@ const MoreContainer: React.FC = () => {
           <SmallText>Profile</SmallText>
         </Card>
 
-        <SectionTitle style={{paddingTop: 24}}>Notifications</SectionTitle>
+        {/* <SectionTitle style={{paddingTop: 24}}>Notifications</SectionTitle>
         <Card>
           <SmallText>Notification preferences</SmallText>
-        </Card>
+        </Card> */}
 
         <SectionTitle style={{paddingTop: 24}}>App</SectionTitle>
         <Card
           isTappable
-          onPress={() => openBrowser('https://occupie.com.au/about', {})}>
+          onPress={() => openBrowser('https://occupie.com.au', {})}>
           <SmallText>About OccuPie</SmallText>
         </Card>
         <Card

@@ -10,6 +10,7 @@ defmodule LimeLease.User.User do
 
   schema "users" do
     field :password, :string
+    field :fcm_tokens, {:array, :string}
 
     belongs_to(:profile, LimeLease.Profile.Profile, foreign_key: :profile_id, type: :binary_id)
     has_one(:tenant, LimeLease.Tenant.Tenant)
@@ -23,6 +24,12 @@ defmodule LimeLease.User.User do
     user
     |> cast(attrs, [:password])
     |> cast_assoc(:profile, with: &LimeLease.Profile.Profile.create_changeset/2, required: true)
+  end
+
+  def update_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:fcm_tokens])
+    |> validate_length(:fcm_tokens, min: 1)
   end
 
   def default_preloads(query) do

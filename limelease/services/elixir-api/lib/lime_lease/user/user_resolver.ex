@@ -1,5 +1,5 @@
 defmodule LimeLease.User.UserResolver do
-  alias LimeLease.User.{User, UserService}
+  alias LimeLease.User.{User, UserContext, UserService}
 
   require IEx
 
@@ -25,6 +25,10 @@ defmodule LimeLease.User.UserResolver do
 
   def user_verify_otp_mutation(_parent, %{mobile_number: mobile_number, code: code}, _resolver) do
     UserService.verify_otp(mobile_number, code)
+  end
+
+  def user_add_fcm_token_mutation(_parent, %{token: token}, %{context: %{current_user: %User{} = current_user}}) do
+    UserService.add_fcm_token_for_user(token, current_user)
   end
 
   def is_admin_field(%User{} = user, _args, %{context: %{current_user: _current_user}}) do

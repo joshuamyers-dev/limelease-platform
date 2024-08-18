@@ -16,6 +16,8 @@ import {
   StandardText,
 } from '@components/TextComponents';
 import {
+  PropertyRequestComment,
+  PropertyRequestCommentEdge,
   useMeQuery,
   useMyActivityQuery,
   useMyUpcomingJobsQuery,
@@ -24,12 +26,13 @@ import {renderAddressLabel} from '@utils/Helpers';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import UpcomingJob from '../components/UpcomingJob';
 import {useCallback} from 'react';
-import {LEASE_SCREEN} from '@navigators/ScreenConstants';
+import {LEASE_SCREEN, VIEW_REQUEST_SCREEN} from '@navigators/ScreenConstants';
 import EmptyState from '@components/EmptyState';
 import Card from '@components/Card';
 import dayjs from 'dayjs';
 import {DEVICE_TIMEZONE} from '@utils/Constants';
 import {useFocusEffect} from '@react-navigation/native';
+import Animated, {FadeIn} from 'react-native-reanimated';
 
 const DashboardContainer: React.FC = ({navigation}) => {
   const insets = useSafeAreaInsets();
@@ -42,7 +45,7 @@ const DashboardContainer: React.FC = ({navigation}) => {
 
   const {data: myActivityData, refetch: refetchActivity} = useMyActivityQuery({
     variables: {
-      first: 5,
+      first: 3,
     },
     fetchPolicy: 'cache-and-network',
   });
@@ -52,6 +55,12 @@ const DashboardContainer: React.FC = ({navigation}) => {
       propertyAddress: meData?.me?.tenant?.property.address,
     });
   }, [meData?.me]);
+
+  const onPressActivityItem = useCallback((node: PropertyRequestComment) => {
+    navigation.navigate(VIEW_REQUEST_SCREEN, {
+      request: node.request,
+    });
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
@@ -137,16 +146,22 @@ const DashboardContainer: React.FC = ({navigation}) => {
               .fromNow();
 
             return (
-              <Card>
-                <ExtraSmallText>{edge?.node?.authorName}</ExtraSmallText>
-                <StandardText style={{paddingTop: 4, width: '80%'}}>
-                  {edge?.node?.request.title}
-                </StandardText>
-                <SmallText numberOfLines={1} style={{marginTop: 8}}>
-                  {edge?.node?.messageBody}
-                </SmallText>
-                <CaptionText style={{paddingTop: 8}}>{createdDate}</CaptionText>
-              </Card>
+              <Animated.View entering={FadeIn} key={edge?.node.id}>
+                <Card
+                  onPress={() => onPressActivityItem(edge?.node)}
+                  isTappable>
+                  <ExtraSmallText>{edge?.node?.authorName}</ExtraSmallText>
+                  <StandardText style={{paddingTop: 4, width: '80%'}}>
+                    {edge?.node?.request.title}
+                  </StandardText>
+                  <SmallText numberOfLines={1} style={{marginTop: 8}}>
+                    {edge?.node?.messageBody}
+                  </SmallText>
+                  <CaptionText style={{paddingTop: 8}}>
+                    {createdDate}
+                  </CaptionText>
+                </Card>
+              </Animated.View>
             );
           })}
         </View>
