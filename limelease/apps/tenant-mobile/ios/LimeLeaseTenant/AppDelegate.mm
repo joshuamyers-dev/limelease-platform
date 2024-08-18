@@ -1,7 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
-
+#import "RNSplashScreen.h"
 #import <Firebase.h>
 
 @implementation AppDelegate
@@ -14,7 +14,7 @@
   self.initialProps = @{};
   
   [FIRApp configure];
-
+  
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 

@@ -7101,18 +7101,18 @@
         "hash": "sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w=="
       }
     },
-    "npm:commander": {
+    "npm:commander@2.20.3": {
       "type": "npm",
-      "name": "npm:commander",
+      "name": "npm:commander@2.20.3",
       "data": {
         "version": "2.20.3",
         "packageName": "commander",
         "hash": "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ=="
       }
     },
-    "npm:commander@9.5.0": {
+    "npm:commander": {
       "type": "npm",
-      "name": "npm:commander@9.5.0",
+      "name": "npm:commander",
       "data": {
         "version": "9.5.0",
         "packageName": "commander",
@@ -8712,18 +8712,18 @@
         "hash": "sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw=="
       }
     },
-    "npm:for-in@0.1.8": {
+    "npm:for-in": {
       "type": "npm",
-      "name": "npm:for-in@0.1.8",
+      "name": "npm:for-in",
       "data": {
         "version": "0.1.8",
         "packageName": "for-in",
         "hash": "sha512-F0to7vbBSHP8E3l6dCjxNOLuSFAACIxFy3UehTUlG7svlXi37HHsDkyVcHo0Pq8QwrE+pXvWSVX3ZT1T9wAZ9g=="
       }
     },
-    "npm:for-in": {
+    "npm:for-in@1.0.2": {
       "type": "npm",
-      "name": "npm:for-in",
+      "name": "npm:for-in@1.0.2",
       "data": {
         "version": "1.0.2",
         "packageName": "for-in",
@@ -13248,6 +13248,15 @@
         "hash": "sha512-wybqZAHX7v8ipOXhh90CqGLkBHw5JYqKNRBX7R/b0c2WQisTOgu0M0yGwBMM6LyXRBT+4k3NTGHdDbpJVpq0yQ=="
       }
     },
+    "npm:react-native-splash-screen": {
+      "type": "npm",
+      "name": "npm:react-native-splash-screen",
+      "data": {
+        "version": "3.3.0",
+        "packageName": "react-native-splash-screen",
+        "hash": "sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA=="
+      }
+    },
     "npm:react-native-wheely": {
       "type": "npm",
       "name": "npm:react-native-wheely",
@@ -14166,18 +14175,18 @@
         "hash": "sha512-Qu+VC3EwYLldKa1fCxuuvULvSJOKEgk9pi8dZeCVK7TqBfUNTH4sFkk4joj8afVSfAYgJoSOetjx9QWOJ5mYoQ=="
       }
     },
-    "npm:slice-ansi": {
+    "npm:slice-ansi@3.0.0": {
       "type": "npm",
-      "name": "npm:slice-ansi",
+      "name": "npm:slice-ansi@3.0.0",
       "data": {
         "version": "3.0.0",
         "packageName": "slice-ansi",
         "hash": "sha512-pSyv7bSTC7ig9Dcgbw9AuRNUb5k5V6oDudjZoMBSr13qpLBG7tB+zgCkARjq7xIUgdz5P1Qe8u+rSGdouOOIyQ=="
       }
     },
-    "npm:slice-ansi@4.0.0": {
+    "npm:slice-ansi": {
       "type": "npm",
-      "name": "npm:slice-ansi@4.0.0",
+      "name": "npm:slice-ansi",
       "data": {
         "version": "4.0.0",
         "packageName": "slice-ansi",
@@ -26158,7 +26167,7 @@
     },
     {
       "source": "npm:@react-native-community/cli",
-      "target": "npm:commander@9.5.0",
+      "target": "npm:commander",
       "type": "static"
     },
     {
@@ -30573,7 +30582,7 @@
     },
     {
       "source": "npm:cli-truncate",
-      "target": "npm:slice-ansi",
+      "target": "npm:slice-ansi@3.0.0",
       "type": "static"
     },
     {
@@ -32958,7 +32967,7 @@
     },
     {
       "source": "npm:for-own",
-      "target": "npm:for-in",
+      "target": "npm:for-in@1.0.2",
       "type": "static"
     },
     {
@@ -35438,7 +35447,7 @@
     },
     {
       "source": "npm:log-update",
-      "target": "npm:slice-ansi@4.0.0",
+      "target": "npm:slice-ansi",
       "type": "static"
     },
     {
@@ -36183,7 +36192,7 @@
     },
     {
       "source": "npm:mixin-object",
-      "target": "npm:for-in@0.1.8",
+      "target": "npm:for-in",
       "type": "static"
     },
     {
@@ -38737,6 +38746,11 @@
       "type": "static"
     },
     {
+      "source": "npm:react-native-splash-screen",
+      "target": "npm:react-native",
+      "type": "static"
+    },
+    {
       "source": "npm:react-native",
       "target": "npm:@jest/create-cache-key-function",
       "type": "static"
@@ -39767,32 +39781,32 @@
       "type": "static"
     },
     {
-      "source": "npm:slice-ansi",
+      "source": "npm:slice-ansi@3.0.0",
       "target": "npm:ansi-styles",
       "type": "static"
     },
     {
-      "source": "npm:slice-ansi",
+      "source": "npm:slice-ansi@3.0.0",
       "target": "npm:astral-regex",
       "type": "static"
     },
     {
-      "source": "npm:slice-ansi",
+      "source": "npm:slice-ansi@3.0.0",
       "target": "npm:is-fullwidth-code-point",
       "type": "static"
     },
     {
-      "source": "npm:slice-ansi@4.0.0",
+      "source": "npm:slice-ansi",
       "target": "npm:ansi-styles",
       "type": "static"
     },
     {
-      "source": "npm:slice-ansi@4.0.0",
+      "source": "npm:slice-ansi",
       "target": "npm:astral-regex",
       "type": "static"
     },
     {
-      "source": "npm:slice-ansi@4.0.0",
+      "source": "npm:slice-ansi",
       "target": "npm:is-fullwidth-code-point",
       "type": "static"
     },
@@ -40368,7 +40382,7 @@
     },
     {
       "source": "npm:terser",
-      "target": "npm:commander",
+      "target": "npm:commander@2.20.3",
       "type": "static"
     },
     {

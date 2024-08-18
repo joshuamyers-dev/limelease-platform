@@ -262,6 +262,9 @@ importers:
       react-native-screens:
         specifier: ^3.32.0
         version: 3.32.0(react-native@0.74.2(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.2.6)(encoding@0.1.13)(react@18.2.0))(react@18.2.0)
+      react-native-splash-screen:
+        specifier: ^3.3.0
+        version: 3.3.0(react-native@0.74.2(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.2.6)(encoding@0.1.13)(react@18.2.0))
       react-native-wheely:
         specifier: ^0.6.0
         version: 0.6.0
@@ -6866,6 +6869,11 @@ packages:
     peerDependencies:
       react: '*'
       react-native: '*'
+
+  react-native-splash-screen@3.3.0:
+    resolution: {integrity: sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA==}
+    peerDependencies:
+      react-native: '>=0.57.0'
 
   react-native-wheely@0.6.0:
     resolution: {integrity: sha512-WDnynKOdHZ3m0VnXF5pC11dXSJZDC/6/e9LuZ6UKs4IjIRI1NTTd14pRwKYEnTgWmJdlDjqJvNSIVbd7EuMxHQ==}
@@ -17241,6 +17249,10 @@ snapshots:
       react-freeze: 1.0.4(react@18.2.0)
       react-native: 0.74.2(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.2.6)(encoding@0.1.13)(react@18.2.0)
       warn-once: 0.1.1
+
+  react-native-splash-screen@3.3.0(react-native@0.74.2(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.2.6)(encoding@0.1.13)(react@18.2.0)):
+    dependencies:
+      react-native: 0.74.2(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.2.6)(encoding@0.1.13)(react@18.2.0)
 
   react-native-wheely@0.6.0: {}
 

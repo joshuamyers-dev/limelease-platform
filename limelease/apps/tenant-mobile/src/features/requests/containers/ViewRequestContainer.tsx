@@ -173,6 +173,7 @@ const ViewRequestContainer = ({navigation, route}) => {
   return (
     <View style={{flex: 1}}>
       <VirtualizedList
+        showsVerticalScrollIndicator={false}
         style={styles.container}
         contentContainerStyle={{paddingBottom: 124}}>
         <BottomSheetWrapper ref={bottomSheetRef} height={SCREEN_HEIGHT * 0.4}>
