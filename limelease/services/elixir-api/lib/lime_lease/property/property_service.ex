@@ -79,13 +79,18 @@ defmodule LimeLease.Property.PropertyService do
     tenants =
       Enum.map(tenants, fn tenant ->
         found_tenant =
-          case TenantContext.get_tenant_by_id(tenant.id) do
-            {:ok, %Tenant{} = tenant} ->
+         case Map.has_key?(tenant, :id) do
+          true ->
+            with  {:ok, %Tenant{} = tenant} <- TenantContext.get_tenant_by_id(tenant.id) do
               tenant
+            else
+              _ ->
+                %{}
+            end
 
-            _ ->
-              nil
-          end
+          false ->
+            %{}
+         end
 
         %{
           id: Map.get(found_tenant, :id),
@@ -93,7 +98,7 @@ defmodule LimeLease.Property.PropertyService do
             id: Map.get(found_tenant, :user_id),
             profile: %{
               id:
-                case found_tenant != nil do
+                case Map.has_key?(tenant, :id) do
                   true ->
                     found_tenant.user.profile_id
 
