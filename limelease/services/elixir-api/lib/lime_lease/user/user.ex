@@ -39,7 +39,8 @@ defmodule LimeLease.User.User do
 
   def with_email(query, email) do
     query
-    |> where([q], q.email == ^email)
+    |> join(:inner, [q], p in assoc(q, :profile))
+    |> where([q, p], p.email == ^email)
   end
 
   def with_phone_number(query, phone_number) do

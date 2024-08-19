@@ -14,792 +14,1530 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "limelease/services/elixir-api/priv/static/favicon.ico",
-        "hash": "6023468761092867883"
-      },
-      {
-        "file": "limelease/services/elixir-api/test/support/conn_case.ex",
-        "hash": "4707761268754749650"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/file/property_file_schema.ex",
-        "hash": "6759182864908282507"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20230220023134_create_property_requests.exs",
-        "hash": "7269161698063613412"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/gettext/errors.pot",
-        "hash": "6760033418897232752"
-      },
-      {
-        "file": "sst.config.ts",
-        "hash": "5425723369055349164"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/overlays/bin/server.bat",
-        "hash": "7186082622226334684"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_schema.ex",
-        "hash": "1819079307857023115"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_context.ex",
-        "hash": "13014239944741133130"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_resolver.ex",
-        "hash": "17024671840946741394"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/test.exs",
-        "hash": "5993718528677352560"
-      },
-      {
         "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent.ex",
         "hash": "13657405796805947321"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_schema.ex",
-        "hash": "1480028997560560253"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/photo/property_request_photo.ex",
-        "hash": "12386671537166808147"
-      },
-      {
-        "file": ".formatter.exs",
-        "hash": "10064084336676422674"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/changeset_helpers.ex",
-        "hash": "12222837089150833981"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_service.ex",
-        "hash": "9585145851151266470"
-      },
-      {
-        "file": "sst-env.d.ts",
-        "hash": "1067826197387295945"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile_service.ex",
-        "hash": "11807027362120501130"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/overlays/bin/server",
-        "hash": "16996218216023068191"
-      },
-      {
-        "file": "limelease/.DS_Store",
-        "hash": "3267427021297450863"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_context.ex",
-        "hash": "5563144475594529984"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_schema.ex",
-        "hash": "11579414116391998185"
-      },
-      {
-        "file": "limelease/services/elixir-api/assets/css/phoenix.css",
-        "hash": "11026573209544566604"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/otp_code/otp_code.ex",
-        "hash": "10849117233618659107"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240203071242_create_property_request_categories.exs",
-        "hash": "5514820781445661975"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_service.ex",
-        "hash": "13250594469443577159"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/middleware/authorize.ex",
-        "hash": "9764086592954276625"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant.ex",
-        "hash": "1447142010459938976"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_schema.ex",
-        "hash": "2391105829205527467"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/remote.vm.args.eex",
-        "hash": "2097317746300665737"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_service.ex",
-        "hash": "8907750759368055964"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20220629084738_create_properties.exs",
-        "hash": "1810522452714673199"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_resolver.ex",
-        "hash": "6533365222975432203"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notifications.ex",
-        "hash": "10102381560072211137"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505132030_create_property_agent_tasks.exs",
-        "hash": "3073912589627385140"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20231125124422_create_agencies.exs",
-        "hash": "10934397247172355017"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/plugs/context.ex",
-        "hash": "9749912721141204749"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_schema.ex",
-        "hash": "14678788064811326344"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/controllers/temp_file_controller.ex",
-        "hash": "879161995410401428"
-      },
-      {
-        "file": "limelease/services/elixir-api/.formatter.exs",
-        "hash": "10064084336676422674"
-      },
-      {
-        "file": ".npmrc",
-        "hash": "8136459552884196480"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/router.ex",
-        "hash": "12571423540495391334"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency.ex",
-        "hash": "13476950534310381650"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505132634_create_property_files.exs",
-        "hash": "1663896572528748639"
-      },
-      {
-        "file": "limelease/services/elixir-api/test/support/data_case.ex",
-        "hash": "810525928442134349"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/otp_code/otp_code_context.ex",
-        "hash": "5577689633666688973"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20231125124842_create_agency_agents.exs",
-        "hash": "4446265377921629464"
-      },
-      {
-        "file": "limelease/infra/digitalocean/doctl-config.yml",
-        "hash": "10660805046007329319"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent_context.ex",
-        "hash": "4233871387631195683"
-      },
-      {
-        "file": "limelease/services/elixir-api/README.md",
-        "hash": "12898494106830850149"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240809094746_create_otp_codes.exs",
-        "hash": "8754003360423720430"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "15151127265995915994"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/user_socket.ex",
-        "hash": "10059169003753529574"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/runtime.exs",
-        "hash": "14896566327384190072"
-      },
-      {
-        "file": "limelease/package.json",
-        "hash": "12409233796713625049"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/static/images/phoenix.png",
-        "hash": "3019631266252354651"
-      },
-      {
-        "file": "limelease/services/elixir-api/mix.exs",
-        "hash": "5481573746828393478"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_context.ex",
-        "hash": "16429922051223987301"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_context.ex",
-        "hash": "5032522177222038849"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/controllers/webhook_controller.ex",
-        "hash": "10133693245335918673"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_service.ex",
-        "hash": "16447076879843377070"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/repo.ex",
-        "hash": "15905800990111941406"
-      },
-      {
-        "file": "limelease/services/elixir-api/test/lime_lease_web/controllers/page_controller_test.exs",
-        "hash": "13665472437324351469"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile_resolver.ex",
-        "hash": "1883784981282729046"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_context.ex",
-        "hash": "13540483750516893924"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_context.ex",
-        "hash": "9472714700518321216"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/schema.ex",
-        "hash": "10328306272912704884"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/env.bat.eex",
-        "hash": "13912121852897936892"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category.ex",
-        "hash": "17974310196427712904"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_schema.ex",
-        "hash": "4111133822940397105"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_schema.ex",
-        "hash": "3014077860158204032"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/gettext.ex",
-        "hash": "15666655883781585187"
-      },
-      {
-        "file": ".DS_Store",
-        "hash": "2939472436374715646"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request.ex",
-        "hash": "8003075637431911037"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease.ex",
-        "hash": "3539776779289789697"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_context.ex",
-        "hash": "2541946717093488661"
-      },
-      {
-        "file": "limelease/services/elixir-api/test/lime_lease_web/views/page_view_test.exs",
-        "hash": "642541566557949161"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/photo/property_photo.ex",
-        "hash": "2533350667428801233"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/endpoint.ex",
-        "hash": "595956666445684972"
-      },
-      {
-        "file": "limelease/services/elixir-api/mix.lock",
-        "hash": "16439231969744704135"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment.ex",
-        "hash": "1867251204947668486"
-      },
-      {
-        "file": "limelease/services/elixir-api/Dockerfile",
-        "hash": "15746553878068146753"
-      },
-      {
-        "file": "tsconfig.json",
-        "hash": "15753941481085060538"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_schema.ex",
-        "hash": "10996087220193635487"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_context.ex",
-        "hash": "17213052684236342840"
-      },
-      {
-        "file": "pnpm-lock.yaml",
-        "hash": "14326080157182567856"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/dev.exs",
-        "hash": "9263901450245186678"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_resolver.ex",
-        "hash": "6106835798889845708"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_schema.ex",
-        "hash": "17044682454891741002"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_resolver.ex",
-        "hash": "7356588341758469370"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_schema.ex",
-        "hash": "8372032184181404565"
-      },
-      {
-        "file": "limelease/services/elixir-api/assets/js/app.js",
-        "hash": "8230686138974658220"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/landlord/property_landlord.ex",
-        "hash": "14832580723318023148"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_resolver.ex",
-        "hash": "11650711422411536949"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/prod.exs",
-        "hash": "956029149973821960"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/helpers/helpers.ex",
-        "hash": "5852479285685086325"
-      },
-      {
-        "file": "limelease/services/elixir-api/.vscode/settings.json",
-        "hash": "14480110575865725585"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_resolver.ex",
-        "hash": "4470366750048744844"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent_schema.ex",
-        "hash": "13150702515696430873"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/release.ex",
-        "hash": "7313960569898796460"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease.ex",
-        "hash": "13337791236213480130"
-      },
-      {
-        "file": "nx.bat",
-        "hash": "16119536321561623970"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_service.ex",
-        "hash": "11034371511831153696"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/static/assets/app.css",
-        "hash": "16041730416092170690"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/guardian.ex",
-        "hash": "8472704270570881546"
-      },
-      {
-        "file": "limelease/services/elixir-api/assets/vendor/topbar.js",
-        "hash": "7136826511606975709"
-      },
-      {
-        "file": "limelease/services/elixir-api/test/test_helper.exs",
-        "hash": "16041478222342623843"
-      },
-      {
-        "file": "package.json",
-        "hash": "418897814260783840"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/telemetry.ex",
-        "hash": "2822188886042883138"
-      },
-      {
-        "file": "limelease/services/elixir-api/rel/env.sh.eex",
-        "hash": "3675901051954639316"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web.ex",
-        "hash": "2817699519865152073"
       },
       {
         "file": "limelease/services/elixir-api/priv/repo/migrations/20231126071418_create_property_agents.exs",
         "hash": "6681437347835553158"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_service.ex",
-        "hash": "2727003307428581428"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/auth_error_handler.ex",
-        "hash": "1785204057003526197"
-      },
-      {
-        "file": "limelease/services/elixir-api/.dockerignore",
-        "hash": "8434872515162186046"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/mailer.ex",
-        "hash": "10182955616692000419"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_service.ex",
-        "hash": "16799396224013203122"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/file/property_file.ex",
-        "hash": "5868812021537391019"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/.formatter.exs",
-        "hash": "1193860905016756508"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_service.ex",
-        "hash": "18104037060398617057"
-      },
-      {
-        "file": "limelease/apps/.DS_Store",
-        "hash": "13539145801131268515"
-      },
-      {
-        "file": "pnpm-workspace.yaml",
-        "hash": "14340327533138106280"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/services/clicksend.ex",
-        "hash": "14143259489110198711"
-      },
-      {
-        "file": ".github/workflows/build-and-deploy.yml",
-        "hash": "2642332024630781516"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240116031001_create_property_request_comments.exs",
-        "hash": "9303053891003715097"
-      },
-      {
         "file": "limelease/services/elixir-api/lib/lime_lease/application.ex",
         "hash": "947857131482277924"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/services/aws.ex",
-        "hash": "1180412760270458124"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_resolver.ex",
-        "hash": "30306668212510968"
-      },
-      {
-        "file": "limelease/services/elixir-api/dets_simple_storage",
-        "hash": "5906269353803615872"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_service.ex",
-        "hash": "17189299676049289729"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/genservers/sms_queue.ex",
-        "hash": "16610753677004968955"
-      },
-      {
-        "file": "nx.json",
-        "hash": "1184888047097634593"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/mix/tasks/generate_graph_model.ex",
-        "hash": "1931886507898213844"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_resolver.ex",
-        "hash": "1298826720922415094"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile.ex",
-        "hash": "8689017688666771110"
-      },
-      {
-        "file": ".vscode/launch.json",
-        "hash": "8065499820749323915"
-      },
-      {
-        "file": "limelease/services/elixir-api/config/config.exs",
-        "hash": "9197357137833245160"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_context.ex",
         "hash": "14364894297331905998"
       },
       {
-        "file": "limelease/services/elixir-api/rel/vm.args.eex",
-        "hash": "2097317746300665737"
+        "file": "sst.config.ts",
+        "hash": "5425723369055349164"
       },
       {
-        "file": "nx",
-        "hash": "17165975525224888679"
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_service.ex",
+        "hash": "9585145851151266470"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_service.ex",
-        "hash": "9554622565696157296"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent_context.ex",
+        "hash": "4233871387631195683"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_service.ex",
-        "hash": "558174817345312770"
+        "file": "limelease/services/elixir-api/lib/lime_lease/release.ex",
+        "hash": "7313960569898796460"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_resolver.ex",
-        "hash": "18058815246440190855"
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_context.ex",
+        "hash": "17213052684236342840"
       },
       {
-        "file": "limelease/services/elixir-api/rel/overlays/bin/migrate.bat",
-        "hash": "18306995304897643395"
+        "file": "pnpm-workspace.yaml",
+        "hash": "14340327533138106280"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_schema.ex",
-        "hash": "15834087005583334841"
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_resolver.ex",
+        "hash": "11650711422411536949"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_resolver.ex",
-        "hash": "8341192745709285365"
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency.ex",
+        "hash": "13476950534310381650"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_service.ex",
-        "hash": "1275648872124994056"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20220626051651_create_users.exs",
-        "hash": "18000582228926880191"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job.ex",
-        "hash": "6526463331845300034"
-      },
-      {
-        "file": "limelease/services/elixir-api/.credo.exs",
-        "hash": "16210346608563009821"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/user/user.ex",
-        "hash": "8811343321016342017"
-      },
-      {
-        "file": "limelease/services/elixir-api/assets/css/app.css",
-        "hash": "2570088715272531702"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/property.ex",
-        "hash": "6763346716111340795"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_service.ex",
-        "hash": "14731602826363955658"
-      },
-      {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240810045608_create_profiles.exs",
-        "hash": "13398524942489625953"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_context.ex",
-        "hash": "3644539986847810207"
-      },
-      {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property/address/property_address.ex",
-        "hash": "8483578924246225002"
+        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_service.ex",
+        "hash": "3315040152775941390"
       },
       {
         "file": "limelease/services/elixir-api/priv/static/robots.txt",
         "hash": "14731786011069331828"
       },
       {
-        "file": ".github/workflows_future/deploy-nextjs.yml",
-        "hash": "18335406075893517019"
+        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_schema.ex",
+        "hash": "10996087220193635487"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_schema.ex",
-        "hash": "7331691126253999988"
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_context.ex",
+        "hash": "5563144475594529984"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_resolver.ex",
-        "hash": "10294042417918702402"
+        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_service.ex",
+        "hash": "9554622565696157296"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505131824_create_tasks.exs",
-        "hash": "16090001544565891314"
+        "file": "limelease/services/elixir-api/.dockerignore",
+        "hash": "8434872515162186046"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_context.ex",
-        "hash": "7171059709883490036"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_resolver.ex",
+        "hash": "17024671840946741394"
       },
       {
-        "file": "platform.code-workspace",
-        "hash": "17612878145707566081"
+        "file": "limelease/services/elixir-api/rel/remote.vm.args.eex",
+        "hash": "2097317746300665737"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505132634_create_property_files.exs",
+        "hash": "1663896572528748639"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_service.ex",
+        "hash": "16447076879843377070"
+      },
+      {
+        "file": "limelease/package.json",
+        "hash": "12409233796713625049"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/landlord/property_landlord.ex",
+        "hash": "14832580723318023148"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/mix/tasks/generate_graph_model.ex",
+        "hash": "1931886507898213844"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/auth_error_handler.ex",
+        "hash": "1785204057003526197"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_service.ex",
+        "hash": "16270967574015563019"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_schema.ex",
+        "hash": "1819079307857023115"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile_resolver.ex",
+        "hash": "1883784981282729046"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile_context.ex",
+        "hash": "9676591612158734378"
+      },
+      {
+        "file": "limelease/services/elixir-api/assets/vendor/topbar.js",
+        "hash": "7136826511606975709"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_schema.ex",
+        "hash": "2391105829205527467"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/endpoint.ex",
+        "hash": "595956666445684972"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/dev.exs",
+        "hash": "9263901450245186678"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/helpers/helpers.ex",
+        "hash": "5852479285685086325"
+      },
+      {
+        "file": "limelease/services/elixir-api/README.md",
+        "hash": "12898494106830850149"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_service.ex",
+        "hash": "2727003307428581428"
+      },
+      {
+        "file": "limelease/services/elixir-api/assets/css/app.css",
+        "hash": "2570088715272531702"
+      },
+      {
+        "file": ".github/workflows/build-and-deploy.yml",
+        "hash": "2642332024630781516"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_service.ex",
+        "hash": "8907750759368055964"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_resolver.ex",
+        "hash": "6106835798889845708"
       },
       {
         "file": "limelease/services/elixir-api/test/lime_lease_web/views/error_view_test.exs",
         "hash": "10713011789687845386"
       },
       {
-        "file": "limelease/services/elixir-api/test/lime_lease_web/views/layout_view_test.exs",
-        "hash": "17601084256278205655"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_context.ex",
+        "hash": "13014239944741133130"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile_context.ex",
-        "hash": "12274052559512808491"
+        "file": "package.json",
+        "hash": "418897814260783840"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_context.ex",
         "hash": "9105259498136050238"
       },
       {
-        "file": "limelease/services/elixir-api/priv/gettext/en/LC_MESSAGES/errors.po",
-        "hash": "6133952066058840805"
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_service.ex",
+        "hash": "13250594469443577159"
       },
       {
-        "file": ".github/workflows_future/deploy-elixir.yml",
-        "hash": "7652728375106800549"
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505132030_create_property_agent_tasks.exs",
+        "hash": "3073912589627385140"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile_schema.ex",
-        "hash": "9479952339965131080"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_schema.ex",
+        "hash": "15834087005583334841"
       },
       {
-        "file": "limelease/services/elixir-api/priv/static/assets/app.js",
-        "hash": "9732360241015509083"
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240810045608_create_profiles.exs",
+        "hash": "7796282532334081267"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_context.ex",
-        "hash": "9937966686211275318"
+        "file": "limelease/services/elixir-api/.credo.exs",
+        "hash": "16210346608563009821"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505131329_create_leases.exs",
-        "hash": "15169068761051926630"
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/schema.ex",
+        "hash": "10328306272912704884"
       },
       {
-        "file": "limelease/services/elixir-api/rel/overlays/bin/migrate",
-        "hash": "13312743066005289560"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category.ex",
+        "hash": "17974310196427712904"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/middleware/ecto_errors.ex",
-        "hash": "15751924785005853428"
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_resolver.ex",
+        "hash": "30306668212510968"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20230701053500_create_static_media.exs",
-        "hash": "9119362719629989254"
+        "file": "limelease/services/elixir-api/assets/css/phoenix.css",
+        "hash": "11026573209544566604"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease_web/emails/emails.ex",
-        "hash": "13131049160326795174"
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240116031001_create_property_request_comments.exs",
+        "hash": "9303053891003715097"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor.ex",
-        "hash": "7295023085803886707"
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/gettext.ex",
+        "hash": "15666655883781585187"
       },
       {
-        "file": "klip",
-        "hash": "16639046483902457585"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_context.ex",
+        "hash": "9472714700518321216"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent.ex",
-        "hash": "6549235893572738079"
+        "file": "limelease/services/elixir-api/test/test_helper.exs",
+        "hash": "16041478222342623843"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification.ex",
-        "hash": "9342313892835528039"
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_context.ex",
+        "hash": "10471353310231615493"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/gettext/errors.pot",
+        "hash": "6760033418897232752"
       },
       {
         "file": "limelease/services/elixir-api/priv/repo/migrations/20231112134325_create_contractor_jobs.exs",
         "hash": "16272881438924081716"
       },
       {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_resolver.ex",
+        "hash": "1298826720922415094"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment.ex",
+        "hash": "1867251204947668486"
+      },
+      {
         "file": "limelease/services/elixir-api/lib/lime_lease/property/file/property_file_context.ex",
         "hash": "1817037776778828709"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_service.ex",
+        "hash": "14731602826363955658"
+      },
+      {
+        "file": "limelease/services/elixir-api/test/lime_lease_web/views/layout_view_test.exs",
+        "hash": "17601084256278205655"
+      },
+      {
+        "file": "limelease/services/elixir-api/.formatter.exs",
+        "hash": "10064084336676422674"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/env.bat.eex",
+        "hash": "13912121852897936892"
+      },
+      {
+        "file": "limelease/services/elixir-api/test/lime_lease_web/controllers/page_controller_test.exs",
+        "hash": "13665472437324351469"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor.ex",
+        "hash": "7295023085803886707"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/genservers/sms_queue.ex",
+        "hash": "16610753677004968955"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_schema.ex",
         "hash": "9464805607127488403"
       },
       {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/router.ex",
+        "hash": "12571423540495391334"
+      },
+      {
+        "file": "nx.json",
+        "hash": "1184888047097634593"
+      },
+      {
+        "file": "limelease/services/elixir-api/test/support/conn_case.ex",
+        "hash": "4707761268754749650"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "14326080157182567856"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media_resolver.ex",
+        "hash": "4470366750048744844"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20230220023134_create_property_requests.exs",
+        "hash": "7269161698063613412"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20220629084738_create_properties.exs",
+        "hash": "1810522452714673199"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_service.ex",
+        "hash": "16799396224013203122"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505131824_create_tasks.exs",
+        "hash": "16090001544565891314"
+      },
+      {
+        "file": "limelease/services/elixir-api/Dockerfile",
+        "hash": "15746553878068146753"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/changeset_helpers.ex",
+        "hash": "12222837089150833981"
+      },
+      {
+        "file": "limelease/services/elixir-api/assets/js/app.js",
+        "hash": "8230686138974658220"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/overlays/bin/migrate",
+        "hash": "13312743066005289560"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/static/assets/app.css",
+        "hash": "16041730416092170690"
+      },
+      {
+        "file": "nx.bat",
+        "hash": "16119536321561623970"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/controllers/temp_file_controller.ex",
+        "hash": "879161995410401428"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_resolver.ex",
+        "hash": "10294042417918702402"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/services/clicksend.ex",
+        "hash": "14143259489110198711"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile_service.ex",
+        "hash": "11807027362120501130"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/guardian.ex",
+        "hash": "8472704270570881546"
+      },
+      {
+        "file": "limelease/services/elixir-api/mix.exs",
+        "hash": "5481573746828393478"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_schema.ex",
+        "hash": "14678788064811326344"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_agent/property_agent_schema.ex",
+        "hash": "13150702515696430873"
+      },
+      {
+        "file": ".github/workflows_future/deploy-nextjs.yml",
+        "hash": "18335406075893517019"
+      },
+      {
+        "file": "limelease/services/elixir-api/.vscode/settings.json",
+        "hash": "14480110575865725585"
+      },
+      {
+        "file": ".github/workflows_future/deploy-elixir.yml",
+        "hash": "7652728375106800549"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease.ex",
+        "hash": "13337791236213480130"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/controllers/webhook_controller.ex",
+        "hash": "10133693245335918673"
+      },
+      {
+        "file": "platform.code-workspace",
+        "hash": "17612878145707566081"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_service.ex",
+        "hash": "558174817345312770"
+      },
+      {
         "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job_resolver.ex",
         "hash": "7710373882686746696"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/seeds.exs",
-        "hash": "10463642700705146294"
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/middleware/ecto_errors.ex",
+        "hash": "15751924785005853428"
       },
       {
-        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_resolver.ex",
-        "hash": "4966599111287381139"
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor_job/contractor_job.ex",
+        "hash": "6526463331845300034"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20220705004657_create_tenants.exs",
-        "hash": "9700009680234086157"
+        "file": "limelease/services/elixir-api/rel/overlays/bin/server.bat",
+        "hash": "7186082622226334684"
       },
       {
-        "file": "limelease/services/elixir-api/priv/repo/migrations/20231112134016_create_contractors.exs",
-        "hash": "11846335115270080947"
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/file/property_file.ex",
+        "hash": "5868812021537391019"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/address/property_address.ex",
+        "hash": "8483578924246225002"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/overlays/bin/server",
+        "hash": "16996218216023068191"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/overlays/bin/migrate.bat",
+        "hash": "18306995304897643395"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_service.ex",
+        "hash": "11034371511831153696"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_resolver.ex",
+        "hash": "8341192745709285365"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_schema.ex",
+        "hash": "1480028997560560253"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_comment/property_request_comment_context.ex",
+        "hash": "9937966686211275318"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/middleware/authorize.ex",
+        "hash": "9764086592954276625"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/test.exs",
+        "hash": "5993718528677352560"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/photo/property_request_photo.ex",
+        "hash": "12386671537166808147"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/config.exs",
+        "hash": "9197357137833245160"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/prod.exs",
+        "hash": "956029149973821960"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/user_socket.ex",
+        "hash": "10059169003753529574"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant_resolver.ex",
+        "hash": "18058815246440190855"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20230701053500_create_static_media.exs",
+        "hash": "9119362719629989254"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240809094746_create_otp_codes.exs",
+        "hash": "8754003360423720430"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/plugs/context.ex",
+        "hash": "9749912721141204749"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request.ex",
+        "hash": "8003075637431911037"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/otp_code/otp_code_context.ex",
+        "hash": "5577689633666688973"
       },
       {
         "file": "limelease/services/elixir-api/lib/lime_lease/static_media/static_media.ex",
         "hash": "13456145352359080097"
       },
       {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_context.ex",
+        "hash": "3644539986847810207"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/static/favicon.ico",
+        "hash": "6023468761092867883"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_resolver.ex",
+        "hash": "7356588341758469370"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_context.ex",
+        "hash": "6175104240656079608"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/otp_code/otp_code.ex",
+        "hash": "10849117233618659107"
+      },
+      {
+        "file": "limelease/infra/digitalocean/doctl-config.yml",
+        "hash": "10660805046007329319"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_service.ex",
+        "hash": "17189299676049289729"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_schema.ex",
+        "hash": "4111133822940397105"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/.formatter.exs",
+        "hash": "1193860905016756508"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/contractor/contractor_schema.ex",
+        "hash": "8372032184181404565"
+      },
+      {
+        "file": ".formatter.exs",
+        "hash": "10064084336676422674"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/static/images/phoenix.png",
+        "hash": "3019631266252354651"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease_context.ex",
+        "hash": "7171059709883490036"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20231125124422_create_agencies.exs",
+        "hash": "10934397247172355017"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_resolver.ex",
+        "hash": "6533365222975432203"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/user/user.ex",
+        "hash": "9116704392719939825"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification_resolver.ex",
+        "hash": "4966599111287381139"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/gettext/en/LC_MESSAGES/errors.po",
+        "hash": "6133952066058840805"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "8136459552884196480"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/env.sh.eex",
+        "hash": "3675901051954639316"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request_category/property_request_category_schema.ex",
+        "hash": "7331691126253999988"
+      },
+      {
+        "file": "limelease/services/elixir-api/test/support/data_case.ex",
+        "hash": "810525928442134349"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent_context.ex",
+        "hash": "13540483750516893924"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "15151127265995915994"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/repo.ex",
+        "hash": "15905800990111941406"
+      },
+      {
+        "file": "limelease/services/elixir-api/rel/vm.args.eex",
+        "hash": "2097317746300665737"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency_agent/agency_agent.ex",
+        "hash": "6549235893572738079"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/user/user_schema.ex",
+        "hash": "3014077860158204032"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20220626051651_create_users.exs",
+        "hash": "18000582228926880191"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20231112134016_create_contractors.exs",
+        "hash": "11846335115270080947"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web.ex",
+        "hash": "2817699519865152073"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/services/aws.ex",
+        "hash": "1180412760270458124"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property.ex",
+        "hash": "13636911920010010239"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/notifications.ex",
+        "hash": "10102381560072211137"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "15753941481085060538"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20231125124842_create_agency_agents.exs",
+        "hash": "4446265377921629464"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20220705004657_create_tenants.exs",
+        "hash": "9700009680234086157"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240505131329_create_leases.exs",
+        "hash": "15169068761051926630"
+      },
+      {
+        "file": "klip",
+        "hash": "16639046483902457585"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property_request/property_request_context.ex",
+        "hash": "2541946717093488661"
+      },
+      {
+        "file": "sst-env.d.ts",
+        "hash": "1067826197387295945"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/photo/property_photo.ex",
+        "hash": "2533350667428801233"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/seeds.exs",
+        "hash": "10463642700705146294"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/repo/migrations/20240203071242_create_property_request_categories.exs",
+        "hash": "5514820781445661975"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/notification/notification.ex",
+        "hash": "9342313892835528039"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "8065499820749323915"
+      },
+      {
+        "file": "nx",
+        "hash": "17165975525224888679"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/emails/emails.ex",
+        "hash": "13131049160326795174"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/agency/agency_schema.ex",
+        "hash": "11579414116391998185"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile_schema.ex",
+        "hash": "9479952339965131080"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/mailer.ex",
+        "hash": "10182955616692000419"
+      },
+      {
         "file": "limelease/services/elixir-api/.gitignore",
         "hash": "3653321599975873675"
+      },
+      {
+        "file": "limelease/services/elixir-api/dets_simple_storage",
+        "hash": "5906269353803615872"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/tenant/tenant.ex",
+        "hash": "14900061687728401448"
+      },
+      {
+        "file": "limelease/services/elixir-api/mix.lock",
+        "hash": "16439231969744704135"
+      },
+      {
+        "file": "limelease/services/elixir-api/config/runtime.exs",
+        "hash": "14896566327384190072"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease_web/telemetry.ex",
+        "hash": "2822188886042883138"
+      },
+      {
+        "file": "limelease/services/elixir-api/test/lime_lease_web/views/page_view_test.exs",
+        "hash": "642541566557949161"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/lease/lease.ex",
+        "hash": "3539776779289789697"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/file/property_file_schema.ex",
+        "hash": "6759182864908282507"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/profile/profile.ex",
+        "hash": "8689017688666771110"
+      },
+      {
+        "file": "limelease/services/elixir-api/lib/lime_lease/property/property_schema.ex",
+        "hash": "17044682454891741002"
+      },
+      {
+        "file": "limelease/services/elixir-api/priv/static/assets/app.js",
+        "hash": "9732360241015509083"
       }
     ],
     "projectFileMap": {
-      "@limelease/playwright-snapshotter": [
+      "@limelease/nextjs-app": [
         {
-          "file": "limelease/services/playwright-snapshotter/index.mjs",
-          "hash": "13186161711618227844"
+          "file": "limelease/apps/nextjs-app/.env.production",
+          "hash": "3027632828677536927"
         },
         {
-          "file": "limelease/services/playwright-snapshotter/package.json",
-          "hash": "17705326448247193539",
+          "file": "limelease/apps/nextjs-app/.eslintrc.json",
+          "hash": "10616060546436571437"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/.gitignore",
+          "hash": "7038436565577413459"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/.prettierrc",
+          "hash": "15598481215587963263"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/.tool-versions",
+          "hash": "1659634421854475951"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/.vscode/launch.json",
+          "hash": "12686030965705411401"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/Dockerfile",
+          "hash": "6467413250174326739"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/README.md",
+          "hash": "1864626201039881788"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/next-env.d.ts",
+          "hash": "5909181270615354023"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/next.config.js",
+          "hash": "10126986037116310256"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/package.json",
+          "hash": "5172557208261470338",
           "deps": [
-            "npm:@sparticuz/chromium",
-            "npm:playwright-core",
-            "npm:playwright-extra"
+            "npm:@graphql-codegen/cli@5.0.0",
+            "npm:@graphql-codegen/introspection@4.0.0",
+            "npm:@graphql-codegen/typescript@4.0.1",
+            "npm:@graphql-codegen/typescript-operations@4.0.1",
+            "npm:@graphql-codegen/typescript-react-apollo@4.1.0",
+            "npm:@types/absinthe__socket",
+            "npm:@types/absinthe__socket-apollo-link",
+            "npm:@types/compress.js",
+            "npm:@types/lodash",
+            "npm:@types/node",
+            "npm:@types/phoenix",
+            "npm:@types/react@18.0.14",
+            "npm:@types/react-animations",
+            "npm:@types/react-dom",
+            "npm:@types/styled-components",
+            "npm:babel-plugin-import",
+            "npm:eslint@8.18.0",
+            "npm:eslint-config-next",
+            "npm:prettier-eslint",
+            "npm:typescript@4.7.4",
+            "npm:@absinthe/socket",
+            "npm:@absinthe/socket-apollo-link",
+            "npm:@ant-design/cssinjs",
+            "npm:@ant-design/icons",
+            "npm:@apollo/client",
+            "npm:@babel/runtime@7.23.8",
+            "npm:@intercom/messenger-js-sdk",
+            "npm:@types/react-lottie",
+            "npm:antd",
+            "npm:apollo3-cache-persist",
+            "npm:axios",
+            "npm:compress.js",
+            "npm:crypto-hash",
+            "npm:dayjs",
+            "npm:deepmerge",
+            "npm:framer-motion",
+            "npm:graphql",
+            "npm:graphql-tag",
+            "npm:lodash",
+            "npm:next",
+            "npm:nextjs-progressbar",
+            "npm:phoenix",
+            "npm:react",
+            "npm:react-dom",
+            "npm:react-image-lightbox",
+            "npm:react-lottie",
+            "npm:react-spinners",
+            "npm:sharp",
+            "npm:styled-components"
           ]
+        },
+        {
+          "file": "limelease/apps/nextjs-app/pnpm-lock.yaml",
+          "hash": "12095442807652273216"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/animations/house-building.json",
+          "hash": "6486637295548885825"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/favicon.ico",
+          "hash": "16512779706718702484"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Black.ttf",
+          "hash": "7491435733589274410"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-BlackItalic.ttf",
+          "hash": "6367488612617151901"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Bold.ttf",
+          "hash": "11118875498363073866"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-BoldItalic.ttf",
+          "hash": "18208016290686678219"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Italic.ttf",
+          "hash": "2871797822062044145"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Light.ttf",
+          "hash": "11743008747391677234"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-LightItalic.ttf",
+          "hash": "7345932088123158190"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Medium.ttf",
+          "hash": "12534942947226036357"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-MediumItalic.ttf",
+          "hash": "10354767113262496729"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Regular.ttf",
+          "hash": "9500555408324524103"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Thin.ttf",
+          "hash": "16494021493287799544"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-ThinItalic.ttf",
+          "hash": "8572171983110193039"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/404.svg",
+          "hash": "8367164693349717221"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/bathrooms-icon.svg",
+          "hash": "11342952031039371578"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/bedrooms-icon.svg",
+          "hash": "16994287649243692968"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/carspace-icon.svg",
+          "hash": "2692241697325541128"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/contractors-empty.svg",
+          "hash": "11884915914188716760"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/green-tick.svg",
+          "hash": "12556177361973720794"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/image-placeholder.png",
+          "hash": "6456499751285046973"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/limelease-icon-dark.png",
+          "hash": "11854371283132717183"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/login-background.jpg",
+          "hash": "5166771723092628599"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/logo.png",
+          "hash": "8226326502532300989"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/logo.svg",
+          "hash": "14069988578637402324"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/public/images/properties-empty.svg",
+          "hash": "2277141426698383134"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/client.tsx",
+          "hash": "11668402420398337046"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/AnimatedContainer.tsx",
+          "hash": "3301699310390048788"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/ContractorJobStatusTag.tsx",
+          "hash": "13277406532349038060"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/EmptyState.tsx",
+          "hash": "3065456783831829879"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/Headings.tsx",
+          "hash": "6549659909038200162"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/ImagePlaceholder.tsx",
+          "hash": "9571054338422864068"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/IntercomWrapper.tsx",
+          "hash": "8669628529998354611"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/LoadingSpinner.tsx",
+          "hash": "6453403059179395352"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/StatusTag.tsx",
+          "hash": "13942430930107180278"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/components/UrgencyTag.tsx",
+          "hash": "3574808468651877225"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/containers/DashboardContainer.tsx",
+          "hash": "1905045337635881527"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/components/ContractorDetails.tsx",
+          "hash": "16957206374857585475"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/components/ContractorJobs.tsx",
+          "hash": "17793685561430143915"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/containers/ContractorDetailsContainer.tsx",
+          "hash": "14465868611150127951"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/graphql/fetchContractor.query.graphql",
+          "hash": "9652719965486514085"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/graphql/fetchContractorJobs.query.graphql",
+          "hash": "6944267581279452600"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/createContractor/components/GeneralInformationForm.tsx",
+          "hash": "1884905800236278014"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/createContractor/containers/CreateContractorContainer.tsx",
+          "hash": "3870908112070387712"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/createContractor/graphql/createContractor.mutation.graphql",
+          "hash": "8748830016624650277"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/viewContractors/components/ContractorsTableList.tsx",
+          "hash": "13768505644571214294"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/viewContractors/containers/ViewContractorsContainer.tsx",
+          "hash": "4048631165260605755"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/viewContractors/graphql/countContractors.query.graphql",
+          "hash": "16714855265028248953"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/contractors/viewContractors/graphql/fetchContractors.query.graphql",
+          "hash": "14143117081093203786"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/login/components/LoginForm.tsx",
+          "hash": "10299994604343600366"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/login/containers/LoginContainer.tsx",
+          "hash": "2351474015466029591"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/login/graphql/me.query.graphql",
+          "hash": "7577972815075780935"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/login/graphql/userLogin.mutation.graphql",
+          "hash": "2004440552238292420"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/profile/components/AddTeamMemberForm.tsx",
+          "hash": "11212473699863876542"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/profile/components/EditAvatar.tsx",
+          "hash": "1032219647881248148"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/profile/components/ManageUsers.tsx",
+          "hash": "10964606073208154748"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/profile/components/UpdateDetails.tsx",
+          "hash": "10696485823967572950"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/profile/containers/ProfileContainer.tsx",
+          "hash": "15199348838625445824"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/profile/graphql/fetchTeam.query.graphql",
+          "hash": "9937887784531777470"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Files.tsx",
+          "hash": "11254865735139250999"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Overview.tsx",
+          "hash": "17138359916293691110"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Owners.tsx",
+          "hash": "16852794780406298893"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Tenants.tsx",
+          "hash": "4606978560009762064"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/containers/CreatePropertyContainer.tsx",
+          "hash": "18154852668250947492"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/graphql/createProperty.mutation.graphql",
+          "hash": "5775074833526151167"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/graphql/createStaticMedia.mutation.graphql",
+          "hash": "4453208575753149914"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/helpers/Constants.ts",
+          "hash": "14088117686355056232"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/editProperty/containers/EditPropertyContainer.tsx",
+          "hash": "16708363183056662729"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/editProperty/graphql/updateProperty.mutation.graphql",
+          "hash": "5243880048363822468"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyCompliance.tsx",
+          "hash": "10854992661854109531"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyDetails.tsx",
+          "hash": "15184174583218828671"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyFiles.tsx",
+          "hash": "383411388509581803"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyLease.tsx",
+          "hash": "2866245453525260158"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyRequests.tsx",
+          "hash": "9984958223807681188"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/RentalProviders.tsx",
+          "hash": "6680689827475209975"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/containers/ViewPropertyContainer.tsx",
+          "hash": "1151360497084618072"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/graphql/fetchProperty.query.graphql",
+          "hash": "1056048975972893567"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/graphql/fetchPropertyRequests.query.graphql",
+          "hash": "18048411527754825853"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/utils/Constants.tsx",
+          "hash": "9477031962379574206"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/viewProperties/components/PropertyCard.tsx",
+          "hash": "4601355367866617631"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/viewProperties/containers/ViewPropertiesContainer.tsx",
+          "hash": "4470696934865072447"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/properties/viewProperties/graphql/fetchProperties.query.graphql",
+          "hash": "1561446500805847232"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/AddContractorMessage.tsx",
+          "hash": "2759697971624670210"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/CreateContractorStep.tsx",
+          "hash": "10955715084130543386"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/FindCreateContractor.tsx",
+          "hash": "12076129919426149925"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/SelectCompletionDate.tsx",
+          "hash": "12692588328151569217"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/SuccessMessage.tsx",
+          "hash": "3700595663050311360"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/containers/AssignRequestContainer.tsx",
+          "hash": "17667887852202630586"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/graphql/assignRequestToContractor.mutation.graphql",
+          "hash": "13062358939092683167"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/graphql/searchContractorsByName.query.graphql",
+          "hash": "12043196701527815964"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/createRequest/components/CreateRequestForm.tsx",
+          "hash": "9766090833533701616"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/createRequest/graphql/createRequest.mutation.graphql",
+          "hash": "17041751194439574389"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/createRequest/graphql/fetchRequestCategories.query.graphql",
+          "hash": "11342890682983600069"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestActionsDropdown.tsx",
+          "hash": "15843765451563436065"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailComment.tsx",
+          "hash": "17935519335619108176"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailComments.tsx",
+          "hash": "13645886178075437888"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailJobs.tsx",
+          "hash": "12405244723408938068"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailPhotos.tsx",
+          "hash": "2712040752698707778"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetails.tsx",
+          "hash": "7290351656099823722"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/UrgentMatterAlert.tsx",
+          "hash": "11620512457141538091"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/containers/RequestDetailsContainer.tsx",
+          "hash": "10672904878147393283"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/addRequestComment.mutation.graphql",
+          "hash": "8059596520390856271"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/countRequestComments.query.graphql",
+          "hash": "6726509122439089071"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/deleteContractorJob.mutation.graphql",
+          "hash": "1474839707122905393"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/fetchActiveJobForRequest.query.graphql",
+          "hash": "921316924360326539"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/fetchRequest.query.graphql",
+          "hash": "12833500532910511436"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/fetchRequestByTicketNumber.query.graphql",
+          "hash": "5585193747315333077"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/fetchRequestComments.query.graphql",
+          "hash": "6269027553420178908"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/updateRequestUrgency.query.graphql",
+          "hash": "2415257288031891671"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/utils/Constants.tsx",
+          "hash": "10724646314317566721"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/viewRequests/components/ViewRequestsTableList.tsx",
+          "hash": "17878913664003483255"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/viewRequests/containers/ViewRequestsContainer.tsx",
+          "hash": "16644013806814962777"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/viewRequests/graphql/fetchRequests.query.graphql",
+          "hash": "11334340585921336054"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/features/requests/viewRequests/graphql/updateRequestState.mutation.graphql",
+          "hash": "15872430746417283932"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/codegen.yml",
+          "hash": "16713185491877807567"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/generated.tsx",
+          "hash": "16558952896978344830"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/AgencyAgent.fragment.graphql",
+          "hash": "8654249265022498900"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/AgencyBase.fragment.graphql",
+          "hash": "3450320916155900770"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/ContractorBase.fragment.graphql",
+          "hash": "12585017549481680809"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/ContractorJobBase.fragment.graphql",
+          "hash": "4346954178315749973"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/FileBase.fragment.graphql",
+          "hash": "10900267018204224422"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/LandlordBase.fragment.graphql",
+          "hash": "4162662417753270012"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/LeaseBase.fragment.graphql",
+          "hash": "14372400729567569733"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/ProfileBase.fragment.graphql",
+          "hash": "14980904717268968303"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/PropertyAddress.fragment.graphql",
+          "hash": "9841328096200648550"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/PropertyBase.fragment.graphql",
+          "hash": "9127664073169007280"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/PropertyRequestCategoryBase.fragment.graphql",
+          "hash": "16897713387003584540"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/PropertyRequestCommentBase.fragment.graphql",
+          "hash": "1750344315132746424"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/RequestBase.fragment.graphql",
+          "hash": "9610523435518687356"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/StaticMediaBase.fragment.graphql",
+          "hash": "8179879887382099315"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/TenantBase.fragment.graphql",
+          "hash": "2015917880081077248"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/graphql/types/UserBase.fragment.graphql",
+          "hash": "5360558083758614651"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/hooks/useDebounce.tsx",
+          "hash": "9602265593567788326"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/hooks/useElementOnScreen.tsx",
+          "hash": "5004238547250783676"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/hooks/useHandleFormError.tsx",
+          "hash": "11026391098071630107"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/hooks/useImageGallery.tsx",
+          "hash": "17544500765132590972"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/hooks/useInfiniteScroll.tsx",
+          "hash": "17394627036806562692"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/hooks/useLocalStorage.ts",
+          "hash": "4303750365881625995"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/hooks/usePagination.tsx",
+          "hash": "10233255344564686309"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/hooks/useWindowDimensions.tsx",
+          "hash": "7567470706088586389"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/404.page.tsx",
+          "hash": "6234319166332255976"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/_app.page.tsx",
+          "hash": "14075628768946467628"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/_document.page.tsx",
+          "hash": "10609152620083649237"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/api/health.js",
+          "hash": "11677897802289681931"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/contractors/[id].page.tsx",
+          "hash": "11175428695571762725"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/contractors/create/index.page.tsx",
+          "hash": "5585134996103078090"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/contractors/index.page.tsx",
+          "hash": "8173699139569626217"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/dashboard/index.tsx",
+          "hash": "13987706156164769586"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/login/index.page.tsx",
+          "hash": "12343006682135268606"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/profile/index.page.tsx",
+          "hash": "4607135979872868040"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/properties/[id].page.tsx",
+          "hash": "11874035910350686279"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/properties/create/index.page.tsx",
+          "hash": "11752854381077228919"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/properties/edit/[id].page.tsx",
+          "hash": "4146584539992678056"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/properties/index.page.tsx",
+          "hash": "11041503380852031558"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/requests/[ticketNumber].page.tsx",
+          "hash": "11442922179165246659"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/pages/requests/index.page.tsx",
+          "hash": "5762929361222778351"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/store.ts",
+          "hash": "6302818636058579324"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/styles/global.css",
+          "hash": "7808067006167126461"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/types/Maybe.ts",
+          "hash": "9763071460277404300"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/utils/AnimationsProps.ts",
+          "hash": "8448157756678750468"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/utils/Colours.tsx",
+          "hash": "5129554310235880149"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/utils/Constants.ts",
+          "hash": "1978387734203699558"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/utils/DayjsTimezone.ts",
+          "hash": "161628517638239637"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/utils/DeviceSizes.ts",
+          "hash": "3490039821656590020"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/src/utils/Helpers.tsx",
+          "hash": "17951563730684849089"
+        },
+        {
+          "file": "limelease/apps/nextjs-app/tsconfig.json",
+          "hash": "189448523812700608"
         }
       ],
       "@limelease/tenant-app": [
@@ -1356,6 +2094,22 @@
           "hash": "6988882422559056195"
         },
         {
+          "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Images.xcassets/Image.imageset/Contents.json",
+          "hash": "16153907381613733801"
+        },
+        {
+          "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Images.xcassets/Image.imageset/logo.png",
+          "hash": "11677558678705783331"
+        },
+        {
+          "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Images.xcassets/Image.imageset/logo@2x.png",
+          "hash": "17556883724946570444"
+        },
+        {
+          "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Images.xcassets/Image.imageset/logo@3x.png",
+          "hash": "13595473526015231668"
+        },
+        {
           "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Info.plist",
           "hash": "8524860553115990650"
         },
@@ -1727,22 +2481,21 @@
         {
           "file": "limelease/apps/tenant-mobile/tsconfig.json",
           "hash": "8959010922895867203"
+        }
+      ],
+      "@limelease/playwright-snapshotter": [
+        {
+          "file": "limelease/services/playwright-snapshotter/index.mjs",
+          "hash": "13186161711618227844"
         },
         {
-          "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Images.xcassets/Image.imageset/Contents.json",
-          "hash": "16153907381613733801"
-        },
-        {
-          "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Images.xcassets/Image.imageset/logo@3x.png",
-          "hash": "13595473526015231668"
-        },
-        {
-          "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Images.xcassets/Image.imageset/logo.png",
-          "hash": "11677558678705783331"
-        },
-        {
-          "file": "limelease/apps/tenant-mobile/ios/LimeLeaseTenant/Images.xcassets/Image.imageset/logo@2x.png",
-          "hash": "17556883724946570444"
+          "file": "limelease/services/playwright-snapshotter/package.json",
+          "hash": "17705326448247193539",
+          "deps": [
+            "npm:@sparticuz/chromium",
+            "npm:playwright-core",
+            "npm:playwright-extra"
+          ]
         }
       ],
       "@limelease/playwright-scraper": [
@@ -1759,771 +2512,6 @@
             "npm:playwright-extra",
             "npm:slugify"
           ]
-        }
-      ],
-      "@limelease/nextjs-app": [
-        {
-          "file": "limelease/apps/nextjs-app/.env.production",
-          "hash": "3027632828677536927"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/.eslintrc.json",
-          "hash": "10616060546436571437"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/.gitignore",
-          "hash": "7038436565577413459"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/.prettierrc",
-          "hash": "15598481215587963263"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/.tool-versions",
-          "hash": "1659634421854475951"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/.vscode/launch.json",
-          "hash": "12686030965705411401"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/Dockerfile",
-          "hash": "6467413250174326739"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/README.md",
-          "hash": "1864626201039881788"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/next-env.d.ts",
-          "hash": "5909181270615354023"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/next.config.js",
-          "hash": "10126986037116310256"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/package.json",
-          "hash": "5172557208261470338",
-          "deps": [
-            "npm:@graphql-codegen/cli@5.0.0",
-            "npm:@graphql-codegen/introspection@4.0.0",
-            "npm:@graphql-codegen/typescript@4.0.1",
-            "npm:@graphql-codegen/typescript-operations@4.0.1",
-            "npm:@graphql-codegen/typescript-react-apollo@4.1.0",
-            "npm:@types/absinthe__socket",
-            "npm:@types/absinthe__socket-apollo-link",
-            "npm:@types/compress.js",
-            "npm:@types/lodash",
-            "npm:@types/node",
-            "npm:@types/phoenix",
-            "npm:@types/react@18.0.14",
-            "npm:@types/react-animations",
-            "npm:@types/react-dom",
-            "npm:@types/styled-components",
-            "npm:babel-plugin-import",
-            "npm:eslint@8.18.0",
-            "npm:eslint-config-next",
-            "npm:prettier-eslint",
-            "npm:typescript@4.7.4",
-            "npm:@absinthe/socket",
-            "npm:@absinthe/socket-apollo-link",
-            "npm:@ant-design/cssinjs",
-            "npm:@ant-design/icons",
-            "npm:@apollo/client",
-            "npm:@babel/runtime@7.23.8",
-            "npm:@intercom/messenger-js-sdk",
-            "npm:@types/react-lottie",
-            "npm:antd",
-            "npm:apollo3-cache-persist",
-            "npm:axios",
-            "npm:compress.js",
-            "npm:crypto-hash",
-            "npm:dayjs",
-            "npm:deepmerge",
-            "npm:framer-motion",
-            "npm:graphql",
-            "npm:graphql-tag",
-            "npm:lodash",
-            "npm:next",
-            "npm:nextjs-progressbar",
-            "npm:phoenix",
-            "npm:react",
-            "npm:react-dom",
-            "npm:react-image-lightbox",
-            "npm:react-lottie",
-            "npm:react-spinners",
-            "npm:sharp",
-            "npm:styled-components"
-          ]
-        },
-        {
-          "file": "limelease/apps/nextjs-app/pnpm-lock.yaml",
-          "hash": "12095442807652273216"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/animations/house-building.json",
-          "hash": "6486637295548885825"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/favicon.ico",
-          "hash": "16512779706718702484"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Black.ttf",
-          "hash": "7491435733589274410"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-BlackItalic.ttf",
-          "hash": "6367488612617151901"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Bold.ttf",
-          "hash": "11118875498363073866"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-BoldItalic.ttf",
-          "hash": "18208016290686678219"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Italic.ttf",
-          "hash": "2871797822062044145"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Light.ttf",
-          "hash": "11743008747391677234"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-LightItalic.ttf",
-          "hash": "7345932088123158190"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Medium.ttf",
-          "hash": "12534942947226036357"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-MediumItalic.ttf",
-          "hash": "10354767113262496729"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Regular.ttf",
-          "hash": "9500555408324524103"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-Thin.ttf",
-          "hash": "16494021493287799544"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/fonts/Roboto-ThinItalic.ttf",
-          "hash": "8572171983110193039"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/404.svg",
-          "hash": "8367164693349717221"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/bathrooms-icon.svg",
-          "hash": "11342952031039371578"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/bedrooms-icon.svg",
-          "hash": "16994287649243692968"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/carspace-icon.svg",
-          "hash": "2692241697325541128"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/contractors-empty.svg",
-          "hash": "11884915914188716760"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/green-tick.svg",
-          "hash": "12556177361973720794"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/image-placeholder.png",
-          "hash": "6456499751285046973"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/limelease-icon-dark.png",
-          "hash": "11854371283132717183"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/login-background.jpg",
-          "hash": "5166771723092628599"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/logo.png",
-          "hash": "8226326502532300989"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/logo.svg",
-          "hash": "14069988578637402324"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/public/images/properties-empty.svg",
-          "hash": "2277141426698383134"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/client.tsx",
-          "hash": "11668402420398337046"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/AnimatedContainer.tsx",
-          "hash": "3301699310390048788"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/ContractorJobStatusTag.tsx",
-          "hash": "13277406532349038060"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/EmptyState.tsx",
-          "hash": "3065456783831829879"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/Headings.tsx",
-          "hash": "6549659909038200162"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/ImagePlaceholder.tsx",
-          "hash": "9571054338422864068"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/IntercomWrapper.tsx",
-          "hash": "8669628529998354611"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/LoadingSpinner.tsx",
-          "hash": "6453403059179395352"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/StatusTag.tsx",
-          "hash": "13942430930107180278"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/components/UrgencyTag.tsx",
-          "hash": "3574808468651877225"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/containers/DashboardContainer.tsx",
-          "hash": "1905045337635881527"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/components/ContractorDetails.tsx",
-          "hash": "16957206374857585475"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/components/ContractorJobs.tsx",
-          "hash": "17793685561430143915"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/containers/ContractorDetailsContainer.tsx",
-          "hash": "14465868611150127951"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/graphql/fetchContractor.query.graphql",
-          "hash": "9652719965486514085"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/contractorDetails/graphql/fetchContractorJobs.query.graphql",
-          "hash": "6944267581279452600"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/createContractor/components/GeneralInformationForm.tsx",
-          "hash": "1884905800236278014"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/createContractor/containers/CreateContractorContainer.tsx",
-          "hash": "3870908112070387712"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/createContractor/graphql/createContractor.mutation.graphql",
-          "hash": "8748830016624650277"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/viewContractors/components/ContractorsTableList.tsx",
-          "hash": "13768505644571214294"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/viewContractors/containers/ViewContractorsContainer.tsx",
-          "hash": "4048631165260605755"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/viewContractors/graphql/countContractors.query.graphql",
-          "hash": "16714855265028248953"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/contractors/viewContractors/graphql/fetchContractors.query.graphql",
-          "hash": "14143117081093203786"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/login/components/LoginForm.tsx",
-          "hash": "10299994604343600366"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/login/containers/LoginContainer.tsx",
-          "hash": "2351474015466029591"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/login/graphql/me.query.graphql",
-          "hash": "7577972815075780935"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/login/graphql/userLogin.mutation.graphql",
-          "hash": "2004440552238292420"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/profile/components/AddTeamMemberForm.tsx",
-          "hash": "11212473699863876542"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/profile/components/EditAvatar.tsx",
-          "hash": "1032219647881248148"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/profile/components/ManageUsers.tsx",
-          "hash": "10964606073208154748"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/profile/components/UpdateDetails.tsx",
-          "hash": "10696485823967572950"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/profile/containers/ProfileContainer.tsx",
-          "hash": "15199348838625445824"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/profile/graphql/fetchTeam.query.graphql",
-          "hash": "9937887784531777470"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Files.tsx",
-          "hash": "11254865735139250999"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Overview.tsx",
-          "hash": "17138359916293691110"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Owners.tsx",
-          "hash": "16852794780406298893"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/components/Tenants.tsx",
-          "hash": "1594176063644368456"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/containers/CreatePropertyContainer.tsx",
-          "hash": "18154852668250947492"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/graphql/createProperty.mutation.graphql",
-          "hash": "5775074833526151167"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/graphql/createStaticMedia.mutation.graphql",
-          "hash": "4453208575753149914"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/createProperty/helpers/Constants.ts",
-          "hash": "14088117686355056232"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/editProperty/containers/EditPropertyContainer.tsx",
-          "hash": "16708363183056662729"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/editProperty/graphql/updateProperty.mutation.graphql",
-          "hash": "5243880048363822468"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyCompliance.tsx",
-          "hash": "10854992661854109531"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyDetails.tsx",
-          "hash": "15184174583218828671"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyFiles.tsx",
-          "hash": "383411388509581803"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyLease.tsx",
-          "hash": "2866245453525260158"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/PropertyRequests.tsx",
-          "hash": "9984958223807681188"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/components/RentalProviders.tsx",
-          "hash": "6680689827475209975"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/containers/ViewPropertyContainer.tsx",
-          "hash": "1151360497084618072"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/graphql/fetchProperty.query.graphql",
-          "hash": "1056048975972893567"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/graphql/fetchPropertyRequests.query.graphql",
-          "hash": "18048411527754825853"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/propertyDetails/utils/Constants.tsx",
-          "hash": "9477031962379574206"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/viewProperties/components/PropertyCard.tsx",
-          "hash": "4601355367866617631"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/viewProperties/containers/ViewPropertiesContainer.tsx",
-          "hash": "4470696934865072447"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/properties/viewProperties/graphql/fetchProperties.query.graphql",
-          "hash": "1561446500805847232"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/AddContractorMessage.tsx",
-          "hash": "2759697971624670210"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/CreateContractorStep.tsx",
-          "hash": "10955715084130543386"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/FindCreateContractor.tsx",
-          "hash": "12076129919426149925"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/SelectCompletionDate.tsx",
-          "hash": "12692588328151569217"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/components/SuccessMessage.tsx",
-          "hash": "3700595663050311360"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/containers/AssignRequestContainer.tsx",
-          "hash": "17667887852202630586"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/graphql/assignRequestToContractor.mutation.graphql",
-          "hash": "13062358939092683167"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/assignRequest/graphql/searchContractorsByName.query.graphql",
-          "hash": "12043196701527815964"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/createRequest/components/CreateRequestForm.tsx",
-          "hash": "9766090833533701616"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/createRequest/graphql/createRequest.mutation.graphql",
-          "hash": "17041751194439574389"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/createRequest/graphql/fetchRequestCategories.query.graphql",
-          "hash": "11342890682983600069"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestActionsDropdown.tsx",
-          "hash": "15843765451563436065"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailComment.tsx",
-          "hash": "17935519335619108176"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailComments.tsx",
-          "hash": "13645886178075437888"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailJobs.tsx",
-          "hash": "12405244723408938068"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetailPhotos.tsx",
-          "hash": "2712040752698707778"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/RequestDetails.tsx",
-          "hash": "7290351656099823722"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/components/UrgentMatterAlert.tsx",
-          "hash": "11620512457141538091"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/containers/RequestDetailsContainer.tsx",
-          "hash": "10672904878147393283"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/addRequestComment.mutation.graphql",
-          "hash": "8059596520390856271"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/countRequestComments.query.graphql",
-          "hash": "6726509122439089071"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/deleteContractorJob.mutation.graphql",
-          "hash": "1474839707122905393"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/fetchActiveJobForRequest.query.graphql",
-          "hash": "921316924360326539"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/fetchRequest.query.graphql",
-          "hash": "12833500532910511436"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/fetchRequestByTicketNumber.query.graphql",
-          "hash": "5585193747315333077"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/fetchRequestComments.query.graphql",
-          "hash": "6269027553420178908"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/graphql/updateRequestUrgency.query.graphql",
-          "hash": "2415257288031891671"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/requestDetails/utils/Constants.tsx",
-          "hash": "10724646314317566721"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/viewRequests/components/ViewRequestsTableList.tsx",
-          "hash": "17878913664003483255"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/viewRequests/containers/ViewRequestsContainer.tsx",
-          "hash": "16644013806814962777"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/viewRequests/graphql/fetchRequests.query.graphql",
-          "hash": "11334340585921336054"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/features/requests/viewRequests/graphql/updateRequestState.mutation.graphql",
-          "hash": "15872430746417283932"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/codegen.yml",
-          "hash": "16713185491877807567"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/generated.tsx",
-          "hash": "16558952896978344830"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/AgencyAgent.fragment.graphql",
-          "hash": "8654249265022498900"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/AgencyBase.fragment.graphql",
-          "hash": "3450320916155900770"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/ContractorBase.fragment.graphql",
-          "hash": "12585017549481680809"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/ContractorJobBase.fragment.graphql",
-          "hash": "4346954178315749973"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/FileBase.fragment.graphql",
-          "hash": "10900267018204224422"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/LandlordBase.fragment.graphql",
-          "hash": "4162662417753270012"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/LeaseBase.fragment.graphql",
-          "hash": "14372400729567569733"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/ProfileBase.fragment.graphql",
-          "hash": "14980904717268968303"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/PropertyAddress.fragment.graphql",
-          "hash": "9841328096200648550"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/PropertyBase.fragment.graphql",
-          "hash": "9127664073169007280"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/PropertyRequestCategoryBase.fragment.graphql",
-          "hash": "16897713387003584540"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/PropertyRequestCommentBase.fragment.graphql",
-          "hash": "1750344315132746424"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/RequestBase.fragment.graphql",
-          "hash": "9610523435518687356"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/StaticMediaBase.fragment.graphql",
-          "hash": "8179879887382099315"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/TenantBase.fragment.graphql",
-          "hash": "2015917880081077248"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/graphql/types/UserBase.fragment.graphql",
-          "hash": "5360558083758614651"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/hooks/useDebounce.tsx",
-          "hash": "9602265593567788326"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/hooks/useElementOnScreen.tsx",
-          "hash": "5004238547250783676"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/hooks/useHandleFormError.tsx",
-          "hash": "11026391098071630107"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/hooks/useImageGallery.tsx",
-          "hash": "17544500765132590972"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/hooks/useInfiniteScroll.tsx",
-          "hash": "17394627036806562692"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/hooks/useLocalStorage.ts",
-          "hash": "4303750365881625995"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/hooks/usePagination.tsx",
-          "hash": "10233255344564686309"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/hooks/useWindowDimensions.tsx",
-          "hash": "7567470706088586389"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/404.page.tsx",
-          "hash": "6234319166332255976"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/_app.page.tsx",
-          "hash": "14075628768946467628"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/_document.page.tsx",
-          "hash": "10609152620083649237"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/api/health.js",
-          "hash": "11677897802289681931"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/contractors/[id].page.tsx",
-          "hash": "11175428695571762725"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/contractors/create/index.page.tsx",
-          "hash": "5585134996103078090"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/contractors/index.page.tsx",
-          "hash": "8173699139569626217"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/dashboard/index.tsx",
-          "hash": "13987706156164769586"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/login/index.page.tsx",
-          "hash": "12343006682135268606"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/profile/index.page.tsx",
-          "hash": "4607135979872868040"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/properties/[id].page.tsx",
-          "hash": "11874035910350686279"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/properties/create/index.page.tsx",
-          "hash": "11752854381077228919"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/properties/edit/[id].page.tsx",
-          "hash": "4146584539992678056"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/properties/index.page.tsx",
-          "hash": "11041503380852031558"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/requests/[ticketNumber].page.tsx",
-          "hash": "11442922179165246659"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/pages/requests/index.page.tsx",
-          "hash": "5762929361222778351"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/store.ts",
-          "hash": "6302818636058579324"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/styles/global.css",
-          "hash": "7808067006167126461"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/types/Maybe.ts",
-          "hash": "9763071460277404300"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/utils/AnimationsProps.ts",
-          "hash": "8448157756678750468"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/utils/Colours.tsx",
-          "hash": "5129554310235880149"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/utils/Constants.ts",
-          "hash": "1978387734203699558"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/utils/DayjsTimezone.ts",
-          "hash": "161628517638239637"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/utils/DeviceSizes.ts",
-          "hash": "3490039821656590020"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/src/utils/Helpers.tsx",
-          "hash": "17951563730684849089"
-        },
-        {
-          "file": "limelease/apps/nextjs-app/tsconfig.json",
-          "hash": "189448523812700608"
         }
       ]
     }

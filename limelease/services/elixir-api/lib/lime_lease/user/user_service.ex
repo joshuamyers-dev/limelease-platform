@@ -21,6 +21,7 @@ defmodule LimeLease.User.UserService do
     end
   end
 
+
   def add_fcm_token_for_user(token, %User{} = user) do
     tokens = case user.fcm_tokens == nil do
       true -> [token]

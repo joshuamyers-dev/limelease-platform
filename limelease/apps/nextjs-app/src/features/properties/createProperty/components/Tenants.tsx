@@ -34,10 +34,10 @@ const Tenants = ({ form, propertyDetails }: TenantsProps) => {
         tenants: propertyDetails?.tenants?.map((tenant: Tenant) => {
           return {
             id: tenant.id,
-            firstName: tenant.firstName,
-            lastName: tenant.lastName,
-            email: tenant.email,
-            phoneNumber: formatMobileNumber(tenant.phoneNumber),
+            firstName: tenant.user.profile.firstName,
+            lastName: tenant.user.profile.lastName,
+            email: tenant.user.profile.email,
+            phoneNumber: formatMobileNumber(tenant.user.profile.phoneNumber),
           };
         }),
       };

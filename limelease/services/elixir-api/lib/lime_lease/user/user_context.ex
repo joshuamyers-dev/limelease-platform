@@ -6,6 +6,8 @@ defmodule LimeLease.User.UserContext do
 
   alias LimeLease.Repo
 
+  import Ecto.Query
+
   def get_user_by_email(email) do
     User
     |> User.with_email(email)
