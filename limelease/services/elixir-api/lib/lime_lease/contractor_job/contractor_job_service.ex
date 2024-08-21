@@ -1,4 +1,5 @@
 defmodule LimeLease.ContractorJob.ContractorJobService do
+  alias LimeLease.Notifications
   alias LimeLease.User.{User, UserContext}
   alias LimeLease.PropertyRequest.{PropertyRequest, PropertyRequestContext}
   alias LimeLease.PropertyRequestComment.{PropertyRequestComment, PropertyRequestCommentContext}
@@ -42,7 +43,7 @@ defmodule LimeLease.ContractorJob.ContractorJobService do
       case Repo.transaction(multi) do
         {:ok, %{contractor_job: contractor_job}} ->
           spawn(fn ->
-            send_new_job_notifications_for_contractor(contractor, request, contractor_message)
+            Notifications.send_sms_message(contractor.contact_number, contractor_message)
           end)
 
           {:ok, contractor_job}
@@ -101,22 +102,6 @@ defmodule LimeLease.ContractorJob.ContractorJobService do
     else
       {:error, :not_found} -> {:error, "The contractor job you are trying to delete does not exist."}
       {:error, :unauthorized} -> {:error, "You are not authorised to delete this contractor job."}
-    end
-  end
-
-  def send_new_job_notifications_for_contractor(%Contractor{} = contractor, %PropertyRequest{} = request, message_body) do
-    case length(request.photos) > 0 do
-      true ->
-        with {:ok, image_url} = AWS.generate_presigned_get_url(Enum.at(request.photos, 0).static_media.s3_key),
-             {:ok, converted_image_url} <- ClickSend.convert_file_for_mms(image_url) do
-          Logger.info(converted_image_url)
-          SmsQueue.enqueue_sms(contractor.contact_number, message_body, converted_image_url)
-        else
-          err -> Logger.error("Couldnt send MMS notifications for contractor job. Reason: #{inspect(err)}")
-        end
-
-      false ->
-        SmsQueue.enqueue_sms(contractor.contact_number, message_body)
     end
   end
 end

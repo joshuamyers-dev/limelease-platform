@@ -38,6 +38,12 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
+config :lime_lease, Oban,
+  engine: Oban.Engines.Basic,
+  queues: [sms: 1, email: 2],
+  plugins: [{Oban.Plugins.Pruner, max_age: 60 * 60 * 24 * 7}],
+  repo: LimeLease.Repo
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

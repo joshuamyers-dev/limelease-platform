@@ -10,6 +10,8 @@ defmodule LimeLease.Application do
     children = [
       # Start the Ecto repository
       LimeLease.Repo,
+      # Start Oban - for job processing
+      {Oban, Application.fetch_env!(:lime_lease, Oban)},
       # Start the Telemetry supervisor
       LimeLeaseWeb.Telemetry,
       # Start the PubSub system
