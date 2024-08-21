@@ -31,6 +31,12 @@ defmodule LimeLease.PropertyRequestComment.PropertyRequestComment do
     |> where([q], q.id == ^id)
   end
 
+ def with_property_id(query, property_id) do
+    query
+    |> join(:inner, [q], u in assoc(q, :request))
+    |> where([q, u], u.property_id == ^property_id)
+  end
+
   def with_request_id(query, request_id) do
     query
     |> where([q], q.request_id == ^request_id)

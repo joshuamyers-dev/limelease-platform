@@ -1,5 +1,5 @@
 defmodule LimeLease.Lease.LeaseResolver do
-  alias LimeLease.Lease.Lease
+  alias LimeLease.Lease.{Lease, LeaseService}
 
   alias LimeLease.Repo
 
@@ -17,5 +17,9 @@ defmodule LimeLease.Lease.LeaseResolver do
       false ->
         {:ok, true}
     end
+  end
+
+  def my_lease_query(_parent, args, %{context: %{current_user: user}}) do
+    LeaseService.get_lease_for_user(user)
   end
 end

@@ -73,6 +73,10 @@ defmodule LimeLease.Property.PropertySchema do
       resolve(dataloader(LimeLease.Property.PropertyContext, :tenants))
     end
 
+    field(:agents, list_of(:property_agent)) do
+      resolve(dataloader(LimeLease.Property.PropertyContext, :property_agents))
+    end
+
     field(:files, list_of(:property_file)) do
       resolve(dataloader(LimeLease.Property.PropertyContext, :files))
     end

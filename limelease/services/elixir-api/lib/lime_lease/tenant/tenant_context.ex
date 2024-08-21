@@ -12,6 +12,14 @@ defmodule LimeLease.Tenant.TenantContext do
     |> Repo.ok_error()
   end
 
+  def get_tenant_by_id(id) do
+    Tenant
+    |> Tenant.with_id(id)
+    |> Tenant.default_preloads()
+    |> Repo.one()
+    |> Repo.ok_error()
+  end
+
   # Dataloader functions
   def data() do
     Dataloader.Ecto.new(Repo, query: &query/2)

@@ -17,5 +17,6 @@ defmodule LimeLease.Repo.Migrations.CreateProfiles do
     end
 
     create unique_index(:profiles, [:email, :phone_number])
+    create index(:users, [:profile_id])
   end
 end

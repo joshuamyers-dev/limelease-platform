@@ -1,0 +1,6 @@
+fragment TenantBase on Tenant {
+  id
+  property {
+    ...PropertyBase
+  }
+}

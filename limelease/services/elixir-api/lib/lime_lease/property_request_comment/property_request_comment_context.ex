@@ -15,6 +15,13 @@ defmodule LimeLease.PropertyRequestComment.PropertyRequestCommentContext do
     |> Repo.ok_error()
   end
 
+  def get_paginated_comments_for_property_id(property_id, args) do
+    PropertyRequestComment
+    |> PropertyRequestComment.with_property_id(property_id)
+    |> PropertyRequestComment.order_by_inserted_desc()
+    |> Absinthe.Relay.Connection.from_query(&Repo.all/1, args)
+  end
+
   def get_paginated_comments_for_request(%PropertyRequest{} = request, args) do
     PropertyRequestComment
     |> PropertyRequestComment.with_request_id(request.id)

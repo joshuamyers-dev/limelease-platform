@@ -1,0 +1,8 @@
+mutation verifyOtp($number: String!, $code: String!) {
+  userVerifyOtp(mobileNumber: $number, code: $code) {
+    token
+    user {
+      ...UserBase
+    }
+  }
+}

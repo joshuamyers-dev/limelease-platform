@@ -1,0 +1,8 @@
+query myUpcomingJobs {
+  myUpcomingJobs {
+    ...ContractorJobBase
+    request {
+      id
+    }
+  }
+}

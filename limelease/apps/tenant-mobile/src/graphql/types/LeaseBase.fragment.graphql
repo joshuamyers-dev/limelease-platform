@@ -1,0 +1,6 @@
+fragment LeaseBase on Lease {
+  id
+  startDate
+  endDate
+  rentPcm
+}

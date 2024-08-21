@@ -9,6 +9,10 @@ defmodule LimeLease.PropertyRequestComment.PropertyRequestCommentService do
     end
   end
 
+  def get_comment_activity_for_tenant(%User{} = user, args) do
+    PropertyRequestCommentContext.get_paginated_comments_for_property_id(user.tenant.property_id, args)
+  end
+
   def create_comment_for_request(request_id, args) do
     with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.get_request_by_id(request_id) do
       PropertyRequestCommentContext.create_comment_for_request(request, args)

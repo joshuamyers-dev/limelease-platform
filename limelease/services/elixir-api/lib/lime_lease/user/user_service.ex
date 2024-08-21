@@ -21,12 +21,26 @@ defmodule LimeLease.User.UserService do
     end
   end
 
+
+  def add_fcm_token_for_user(token, %User{} = user) do
+    tokens = case user.fcm_tokens == nil do
+      true -> [token]
+      false -> [user.fcm_tokens | token]
+    end
+
+    with {:ok, %User{} = _user} <- UserContext.update_user(user, %{fcm_tokens: tokens}) do
+      {:ok, true}
+    else
+      err -> IEx.pry()
+    end
+  end
+
   def send_otp(mobile_number) do
     mobile_number = Helpers.format_phone_number(mobile_number)
     otp_code = generate_otp()
 
     with {:ok, %OtpCode{} = _otp} <- OtpCodeContext.create_otp_code(otp_code, mobile_number),
-         {:ok, :delivered} <- ClickSend.send_sms(mobile_number, "Your OTP code for OccuPie is: #{otp_code}") do
+         {:ok, :delivered} <- ClickSend.send_sms(mobile_number, "Your OTP code to login for OccuPie is: #{otp_code}") do
       {:ok, true}
     end
   end

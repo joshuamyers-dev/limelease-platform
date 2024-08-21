@@ -1,0 +1,4 @@
+fragment ContractorBase on Contractor {
+  id
+  businessName
+}

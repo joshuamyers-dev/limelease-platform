@@ -8,8 +8,11 @@ defmodule LimeLease.User.UserSchema do
 
   import Absinthe.Resolution.Helpers
 
+
+
   object :user do
     field :id, non_null(:id)
+    field :fcm_tokens, list_of(:string)
 
     field :profile, non_null(:profile) do
       resolve(dataloader(LimeLease.User.UserContext, :profile))
@@ -59,6 +62,13 @@ defmodule LimeLease.User.UserSchema do
       end)
 
       resolve(&LimeLease.User.UserResolver.login_mutation/3)
+    end
+
+    @desc "Add a new FCM token for the current user"
+    field :user_add_fcm_token, non_null(:boolean) do
+      arg(:token, non_null(:string))
+
+      resolve(&LimeLease.User.UserResolver.user_add_fcm_token_mutation/3)
     end
 
     @desc "Send OTP code for user (tenant) login"

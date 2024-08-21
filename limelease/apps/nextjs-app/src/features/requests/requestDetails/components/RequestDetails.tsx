@@ -39,7 +39,7 @@ const RequestDetails: React.FC<RequestDetailsProps> = ({ request }) => {
   const renderRequestedBy = useCallback(() => {
     return request?.tenant ? (
       <>
-        {request?.tenant?.firstName} {request?.tenant?.lastName}&nbsp;
+        {request?.tenant?.user.profile.firstName} {request?.tenant?.user.profile.lastName}&nbsp;
         <RoleTextHighlighted>(Tenant)</RoleTextHighlighted>
       </>
     ) : (

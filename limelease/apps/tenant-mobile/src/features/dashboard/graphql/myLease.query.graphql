@@ -1,0 +1,21 @@
+query myLease {
+  myLease {
+    ...LeaseBase
+    property {
+      agents {
+        id
+        agent {
+          id
+          user {
+            id
+            profile {
+              firstName
+              lastName
+              phoneNumber
+            }
+          }
+        }
+      }
+    }
+  }
+}

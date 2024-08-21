@@ -30,6 +30,15 @@ defmodule LimeLease.PropertyRequest.PropertyRequestService do
           []
       end
 
+    args =
+      case user.tenant == nil do
+        true ->
+          args
+
+        false ->
+          Map.put(args, :tenant_id, user.tenant.id)
+      end
+
     with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.create_request(args, photos) do
       spawn(fn ->
         PropertyRequestCommentService.create_system_comment_for_request(request.id, Helpers.full_user_name(user), "Request created.")

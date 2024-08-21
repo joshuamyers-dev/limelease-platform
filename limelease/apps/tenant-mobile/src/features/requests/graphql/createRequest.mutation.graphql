@@ -1,0 +1,5 @@
+mutation createRequest($propertyId: ID!, $categoryId: ID!, $title: String!, $photos: [CreatePhoto], $details: String!, $urgency: PropertyRequestUrgency) {
+  requestCreate(propertyId: $propertyId, categoryId: $categoryId, title: $title, details: $details, photos: $photos, urgency: $urgency) {
+    ...RequestBase
+  }
+}

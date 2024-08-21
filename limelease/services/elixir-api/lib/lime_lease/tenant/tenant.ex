@@ -21,17 +21,14 @@ defmodule LimeLease.Tenant.Tenant do
     |> cast_assoc(:user, with: &LimeLease.User.User.create_changeset/2, required: true)
   end
 
-  def update_changeset(tenant, attrs) do
-    tenant
-    |> cast(attrs, [:phone_number])
-    |> validate_required([:phone_number])
-    |> validate_contact_number(:phone_number)
-    |> format_contact_number(:phone_number)
-  end
-
   def default_preloads(query) do
     query
     |> preload(:user)
+  end
+
+  def with_id(query, id) do
+    query
+    |> where([t], t.id == ^id)
   end
 
   def with_phone_number(query, phone_number) do

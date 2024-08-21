@@ -49,6 +49,7 @@ defmodule LimeLease.Property.Property do
     |> cast_embed(:landlords, with: &LimeLease.Property.PropertyLandlord.changeset/2)
     |> cast_assoc(:files, with: &LimeLease.Property.PropertyFile.create_changeset/2)
     |> cast_assoc(:lease, with: &LimeLease.Lease.Lease.create_changeset/2)
+    |> cast_assoc(:tenants, with: &LimeLease.Tenant.Tenant.create_changeset/2)
     |> put_assoc(:property_agents, [property_agents])
   end
 
@@ -59,12 +60,13 @@ defmodule LimeLease.Property.Property do
     |> put_embed(:photos, attrs[:photos])
     |> cast_embed(:landlords, with: &LimeLease.Property.PropertyLandlord.changeset/2)
     |> cast_assoc(:files, with: &LimeLease.Property.PropertyFile.update_changeset/2)
+    |> cast_assoc(:tenants, with: &LimeLease.Tenant.Tenant.create_changeset/2)
     |> cast_assoc(:lease, with: &LimeLease.Lease.Lease.create_changeset/2)
   end
 
   def default_preloads(query) do
     query
-    |> preload([:tenants, :lease, :files])
+    |> preload([[tenants: [user: :profile]], :lease, :files])
   end
 
   def with_id(query, id) do

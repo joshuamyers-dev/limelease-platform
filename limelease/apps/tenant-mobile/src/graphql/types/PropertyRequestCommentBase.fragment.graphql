@@ -1,0 +1,7 @@
+fragment PropertyRequestCommentBase on PropertyRequestComment {
+  id
+  messageBody
+  systemGenerated
+  authorName
+  insertedAt
+}

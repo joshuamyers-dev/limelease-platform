@@ -1,9 +1,8 @@
 defmodule LimeLease.Property.PropertyService do
   alias LimeLease.Notifications
-  alias Hex.HTTP
   alias LimeLease.Property.{Property, PropertyContext}
   alias LimeLease.User.User
-  alias LimeLease.Tenant.Tenant
+  alias LimeLease.Tenant.{Tenant, TenantContext}
   alias LimeLease.StaticMedia.{StaticMedia, StaticMediaService}
 
   alias LimeLease.Services.AWS
@@ -17,7 +16,7 @@ defmodule LimeLease.Property.PropertyService do
   def create_property(
         %User{} = user,
         %{address: _address, bathrooms: _bathrooms, bedrooms: _bedrooms, carspaces: _carspaces} =
-          property_details,
+        property_details,
         lease_details,
         photos,
         tenants,
@@ -27,10 +26,7 @@ defmodule LimeLease.Property.PropertyService do
     with {:ok, photos} <- prepare_photos(photos),
          {:ok, files} <- prepare_files(files),
          {:ok, tenants} <- prepare_tenants(tenants) do
-      changeset =
-        build_changeset(nil, property_details, landlords, photos, files, lease_details, user)
-        |> Ecto.Changeset.put_assoc(:tenants, tenants, with: &LimeLease.Tenant.Tenant.create_changeset/2)
-        |> Ecto.Changeset.put_assoc(:files, files, with: &LimeLease.Property.PropertyFile.create_changeset/2)
+      changeset = build_changeset(nil, property_details, landlords, photos, tenants, files, lease_details, user)
 
       with %Ecto.Changeset{valid?: true} <- changeset,
            {:ok, %Property{} = property} <-
@@ -82,12 +78,40 @@ defmodule LimeLease.Property.PropertyService do
   defp prepare_tenants(tenants) do
     tenants =
       Enum.map(tenants, fn tenant ->
-        %Tenant{}
-        |> Tenant.create_changeset(%{
+        found_tenant =
+         case Map.has_key?(tenant, :id) do
+          true ->
+            with  {:ok, %Tenant{} = tenant} <- TenantContext.get_tenant_by_id(tenant.id) do
+              tenant
+            else
+              _ ->
+                %{}
+            end
+
+          false ->
+            %{}
+         end
+
+        %{
+          id: Map.get(found_tenant, :id),
           user: %{
-            profile: tenant
+            id: Map.get(found_tenant, :user_id),
+            profile: %{
+              id:
+                case Map.has_key?(tenant, :id) do
+                  true ->
+                    found_tenant.user.profile_id
+
+                  false ->
+                    nil
+                end,
+              first_name: tenant.first_name,
+              last_name: tenant.last_name,
+              phone_number: tenant.phone_number,
+              email: tenant.email
+            }
           }
-        })
+        }
       end)
 
     {:ok, tenants}
@@ -98,6 +122,7 @@ defmodule LimeLease.Property.PropertyService do
          property_details,
          landlords,
          photos,
+         tenants,
          files,
          lease_details,
          %User{} = user
@@ -107,7 +132,8 @@ defmodule LimeLease.Property.PropertyService do
         landlords: landlords,
         photos: photos,
         files: files,
-        lease: lease_details
+        lease: lease_details,
+        tenants: tenants
       })
 
     case property do
@@ -143,6 +169,7 @@ defmodule LimeLease.Property.PropertyService do
           property_details,
           landlords,
           photos,
+          tenants,
           files,
           lease_details,
           user

@@ -1,0 +1,15 @@
+fragment PropertyBase on Property {
+  id
+  address {
+    unitNumber
+    streetName
+    streetType
+    streetNumber
+    suburb
+    postcode
+    state
+  }
+  bathrooms
+  bedrooms
+  carspaces
+}

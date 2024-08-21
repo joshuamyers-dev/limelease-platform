@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyB_YBj9JkPWJQccUMacFS8nUlTek1Ixb9U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>239636191966</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.joshuanissenbaum.limeleasetenant</string>
+	<key>PROJECT_ID</key>
+	<string>limelease</string>
+	<key>STORAGE_BUCKET</key>
+	<string>limelease.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:239636191966:ios:dd7a92b6bc6cdc778f004f</string>
+</dict>
+</plist>

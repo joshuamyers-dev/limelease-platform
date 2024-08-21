@@ -14,6 +14,10 @@ defmodule LimeLease.PropertyRequestComment.PropertyRequestCommentSchema do
     field(:author_name, non_null(:string))
     field(:system_generated, :boolean)
     field(:inserted_at, non_null(:datetime))
+
+    field :request, non_null(:property_request) do
+      resolve(dataloader(LimeLease.PropertyRequestComment.PropertyRequestCommentContext, :request))
+    end
   end
 
   connection(node_type: :property_request_comment)
@@ -23,6 +27,12 @@ defmodule LimeLease.PropertyRequestComment.PropertyRequestCommentSchema do
     connection field :property_request_comments, node_type: :property_request_comment do
       arg(:request_id, non_null(:id))
       resolve(&LimeLease.PropertyRequestComment.PropertyRequestCommentResolver.property_request_comments_query/3)
+    end
+
+    @desc "Fetch the latest comment activity for a tenant user."
+    connection field :my_activity, node_type: :property_request_comment do
+      middleware(Authorize)
+      resolve(&LimeLease.PropertyRequestComment.PropertyRequestCommentResolver.my_activity_query/3)
     end
 
     @desc "Fetch a count of property request comments by Request ID"

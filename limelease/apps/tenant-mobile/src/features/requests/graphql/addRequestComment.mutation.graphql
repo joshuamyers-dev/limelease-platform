@@ -1,0 +1,5 @@
+mutation addRequestComment($authorName: String!, $messageBody: String!, $requestId: ID!, $systemGenerated: Boolean) {
+  propertyRequestCommentCreate(requestId: $requestId, authorName: $authorName, messageBody: $messageBody, systemGenerated: $systemGenerated) {
+    ...PropertyRequestCommentBase
+  }
+}

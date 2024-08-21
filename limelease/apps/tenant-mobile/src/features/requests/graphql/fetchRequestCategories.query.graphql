@@ -1,0 +1,6 @@
+query fetchRequestCategories {
+  propertyRequestCategories {
+    id
+    name
+  }
+}

@@ -6,6 +6,8 @@ defmodule LimeLease.User.UserContext do
 
   alias LimeLease.Repo
 
+  import Ecto.Query
+
   def get_user_by_email(email) do
     User
     |> User.with_email(email)
@@ -19,6 +21,13 @@ defmodule LimeLease.User.UserContext do
     |> User.with_id(user_id)
     |> User.default_preloads()
     |> Repo.one()
+    |> Repo.ok_error()
+  end
+
+  def update_user(%User{} = user, attrs) do
+    user
+    |> User.update_changeset(attrs)
+    |> Repo.update()
     |> Repo.ok_error()
   end
 

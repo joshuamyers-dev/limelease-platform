@@ -1,0 +1,7 @@
+fragment RequestBase on PropertyRequest {
+  id
+  ticketNumber
+  state
+  title
+  insertedAt
+}

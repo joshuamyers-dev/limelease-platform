@@ -14,8 +14,9 @@
   },
   "scripts": {
     "deploy:playwright": "cd limelease/services/playwright && sam build && sam deploy --no-confirm-changeset",
-    "start:elixir-api": "cd limelease/services/elixir-api && iex -S mix phx.server",
-    "start:nextjs": "pnpm --filter @limelease/nextjs-app dev"
+    "start:api": "cd limelease/services/elixir-api && iex -S mix phx.server",
+    "start:web": "pnpm --filter @limelease/nextjs-app dev",
+    "start:mobile": "cd limelease/apps/tenant-mobile && npx react-native start --experimental-debugger"
   },
   "dependencies": {
     "@pulumi/digitalocean": "^4.30.2",

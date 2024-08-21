@@ -19,13 +19,23 @@ defmodule LimeLease.PropertyRequest.PropertyRequestContext do
   end
 
   def get_paginated_requests_for_user(state, pagination_args, %User{} = user) do
-    {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_agent(user.agency_agent)
+    case user.tenant != nil do
+      true ->
+        PropertyRequest
+        |> PropertyRequest.with_property_id(user.tenant.property_id)
+        |> PropertyRequest.translate_state_into_filter(state)
+        |> PropertyRequest.order_by_creation_date()
+        |> Absinthe.Relay.Connection.from_query(&Repo.all/1, pagination_args)
 
-    PropertyRequest
-    |> PropertyRequest.translate_state_into_filter(state)
-    |> PropertyRequest.with_property_id_in(property_ids)
-    |> PropertyRequest.order_by_creation_date()
-    |> Absinthe.Relay.Connection.from_query(&Repo.all/1, pagination_args)
+      false ->
+        {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_agent(user.agency_agent)
+
+        PropertyRequest
+        |> PropertyRequest.translate_state_into_filter(state)
+        |> PropertyRequest.with_property_id_in(property_ids)
+        |> PropertyRequest.order_by_creation_date()
+        |> Absinthe.Relay.Connection.from_query(&Repo.all/1, pagination_args)
+    end
   end
 
   def create_request(request_attrs, photos) do
@@ -80,6 +90,14 @@ defmodule LimeLease.PropertyRequest.PropertyRequestContext do
        urgent_count: emergency_count,
        messages_count: 0
      }}
+  end
+
+  def get_active_requests_for_tenant(%User{} = user) do
+    PropertyRequest
+    |> PropertyRequest.with_property_id(user.tenant.property_id)
+    |> PropertyRequest.with_active_states()
+    |> Repo.all()
+    |> Repo.ok_error()
   end
 
   def update_request_state(%PropertyRequest{} = request, state) do
