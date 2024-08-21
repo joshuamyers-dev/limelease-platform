@@ -73,23 +73,6 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
     );
   }, [categoryData?.propertyRequestCategories]);
 
-  useEffect(() => {
-    if (
-      requestSubject &&
-      requestDetails &&
-      selectedCategoryIndex !== -1 &&
-      selectedUrgencyIndex !== -1
-    ) {
-      setCanSubmitForm(true);
-    } else {
-      setCanSubmitForm(false);
-    }
-  }, [
-    requestSubject,
-    requestDetails,
-    selectedCategoryIndex,
-    selectedUrgencyIndex,
-  ]);
 
   const onPressAddPhotos = useCallback(() => {
     showActionSheetWithOptions(
@@ -232,6 +215,7 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
       <CustomTextInput
         placeholder="Subject of your request"
         onChangeText={setRequestSubject}
+        value={requestSubject}
       />
       <CategoryPicker
         placeholder="Category"
@@ -248,6 +232,7 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
         placeholder="Details"
         multiline
         onChangeText={setRequestDetails}
+        value={requestDetails}
       />
       <CategoryPicker
         placeholder="Urgency"
@@ -296,7 +281,7 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
         <View style={{marginVertical: 16}}>
           <RoundButton
             type={ButtonType.PRIMARY}
-            disabled={!canSubmitForm}
+            // disabled={!canSubmitForm}
             loading={loading}
             title="Send request"
             onPress={onPressSendRequest}

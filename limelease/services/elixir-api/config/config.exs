@@ -55,6 +55,7 @@ config :postgrex, :json_library, Jsonrs
 # config :jose, :json_module, Jsonrs
 config :absinthe, :json_codec, Jsonrs
 config :ex_aws, :json_codec, Jsonrs
+config :req, :json_codec, Jsonrs
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -23,7 +23,7 @@ const BottomSheetWrapper = forwardRef<BottomSheet, BottomSheetWrapperProps>(
             backdropComponent={props => (
               <BottomSheetBackdrop {...props} disappearsOnIndex={-1} />
             )}
-            onClose={() => Keyboard.dismiss()}
+            onChange={() => Keyboard.dismiss()}
             handleStyle={{opacity: 0}}
             snapPoints={[height]}>
             {children}

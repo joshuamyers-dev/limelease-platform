@@ -581,7 +581,7 @@
 				CODE_SIGN_ENTITLEMENTS = OccupieTenant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FAKEH2V6W4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LimeLeaseTenant/Info.plist;
@@ -614,7 +614,7 @@
 				CODE_SIGN_ENTITLEMENTS = OccupieTenant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FAKEH2V6W4;
 				INFOPLIST_FILE = LimeLeaseTenant/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "OccuPie Tenant";
@@ -720,10 +720,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../../../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -806,10 +803,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../../../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

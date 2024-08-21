@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -11,24 +11,38 @@ import RoundButton from '../../../components/RoundButton';
 import {useSendOtpMutation} from '../../../graphql/generated';
 import {CONFIRM_OTP_SCREEN} from '../../../navigators/ScreenConstants';
 import {Colours} from '../../../utils/Colours';
+import ConfirmationModal from '@components/ConfirmationModal';
 
 const LoginContainer = ({navigation}) => {
-  const [sendCodeMutation, {loading}] = useSendOtpMutation();
+  const [sendCodeMutation, {loading, error}] = useSendOtpMutation();
 
   const [mobileNumber, setMobileNumber] = useState('');
+  const [errorModalVisible, setErrorModalVisible] = useState(false);
 
   const onPressLogin = useCallback(async () => {
-    await sendCodeMutation({
-      variables: {
-        number: mobileNumber,
-      },
-    });
+    try {
+      await sendCodeMutation({
+        variables: {
+          number: mobileNumber,
+        },
+      });
 
-    navigation.navigate(CONFIRM_OTP_SCREEN, {mobileNumber});
+      navigation.navigate(CONFIRM_OTP_SCREEN, {mobileNumber});
+    } catch (err) {
+      if (error?.message) {
+        setErrorModalVisible(true);
+      }
+    }
   }, [mobileNumber]);
 
   return (
     <View style={styles.container}>
+      <ConfirmationModal
+        isVisible={errorModalVisible}
+        title="Whoops.."
+        message="We were unable to locate your details. Please double check you have entered your number correctly, otherwise, email your property manager to update your contact details."
+        onDismiss={() => setErrorModalVisible(false)}
+      />
       <Image
         source={require('../../../../assets/images/login-bg.png')}
         resizeMode="cover"
@@ -50,6 +64,7 @@ const LoginContainer = ({navigation}) => {
         <CustomTextInput
           placeholder="Mobile Number"
           keyboardType="decimal-pad"
+          textContentType="telephoneNumber"
           onChangeText={setMobileNumber}
         />
 

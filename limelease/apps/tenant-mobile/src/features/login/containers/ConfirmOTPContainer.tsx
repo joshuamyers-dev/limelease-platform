@@ -1,25 +1,25 @@
+import useButtonFloatingView, {
+  BUTTON_DAMPING,
+  BUTTON_STIFFNESS,
+} from '@hooks/useButtonFloatingView';
 import React, {useCallback, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  TextInput,
-} from 'react-native';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import Animated, {useAnimatedStyle, withSpring} from 'react-native-reanimated';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Colours} from '../../../utils/Colours';
-import CustomTextInput from '../../../components/CustomTextInput';
+import {updateClientHeaders} from '../../../Client';
 import RoundButton, {ButtonType} from '../../../components/RoundButton';
-import CodeSentConfirmation from '../components/CodeSentConfirmation';
 import {useVerifyOtpMutation} from '../../../graphql/generated';
 import {CONFIRMED_OTP_SCREEN} from '../../../navigators/ScreenConstants';
+import {Colours} from '../../../utils/Colours';
 import {useGlobalStore} from '../../../utils/Store';
-import {updateClientHeaders} from '../../../Client';
+import CodeSentConfirmation from '../components/CodeSentConfirmation';
 
 const ConfirmOTPContainer: React.FC = ({navigation, route}) => {
   const [otp, setOtp] = React.useState('');
 
   const {setUserData, setToken} = useGlobalStore(state => state);
+
+  const [buttonHeight] = useButtonFloatingView();
 
   const [verifyOtpMutation, {loading, error, data}] = useVerifyOtpMutation();
 
@@ -31,6 +31,8 @@ const ConfirmOTPContainer: React.FC = ({navigation, route}) => {
       },
     });
   }, [otp]);
+
+  console.log(error);
 
   useEffect(() => {
     if (data?.userVerifyOtp) {
@@ -47,21 +49,33 @@ const ConfirmOTPContainer: React.FC = ({navigation, route}) => {
       <CodeSentConfirmation isVisible={false} />
       <Text style={styles.titleText}>We’ve sent you a one-time passcode</Text>
 
-      <TextInput
-        style={styles.textInput}
-        placeholderTextColor={Colours.GRAY_8}
-        placeholder="0000"
-        keyboardType="number-pad"
-        onChangeText={setOtp}
-      />
-
-      <View style={styles.bottomContainer}>
-        <RoundButton
-          title="Continue"
-          loading={loading}
-          onPress={onPressContinue}></RoundButton>
-        <RoundButton title="I didn’t get the code" type={ButtonType.LINK} />
+      <View style={{flex: 1}}>
+        <TextInput
+          style={styles.textInput}
+          placeholderTextColor={Colours.GRAY_8}
+          placeholder="0000"
+          keyboardType="number-pad"
+          onChangeText={setOtp}
+        />
       </View>
+
+      <Animated.View
+        style={useAnimatedStyle(() => {
+          return {
+            top: withSpring(~buttonHeight.value, {
+              stiffness: BUTTON_STIFFNESS,
+              damping: BUTTON_DAMPING,
+            }),
+          };
+        })}>
+        <View style={styles.bottomContainer}>
+          <RoundButton
+            title="Continue"
+            loading={loading}
+            onPress={onPressContinue}></RoundButton>
+          <RoundButton title="I didn’t get the code" type={ButtonType.LINK} />
+        </View>
+      </Animated.View>
     </SafeAreaView>
   );
 };
@@ -90,7 +104,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    marginBottom: 30,
     paddingHorizontal: 16,
   },
 });

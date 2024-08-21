@@ -1,13 +1,23 @@
 import Card from '@components/Card';
 import {LargeText, SectionTitle, SmallText} from '@components/TextComponents';
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {openBrowser} from '@swan-io/react-native-browser';
+import {useGlobalStore} from '@utils/Store';
+import client from '../../../Client';
+import {LOGIN_SCREEN} from '@navigators/ScreenConstants';
 
-const MoreContainer: React.FC = () => {
+const MoreContainer: React.FC = ({navigation}) => {
   const insets = useSafeAreaInsets();
+  const setUserData = useGlobalStore(state => state.setUserData);
+
+  const onPressLogout = useCallback(() => {
+    setUserData(null);
+    client.clearStore();
+    navigation.navigate(LOGIN_SCREEN);
+  }, []);
 
   return (
     <View style={{flex: 1, backgroundColor: '#FAFAFA'}}>
@@ -23,6 +33,9 @@ const MoreContainer: React.FC = () => {
         <SectionTitle>Account</SectionTitle>
         <Card>
           <SmallText>Profile</SmallText>
+        </Card>
+        <Card isTappable onPress={onPressLogout}>
+          <SmallText>Log out</SmallText>
         </Card>
 
         {/* <SectionTitle style={{paddingTop: 24}}>Notifications</SectionTitle>
