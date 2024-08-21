@@ -42,3 +42,7 @@ npm-debug.log
 /priv/scripts/node_modules/
 
 /.nx
+
+build
+Pods
+vendor

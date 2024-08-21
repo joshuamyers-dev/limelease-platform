@@ -80,98 +80,6 @@
         "tags": []
       }
     },
-    "@limelease/tenant-app": {
-      "name": "@limelease/tenant-app",
-      "type": "lib",
-      "data": {
-        "root": "limelease/apps/tenant-mobile",
-        "sourceRoot": "limelease/apps/tenant-mobile",
-        "name": "@limelease/tenant-app",
-        "projectType": "library",
-        "metadata": {
-          "targetGroups": {
-            "NPM Scripts": [
-              "android",
-              "ios",
-              "lint",
-              "start",
-              "generate",
-              "test"
-            ]
-          }
-        },
-        "targets": {
-          "android": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "android"
-            },
-            "metadata": {
-              "scriptContent": "react-native run-android",
-              "runCommand": "pnpm run android"
-            },
-            "configurations": {}
-          },
-          "ios": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "ios"
-            },
-            "metadata": {
-              "scriptContent": "react-native run-ios",
-              "runCommand": "pnpm run ios"
-            },
-            "configurations": {}
-          },
-          "lint": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "lint"
-            },
-            "metadata": {
-              "scriptContent": "eslint .",
-              "runCommand": "pnpm run lint"
-            },
-            "configurations": {}
-          },
-          "start": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "start"
-            },
-            "metadata": {
-              "scriptContent": "react-native start",
-              "runCommand": "pnpm run start"
-            },
-            "configurations": {}
-          },
-          "generate": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "generate"
-            },
-            "metadata": {
-              "scriptContent": "graphql-codegen --config src/graphql/codegen.yml",
-              "runCommand": "pnpm run generate"
-            },
-            "configurations": {}
-          },
-          "test": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "test"
-            },
-            "metadata": {
-              "scriptContent": "jest",
-              "runCommand": "pnpm run test"
-            },
-            "configurations": {}
-          }
-        },
-        "implicitDependencies": [],
-        "tags": []
-      }
-    },
     "@limelease/nextjs-app": {
       "name": "@limelease/nextjs-app",
       "type": "lib",
@@ -15688,227 +15596,30 @@
         "type": "static"
       }
     ],
-    "@limelease/tenant-app": [
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@babel/core",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@babel/plugin-proposal-export-namespace-from",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@babel/preset-env",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@babel/runtime",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@graphql-codegen/cli@2.16.5",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@graphql-codegen/introspection@2.2.3",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@graphql-codegen/typescript",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@graphql-codegen/typescript-operations@2.5.13",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@graphql-codegen/typescript-react-apollo@3.3.7",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@react-native/babel-preset",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@react-native/eslint-config",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@react-native/metro-config",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@react-native/typescript-config",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@rnx-kit/metro-config",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@rnx-kit/metro-resolver-symlinks",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@types/react",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@types/react-test-renderer",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:babel-jest",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:babel-plugin-add-react-displayname",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:babel-plugin-module-resolver",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:eslint",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:jest",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:prettier",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react-test-renderer",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:typescript",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@apollo/client",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@gorhom/portal",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@react-navigation/bottom-tabs",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@react-navigation/native",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@react-navigation/native-stack",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:@react-navigation/stack",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:dayjs",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:graphql",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react-native",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react-native-gesture-handler",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react-native-localize",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react-native-mmkv",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react-native-reanimated",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react-native-safe-area-context",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:react-native-screens",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:ts-invariant",
-        "type": "static"
-      },
-      {
-        "source": "@limelease/tenant-app",
-        "target": "npm:zustand",
-        "type": "static"
-      }
-    ],
     "@limelease/nextjs-app": [
       {
         "source": "@limelease/nextjs-app",
+        "target": "npm:@graphql-codegen/cli",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/nextjs-app",
+        "target": "npm:@graphql-codegen/introspection",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/nextjs-app",
         "target": "npm:@graphql-codegen/typescript@4.0.1",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/nextjs-app",
+        "target": "npm:@graphql-codegen/typescript-operations",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/nextjs-app",
+        "target": "npm:@graphql-codegen/typescript-react-apollo",
         "type": "static"
       },
       {
@@ -16073,7 +15784,7 @@
       },
       {
         "source": "@limelease/nextjs-app",
-        "target": "npm:graphql-tag",
+        "target": "npm:graphql-tag@2.12.5",
         "type": "static"
       },
       {
