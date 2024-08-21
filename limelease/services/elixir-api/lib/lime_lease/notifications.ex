@@ -5,8 +5,7 @@ defmodule LimeLease.Notifications do
   alias LimeLease.PropertyRequest.{PropertyRequest, PropertyRequestService}
   alias LimeLease.PropertyAgent.PropertyAgentContext
 
-  alias LimeLease.{Helpers, Mailer}
-
+  alias LimeLease.Helpers
   alias LimeLeaseWeb.Emails
 
   require IEx
@@ -17,10 +16,10 @@ defmodule LimeLease.Notifications do
       {:ok, screenshot_image_url} ->
         cta_url = Application.get_env(:lime_lease, :front_end_url) <> "/requests/#{request.ticket_number}"
 
-        with :ok <- send_email_notification_to_property_managers(request.property, screenshot_image_url, cta_url),
-             :ok <- send_email_notification_to_landlord(request.property, screenshot_image_url, cta_url) do
-          {:ok, "emails_sent"}
-        end
+        send_property_status_update_for_managers(request.property, screenshot_image_url, cta_url)
+        send_property_status_update_for_landlords(request.property, screenshot_image_url, cta_url)
+
+        {:ok, "emails_sent"}
 
       {:error, reason} ->
         Logger.error("Failed to send status update email for request #{request.id}. Error: Failed to create screenshot.")
@@ -28,50 +27,69 @@ defmodule LimeLease.Notifications do
     end
   end
 
-  def send_email_notification_to_property_managers(%Property{} = property, screenshot_image_url, cta_url) do
+  def send_property_status_update_for_managers(%Property{} = property, screenshot_image_url, cta_url) do
     with {:ok, manager_user_ids} <- PropertyAgentContext.get_manager_user_ids_for_property(property) do
       Logger.info("Sending status update email to property managers (#{manager_user_ids}) for property #{property.id}.")
 
-      Flow.from_enumerable(manager_user_ids)
-      |> Flow.map(fn user_id ->
-        {:ok, %User{} = user} = UserContext.get_user_by_id(user_id)
+      Enum.map(manager_user_ids, fn user_id ->
+        Task.async(fn ->
+          {:ok, %User{} = user} = UserContext.get_user_by_id(user_id)
 
-        Logger.info("Sending email to #{user.email}")
+          email_args = %{
+            "name" => Helpers.full_user_name(user),
+            "address" => Helpers.address_label(property.address),
+            "screenshot_image_url" => screenshot_image_url,
+            "cta_url" => cta_url
+          }
 
-        Emails.status_update(user.email, Helpers.full_user_name(user), Helpers.address_label(property.address), screenshot_image_url, cta_url)
-        |> Mailer.deliver()
+          %{"type" => "status_update", "to_address" => user.profile.email, "email_args" => email_args}
+          |> LimeLease.Workers.EmailDeliveryWorker.new()
+          |> Oban.insert()
+        end)
       end)
-      |> Flow.run()
+      |> Task.await_many()
     end
   end
 
-  def send_welcome_email_to_tenants(%Property{} = property, %User{} = agent) do
-    Flow.from_enumerable(property.tenants)
-    |> Flow.map(fn %Tenant{} = tenant ->
-      Emails.tenant_welcome(
-        tenant.user.email,
-        Helpers.full_user_name(tenant.user),
-        Helpers.full_user_name(agent),
-        Helpers.address_label(property.address),
-        "/"
-      )
-      |> Mailer.deliver()
-    end)
-    |> Flow.run()
+  def send_sms_message(phone_number, message) do
+    %{"phone_number" => phone_number, "message" => message}
+    |> LimeLease.Workers.SmsDeliveryWorker.new()
+    |> Oban.insert()
   end
 
-  def send_email_notification_to_landlord(%Property{} = property, screenshot_image_url, cta_url) do
-    Flow.from_enumerable(property.landlords)
-    |> Flow.map(fn %PropertyLandlord{} = landlord ->
-      PropertyRequestEmails.status_update(
-        landlord.email,
-        "#{landlord.first_name} #{landlord.last_name}",
-        Helpers.address_label(property.address),
-        screenshot_image_url,
-        cta_url
-      )
-      |> Mailer.deliver()
+  def send_welcome_email_to_tenants(%Property{} = property, %User{} = agent) do
+    Enum.map(property.tenants, fn %Tenant{} = tenant ->
+      Task.async(fn ->
+        email_args = %{
+          "name" => Helpers.full_user_name(tenant.user),
+          "agent_name" => Helpers.full_user_name(agent),
+          "address" => Helpers.address_label(property.address),
+          "cta_url" => "/"
+        }
+
+        %{"type" => "tenant_welcome", "to_address" => tenant.user.profile.email, "email_args" => email_args}
+        |> LimeLease.Workers.EmailDeliveryWorker.new()
+        |> Oban.insert()
+      end)
     end)
-    |> Flow.run()
+    |> Task.await_many()
+  end
+
+  def send_property_status_update_for_landlords(%Property{} = property, screenshot_image_url, cta_url) do
+    Enum.map(property.landlords, fn %PropertyLandlord{} = landlord ->
+      Task.async(fn ->
+        email_args = %{
+          "name" => "#{landlord.first_name} #{landlord.last_name}",
+          "address" => Helpers.address_label(property.address),
+          "screenshot_image_url" => screenshot_image_url,
+          "cta_url" => cta_url
+        }
+
+        %{"type" => "status_update", "to_address" => landlord.email, "email_args" => email_args}
+        |> LimeLease.Workers.EmailDeliveryWorker.new()
+        |> Oban.insert()
+      end)
+    end)
+    |> Task.await_many()
   end
 end

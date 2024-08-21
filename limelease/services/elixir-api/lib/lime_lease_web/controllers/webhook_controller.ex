@@ -50,10 +50,7 @@ defmodule LimeLeaseWeb.WebhookController do
                    "The contractor has accepted the job on the requested date and time."
                  ) do
             spawn(fn ->
-              SmsQueue.enqueue_sms(job.contractor.contact_number, "Thank you. We have sent your confirmation to the property manager.")
-            end)
-
-            spawn(fn ->
+              Notifications.send_sms_message(job.contractor.contact_number, "Thank you. We have sent your confirmation to the property manager.")
               Notifications.send_status_update_email(request)
             end)
 
@@ -71,13 +68,11 @@ defmodule LimeLeaseWeb.WebhookController do
                    system_generated: true
                  }) do
             spawn(fn ->
-              SmsQueue.enqueue_sms(
+              Notifications.send_sms_message(
                 job.contractor.contact_number,
                 "Thanks for confirming. Please leave a comment to arrange an alternative time:\n\n#{front_end_url()}/requests/#{request.ticket_number}"
               )
-            end)
 
-            spawn(fn ->
               Notifications.send_status_update_email(request)
             end)
 

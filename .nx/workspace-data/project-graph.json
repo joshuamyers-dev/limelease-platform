@@ -16682,7 +16682,27 @@
     "@limelease/nextjs-app": [
       {
         "source": "@limelease/nextjs-app",
+        "target": "npm:@graphql-codegen/cli",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/nextjs-app",
+        "target": "npm:@graphql-codegen/introspection",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/nextjs-app",
         "target": "npm:@graphql-codegen/typescript@4.0.1",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/nextjs-app",
+        "target": "npm:@graphql-codegen/typescript-operations",
+        "type": "static"
+      },
+      {
+        "source": "@limelease/nextjs-app",
+        "target": "npm:@graphql-codegen/typescript-react-apollo",
         "type": "static"
       },
       {
@@ -16847,7 +16867,7 @@
       },
       {
         "source": "@limelease/nextjs-app",
-        "target": "npm:graphql-tag",
+        "target": "npm:graphql-tag@2.12.5",
         "type": "static"
       },
       {
