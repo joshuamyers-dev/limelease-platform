@@ -26,7 +26,12 @@ import {renderAddressLabel} from '@utils/Helpers';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import UpcomingJob from '../components/UpcomingJob';
 import {useCallback} from 'react';
-import {LEASE_SCREEN, VIEW_REQUEST_SCREEN} from '@navigators/ScreenConstants';
+import {
+  LEASE_SCREEN,
+  REQUEST_REPAIR_SCREEN,
+  REQUESTS_NAVIGATOR,
+  VIEW_REQUEST_SCREEN,
+} from '@navigators/ScreenConstants';
 import EmptyState from '@components/EmptyState';
 import Card from '@components/Card';
 import dayjs from 'dayjs';
@@ -107,17 +112,24 @@ const DashboardContainer: React.FC = ({navigation}) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 24}}>
-        <View style={styles.sectionContainer}>
-          <SectionTitle>Upcoming jobs</SectionTitle>
-
-          {!upcomingJobData?.myUpcomingJobs && (
-            <EmptyState
-              title="Your notice board is empty!"
-              description="You’re all up to date."
-            />
+        {myActivityData?.myActivity?.edges?.length === 0 &&
+          !upcomingJobData?.myUpcomingJobs && (
+            <View style={styles.emptyContainer}>
+              <EmptyState
+                title="Your notice board is empty!"
+                description="You’re all up to date."
+                ctaText="Request a repair"
+                onPressCta={() => {
+                  navigation.navigate(REQUEST_REPAIR_SCREEN);
+                }}
+              />
+            </View>
           )}
 
-          {upcomingJobData?.myUpcomingJobs && (
+        {upcomingJobData?.myUpcomingJobs && (
+          <View style={styles.sectionContainer}>
+            <SectionTitle>Upcoming jobs</SectionTitle>
+
             <UpcomingJob
               description={upcomingJobData?.myUpcomingJobs?.description}
               contractorName={
@@ -125,46 +137,41 @@ const DashboardContainer: React.FC = ({navigation}) => {
               }
               dateStart={upcomingJobData?.myUpcomingJobs?.bookingDateStart}
               dateEnd={upcomingJobData?.myUpcomingJobs?.bookingDateEnd}
-              requestId={upcomingJobData.myUpcomingJobs.request?.id}
+              requestId={upcomingJobData?.myUpcomingJobs?.request?.id}
             />
-          )}
-        </View>
+          </View>
+        )}
 
-        <View style={styles.sectionContainer}>
-          <SectionTitle>Recent activity</SectionTitle>
+        {myActivityData?.myActivity?.edges?.length > 0 && (
+          <View style={styles.sectionContainer}>
+            <SectionTitle>Recent activity</SectionTitle>
 
-          {!myActivityData?.myActivity && (
-            <EmptyState
-              title="No recent activity."
-              description="Check back later."
-            />
-          )}
+            {myActivityData?.myActivity?.edges?.map(edge => {
+              const createdDate = dayjs(edge?.node?.insertedAt)
+                .tz(DEVICE_TIMEZONE)
+                .fromNow();
 
-          {myActivityData?.myActivity?.edges?.map(edge => {
-            const createdDate = dayjs(edge?.node?.insertedAt)
-              .tz(DEVICE_TIMEZONE)
-              .fromNow();
-
-            return (
-              <Animated.View entering={FadeIn} key={edge?.node.id}>
-                <Card
-                  onPress={() => onPressActivityItem(edge?.node)}
-                  isTappable>
-                  <ExtraSmallText>{edge?.node?.authorName}</ExtraSmallText>
-                  <StandardText style={{paddingTop: 4, width: '80%'}}>
-                    {edge?.node?.request.title}
-                  </StandardText>
-                  <SmallText numberOfLines={1} style={{marginTop: 8}}>
-                    {edge?.node?.messageBody}
-                  </SmallText>
-                  <CaptionText style={{paddingTop: 8}}>
-                    {createdDate}
-                  </CaptionText>
-                </Card>
-              </Animated.View>
-            );
-          })}
-        </View>
+              return (
+                <Animated.View entering={FadeIn} key={edge?.node.id}>
+                  <Card
+                    onPress={() => onPressActivityItem(edge?.node)}
+                    isTappable>
+                    <ExtraSmallText>{edge?.node?.authorName}</ExtraSmallText>
+                    <StandardText style={{paddingTop: 4, width: '80%'}}>
+                      {edge?.node?.request.title}
+                    </StandardText>
+                    <SmallText numberOfLines={2} style={{marginTop: 8}}>
+                      {edge?.node?.messageBody}
+                    </SmallText>
+                    <CaptionText style={{paddingTop: 8}}>
+                      {createdDate}
+                    </CaptionText>
+                  </Card>
+                </Animated.View>
+              );
+            })}
+          </View>
+        )}
       </ScrollView>
     </>
   );
@@ -182,6 +189,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: 16,
+  },
+  emptyContainer: {
+    marginHorizontal: 16,
+    marginTop: 16,
   },
   sectionContainer: {
     paddingTop: 24,

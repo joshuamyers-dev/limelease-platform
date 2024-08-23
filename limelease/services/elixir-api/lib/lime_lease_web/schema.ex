@@ -39,6 +39,7 @@ defmodule LimeLeaseWeb.Schema do
     import_fields(:contractor_mutations)
     import_fields(:contractor_job_mutations)
     import_fields(:property_request_comment_mutations)
+    import_fields(:profile_mutations)
   end
 
   def dataloader() do

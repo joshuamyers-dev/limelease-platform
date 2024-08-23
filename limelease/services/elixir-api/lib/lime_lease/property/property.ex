@@ -21,11 +21,11 @@ defmodule LimeLease.Property.Property do
     field :bathrooms, :integer
     field :carspaces, :integer
 
-    embeds_many :photos, LimeLease.Property.PropertyPhoto
+    embeds_many :photos, LimeLease.Property.PropertyPhoto, on_replace: :delete
     embeds_many :landlords, LimeLease.Property.PropertyLandlord
     embeds_one :address, LimeLease.Property.Address
 
-    has_one :lease, LimeLease.Lease.Lease, on_replace: :delete
+    has_one :lease, LimeLease.Lease.Lease
 
     has_many :files, LimeLease.Property.PropertyFile
     has_many :requests, LimeLease.PropertyRequest.PropertyRequest

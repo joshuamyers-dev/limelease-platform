@@ -10,3 +10,5 @@ export const MORE_SCREEN = 'More Screen';
 export const LEASE_SCREEN = 'Lease Screen';
 export const REQUEST_REPAIR_SCREEN = 'Request Repair Screen';
 export const VIEW_REQUEST_SCREEN = 'View Request Screen';
+export const MORE_NAVIGATOR = 'More Navigator';
+export const PROFILE_SCREEN = 'Profile Screen';

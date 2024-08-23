@@ -1,0 +1,15 @@
+mutation updateProfile(
+  $email: String!
+  $firstName: String!
+  $lastName: String!
+  $phoneNumber: String!
+) {
+  updateProfile(
+    email: $email
+    firstName: $firstName
+    lastName: $lastName
+    phoneNumber: $phoneNumber
+  ) {
+    ...ProfileBase
+  }
+}

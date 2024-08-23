@@ -197,6 +197,7 @@ export type Profile = {
 export type Property = {
   __typename?: 'Property';
   address: Address;
+  agents?: Maybe<Array<Maybe<PropertyAgent>>>;
   bathrooms: Scalars['Int']['output'];
   bedrooms: Scalars['Int']['output'];
   carspaces: Scalars['Int']['output'];
@@ -208,6 +209,12 @@ export type Property = {
   photos: Array<PropertyPhoto>;
   requests?: Maybe<Array<Maybe<PropertyRequest>>>;
   tenants?: Maybe<Array<Maybe<Tenant>>>;
+};
+
+export type PropertyAgent = {
+  __typename?: 'PropertyAgent';
+  agent?: Maybe<AgencyAgent>;
+  id: Scalars['ID']['output'];
 };
 
 export type PropertyConnection = {
@@ -302,6 +309,7 @@ export type PropertyRequestComment = {
   id: Scalars['ID']['output'];
   insertedAt: Scalars['DateTime']['output'];
   messageBody?: Maybe<Scalars['String']['output']>;
+  request: PropertyRequest;
   systemGenerated?: Maybe<Scalars['Boolean']['output']>;
 };
 
@@ -377,6 +385,8 @@ export type RootMutationType = {
   staticMediaCreate: StaticMedia;
   /** Update an existing property */
   updateProperty: Property;
+  /** Add a new FCM token for the current user */
+  userAddFcmToken: Scalars['Boolean']['output'];
   /** Login a user with email and password */
   userLogin: Session;
   /** Send OTP code for user (tenant) login */
@@ -469,6 +479,11 @@ export type RootMutationTypeUpdatePropertyArgs = {
 };
 
 
+export type RootMutationTypeUserAddFcmTokenArgs = {
+  token: Scalars['String']['input'];
+};
+
+
 export type RootMutationTypeUserLoginArgs = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -503,14 +518,20 @@ export type RootQueryType = {
   jobsForContractor?: Maybe<ContractorJobConnection>;
   /** Returns the current user's account */
   me?: Maybe<User>;
+  /** Fetch the latest comment activity for a tenant user. */
+  myActivity?: Maybe<PropertyRequestCommentConnection>;
   /** Get a paginated list of contractors for your agency */
   myContractors?: Maybe<ContractorConnection>;
+  /** Fetch details about my lease as a tenant. */
+  myLease?: Maybe<Lease>;
   /** Get a paginated list of properties. Expected errors: unauthorized. */
   myProperties?: Maybe<PropertyConnection>;
   /** Fetch all requests, filtered by a state. Expected errors: unauthorized */
   myRequests?: Maybe<PropertyRequestConnection>;
   /** Get a list of team members for your agency. */
   myTeam?: Maybe<AgencyAgentConnection>;
+  /** Fetch upcoming jobs for a tenant. */
+  myUpcomingJobs?: Maybe<ContractorJob>;
   /** Fetch a list of property request categories. */
   propertyRequestCategories?: Maybe<Array<Maybe<PropertyRequestCategory>>>;
   /** Fetch a paginated list of property request comments by ID */
@@ -556,6 +577,14 @@ export type RootQueryTypeJobsForContractorArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   state?: InputMaybe<PropertyRequestFilter>;
+};
+
+
+export type RootQueryTypeMyActivityArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -645,6 +674,7 @@ export type StaticMedia = {
 export type Tenant = {
   __typename?: 'Tenant';
   id: Scalars['ID']['output'];
+  property: Property;
   user: User;
 };
 
@@ -659,9 +689,11 @@ export type TenantObject = {
 export type User = {
   __typename?: 'User';
   agency?: Maybe<Agency>;
+  fcmTokens?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   id: Scalars['ID']['output'];
   isAdmin: Scalars['Boolean']['output'];
   profile: Profile;
+  tenant?: Maybe<Tenant>;
 };
 
 export type FetchContractorQueryVariables = Exact<{

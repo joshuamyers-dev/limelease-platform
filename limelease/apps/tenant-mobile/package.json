@@ -14,6 +14,7 @@
   "dependencies": {
     "@apollo/client": "^3.10.6",
     "@bam.tech/react-native-image-resizer": "^3.0.10",
+    "@dr.pogodin/react-native-fs": "^2.27.1",
     "@expo/react-native-action-sheet": "^4.1.0",
     "@gorhom/bottom-sheet": "^4.6.4",
     "@gorhom/portal": "^1.0.14",
@@ -31,6 +32,7 @@
     "react": "18.2.0",
     "react-native": "0.74.2",
     "react-native-config": "^1.5.3",
+    "react-native-file-viewer": "^2.1.5",
     "react-native-gesture-handler": "^2.17.1",
     "react-native-image-picker": "^7.1.2",
     "react-native-localize": "^3.2.1",

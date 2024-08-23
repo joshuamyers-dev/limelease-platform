@@ -1,22 +1,34 @@
 import Card from '@components/Card';
 import {LargeText, SectionTitle, SmallText} from '@components/TextComponents';
 import React, {useCallback, useEffect} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Alert, StyleSheet, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {openBrowser} from '@swan-io/react-native-browser';
 import {useGlobalStore} from '@utils/Store';
 import client from '../../../Client';
-import {LOGIN_SCREEN} from '@navigators/ScreenConstants';
+import {LOGIN_SCREEN, PROFILE_SCREEN} from '@navigators/ScreenConstants';
 
 const MoreContainer: React.FC = ({navigation}) => {
   const insets = useSafeAreaInsets();
   const setUserData = useGlobalStore(state => state.setUserData);
 
   const onPressLogout = useCallback(() => {
-    setUserData(null);
-    client.clearStore();
-    navigation.navigate(LOGIN_SCREEN);
+    Alert.alert('Log out?', 'Are you sure you want to log out?', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'OK',
+        onPress: () => {
+          setUserData(null);
+          client.clearStore();
+          navigation.navigate(LOGIN_SCREEN);
+        },
+      },
+    ]);
   }, []);
 
   return (
@@ -31,7 +43,7 @@ const MoreContainer: React.FC = ({navigation}) => {
 
       <View style={styles.contentContainer}>
         <SectionTitle>Account</SectionTitle>
-        <Card>
+        <Card isTappable onPress={() => navigation.navigate(PROFILE_SCREEN)}>
           <SmallText>Profile</SmallText>
         </Card>
         <Card isTappable onPress={onPressLogout}>

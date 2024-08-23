@@ -73,6 +73,23 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
     );
   }, [categoryData?.propertyRequestCategories]);
 
+  const formIsValid = useMemo(() => {
+    if (
+      requestSubject !== '' &&
+      requestDetails !== '' &&
+      selectedCategoryIndex !== -1 &&
+      selectedUrgencyIndex !== -1
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }, [
+    requestSubject,
+    requestDetails,
+    selectedCategoryIndex,
+    selectedUrgencyIndex,
+  ]);
 
   const onPressAddPhotos = useCallback(() => {
     showActionSheetWithOptions(
@@ -131,15 +148,6 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
   }, []);
 
   const onPressSendRequest = useCallback(async () => {
-    console.log('Request subject:', requestSubject);
-    console.log('Request details:', requestDetails);
-    console.log(
-      'Category:',
-      categoryData?.propertyRequestCategories?.[selectedCategoryIndex]?.name,
-    );
-    console.log('Urgency:', URGENCY_TYPES[selectedUrgencyIndex]);
-    console.log('Photos:', photos);
-
     const createRequestResponse = await createRequestMutation({
       variables: {
         title: requestSubject,
@@ -281,7 +289,7 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
         <View style={{marginVertical: 16}}>
           <RoundButton
             type={ButtonType.PRIMARY}
-            // disabled={!canSubmitForm}
+            disabled={!formIsValid}
             loading={loading}
             title="Send request"
             onPress={onPressSendRequest}

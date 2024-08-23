@@ -381,6 +381,8 @@ export type RootMutationType = {
   requestUpdateUrgency: PropertyRequest;
   /** Create a new static media asset. */
   staticMediaCreate: StaticMedia;
+  /** Update the current user's profile. */
+  updateProfile: Profile;
   /** Update an existing property */
   updateProperty: Property;
   /** Add a new FCM token for the current user */
@@ -463,6 +465,14 @@ export type RootMutationTypeStaticMediaCreateArgs = {
   fileName?: InputMaybe<Scalars['String']>;
   mimeType: Scalars['String'];
   s3Key?: InputMaybe<Scalars['String']>;
+};
+
+
+export type RootMutationTypeUpdateProfileArgs = {
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  phoneNumber: Scalars['String'];
 };
 
 
@@ -710,7 +720,7 @@ export type MyActivityQuery = { __typename?: 'RootQueryType', myActivity?: { __t
 export type MyLeaseQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyLeaseQuery = { __typename?: 'RootQueryType', myLease?: { __typename?: 'Lease', id: string, startDate?: any | null, endDate?: any | null, rentPcm?: number | null, property: { __typename?: 'Property', agents?: Array<{ __typename?: 'PropertyAgent', id: string, agent?: { __typename?: 'AgencyAgent', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', firstName?: string | null, lastName?: string | null, phoneNumber?: string | null } } } | null } | null> | null } } | null };
+export type MyLeaseQuery = { __typename?: 'RootQueryType', myLease?: { __typename?: 'Lease', id: string, startDate?: any | null, endDate?: any | null, rentPcm?: number | null, property: { __typename?: 'Property', files?: Array<{ __typename?: 'PropertyFile', id: string, fileName: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null } | null> | null, agents?: Array<{ __typename?: 'PropertyAgent', id: string, agent?: { __typename?: 'AgencyAgent', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null } } } | null } | null> | null } } | null };
 
 export type MyUpcomingJobsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -731,6 +741,16 @@ export type VerifyOtpMutationVariables = Exact<{
 
 
 export type VerifyOtpMutation = { __typename?: 'RootMutationType', userVerifyOtp: { __typename?: 'Session', token: string, user: { __typename?: 'User', id: string, fcmTokens?: Array<string | null> | null, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, tenant?: { __typename?: 'Tenant', id: string, property: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } } | null } } };
+
+export type UpdateProfileMutationVariables = Exact<{
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  phoneNumber: Scalars['String'];
+}>;
+
+
+export type UpdateProfileMutation = { __typename?: 'RootMutationType', updateProfile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null } };
 
 export type AddFcmTokenMutationVariables = Exact<{
   token: Scalars['String'];
@@ -804,6 +824,8 @@ export type ContractorBaseFragment = { __typename?: 'Contractor', id: string, bu
 
 export type ContractorJobBaseFragment = { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string } | null };
 
+export type FileBaseFragment = { __typename?: 'PropertyFile', id: string, fileName: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null };
+
 export type LeaseBaseFragment = { __typename?: 'Lease', id: string, startDate?: any | null, endDate?: any | null, rentPcm?: number | null };
 
 export type ProfileBaseFragment = { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null };
@@ -836,6 +858,17 @@ export const ContractorJobBaseFragmentDoc = gql`
   }
 }
     ${ContractorBaseFragmentDoc}`;
+export const FileBaseFragmentDoc = gql`
+    fragment FileBase on PropertyFile {
+  id
+  fileName
+  staticMedia {
+    id
+    url
+  }
+  insertedAt
+}
+    `;
 export const LeaseBaseFragmentDoc = gql`
     fragment LeaseBase on Lease {
   id
@@ -998,6 +1031,9 @@ export const MyLeaseDocument = gql`
   myLease {
     ...LeaseBase
     property {
+      files {
+        ...FileBase
+      }
       agents {
         id
         agent {
@@ -1005,9 +1041,7 @@ export const MyLeaseDocument = gql`
           user {
             id
             profile {
-              firstName
-              lastName
-              phoneNumber
+              ...ProfileBase
             }
           }
         }
@@ -1015,7 +1049,9 @@ export const MyLeaseDocument = gql`
     }
   }
 }
-    ${LeaseBaseFragmentDoc}`;
+    ${LeaseBaseFragmentDoc}
+${FileBaseFragmentDoc}
+${ProfileBaseFragmentDoc}`;
 
 /**
  * __useMyLeaseQuery__
@@ -1148,6 +1184,47 @@ export function useVerifyOtpMutation(baseOptions?: ApolloReactHooks.MutationHook
 export type VerifyOtpMutationHookResult = ReturnType<typeof useVerifyOtpMutation>;
 export type VerifyOtpMutationResult = ApolloReactCommon.MutationResult<VerifyOtpMutation>;
 export type VerifyOtpMutationOptions = ApolloReactCommon.BaseMutationOptions<VerifyOtpMutation, VerifyOtpMutationVariables>;
+export const UpdateProfileDocument = gql`
+    mutation updateProfile($email: String!, $firstName: String!, $lastName: String!, $phoneNumber: String!) {
+  updateProfile(
+    email: $email
+    firstName: $firstName
+    lastName: $lastName
+    phoneNumber: $phoneNumber
+  ) {
+    ...ProfileBase
+  }
+}
+    ${ProfileBaseFragmentDoc}`;
+export type UpdateProfileMutationFn = ApolloReactCommon.MutationFunction<UpdateProfileMutation, UpdateProfileMutationVariables>;
+
+/**
+ * __useUpdateProfileMutation__
+ *
+ * To run a mutation, you first call `useUpdateProfileMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateProfileMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateProfileMutation, { data, loading, error }] = useUpdateProfileMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *      firstName: // value for 'firstName'
+ *      lastName: // value for 'lastName'
+ *      phoneNumber: // value for 'phoneNumber'
+ *   },
+ * });
+ */
+export function useUpdateProfileMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateProfileMutation, UpdateProfileMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<UpdateProfileMutation, UpdateProfileMutationVariables>(UpdateProfileDocument, options);
+      }
+export type UpdateProfileMutationHookResult = ReturnType<typeof useUpdateProfileMutation>;
+export type UpdateProfileMutationResult = ApolloReactCommon.MutationResult<UpdateProfileMutation>;
+export type UpdateProfileMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateProfileMutation, UpdateProfileMutationVariables>;
 export const AddFcmTokenDocument = gql`
     mutation addFcmToken($token: String!) {
   userAddFcmToken(token: $token)

@@ -2,6 +2,9 @@ query myLease {
   myLease {
     ...LeaseBase
     property {
+      files {
+        ...FileBase
+      }
       agents {
         id
         agent {
@@ -9,9 +12,7 @@ query myLease {
           user {
             id
             profile {
-              firstName
-              lastName
-              phoneNumber
+              ...ProfileBase
             }
           }
         }

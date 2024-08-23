@@ -13,6 +13,7 @@ import {
   LEASE_SCREEN,
   LOGIN_SCREEN,
   MORE_SCREEN,
+  PROFILE_SCREEN,
   REQUEST_REPAIR_SCREEN,
   REQUESTS_NAVIGATOR,
   REQUESTS_SCREEN,
@@ -32,6 +33,7 @@ import LeaseContainer from '@features/dashboard/containers/LeaseContainer';
 import {textComponentStyles} from '@components/TextComponents';
 import RequestRepairContainer from '@features/requests/containers/RequestRepairContainer';
 import ViewRequestContainer from '@features/requests/containers/ViewRequestContainer';
+import ProfileContainer from '@features/more/containers/ProfileContainer';
 
 const NativeStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -100,6 +102,33 @@ const DashboardNavigator = () => {
   );
 };
 
+const MoreNavigator = () => {
+  return (
+    <NativeStack.Navigator>
+      <NativeStack.Group
+        screenOptions={({navigation, route}) => ({
+          headerTitleStyle: textComponentStyles.standardText,
+          headerLeft: () => <BackButton onPress={() => navigation.pop()} />,
+          headerShadowVisible: true,
+          contentStyle: {
+            backgroundColor: '#FAFAFA',
+          },
+        })}>
+        <NativeStack.Screen
+          name={MORE_SCREEN}
+          component={MoreContainer}
+          options={{headerShown: false}}
+        />
+        <NativeStack.Screen
+          name={PROFILE_SCREEN}
+          component={ProfileContainer}
+          options={{title: 'Profile'}}
+        />
+      </NativeStack.Group>
+    </NativeStack.Navigator>
+  );
+};
+
 const TabNavigator = () => {
   return (
     <Tab.Navigator
@@ -140,7 +169,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name={MORE_SCREEN}
-        component={MoreContainer}
+        component={MoreNavigator}
         options={{headerShown: false}}
       />
     </Tab.Navigator>

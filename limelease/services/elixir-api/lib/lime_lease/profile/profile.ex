@@ -18,7 +18,7 @@ defmodule LimeLease.Profile.Profile do
     timestamps(type: :utc_datetime_usec)
   end
 
-  def create_changeset(profile, attrs \\ %{}) do
+  def changeset(profile, attrs \\ %{}) do
     profile
     |> cast(attrs, [:email, :first_name, :last_name, :phone_number])
     |> validate_required([:email, :first_name, :last_name, :phone_number])

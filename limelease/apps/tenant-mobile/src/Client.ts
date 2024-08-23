@@ -54,7 +54,9 @@ const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        // myDiaries: relayStylePagination(),
+        myActivity: relayStylePagination(),
+        fetchRequestComments: relayStylePagination(['requestId']),
+        myRequests: relayStylePagination(['state']),
       },
     },
   },

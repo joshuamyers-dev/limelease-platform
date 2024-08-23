@@ -1,13 +1,21 @@
 import {Image, View} from 'react-native';
 import Card from './Card';
 import {SmallText, StandardText} from './TextComponents';
+import RoundButton, {ButtonType} from './RoundButton';
 
 interface EmptyStateProps {
   title: string;
   description: string;
+  ctaText: string;
+  onPressCta: () => void;
 }
 
-const EmptyState: React.FC<EmptyStateProps> = ({title, description}) => {
+const EmptyState: React.FC<EmptyStateProps> = ({
+  title,
+  description,
+  ctaText,
+  onPressCta,
+}) => {
   return (
     <Card>
       <Image
@@ -26,6 +34,15 @@ const EmptyState: React.FC<EmptyStateProps> = ({title, description}) => {
         <SmallText style={{textAlign: 'center', width: '85%'}}>
           {description}
         </SmallText>
+        {ctaText && (
+          <View style={{marginTop: 16, width: '100%'}}>
+            <RoundButton
+              type={ButtonType.PRIMARY}
+              title={ctaText}
+              onPress={onPressCta}
+            />
+          </View>
+        )}
       </View>
     </Card>
   );

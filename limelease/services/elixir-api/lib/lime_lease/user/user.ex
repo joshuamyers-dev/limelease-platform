@@ -23,7 +23,7 @@ defmodule LimeLease.User.User do
   def create_changeset(user, attrs) do
     user
     |> cast(attrs, [:password])
-    |> cast_assoc(:profile, with: &LimeLease.Profile.Profile.create_changeset/2, required: true)
+    |> cast_assoc(:profile, with: &LimeLease.Profile.Profile.changeset/2, required: true)
   end
 
   def update_changeset(user, attrs) do

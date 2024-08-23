@@ -1,6 +1,27 @@
 PODS:
   - boost (1.83.0)
   - DoubleConversion (1.1.6)
+  - dr-pogodin-react-native-fs (2.27.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - FBLazyVector (0.74.2)
   - Firebase/CoreOnly (10.29.0):
     - FirebaseCore (= 10.29.0)
@@ -1075,8 +1096,6 @@ PODS:
     - Yoga
   - react-native-safe-area-context (4.10.5):
     - React-Core
-  - react-native-splash-screen (3.3.0):
-    - React-Core
   - React-nativeconfig (0.74.2)
   - React-NativeModulesApple (0.74.2):
     - glog
@@ -1319,6 +1338,8 @@ PODS:
     - FirebaseCoreExtension
     - React-Core
     - RNFBApp
+  - RNFileViewer (2.1.5):
+    - React-Core
   - RNGestureHandler (2.17.1):
     - DoubleConversion
     - glog
@@ -1393,6 +1414,7 @@ PODS:
 DEPENDENCIES:
   - boost (from `../../../../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - "dr-pogodin-react-native-fs (from `../../../../node_modules/@dr.pogodin/react-native-fs`)"
   - FBLazyVector (from `../../../../node_modules/react-native/Libraries/FBLazyVector`)
   - fmt (from `../../../../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../../../../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -1428,7 +1450,6 @@ DEPENDENCIES:
   - "react-native-image-resizer (from `../../../../node_modules/@bam.tech/react-native-image-resizer`)"
   - react-native-mmkv (from `../../../../node_modules/react-native-mmkv`)
   - react-native-safe-area-context (from `../../../../node_modules/react-native-safe-area-context`)
-  - react-native-splash-screen (from `../../../../node_modules/react-native-splash-screen`)
   - React-nativeconfig (from `../../../../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../../../../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../../../../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1455,6 +1476,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../../../../node_modules/@react-native-firebase/app`)"
   - "RNFBCrashlytics (from `../../../../node_modules/@react-native-firebase/crashlytics`)"
   - "RNFBMessaging (from `../../../../node_modules/@react-native-firebase/messaging`)"
+  - RNFileViewer (from `../../../../node_modules/react-native-file-viewer`)
   - RNGestureHandler (from `../../../../node_modules/react-native-gesture-handler`)
   - RNLocalize (from `../../../../node_modules/react-native-localize`)
   - RNReanimated (from `../../../../node_modules/react-native-reanimated`)
@@ -1487,6 +1509,8 @@ EXTERNAL SOURCES:
     :podspec: "../../../../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
     :podspec: "../../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  dr-pogodin-react-native-fs:
+    :path: "../../../../node_modules/@dr.pogodin/react-native-fs"
   FBLazyVector:
     :path: "../../../../node_modules/react-native/Libraries/FBLazyVector"
   fmt:
@@ -1554,8 +1578,6 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/react-native-mmkv"
   react-native-safe-area-context:
     :path: "../../../../node_modules/react-native-safe-area-context"
-  react-native-splash-screen:
-    :path: "../../../../node_modules/react-native-splash-screen"
   React-nativeconfig:
     :path: "../../../../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1608,6 +1630,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/@react-native-firebase/crashlytics"
   RNFBMessaging:
     :path: "../../../../node_modules/@react-native-firebase/messaging"
+  RNFileViewer:
+    :path: "../../../../node_modules/react-native-file-viewer"
   RNGestureHandler:
     :path: "../../../../node_modules/react-native-gesture-handler"
   RNLocalize:
@@ -1624,6 +1648,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
+  dr-pogodin-react-native-fs: 270121efc0b747fd8a70c7c937cb803e7dac650f
   FBLazyVector: 4bc164e5b5e6cfc288d2b5ff28643ea15fa1a589
   Firebase: cec914dab6fd7b1bd8ab56ea07ce4e03dd251c2d
   FirebaseCore: 30e9c1cbe3d38f5f5e75f48bfcea87d7c358ec16
@@ -1673,7 +1698,6 @@ SPEC CHECKSUMS:
   react-native-image-resizer: fd0c333eca55147bd55c5e054cac95dcd0da6814
   react-native-mmkv: 6d8259f25b80397c99ad50e2d891e22465f65e09
   react-native-safe-area-context: a240ad4b683349e48b1d51fed1611138d1bdad97
-  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   React-nativeconfig: 5d452e509d6fbedc1522e21b566451fc673ac6b7
   React-NativeModulesApple: 6560431301ffdab8df6212cc8c8eff779396d8e0
   React-perflogger: 32ed45d9cee02cf6639acae34251590dccd30994
@@ -1700,6 +1724,7 @@ SPEC CHECKSUMS:
   RNFBApp: 10819a4f67d634fe34aa607c6d1e8a8aef019308
   RNFBCrashlytics: f465771d96a2eaf9f6104b30abb002cfe78fc0be
   RNFBMessaging: 652aac21d91b8ddb85a5e25c0f04150ef60b5384
+  RNFileViewer: ce7ca3ac370e18554d35d6355cffd7c30437c592
   RNGestureHandler: 5538c370587d7e757667b9283ca867dd7635f154
   RNLocalize: 4f22418187ecd5ca693231093ff1d912d1b3c9bc
   RNReanimated: 99d173cf9e754835c2406872eb1da0f07feb5fe9
