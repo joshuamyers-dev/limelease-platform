@@ -1,7 +1,7 @@
 import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 import {Portal} from '@gorhom/portal';
 import {forwardRef, ReactNode} from 'react';
-import {Keyboard, StyleSheet} from 'react-native';
+import {Keyboard, Platform, StyleSheet, View} from 'react-native';
 import {FullWindowOverlay} from 'react-native-screens';
 
 interface BottomSheetWrapperProps {
@@ -11,13 +11,15 @@ interface BottomSheetWrapperProps {
 
 const BottomSheetWrapper = forwardRef<BottomSheet, BottomSheetWrapperProps>(
   ({children, height = 300}, ref) => {
+    const OverlayOrView = Platform.OS === 'ios' ? FullWindowOverlay : View;
+
     return (
       <Portal>
-        <FullWindowOverlay style={StyleSheet.absoluteFill}>
+        <OverlayOrView style={StyleSheet.absoluteFill}>
           <BottomSheet
             ref={ref}
             index={-1}
-            enableContentPanningGesture
+            enableContentPanningGesture={false}
             enablePanDownToClose
             keyboardBehavior="interactive"
             backdropComponent={props => (
@@ -28,7 +30,7 @@ const BottomSheetWrapper = forwardRef<BottomSheet, BottomSheetWrapperProps>(
             snapPoints={[height]}>
             {children}
           </BottomSheet>
-        </FullWindowOverlay>
+        </OverlayOrView>
       </Portal>
     );
   },

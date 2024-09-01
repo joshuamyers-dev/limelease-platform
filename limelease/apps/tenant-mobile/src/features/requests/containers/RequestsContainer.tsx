@@ -97,6 +97,7 @@ const RequestsContainer: React.FC = ({navigation}) => {
                 alignItems: 'center',
                 gap: 4,
                 paddingTop: 16,
+                paddingHorizontal: 16,
               }}>
               <StandardText>Your place is squeaky clean!</StandardText>
               <SmallText>You have no active maintenance requests.</SmallText>
@@ -108,7 +109,7 @@ const RequestsContainer: React.FC = ({navigation}) => {
           data={requestsData?.myRequests?.edges}
           extraData={requestsData?.myRequests?.edges}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingBottom: 80}}
+          contentContainerStyle={{paddingBottom: 80, paddingHorizontal: 16}}
           renderItem={({item}) => {
             const submitted = dayjs(item?.node?.insertedAt).tz(DEVICE_TIMEZONE);
 
@@ -151,14 +152,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.6,
   },
   contentContainer: {
-    margin: 16,
     flex: 1,
+    paddingTop: 16,
   },
   floatingActionContainer: {
     position: 'absolute',
-    bottom: 0,
-    right: 0,
-    left: 0,
+    bottom: 16,
+    right: 16,
+    left: 16,
     zIndex: 10,
   },
 });

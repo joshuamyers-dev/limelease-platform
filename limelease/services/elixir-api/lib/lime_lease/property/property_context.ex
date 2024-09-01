@@ -1,19 +1,29 @@
 defmodule LimeLease.Property.PropertyContext do
   @moduledoc false
 
-  alias LimeLease.User.User
+  alias LimeLease.Property.PropertyPhoto
+  alias LimeLease.User.{User, UserContext}
   alias LimeLease.Property.Property
   alias LimeLease.PropertyAgent.PropertyAgentContext
 
   alias LimeLease.Repo
 
+  import Ecto.Query
+
   require IEx
 
   def get_paginated_properties_for_user(%User{} = user, filter, search_keywords, pagination_args) do
-    {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_agent(user.agency_agent)
+    case UserContext.admin_of_agency?(user) do
+      {:ok, :is_admin_of_agency} ->
+        Property
+        |> Property.with_agency_id(user.agency.id)
 
-    Property
-    |> Property.with_id_in(property_ids)
+      {:error, :unauthorized} ->
+        {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_agent(user.agency_agent)
+
+        Property
+        |> Property.with_id_in(property_ids)
+    end
     |> Property.translate_filter_into_query(filter)
     |> Property.search_by_address(search_keywords)
     |> Property.order_by_inserted_date()

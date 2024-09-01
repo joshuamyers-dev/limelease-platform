@@ -1,4 +1,10 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 interface CardProps {
   children: React.ReactNode;
@@ -13,10 +19,13 @@ const Card: React.FC<CardProps> = ({
   onPress,
   isTappable = false,
 }) => {
+  const Touchable =
+    Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
+
   return (
-    <TouchableOpacity onPress={onPress} disabled={!isTappable}>
+    <Touchable onPress={onPress} disabled={!isTappable}>
       <View style={[styles.cardContainer, style]}>{children}</View>
-    </TouchableOpacity>
+    </Touchable>
   );
 };
 

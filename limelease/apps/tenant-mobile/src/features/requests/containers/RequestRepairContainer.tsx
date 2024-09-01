@@ -21,7 +21,9 @@ import {useGlobalStore} from '@utils/Store';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {
   Image,
+  Platform,
   ScrollView,
+  StatusBar,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -188,7 +190,14 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
   );
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{flexGrow: 1}}
+      showsVerticalScrollIndicator={false}>
+      <StatusBar
+        backgroundColor="white"
+        barStyle={Platform.OS === 'ios' ? 'light-content' : 'dark-content'}
+      />
       <BottomSheetWrapper ref={bottomSheetRef}>
         <View
           style={{
@@ -275,6 +284,7 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
               exiting={FadeOut}>
               <TouchableOpacity
                 style={styles.closeContainer}
+                hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
                 onPress={() => onPressRemovePhoto(photo)}>
                 <Image
                   source={require('@assets/images/icon-park-outline_close.png')}
@@ -285,25 +295,27 @@ const RequestRepairContainer: React.FC = ({navigation}) => {
             </Animated.View>
           ))}
         </ScrollView>
-
-        <View style={{marginVertical: 16}}>
-          <RoundButton
-            type={ButtonType.PRIMARY}
-            disabled={!formIsValid}
-            loading={loading}
-            title="Send request"
-            onPress={onPressSendRequest}
-          />
-        </View>
       </View>
-    </View>
+
+      <View
+        style={{
+          marginVertical: 16,
+        }}>
+        <RoundButton
+          type={ButtonType.PRIMARY}
+          disabled={!formIsValid}
+          loading={loading}
+          title="Send request"
+          onPress={onPressSendRequest}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     margin: 16,
-    flex: 1,
   },
   photosContainer: {
     paddingTop: 16,

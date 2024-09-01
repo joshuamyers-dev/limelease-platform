@@ -27,4 +27,14 @@ defmodule LimeLease.AgencyAgent.AgencyAgentSchema do
       resolve(&LimeLease.AgencyAgent.AgencyAgentResolver.my_team_query/3)
     end
   end
+
+  object :agency_agent_mutations do
+    @desc "Invite a new team member to your agency."
+    field :team_member_invite, :agency_agent do
+      arg(:email, non_null(:string))
+      arg(:role, non_null(:string))
+      middleware(Authorize)
+      resolve(&LimeLease.AgencyAgent.AgencyAgentResolver.invite_team_member/3)
+    end
+  end
 end

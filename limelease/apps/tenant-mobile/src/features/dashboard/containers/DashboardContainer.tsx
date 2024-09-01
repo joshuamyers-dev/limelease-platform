@@ -2,6 +2,7 @@ import {
   ActivityIndicator,
   Image,
   ScrollView,
+  StatusBar,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -82,9 +83,16 @@ const DashboardContainer: React.FC = ({navigation}) => {
     );
   }
 
+  let topInsets = insets.top;
+
+  if (topInsets <= 10) {
+    topInsets = 24;
+  }
+
   return (
     <>
-      <View style={[styles.topHeader, {paddingTop: insets.top}]}>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
+      <View style={[styles.topHeader, {paddingTop: topInsets}]}>
         <SmallText>Hey!</SmallText>
         <LargeText>{meData?.me?.profile?.firstName}</LargeText>
 
@@ -183,6 +191,7 @@ const styles = StyleSheet.create({
     shadowColor: 'rgba(0, 0, 0, 0.1)',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.6,
+    elevation: 8,
     padding: 16,
   },
   topHeaderRow: {

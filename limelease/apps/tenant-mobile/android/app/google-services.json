@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239636191966",
+    "project_id": "limelease",
+    "storage_bucket": "limelease.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239636191966:android:a02d554b3d4f23f28f004f",
+        "android_client_info": {
+          "package_name": "com.limeleasetenant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW9MqCLcH3lYQHmkCONEL4Ly7C8R9d2QE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

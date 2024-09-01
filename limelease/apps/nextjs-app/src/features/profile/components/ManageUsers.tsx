@@ -38,8 +38,8 @@ const ManageUsers: React.FC = () => {
       .map((node, index) => {
         return {
           key: index,
-          name: node?.user.firstName + ' ' + node?.user.lastName,
-          email: node?.user.email,
+          name: node?.user.profile.firstName + ' ' + node?.user.profile.lastName,
+          email: node?.user.profile.email,
           role: formatSnakeCase(node?.role),
         };
       });
@@ -57,7 +57,7 @@ const ManageUsers: React.FC = () => {
         {isModalVisible && <AddTeamMemberForm />}
       </Modal>
 
-      <Table dataSource={data} columns={columns} pagination={false} />
+      <Table loading={isLoadingTeam} dataSource={data} columns={columns} pagination={false} />
     </Card>
   );
 };

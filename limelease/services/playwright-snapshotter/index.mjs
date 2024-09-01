@@ -15,14 +15,18 @@ export const handler = async (event) => {
       headless: true,
     });
 
-    const page = await browser.newPage();
+    const page = await browser.newPage({
+      isMobile: true,
+      deviceScaleFactor: 2,
+    });
+    
     await page.goto(url);
 
     await page.setViewportSize({
-      width: 1000,
-      height: 1000,
-      deviceScaleFactor: 2,
+      width: 390,
+      height: 844,
     });
+
     await page.waitForLoadState("networkidle");
     await page.waitForSelector("#requestDetails");
 

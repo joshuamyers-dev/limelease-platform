@@ -3,7 +3,7 @@ import useButtonFloatingView, {
   BUTTON_STIFFNESS,
 } from '@hooks/useButtonFloatingView';
 import React, {useCallback, useEffect} from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, TextInput, View} from 'react-native';
 import Animated, {useAnimatedStyle, withSpring} from 'react-native-reanimated';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {updateClientHeaders} from '../../../Client';
@@ -32,8 +32,6 @@ const ConfirmOTPContainer: React.FC = ({navigation, route}) => {
     });
   }, [otp]);
 
-  console.log(error);
-
   useEffect(() => {
     if (data?.userVerifyOtp) {
       setUserData(data.userVerifyOtp.user);
@@ -46,6 +44,7 @@ const ConfirmOTPContainer: React.FC = ({navigation, route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" />
       <CodeSentConfirmation isVisible={false} />
       <Text style={styles.titleText}>We’ve sent you a one-time passcode</Text>
 

@@ -110,6 +110,7 @@ const MoreNavigator = () => {
           headerTitleStyle: textComponentStyles.standardText,
           headerLeft: () => <BackButton onPress={() => navigation.pop()} />,
           headerShadowVisible: true,
+          headerTitleAlign: 'center',
           contentStyle: {
             backgroundColor: '#FAFAFA',
           },
@@ -156,6 +157,9 @@ const TabNavigator = () => {
           return <Image source={icon} />;
         },
         tabBarShowLabel: false,
+        tabBarStyle: {
+          minHeight: 64,
+        },
       })}>
       <Tab.Screen
         name={DASHBOARD_NAVIGATOR}
@@ -184,6 +188,7 @@ const TransitionNavigator = () => {
           headerTitleStyle: textComponentStyles.standardText,
           headerLeft: () => <BackButton onPress={() => navigation.pop()} />,
           headerShadowVisible: true,
+          headerTitleAlign: 'center',
           contentStyle: {
             backgroundColor: '#FAFAFA',
           },

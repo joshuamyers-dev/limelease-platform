@@ -29,7 +29,7 @@ const ProfileContainer = () => {
           <EditAvatar />
           <ProfilePrimaryDetails>
             <CardTitleText>
-              {meData?.me?.firstName} {meData?.me?.lastName}
+              {meData?.me?.profile?.firstName} {meData?.me?.profile?.lastName}
             </CardTitleText>
             <CompanyNameText>Property Manager &middot; {meData?.me?.agency?.name}</CompanyNameText>
           </ProfilePrimaryDetails>

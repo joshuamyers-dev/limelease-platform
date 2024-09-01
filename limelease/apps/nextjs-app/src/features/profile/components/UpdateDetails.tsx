@@ -16,13 +16,16 @@ const UpdateDetails = () => {
       <Card>
         <Form layout="vertical" form={form} onFinish={onFormSubmit}>
           <Form.Item label="First Name">
-            <Input value={meData?.me?.firstName ?? ''} />
+            <Input value={meData?.me?.profile?.firstName ?? ''} />
           </Form.Item>
           <Form.Item label="Last Name">
-            <Input value={meData?.me?.lastName ?? ''} />
+            <Input value={meData?.me?.profile?.lastName ?? ''} />
           </Form.Item>
           <Form.Item label="Email">
-            <Input type="email" value={meData?.me?.email ?? ''} />
+            <Input type="email" value={meData?.me?.profile?.email ?? ''} />
+          </Form.Item>
+          <Form.Item label="Mobile Number">
+            <Input type="text" value={meData?.me?.profile?.phoneNumber ?? ''} />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">

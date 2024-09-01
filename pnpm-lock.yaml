@@ -22,7 +22,7 @@ importers:
         version: 3.120.0(ts-node@10.9.2(@types/node@18.0.0)(typescript@5.4.5))(typescript@5.4.5)
       sst:
         specifier: ion
-        version: 3.0.67
+        version: 3.0.75
     devDependencies:
       '@types/aws-lambda':
         specifier: 8.10.138
@@ -7185,9 +7185,6 @@ packages:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
 
-  react-devtools-core@5.2.0:
-    resolution: {integrity: sha512-vZK+/gvxxsieAoAyYaiRIVFxlajb7KXhgBDV7OsoMzaAE+IqGpoxusBjIgq5ibqA2IloKu0p9n7tE68z1xs18A==}
-
   react-devtools-core@5.3.1:
     resolution: {integrity: sha512-7FSb9meX0btdBQLwdFOwt6bGqvRPabmVMMslv8fgoSPqXyuGpgQe36kx8gR86XPw7aV1yVouTp6fyZ0EH+NfUw==}
 
@@ -7813,33 +7810,33 @@ packages:
     resolution: {integrity: sha512-MGrFH9Z4NP9Iyhqn16sDtBpRRNJ0Y2hNa6D65h736fVSaPCHr4DM4sWUNvVaSuC+0OBGhwsrydQwmgfg5LncqQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  sst-darwin-arm64@3.0.67:
-    resolution: {integrity: sha512-Bq8ksWapP+PTiEhUr6lUoMOkj0EApLjhVEp0oPjOJlVoTsQwYP7SA7aqYYCAQa93Ftk8ZzFYHRH3QfzU2Fdg3g==}
+  sst-darwin-arm64@3.0.75:
+    resolution: {integrity: sha512-mzE8t5e12Sc2ca7NO55zr6wybYAnFHdNeCIRpzxx9lrpzFczwAYMtXGn2xPgPfw9OY9jbNp7RYw5eYuP0ylQtg==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.0.67:
-    resolution: {integrity: sha512-FKp/W0a9NLI9CrODgwOG0BkzyNWGHX1gOU4PE2mJnWWIafN7yDkENqxtUEKbzTnT6kv9nGBneCmMZFEy6TmK7A==}
+  sst-darwin-x64@3.0.75:
+    resolution: {integrity: sha512-Qbi4yQWb/zFlg4uL88gfazkoq+WHWKeGZ0/Q6/0adeMlFp7vThEyktPS8MK0MiQuLoESLON++cIcmyXHoDBRnQ==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.0.67:
-    resolution: {integrity: sha512-MNHfnSjG1W8HCIWHM4WSRUmkldqtjOHxJzhFYkxPyiPau6JniTjdZ84i7NU0LNyFNUTi92oFiTceQVhY2s6Cfg==}
+  sst-linux-arm64@3.0.75:
+    resolution: {integrity: sha512-ah51s1Vcn5DJM94iyTh8sn6pvshnFqSPzhVamWY454RvGDY3/3HsHwlqYHkHyo2gMvMEg8GLAxroeXWNf32hmQ==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.0.67:
-    resolution: {integrity: sha512-KSr+rBHPQ2iQ5lnfiBWdukHpQbXJ9+rQrqVKVLQdfARXPAB8dSnV989ZrX2BMcsSkTG+9U2xH9r9GLgdPTtfWA==}
+  sst-linux-x64@3.0.75:
+    resolution: {integrity: sha512-IZtcMYo0xugiXs5n0ZvydRq/S6Vs1wiT1EL4QKt+/EGIzor3VUsbaMRVzThzJ7PZ9eJA/8LuzpKTvvh/JBLGUw==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.0.67:
-    resolution: {integrity: sha512-pj2ZeHaW/U2/C+4ABwDzAWzo0mTEL5cJRm04W5SKSWOo/PcwHAsZp9mVJh2s0xnByl+c5oOUyvMhAvjjxwGLXg==}
+  sst-linux-x86@3.0.75:
+    resolution: {integrity: sha512-uRMCkG0zmTeFIt92PtTUQS8HZ1qVha76mg/9B1vvTIuUDha3PIIP2OhODzWGLz+bye6toBDMYjnb+Oo73LH/Lg==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.0.67:
-    resolution: {integrity: sha512-gdZGXiiNNIAUz6pJ51FjN90IpsceVnyahxpMlNIftIi5C90p6uCgSZuOO7ghPzoNa0tX3nNbw2n4sXgJpkW6qQ==}
+  sst@3.0.75:
+    resolution: {integrity: sha512-6LAic47T2CnsoXOqBCrj5RgDDH2Y+z7oqpGbopcvdVHDTBzi6n7NbQpwtfCwuSvd2ym+royXq9SPfLwpr1jOXA==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -9170,7 +9167,7 @@ snapshots:
       '@azure/abort-controller': 1.1.0
       '@azure/core-auth': 1.5.0
       '@azure/core-tracing': 1.1.2
-      '@azure/core-util': 1.2.0
+      '@azure/core-util': 1.9.2
       '@azure/logger': 1.1.4
       form-data: 4.0.0
       http-proxy-agent: 5.0.0
@@ -14086,9 +14083,9 @@ snapshots:
       '@azure/opentelemetry-instrumentation-azure-sdk': 1.0.0-beta.6
       '@microsoft/applicationinsights-web-snippet': 1.2.1
       '@opentelemetry/api': 1.9.0
-      '@opentelemetry/core': 1.25.0(@opentelemetry/api@1.9.0)
+      '@opentelemetry/core': 1.25.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 1.25.0(@opentelemetry/api@1.9.0)
-      '@opentelemetry/semantic-conventions': 1.25.0
+      '@opentelemetry/semantic-conventions': 1.25.1
       cls-hooked: 4.2.2
       continuation-local-storage: 3.2.1
       diagnostic-channel: 1.1.1
@@ -18388,14 +18385,6 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  react-devtools-core@5.2.0:
-    dependencies:
-      shell-quote: 1.8.1
-      ws: 7.5.10
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
   react-devtools-core@5.3.1:
     dependencies:
       shell-quote: 1.8.1
@@ -18607,7 +18596,7 @@ snapshots:
       pretty-format: 26.6.2
       promise: 8.3.0
       react: 18.2.0
-      react-devtools-core: 5.2.0
+      react-devtools-core: 5.3.1
       react-refresh: 0.14.2
       react-shallow-renderer: 16.15.0(react@18.2.0)
       regenerator-runtime: 0.13.11
@@ -19170,33 +19159,33 @@ snapshots:
     dependencies:
       minipass: 7.1.2
 
-  sst-darwin-arm64@3.0.67:
+  sst-darwin-arm64@3.0.75:
     optional: true
 
-  sst-darwin-x64@3.0.67:
+  sst-darwin-x64@3.0.75:
     optional: true
 
-  sst-linux-arm64@3.0.67:
+  sst-linux-arm64@3.0.75:
     optional: true
 
-  sst-linux-x64@3.0.67:
+  sst-linux-x64@3.0.75:
     optional: true
 
-  sst-linux-x86@3.0.67:
+  sst-linux-x86@3.0.75:
     optional: true
 
-  sst@3.0.67:
+  sst@3.0.75:
     dependencies:
       '@aws-sdk/client-lambda': 3.478.0
       aws4fetch: 1.0.18
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.0.67
-      sst-darwin-x64: 3.0.67
-      sst-linux-arm64: 3.0.67
-      sst-linux-x64: 3.0.67
-      sst-linux-x86: 3.0.67
+      sst-darwin-arm64: 3.0.75
+      sst-darwin-x64: 3.0.75
+      sst-linux-arm64: 3.0.75
+      sst-linux-x64: 3.0.75
+      sst-linux-x86: 3.0.75
     transitivePeerDependencies:
       - aws-crt
 

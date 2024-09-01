@@ -383,6 +383,8 @@ export type RootMutationType = {
   requestUpdateUrgency: PropertyRequest;
   /** Create a new static media asset. */
   staticMediaCreate: StaticMedia;
+  /** Update the current user's profile. */
+  updateProfile: Profile;
   /** Update an existing property */
   updateProperty: Property;
   /** Add a new FCM token for the current user */
@@ -465,6 +467,14 @@ export type RootMutationTypeStaticMediaCreateArgs = {
   fileName?: InputMaybe<Scalars['String']['input']>;
   mimeType: Scalars['String']['input'];
   s3Key?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type RootMutationTypeUpdateProfileArgs = {
+  email: Scalars['String']['input'];
+  firstName: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
+  phoneNumber: Scalars['String']['input'];
 };
 
 

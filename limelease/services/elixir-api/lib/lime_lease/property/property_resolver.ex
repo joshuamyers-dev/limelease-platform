@@ -1,4 +1,5 @@
 defmodule LimeLease.Property.PropertyResolver do
+  alias LimeLease.Property.PropertyPhoto
   alias LimeLease.Property.{Property, PropertyContext, PropertyService}
   alias LimeLease.PropertyRequest.PropertyRequestContext
 

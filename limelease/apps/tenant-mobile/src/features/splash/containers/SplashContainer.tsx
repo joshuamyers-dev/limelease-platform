@@ -1,4 +1,4 @@
-import {Image, View} from 'react-native';
+import {Image, StatusBar, View} from 'react-native';
 import {useGlobalStore} from '../../../utils/Store';
 import {useEffect} from 'react';
 import {
@@ -15,9 +15,9 @@ const SplashContainer = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
       if (user) {
-        navigation.navigate(DASHBOARD_NAVIGATOR);
+        navigation.replace(DASHBOARD_NAVIGATOR);
       } else {
-        navigation.navigate(LOGIN_SCREEN);
+        navigation.replace(LOGIN_SCREEN);
       }
     }, 800);
   }, []);
@@ -25,6 +25,11 @@ const SplashContainer = ({navigation}) => {
   return (
     <View
       style={{flex: 1, alignItems: 'center', paddingTop: SCREEN_HEIGHT * 0.3}}>
+      <StatusBar
+        backgroundColor="transparent"
+        translucent
+        barStyle="dark-content"
+      />
       <Animated.Image
         source={require('@assets/images/logo.png')}
         entering={FadeInUp}

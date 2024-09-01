@@ -13,11 +13,13 @@ import {
   useUpdateRequestUrgencyMutation,
 } from '@graphql/generated';
 import { formatStatusTitle, toProperCase } from '@utils/Helpers';
+import { useRouter } from 'next/router';
 
 const { confirm } = Modal;
 
 const RequestActionsDropdown = () => {
   const context = useContext(RequestDetailsContext);
+  const router = useRouter();
 
   const [updateRequestState, { loading: loadingUpdateState, data: updateStateData, error: updateStateError }] = useUpdateRequestStateMutation();
   const [updateRequestUrgency, { loading: loadingUpdateUrgency, data: updateUrgencyData, error: updateUrgencyError }] = useUpdateRequestUrgencyMutation();
@@ -104,6 +106,10 @@ const RequestActionsDropdown = () => {
     message.success('Link copied to clipboard.', 2.5);
   }, []);
 
+  const handleEditRequest = useCallback(() => {
+    // router.push(`/requests/${context.request.id}/edit`);
+  }, []);
+
   const handleCancelRequest = useCallback(() => {
     confirm({
       title: 'Are you sure you want to cancel this request?',
@@ -164,6 +170,8 @@ const RequestActionsDropdown = () => {
                 ? handleCopyLink
                 : item.key === 'cancel_request'
                 ? handleCancelRequest
+                : item.key === 'edit'
+                ? handleEditRequest
                 : undefined,
           };
         }

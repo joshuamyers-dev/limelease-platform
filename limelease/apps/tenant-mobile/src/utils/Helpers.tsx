@@ -1,4 +1,4 @@
-import {LayoutAnimation} from 'react-native';
+import {LayoutAnimation, PermissionsAndroid, Platform} from 'react-native';
 import {Address, PropertyRequestState} from '../graphql/generated';
 
 import messaging, {
@@ -13,6 +13,13 @@ export const requestUserPermission = async () => {
   return new Promise<FirebaseMessagingTypes.AuthorizationStatus>(
     async (resolve, reject) => {
       const authStatus = await messaging().requestPermission();
+
+      if (Platform.OS === 'android') {
+        await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+        );
+      }
+
       const enabled =
         authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
         authStatus === messaging.AuthorizationStatus.PROVISIONAL;

@@ -79,6 +79,11 @@ defmodule LimeLease.Property.Property do
     |> where([q], q.id in ^ids)
   end
 
+  def with_agency_id(query, id) do
+    query
+    |> where([q], q.agency_id == ^id)
+  end
+
   def order_by_inserted_date(query) do
     query
     |> order_by([q], desc: q.inserted_at)

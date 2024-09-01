@@ -28,6 +28,7 @@ const CategoryWheelPicker: React.FC<CategoryWheelPickerProps> = ({
         selectedIndicatorStyle={{
           backgroundColor: 'white',
         }}
+        flatListProps={{nestedScrollEnabled: true}}
       />
     )
   );

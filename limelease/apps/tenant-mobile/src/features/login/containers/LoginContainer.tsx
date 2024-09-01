@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {
   Image,
   KeyboardAvoidingView,
+  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -37,6 +38,7 @@ const LoginContainer = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar translucent backgroundColor="transparent" />
       <ConfirmationModal
         isVisible={errorModalVisible}
         title="Whoops.."

@@ -63,7 +63,7 @@ const MoreContainer: React.FC = ({navigation}) => {
         </Card>
         <Card
           isTappable
-          onPress={() => openBrowser('https://occupie.com.au/help', {})}>
+          onPress={() => openBrowser('https://occupie.com.au/support', {})}>
           <SmallText>Help & Support</SmallText>
         </Card>
       </View>

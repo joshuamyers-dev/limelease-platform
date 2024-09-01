@@ -27,9 +27,20 @@ import {
 } from '@graphql/generated';
 import {Colours} from '@utils/Colours';
 import {DEVICE_TIMEZONE, SCREEN_HEIGHT} from '@utils/Constants';
-import {registerForToken, requestUserPermission} from '@utils/Helpers';
+import {
+  layoutAnimate,
+  registerForToken,
+  requestUserPermission,
+} from '@utils/Helpers';
 import dayjs from 'dayjs';
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -37,7 +48,12 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import Animated, {FadeIn, FadeOut} from 'react-native-reanimated';
+import Animated, {
+  FadeIn,
+  FadeOut,
+  FadingTransition,
+  LinearTransition,
+} from 'react-native-reanimated';
 import {ImageViewer, ImageWrapper} from 'react-native-reanimated-viewer';
 
 const ViewRequestContainer = ({navigation, route}) => {
@@ -55,6 +71,7 @@ const ViewRequestContainer = ({navigation, route}) => {
       id: request.id,
     },
     fetchPolicy: 'cache-and-network',
+    returnPartialData: true,
   });
 
   const {data: jobData, loading: fetchingJob} =
@@ -171,11 +188,11 @@ const ViewRequestContainer = ({navigation, route}) => {
   );
 
   return (
-    <View style={{flex: 1}}>
+    <Animated.View style={{flex: 1}} layout={LinearTransition.springify()}>
       <VirtualizedList
         showsVerticalScrollIndicator={false}
         style={styles.container}
-        contentContainerStyle={{paddingBottom: 124}}>
+        contentContainerStyle={{paddingBottom: 124, padding: 16}}>
         <BottomSheetWrapper ref={bottomSheetRef} height={SCREEN_HEIGHT * 0.4}>
           <View
             style={{
@@ -218,7 +235,11 @@ const ViewRequestContainer = ({navigation, route}) => {
         />
         <SectionTitle>Information</SectionTitle>
         <Card>
-          {fetchingRequest && <ActivityIndicator />}
+          {fetchingRequest && !requestData?.fetchRequest.title && (
+            <Animated.View entering={FadeIn} exiting={FadeOut}>
+              <ActivityIndicator />
+            </Animated.View>
+          )}
           <StatusTag status={request.state} />
           <StandardText style={{paddingTop: 8}}>
             {requestData?.fetchRequest?.title}
@@ -361,18 +382,18 @@ const ViewRequestContainer = ({navigation, route}) => {
           onPress={onPressAddComment}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
     flex: 1,
   },
   requestPhotosContainer: {
     paddingVertical: 16,
     marginRight: -16,
+    minHeight: 80,
   },
   addCommentContainer: {
     margin: 16,

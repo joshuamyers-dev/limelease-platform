@@ -80,13 +80,15 @@ const LeaseContainer = ({navigation, route}) => {
 
         await writeFile(filePath, base64, 'base64');
         setDownloadingFile('');
-        await FileViewer.open(filePath);
+        await FileViewer.open(filePath, {
+          showAppsSuggestions: true,
+        });
       };
     }
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={{padding: 16}}>
       {loading && <ActivityIndicator style={{marginTop: 20}} />}
 
       {!loading && (
@@ -159,9 +161,7 @@ const LeaseContainer = ({navigation, route}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
+  container: {},
   fileRow: {
     flexDirection: 'row',
     alignItems: 'center',
