@@ -2,12 +2,12 @@ import { AnimatedContainer } from '@components/AnimatedContainer';
 import { RequestDetailsContext } from '@features/requests/requestDetails/containers/RequestDetailsContainer';
 import { fadeInOutProps } from '@utils/AnimationsProps';
 import { DatePicker, Form, Input } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
+
 import { Dayjs } from 'dayjs';
 import React, { useCallback, useContext, useEffect } from 'react';
 
 const SelectCompletionDate: React.FC = () => {
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const context = useContext(RequestDetailsContext);
 
   const onSelectStartDate = useCallback((date: Dayjs, dateString: string) => {

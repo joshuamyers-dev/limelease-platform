@@ -7,7 +7,7 @@ import { useDebounce } from '@hooks/useDebounce';
 import { cardAnimationProps, fadeInOutProps } from '@utils/AnimationsProps';
 import { formatMobileNumber } from '@utils/Helpers';
 import { Button, Empty, Form, Input } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -17,7 +17,7 @@ import styled from 'styled-components';
 const CreateContractorStep = dynamic(() => import('../components/CreateContractorStep'));
 
 const FindCreateContractor = () => {
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const context = useContext(RequestDetailsContext);
 
   const [searchText, setSearchText] = useState('');

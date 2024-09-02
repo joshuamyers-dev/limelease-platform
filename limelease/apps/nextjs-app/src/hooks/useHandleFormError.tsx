@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { FormInstance } from 'antd/lib/form';
-import { message } from 'antd';
+import { FormInstance, message } from 'antd';
 import { ApolloError } from '@apollo/client';
 
 const useHandleFormError = (error: ApolloError | undefined, form: FormInstance, errorKeyToFieldName: any) => {

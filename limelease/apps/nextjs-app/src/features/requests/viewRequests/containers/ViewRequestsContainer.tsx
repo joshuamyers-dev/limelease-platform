@@ -5,7 +5,6 @@ import { usePagination } from '@hooks/usePagination';
 import { cardAnimationProps } from '@utils/AnimationsProps';
 import { Colours } from '@utils/Colours';
 import { Button, Divider, Segmented } from 'antd';
-import { SegmentedValue } from 'antd/lib/segmented';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import ViewRequestsTableList from '../components/ViewRequestsTableList';
@@ -67,12 +66,7 @@ const ViewRequestsContainer = () => {
     <DashboardContainer>
       <AnimatedContainer {...cardAnimationProps}>
         <SegmentedContainer>
-          <Segmented
-            size="small"
-            value={selectedFilter}
-            options={segmentedOptions}
-            onChange={(value: SegmentedValue) => onChangeFilter(value as PropertyRequestFilter)}
-          />
+          <Segmented size="small" value={selectedFilter} options={segmentedOptions} onChange={(value) => onChangeFilter(value as PropertyRequestFilter)} />
           <Divider style={{ color: Colours.GRAY_5, margin: '0px 2px 0 2px' }} />
         </SegmentedContainer>
       </AnimatedContainer>

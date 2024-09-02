@@ -1,26 +1,10 @@
-import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react';
-
+import React, { createContext, useCallback, useState } from 'react';
 import styled from 'styled-components';
-
 import { Breadcrumb, Button, Card, Col, Form, FormInstance, Row, Steps } from 'antd';
-
 import { HomeOutlined } from '@ant-design/icons';
-
 import DashboardContainer from '@containers/DashboardContainer';
-import {
-  FetchPropertiesDocument,
-  Landlord,
-  LandlordBaseFragment,
-  LeaseDetails,
-  Property,
-  PropertyBaseFragment,
-  PropertyDetails,
-  useCreatePropertyMutation,
-  useFetchPropertyQuery,
-  useUpdatePropertyMutation,
-} from '@graphql/generated';
+import { FetchPropertiesDocument, LeaseDetails, Property, PropertyDetails, useFetchPropertyQuery, useUpdatePropertyMutation } from '@graphql/generated';
 import { useRouter } from 'next/router';
-import { FormFinishInfo } from 'rc-field-form/lib/FormContext';
 import { Heading1, Heading3 } from '../../../../components/Headings';
 import { Colours } from '../../../../utils/Colours';
 import { pxToRem, renderAddressLabel } from '../../../../utils/Helpers';
@@ -30,9 +14,8 @@ import Owners from '../../createProperty/components/Owners';
 import Tenants from '../../createProperty/components/Tenants';
 
 import greenTickIcon from '@public/images/green-tick.svg';
-import Image from 'next/image';
-import dayjs from 'dayjs';
 import { Maybe } from '@types/Maybe';
+import Image from 'next/image';
 
 const { Step } = Steps;
 
@@ -76,7 +59,7 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
     }
   };
 
-  const onFormFinish = async (name: string, info: FormFinishInfo) => {
+  const onFormFinish = async (name: string, info: any) => {
     const nameIndex: number = parseInt(name);
     const newForms: Array<FormInstance> = [...forms];
 
@@ -103,7 +86,6 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
       };
 
       let leaseDetails: LeaseDetails | null = null;
-
 
       if (formValues.isLeased) {
         leaseDetails = {

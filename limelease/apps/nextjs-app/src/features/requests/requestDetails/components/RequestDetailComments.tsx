@@ -12,8 +12,6 @@ import {
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
 import { fadeInOutProps } from '@utils/AnimationsProps';
 import { Badge, Button, Form, Input, message } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
-import TextArea from 'antd/lib/input/TextArea';
 import { AnimatePresence } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
@@ -28,7 +26,7 @@ const RequestDetailComments: React.FC<RequestDetailCommentsProps> = ({ requestId
   const [addCommentVisible, setAddCommentVisible] = useState(false);
   const [shouldPollComments, setPollComments] = useState(false);
 
-  const [form] = useForm();
+  const [form] = Form.useForm();
 
   const { data: userData } = useMeQuery({ fetchPolicy: 'cache-first' });
   const {
@@ -146,7 +144,7 @@ const RequestDetailComments: React.FC<RequestDetailCommentsProps> = ({ requestId
                 <Input placeholder="Your Name" />
               </Form.Item>
               <Form.Item label="Message:" name="commentBody" rules={[{ required: true, message: 'A message is required.' }]}>
-                <TextArea placeholder="Lorem ipsum sit dolor emet" />
+                <Input.TextArea placeholder="Lorem ipsum sit dolor emet" />
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit" loading={addingComment}>

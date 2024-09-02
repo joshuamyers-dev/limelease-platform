@@ -1,28 +1,11 @@
-import {
-  CheckOutlined,
-  DownOutlined,
-  EllipsisOutlined,
-  FileOutlined,
-  MonitorOutlined,
-  PaperClipOutlined,
-  PropertySafetyOutlined,
-  QuestionCircleOutlined,
-  QuestionOutlined,
-  SafetyCertificateOutlined,
-  StarOutlined,
-  UpOutlined,
-} from '@ant-design/icons';
+import { CheckOutlined, DownOutlined, EllipsisOutlined, MonitorOutlined, SafetyCertificateOutlined, StarOutlined, UpOutlined } from '@ant-design/icons';
 import { AnimatedContainer } from '@components/AnimatedContainer';
-import UrgencyTag from '@components/UrgencyTag';
 import { Lease, Tenant } from '@graphql/generated';
-import { cardAnimationProps, fadeInOutProps } from '@utils/AnimationsProps';
+import { fadeInOutProps } from '@utils/AnimationsProps';
 import { Colours } from '@utils/Colours';
-import { formatMobileNumber } from '@utils/Helpers';
-import { Badge, Button, Col, Divider, Row, Table, Tag, Tooltip } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
-import dayjs from 'dayjs';
+import { Badge, Button, Col, Row, Table, Tag } from 'antd';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 interface PropertyComplianceProps {
@@ -39,7 +22,7 @@ interface DataType {
   actions: any[];
 }
 
-const columns: ColumnsType<DataType> = [
+const columns = [
   {
     title: 'Task',
     dataIndex: 'task',

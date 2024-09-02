@@ -7,8 +7,8 @@ import { Maybe } from '@types/Maybe';
 import { Colours } from '@utils/Colours';
 import { LOCAL_STORAGE_AUTH_KEY } from '@utils/Constants';
 import { normFile, resizeFile } from '@utils/Helpers';
-import { Button, Col, Form, Input, Row, Select, Upload, message, notification } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
+import { Button, Col, Form, Input, Row, Select, Upload, message } from 'antd';
+
 import { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
@@ -26,7 +26,7 @@ interface CreateRequestFormProps {
 }
 
 const CreateRequestForm: React.FC<CreateRequestFormProps> = ({ propertyId, onCloseModal }) => {
-  const [form] = useForm();
+  const [form] = Form.useForm();
 
   const [createRequest, { loading, error }] = useCreateRequestMutation();
   const { data: requestCategoriesData, loading: requestCategoriesLoading } = useFetchRequestCategoriesQuery({ fetchPolicy: 'cache-first' });

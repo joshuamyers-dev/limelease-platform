@@ -2,11 +2,11 @@ import { AnimatedContainer } from '@components/AnimatedContainer';
 import { useMeQuery } from '@graphql/generated';
 import { cardAnimationProps } from '@utils/AnimationsProps';
 import { Button, Card, Form, Input } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
+
 import { useCallback } from 'react';
 
 const UpdateDetails = () => {
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const { data: meData } = useMeQuery({ fetchPolicy: 'cache-first' });
 
   const onFormSubmit = useCallback((values) => {}, []);

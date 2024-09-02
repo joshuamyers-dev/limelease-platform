@@ -17,7 +17,6 @@ import {
   useCreateStaticMediaMutation,
 } from '@graphql/generated';
 import { useRouter } from 'next/router';
-import { FormFinishInfo } from 'rc-field-form/lib/FormContext';
 import { Heading1, Heading3 } from '../../../../components/Headings';
 import { Colours } from '../../../../utils/Colours';
 import { pxToRem } from '../../../../utils/Helpers';
@@ -59,7 +58,7 @@ const CreatePropertyContainer = () => {
     }
   };
 
-  const onFormFinish = async (name: string, info: FormFinishInfo) => {
+  const onFormFinish = async (name: string, info: any) => {
     const nameIndex: number = parseInt(name);
     const newForms: Array<FormInstance> = [...forms];
 

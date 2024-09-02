@@ -1,6 +1,6 @@
 import { Colours } from '@utils/Colours';
 import { CSSProperties } from 'react';
-import SyncLoader from 'react-spinners/ClipLoader';
+import { RotateSpinner } from 'react-spinners-kit';
 import styled from 'styled-components';
 
 interface LoadingSpinnerProps {
@@ -8,17 +8,19 @@ interface LoadingSpinnerProps {
   containerStyle?: CSSProperties;
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 50, containerStyle = {} }) => {
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 40, containerStyle = {} }) => {
   return (
     <Container style={containerStyle}>
-      <SyncLoader size={size} color={Colours.LIME_10} />
+      <RotateSpinner size={size} color={Colours.LIME_5} />
     </Container>
   );
 };
 
 const Container = styled.div`
-  margin: 20% auto;
+  margin: 40px;
   text-align: center;
+  display: flex;
+  justify-content: center;
 `;
 
 export default LoadingSpinner;

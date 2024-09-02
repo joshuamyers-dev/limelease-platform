@@ -1,16 +1,15 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 
 import { PlusCircleFilled } from '@ant-design/icons';
-import { Alert, Button, Checkbox, Col, DatePicker, Divider, Form, FormInstance, FormListFieldData, Input, Row, Typography } from 'antd';
-import { AddPropertyContext } from '../containers/CreatePropertyContainer';
-import { EMAIL_ADDRESS_FIELD_RULES, EMAIL_ADDRESS_FIELD_RULES_NR, PHONE_NUMBER_FIELD_RULES, PHONE_NUMBER_FIELD_RULES_NR } from '../helpers/Constants';
-import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import { AnimatedContainer } from '@components/AnimatedContainer';
-import { fadeInOutProps } from '@utils/AnimationsProps';
-import dayjs from 'dayjs';
 import { Tenant } from '@graphql/generated';
+import { fadeInOutProps } from '@utils/AnimationsProps';
 import { formatMobileNumber } from '@utils/Helpers';
-import { useForm } from 'antd/lib/form/Form';
+import { Button, Checkbox, Col, DatePicker, Divider, Form, FormInstance, FormListFieldData, Input, Row, Typography } from 'antd';
+
+import dayjs from 'dayjs';
+import { AddPropertyContext } from '../containers/CreatePropertyContainer';
+import { EMAIL_ADDRESS_FIELD_RULES_NR, PHONE_NUMBER_FIELD_RULES_NR } from '../helpers/Constants';
 
 const { RangePicker } = DatePicker;
 
@@ -53,7 +52,7 @@ const Tenants = ({ form, propertyDetails }: TenantsProps) => {
     context?.setStep(context.currentStep - 1);
   };
 
-  const onChangeLeasedCheckbox = useCallback((e: CheckboxChangeEvent) => {
+  const onChangeLeasedCheckbox = useCallback((e: any) => {
     setHasLease(e.target.checked);
   }, []);
 

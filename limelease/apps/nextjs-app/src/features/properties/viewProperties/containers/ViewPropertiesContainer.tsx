@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { BackwardFilled, LeftCircleFilled, LeftOutlined, PlusOutlined, RightOutlined, StepBackwardFilled } from '@ant-design/icons';
+import { LeftOutlined, PlusOutlined, RightOutlined } from '@ant-design/icons';
 import { AnimatedContainer } from '@components/AnimatedContainer';
 import DashboardContainer from '@containers/DashboardContainer';
 import { PropertyFilter, useFetchPropertiesQuery } from '@graphql/generated';
@@ -15,12 +15,11 @@ import { useRouter } from 'next/router';
 import EmptyState from '../../../../components/EmptyState';
 import PropertyCard from '../components/PropertyCard';
 
-import propertiesEmptyImage from '@public/images/properties-empty.svg';
 import LoadingSpinner from '@components/LoadingSpinner';
-import { usePagination } from '@hooks/usePagination';
-import { SegmentedValue } from 'antd/lib/segmented';
-import { AnimatePresence } from 'framer-motion';
 import { useDebounce } from '@hooks/useDebounce';
+import { usePagination } from '@hooks/usePagination';
+import propertiesEmptyImage from '@public/images/properties-empty.svg';
+import { AnimatePresence } from 'framer-motion';
 
 const { Search } = Input;
 
@@ -69,7 +68,7 @@ const ViewPropertiesContainer = () => {
                 value: PropertyFilter.Vacant,
               },
             ]}
-            onChange={(value: SegmentedValue) => setFilter(value as PropertyFilter)}
+            onChange={(value) => setFilter(value as PropertyFilter)}
           />
         </LeftContainer>
 

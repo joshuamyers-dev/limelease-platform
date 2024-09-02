@@ -14,6 +14,7 @@ module.exports = {
     'rc-util',
     'rc-pagination',
     'rc-picker',
+    'rc-form',
     'rc-notification',
     'rc-tooltip',
     'rc-tree',
@@ -28,7 +29,7 @@ module.exports = {
     ignoreBuildErrors: true,
   },
   experimental: {
-    optimizePackageImports: ['lodash', 'phoenix', 'framer-motion', 'crypto-hash', 'dayjs', 'react-image-lightbox'],
+    optimizePackageImports: ['lodash', 'styled-components', 'phoenix', 'framer-motion', 'crypto-hash', 'dayjs', 'react-image-lightbox'],
   },
   async redirects() {
     return [
