@@ -45,10 +45,10 @@ config :lime_lease, Oban,
   plugins: [Oban.Plugins.Pruner, Oban.Plugins.Cron, Oban.Plugins.Lifeline],
   repo: LimeLease.Repo
 
-config :lime_lease, LimeLease.FCM,
-  adapter: Pigeon.FCM,
-  project_id: "limelease",
-  service_account_json: File.read!("#{:code.priv_dir(:lime_lease)}/static/service-account.json")
+# config :lime_lease, LimeLease.FCM,
+#   adapter: Pigeon.FCM,
+#   project_id: "limelease",
+#   service_account_json: File.read!("#{:code.priv_dir(:lime_lease)}/static/service-account.json")
 
 # Configures Elixir's Logger
 config :logger, :console,
