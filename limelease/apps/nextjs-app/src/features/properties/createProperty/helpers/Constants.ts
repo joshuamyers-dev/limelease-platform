@@ -24,7 +24,7 @@ export const EMAIL_ADDRESS_FIELD_RULES: Rule[] = [
   { required: true, message: 'Email Address is required.' },
   {
     type: 'email',
-    message: 'Email Address must be in a valid format: jane@limelease.com.au',
+    message: 'Email Address must be in a valid format: jane@occupie.com.au',
   },
 ];
 
@@ -32,13 +32,13 @@ export const EMAIL_ADDRESS_FIELD_RULES_NR: Rule[] = [
   { required: false, message: 'Email Address is required.' },
   {
     type: 'email',
-    message: 'Email Address must be in a valid format: jane@limelease.com.au',
+    message: 'Email Address must be in a valid format: jane@occupie.com.au',
   },
 ];
 
 export const WEBSITE_URL_FIELD_RULES: Rule[] = [
   {
     type: 'url',
-    message: 'Website URL must be in a valid format: https://limelease.com.au',
+    message: 'Website URL must be in a valid format: https://occupie.com.au',
   },
 ];

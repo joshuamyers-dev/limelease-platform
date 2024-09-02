@@ -5,7 +5,7 @@ const ViewPropertiesPage = () => {
   return (
     <>
       <Head>
-        <title>LimeLease</title>
+        <title>OccuPie</title>
       </Head>
 
       <ViewPropertiesContainer />

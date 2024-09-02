@@ -5,7 +5,7 @@ const LoginPage = () => {
   return (
     <>
       <Head>
-        <title key="title">LimeLease &middot; Login</title>
+        <title key="title">OccuPie &middot; Login</title>
       </Head>
 
       <LoginContainer />
