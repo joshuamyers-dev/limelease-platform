@@ -48,7 +48,7 @@ config :lime_lease, Oban,
 config :lime_lease, LimeLease.FCM,
   adapter: Pigeon.FCM,
   project_id: "limelease",
-  service_account_json: File.read!("./priv/static/service-account.json")
+  service_account_json: File.read!("#{:code.priv_dir(:lime_lease)}/static/service-account.json")
 
 # Configures Elixir's Logger
 config :logger, :console,
