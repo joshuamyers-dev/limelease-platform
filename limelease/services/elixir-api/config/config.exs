@@ -33,7 +33,8 @@ config :swoosh, :api_client, Swoosh.ApiClient.Req
 config :esbuild,
   version: "0.14.29",
   default: [
-    args: ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    args:
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
@@ -43,6 +44,11 @@ config :lime_lease, Oban,
   queues: [sms: 1, email: 1, push: 1],
   plugins: [Oban.Plugins.Pruner, Oban.Plugins.Cron, Oban.Plugins.Lifeline],
   repo: LimeLease.Repo
+
+config :lime_lease, LimeLease.FCM,
+  adapter: Pigeon.FCM,
+  project_id: "limelease",
+  service_account_json: File.read!("./priv/static/service-account.json")
 
 # Configures Elixir's Logger
 config :logger, :console,
