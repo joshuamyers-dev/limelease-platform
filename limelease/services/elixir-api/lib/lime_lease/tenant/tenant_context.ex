@@ -1,4 +1,5 @@
 defmodule LimeLease.Tenant.TenantContext do
+  alias LimeLease.Property
   alias LimeLease.Tenant.Tenant
   @moduledoc false
 
@@ -17,6 +18,14 @@ defmodule LimeLease.Tenant.TenantContext do
     |> Tenant.with_id(id)
     |> Tenant.default_preloads()
     |> Repo.one()
+    |> Repo.ok_error()
+  end
+
+  def get_tenants_for_property_id(property_id) do
+    Tenant
+    |> Tenant.with_property_id(property_id)
+    |> Tenant.default_preloads()
+    |> Repo.all()
     |> Repo.ok_error()
   end
 

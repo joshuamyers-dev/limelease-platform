@@ -97,7 +97,7 @@ defmodule LimeLease.PropertyRequest.PropertyRequestService do
 
   def send_completion_notifications_for_request_ids(request_ids) do
     Flow.from_enumerable(request_ids)
-    |> Flow.map(fn request_id -> PropertyRequestCommentService.create_system_comment_for_request(request_id, "LimeLease", "Request resolved.") end)
+    |> Flow.map(fn request_id -> PropertyRequestCommentService.create_system_comment_for_request(request_id, "OccuPie", "Request resolved.") end)
     |> Flow.map(fn request_id ->
       with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.get_request_by_id(request_id) do
         Notifications.send_status_update_email(request)

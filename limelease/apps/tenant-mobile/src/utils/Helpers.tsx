@@ -34,7 +34,6 @@ export const requestUserPermission = async () => {
 };
 
 export const registerForToken = async () => {
-  await messaging().registerDeviceForRemoteMessages();
   const token = await messaging().getToken();
   return token;
 };

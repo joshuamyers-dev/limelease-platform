@@ -19,8 +19,8 @@ defmodule LimeLease.Application do
       # Start the Endpoint (http/https)
       LimeLeaseWeb.Endpoint,
       {Absinthe.Subscription, LimeLeaseWeb.Endpoint},
-      # Start GenServers
-      LimeLease.GenServers.SmsQueue
+      # Firebase Cloud Messaging
+      LimeLease.FCM
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

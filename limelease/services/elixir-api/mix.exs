@@ -69,7 +69,8 @@ defmodule LimeLease.MixProject do
       {:exile, "~> 0.8.0"},
       {:bandit, "~> 1.2.0"},
       {:flow, "~> 1.0"},
-      {:oban, "~> 2.17"}
+      {:oban, "~> 2.17"},
+      {:pigeon, "~> 2.0.0-rc.2"}
     ]
   end
 

@@ -40,8 +40,8 @@ config :esbuild,
 
 config :lime_lease, Oban,
   engine: Oban.Engines.Basic,
-  queues: [sms: 1, email: 2],
-  plugins: [{Oban.Plugins.Pruner, max_age: 60 * 60 * 24 * 7}],
+  queues: [sms: 1, email: 1, push: 1],
+  plugins: [Oban.Plugins.Pruner, Oban.Plugins.Cron, Oban.Plugins.Lifeline],
   repo: LimeLease.Repo
 
 # Configures Elixir's Logger
@@ -56,6 +56,7 @@ config :postgrex, :json_library, Jsonrs
 config :absinthe, :json_codec, Jsonrs
 config :ex_aws, :json_codec, Jsonrs
 config :req, :json_codec, Jsonrs
+config :pigeon, :json_library, Jsonrs
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -13,6 +13,7 @@
   self.initialProps = @{};
   
   [FIRApp configure];
+  [application registerForRemoteNotifications];
   
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
@@ -29,6 +30,10 @@
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+ [FIRMessaging messaging].APNSToken = deviceToken;
 }
 
 @end

@@ -31,6 +31,11 @@ defmodule LimeLease.Tenant.Tenant do
     |> where([t], t.id == ^id)
   end
 
+  def with_property_id(query, property_id) do
+    query
+    |> where([t], t.property_id == ^property_id)
+  end
+
   def with_phone_number(query, phone_number) do
     query
     |> join(:inner, [q], u in assoc(q, :user))

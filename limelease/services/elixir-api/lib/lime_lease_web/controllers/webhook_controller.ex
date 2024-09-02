@@ -51,7 +51,7 @@ defmodule LimeLeaseWeb.WebhookController do
                  ) do
             spawn(fn ->
               Notifications.send_sms_message(job.contractor.contact_number, "Thank you. We have sent your confirmation to the property manager.")
-              Notifications.send_status_update_email(request)
+              Notifications.dispatch_status_update_for_request(request)
             end)
 
             conn
@@ -73,7 +73,7 @@ defmodule LimeLeaseWeb.WebhookController do
                 "Thanks for confirming. Please leave a comment to arrange an alternative time:\n\n#{front_end_url()}/requests/#{request.ticket_number}"
               )
 
-              Notifications.send_status_update_email(request)
+              Notifications.dispatch_status_update_for_request(request)
             end)
 
             conn

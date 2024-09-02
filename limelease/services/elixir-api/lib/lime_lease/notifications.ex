@@ -1,4 +1,5 @@
 defmodule LimeLease.Notifications do
+  alias LimeLease.Tenant.TenantContext
   alias LimeLease.Property.{Property, PropertyLandlord}
   alias LimeLease.Tenant.Tenant
   alias LimeLease.User.{User, UserContext}
@@ -6,10 +7,29 @@ defmodule LimeLease.Notifications do
   alias LimeLease.PropertyAgent.PropertyAgentContext
 
   alias LimeLease.Helpers
-  alias LimeLeaseWeb.Emails
+  alias LimeLease.FCM
 
   require IEx
   require Logger
+
+  def send_sms_message(phone_number, message) do
+    %{"phone_number" => phone_number, "message" => message}
+    |> LimeLease.Workers.SmsDeliveryWorker.new()
+    |> Oban.insert()
+  end
+
+  def send_fcm_message(token, title, body) do
+    %{"token" => token, "title" => title, "body" => body}
+    |> LimeLease.Workers.PushDeliveryWorker.new()
+    |> Oban.insert()
+  end
+
+  def dispatch_status_update_for_request(%PropertyRequest{} = request) do
+    with {:ok, "emails_sent"} <- send_status_update_email(request),
+         {:ok, "push_notifications_sent"} <- send_tenant_push_notifications(request) do
+      {:ok, "notifications_sent"}
+    end
+  end
 
   def send_status_update_email(%PropertyRequest{} = request) do
     case PropertyRequestService.create_request_status_screenshot(request) do
@@ -22,8 +42,26 @@ defmodule LimeLease.Notifications do
         {:ok, "emails_sent"}
 
       {:error, reason} ->
-        Logger.error("Failed to send status update email for request #{request.id}. Error: Failed to create screenshot.")
+        Logger.error(
+          "Failed to send status update email for request #{request.id}. Error: Failed to create screenshot."
+        )
+
         Logger.error(reason)
+    end
+  end
+
+  def send_tenant_push_notifications(%PropertyRequest{} = request) do
+    with {:ok, tenants} <- TenantContext.get_tenants_for_property_id(request.property_id) do
+      Enum.map(tenants, fn %Tenant{} = tenant ->
+        Task.async(fn ->
+          Enum.map(tenant.user.fcm_tokens, fn token ->
+            send_fcm_message(token, "Request Updated", "Your request '#{request.title}' has a new status update.")
+          end)
+        end)
+      end)
+      |> Task.await_many(:infinity)
+
+      {:ok, "push_notifications_sent"}
     end
   end
 
@@ -49,12 +87,6 @@ defmodule LimeLease.Notifications do
       end)
       |> Task.await_many()
     end
-  end
-
-  def send_sms_message(phone_number, message) do
-    %{"phone_number" => phone_number, "message" => message}
-    |> LimeLease.Workers.SmsDeliveryWorker.new()
-    |> Oban.insert()
   end
 
   def send_welcome_email_to_tenants(%Property{} = property, %User{} = agent) do

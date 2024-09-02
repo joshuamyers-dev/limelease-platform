@@ -94,3 +94,8 @@ config :ex_aws,
 config :lime_lease, LimeLease.Mailer,
   adapter: Swoosh.Adapters.Postmark,
   api_key: "REDACTED_POSTMARK_KEY_2"
+
+  config :lime_lease, LimeLease.FCM,
+  adapter: Pigeon.FCM,
+  project_id: "limelease",
+  service_account_json: File.read!("./priv/service-account.json")

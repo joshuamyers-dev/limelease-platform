@@ -16,29 +16,38 @@ defmodule LimeLease.User.UserService do
          {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
       {:ok, %{token: token, user: user}}
     else
-      {:error, :not_found} -> {:error, "This email address is not yet registered. Please contact your administrator to register your account."}
-      {:error, :password_incorrect} -> {:error, "The password you entered is incorrect. Please try again."}
+      {:error, :not_found} ->
+        {:error,
+         "This email address is not yet registered. Please contact your administrator to register your account."}
+
+      {:error, :password_incorrect} ->
+        {:error, "The password you entered is incorrect. Please try again."}
     end
   end
 
   def add_fcm_token_for_user(token, %User{} = user) do
-    tokens =
-      case user.fcm_tokens do
-        nil -> [token]
-        _ -> user.fcm_tokens ++ [token]
-      end
-
-    with {:ok, true} <- token_not_duplicated(tokens, token),
-         {:ok, %User{} = _user} <- UserContext.update_user(user, %{fcm_tokens: tokens}) do
+    with {:ok, true} <- token_not_duplicated(user.fcm_tokens, token),
+         {:ok, new_tokens} <- merge_new_token(user.fcm_tokens, token),
+         {:ok, %User{} = _user} <- UserContext.update_user(user, %{fcm_tokens: new_tokens}) do
       {:ok, true}
     end
   end
 
   defp token_not_duplicated(tokens, token) do
-    case Enum.find(tokens, fn t -> t == token end) do
-      nil -> {:ok, true}
-      _ -> {:ok, false}
+    case Enum.any?(tokens, fn t -> t == token end) do
+      true -> {:ok, false}
+      false -> {:ok, true}
     end
+  end
+
+  defp merge_new_token(tokens, token) do
+    new_tokens =
+      case tokens do
+        nil -> [token]
+        _ -> tokens ++ [token]
+      end
+
+    {:ok, new_tokens}
   end
 
   def send_otp(mobile_number) do
