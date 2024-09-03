@@ -20,13 +20,21 @@ defmodule LimeLease.Application do
       LimeLeaseWeb.Endpoint,
       {Absinthe.Subscription, LimeLeaseWeb.Endpoint},
       # Firebase Cloud Messaging
-      # LimeLease.FCM
+      {LimeLease.FCM, fcm_opts()}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: LimeLease.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  defp fcm_opts do
+    [
+      adapter: Pigeon.FCM,
+      project_id: "limelease",
+      service_account_json: File.read!("#{:code.priv_dir(:lime_lease)}" <> "/static/service-account.json")
+    ]
   end
 
   # Tell Phoenix to update the endpoint configuration

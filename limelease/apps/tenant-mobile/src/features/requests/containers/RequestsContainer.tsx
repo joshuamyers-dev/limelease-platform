@@ -86,7 +86,7 @@ const RequestsContainer: React.FC = ({navigation}) => {
       <View style={styles.contentContainer}>
         {loading && <ActivityIndicator style={{marginVertical: 20}} />}
         {requestsData?.myRequests?.edges?.length === 0 && !loading && (
-          <Card style={{alignItems: 'center'}}>
+          <Card style={{alignItems: 'center', marginHorizontal: 16}}>
             <Image
               source={require('../../../../assets/images/empty-requests.png')}
             />

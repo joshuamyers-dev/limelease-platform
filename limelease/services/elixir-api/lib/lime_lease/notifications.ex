@@ -59,7 +59,7 @@ defmodule LimeLease.Notifications do
           end)
         end)
       end)
-      |> Task.await_many(:infinity)
+      |> Task.await_many()
 
       {:ok, "push_notifications_sent"}
     end

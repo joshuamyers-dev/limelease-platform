@@ -1,5 +1,5 @@
 defmodule LimeLease.Workers.PushDeliveryWorker do
-  use Oban.Worker, queue: :sms, max_attempts: 3, priority: 0
+  use Oban.Worker, queue: :push, max_attempts: 3, priority: 2
 
   alias LimeLease.FCM
 
