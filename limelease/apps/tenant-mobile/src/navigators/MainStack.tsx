@@ -192,6 +192,7 @@ const TransitionNavigator = () => {
           contentStyle: {
             backgroundColor: '#FAFAFA',
           },
+          navigationBarColor: 'white',
         })}>
         <NativeStack.Screen
           name={SPLASH_SCREEN}

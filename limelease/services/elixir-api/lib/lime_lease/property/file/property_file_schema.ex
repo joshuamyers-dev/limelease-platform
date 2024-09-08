@@ -11,6 +11,12 @@ defmodule LimeLease.Property.PropertyFile.PropertyFileSchema do
 
   require IEx
 
+  input_object :create_file do
+    field(:id, :id)
+    field(:name, :string)
+    field(:uri_path, :string)
+  end
+
   object :property_file do
     field(:id, non_null(:id))
     field(:file_name, non_null(:string))

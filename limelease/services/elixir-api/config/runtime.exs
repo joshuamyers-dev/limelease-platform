@@ -83,4 +83,7 @@ if config_env() == :prod do
   config :lime_lease, LimeLease.Mailer,
     adapter: Swoosh.Adapters.Postmark,
     api_key: System.fetch_env!("POSTMARK_API_KEY")
+
+  config :honeybadger,
+    environment_name: :prod
 end

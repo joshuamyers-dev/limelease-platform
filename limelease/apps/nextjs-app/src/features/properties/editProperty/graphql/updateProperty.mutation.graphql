@@ -2,7 +2,7 @@ mutation updateProperty(
   $propertyId: ID!
   $propertyDetails: PropertyDetails!
   $leaseDetails: LeaseDetails
-  $files: [File]
+  $files: [CreateFile]
   $photos: [CreatePhoto!]
   $tenants: [TenantObject!]
   $landlords: [Landlord!]!

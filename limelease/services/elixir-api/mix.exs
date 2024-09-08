@@ -47,7 +47,6 @@ defmodule LimeLease.MixProject do
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:plug_cowboy, "~> 2.5"},
       {:absinthe, "~> 1.7.6", override: true},
       {:absinthe_phoenix, "~> 2.0"},
       {:absinthe_plug, "~> 1.5"},
@@ -70,7 +69,9 @@ defmodule LimeLease.MixProject do
       {:bandit, "~> 1.2.0"},
       {:flow, "~> 1.0"},
       {:oban, "~> 2.17"},
-      {:pigeon, "~> 2.0.0-rc.2"}
+      {:pigeon, "~> 2.0.0-rc.2"},
+      {:honeybadger, "~> 0.16"},
+      {:mjml, "~> 4.0"}
     ]
   end
 

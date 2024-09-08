@@ -16,7 +16,7 @@ defmodule LimeLease.Property.PropertyService do
   def create_property(
         %User{} = user,
         %{address: _address, bathrooms: _bathrooms, bedrooms: _bedrooms, carspaces: _carspaces} =
-        property_details,
+          property_details,
         lease_details,
         photos,
         tenants,
@@ -34,7 +34,7 @@ defmodule LimeLease.Property.PropertyService do
              |> Repo.insert()
              |> Repo.ok_error() do
         spawn(fn ->
-          Notifications.send_welcome_email_to_tenants(property, user)
+          Notifications.send_welcome_email_to_property_tenants(property, user)
         end)
 
         {:ok, property}
@@ -70,27 +70,35 @@ defmodule LimeLease.Property.PropertyService do
   defp prepare_photos(photos), do: photos
 
   defp prepare_files(files) do
-    files = Helpers.upload_temporary_fs_files(files)
+    for_user_upload = Enum.filter(files, &Map.has_key?(&1, :uri_path))
 
-    {:ok, files}
+    case length(for_user_upload) > 0 do
+      true ->
+        files = Helpers.upload_temporary_fs_files(for_user_upload)
+
+        {:ok, files}
+
+      false ->
+        {:ok, files}
+    end
   end
 
   defp prepare_tenants(tenants) do
     tenants =
       Enum.map(tenants, fn tenant ->
         found_tenant =
-         case Map.has_key?(tenant, :id) do
-          true ->
-            with  {:ok, %Tenant{} = tenant} <- TenantContext.get_tenant_by_id(tenant.id) do
-              tenant
-            else
-              _ ->
-                %{}
-            end
+          case Map.has_key?(tenant, :id) do
+            true ->
+              with {:ok, %Tenant{} = tenant} <- TenantContext.get_tenant_by_id(tenant.id) do
+                tenant
+              else
+                _ ->
+                  %{}
+              end
 
-          false ->
-            %{}
-         end
+            false ->
+              %{}
+          end
 
         %{
           id: Map.get(found_tenant, :id),
@@ -175,10 +183,25 @@ defmodule LimeLease.Property.PropertyService do
           user
         )
 
-      with %Ecto.Changeset{valid?: true} <- changeset do
-        changeset
-        |> Repo.update()
-        |> Repo.ok_error()
+      with %Ecto.Changeset{valid?: true} <- changeset,
+           {:ok, %Property{} = updated_property} <-
+             changeset
+             |> Repo.update()
+             |> Repo.ok_error() do
+        spawn(fn ->
+          old_tenant_ids = Enum.map(property.tenants, & &1.user.id)
+          new_tenants = Enum.filter(updated_property.tenants, &(&1.user.id not in old_tenant_ids))
+
+          case length(new_tenants) > 0 do
+            true ->
+              Notifications.send_welcome_email_to_property_tenants(updated_property, user, new_tenants)
+
+            false ->
+              :ok
+          end
+        end)
+
+        {:ok, updated_property}
       else
         _ -> {:error, changeset}
       end

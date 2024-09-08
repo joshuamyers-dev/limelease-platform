@@ -41,13 +41,25 @@ config :esbuild,
 
 config :lime_lease, Oban,
   engine: Oban.Engines.Basic,
-  queues: [sms: 1, email: 1, push: 1],
-  plugins: [Oban.Plugins.Pruner, Oban.Plugins.Cron, Oban.Plugins.Lifeline],
+  queues: [sms: 1, email: 1, push: 1, scheduled: 1],
+  plugins: [
+    {Oban.Plugins.Pruner, max_age: 300},
+    {Oban.Plugins.Cron,
+     crontab: [
+       {"0 * * * *", LimeLease.Workers.CleaningWorker, queue: :scheduled}
+     ]},
+    Oban.Plugins.Lifeline
+  ],
   repo: LimeLease.Repo
 
 config :lime_lease, LimeLease.FCM,
   adapter: Pigeon.FCM,
   project_id: "limelease"
+
+config :honeybadger,
+  api_key: "REDACTED_HONEYBADGER_KEY",
+  ecto_repos: [LimeLease.Repo],
+  filter_args: false
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -62,6 +74,7 @@ config :absinthe, :json_codec, Jsonrs
 config :ex_aws, :json_codec, Jsonrs
 config :req, :json_codec, Jsonrs
 config :pigeon, :json_library, Jsonrs
+config :swoosh, :json_codec, Jsonrs
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 
 import { InboxOutlined } from '@ant-design/icons';
 import { Button, Col, Form, FormInstance, Row, Upload } from 'antd';
@@ -7,19 +7,39 @@ import { AddPropertyContext } from '../containers/CreatePropertyContainer';
 import { normFile } from '@utils/Helpers';
 import useStorage from '@hooks/useLocalStorage';
 import { LOCAL_STORAGE_AUTH_KEY } from '@utils/Constants';
+import { Property } from '@graphql/generated';
 
 interface FilesProps {
   form: FormInstance;
   loading: boolean;
   isUpdating: boolean;
+  propertyDetails: Property;
 }
 
-const Files = ({ form, loading, isUpdating = false }: FilesProps) => {
+const Files = ({ form, loading, isUpdating = false, propertyDetails }: FilesProps) => {
   const context = useContext(AddPropertyContext);
 
   const [getAuthToken] = useStorage();
 
   const authToken = getAuthToken(LOCAL_STORAGE_AUTH_KEY, 'local');
+
+  useEffect(() => {
+    if (propertyDetails) {
+      const filesFormValues = {
+        files: propertyDetails?.files?.map((file) => {
+          return {
+            id: file?.id,
+            url: file?.staticMedia?.url,
+            name: file?.fileName,
+          };
+        }),
+      };
+
+      if (filesFormValues?.files && propertyDetails.files.length > 0) {
+        form.setFieldsValue(filesFormValues);
+      }
+    }
+  }, [propertyDetails]);
 
   const onClickBack = useCallback(() => {
     () => {

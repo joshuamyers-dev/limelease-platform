@@ -573,7 +573,7 @@
 				CODE_SIGN_ENTITLEMENTS = OccupieTenant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = FAKEH2V6W4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LimeLeaseTenant/Info.plist;
@@ -583,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -607,7 +607,7 @@
 				CODE_SIGN_ENTITLEMENTS = OccupieTenant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = FAKEH2V6W4;
 				INFOPLIST_FILE = LimeLeaseTenant/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OccuPie;
@@ -616,7 +616,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

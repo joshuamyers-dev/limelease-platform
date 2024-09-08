@@ -85,7 +85,7 @@ const DashboardContainer: React.FC = ({navigation}) => {
 
   let topInsets = insets.top;
 
-  if (topInsets <= 10) {
+  if (topInsets <= 24) {
     topInsets = 24;
   }
 

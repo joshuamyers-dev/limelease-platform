@@ -106,6 +106,10 @@ const ViewRequestContainer = ({navigation, route}) => {
   }, []);
 
   useEffect(() => {
+    layoutAnimate();
+  }, [fetchingJob, fetchingComments, fetchingRequest]);
+
+  useEffect(() => {
     if (userData?.me) {
       setTimeout(async () => {
         await requestUserPermission();
@@ -188,7 +192,7 @@ const ViewRequestContainer = ({navigation, route}) => {
   );
 
   return (
-    <Animated.View style={{flex: 1}} layout={LinearTransition.springify()}>
+    <View style={{flex: 1}}>
       <VirtualizedList
         showsVerticalScrollIndicator={false}
         style={styles.container}
@@ -275,7 +279,7 @@ const ViewRequestContainer = ({navigation, route}) => {
         </Card>
 
         {jobData?.contractorJobActive && (
-          <Animated.View entering={FadeIn} exiting={FadeOut}>
+          <View>
             <SectionTitle style={{paddingTop: 24}}>Active Job</SectionTitle>
             <UpcomingJob
               description={jobData?.contractorJobActive?.description}
@@ -285,7 +289,7 @@ const ViewRequestContainer = ({navigation, route}) => {
               dateStart={jobData?.contractorJobActive?.bookingDateStart}
               dateEnd={jobData?.contractorJobActive?.bookingDateEnd}
             />
-          </Animated.View>
+          </View>
         )}
 
         <SectionTitle style={{paddingTop: 24}}>Updates</SectionTitle>
@@ -382,7 +386,7 @@ const ViewRequestContainer = ({navigation, route}) => {
           onPress={onPressAddComment}
         />
       </View>
-    </Animated.View>
+    </View>
   );
 };
 

@@ -1,0 +1,63 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="Figtree, Trebuchet MS, Tahoma,sans-serif" />
+      <mj-font name="Figtree" href="https://fonts.googleapis.com/css2?family=Figtree" />
+      <mj-class name="centered" align="center" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f0f0f0">
+  <mj-section>
+  <mj-column>
+  </mj-column>
+  </mj-section>
+    <mj-wrapper padding="20px" border-radius="8px" background-color="#ffffff">
+      <mj-section full-width="full-width" background-color="#ffffff" border-radius="8px">
+        <mj-column css-class="centered">
+          <!-- Logo -->
+          <mj-image src="https://limelease.s3.ap-southeast-2.amazonaws.com/branding/occupie-logo.png" alt="Logo" width="150px" />
+
+          <mj-spacer height="24px" />
+
+          <!-- Title Text -->
+          <mj-text font-size="24px" font-weight="bold" align="center">
+            Hi {{tenant_name}}.
+          </mj-text>
+          <mj-text font-size="20px" align="center" line-height="32px">
+            Stay connected with your property manager using the <strong>OccuPie</strong> app.
+          </mj-text>
+
+          <mj-spacer height="16px" />
+
+          <!-- Description (Paragraph Text) -->
+          <mj-text font-size="16px" align="center" line-height="24px">
+           We’re thrilled to have you with us and look forward to supporting you in your new home at <strong>{{address}}.</strong> 
+          </mj-text>
+
+          <mj-text font-size="16px" align="center" line-height="24px">
+            You can submit a maintenance request, track it's progress and get notified of upcoming inspections through the app. To get started, simply download the OccuPie app from the App Store or Google Play and log in with your provided mobile number.
+          </mj-text>
+
+        </mj-column>
+      </mj-section>
+
+      <mj-section full-width="full-width" background-color="#ffffff" padding="0px">
+        <mj-column>
+          <mj-divider border-color="#cccccc" border-width="1px" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section full-width="full-width" background-color="#ffffff" border-radius="8px" padding-top="0">
+        <!-- Column 1: App Store Badge -->
+        <mj-column width="50%" vertical-align="middle">
+          <mj-image src="https://limelease.s3.ap-southeast-2.amazonaws.com/branding/Download_on_the_App_Store_Badge.svg.png" alt="App Store Badge" width="180px" height="auto" href="https://apps.apple.com/app/occupie/id6642666809" />
+        </mj-column>
+
+        <!-- Column 2: Google Play Badge -->
+        <mj-column width="50%" vertical-align="middle">
+          <mj-image src="https://limelease.s3.ap-southeast-2.amazonaws.com/branding/en_badge_web_generic.png" alt="Google Play Badge" width="205px" height="78px" href="https://play.google.com/store/apps/details?id=com.limeleasetenant" />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

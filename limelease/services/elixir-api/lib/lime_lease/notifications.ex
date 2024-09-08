@@ -89,14 +89,20 @@ defmodule LimeLease.Notifications do
     end
   end
 
-  def send_welcome_email_to_tenants(%Property{} = property, %User{} = agent) do
-    Enum.map(property.tenants, fn %Tenant{} = tenant ->
+  def send_welcome_email_to_property_tenants(%Property{} = property, %User{} = agent, tenants \\ nil) do
+    # If tenants are not provided, use the property's tenants
+    tenants =
+      case tenants == nil do
+        true -> property.tenants
+        false -> tenants
+      end
+
+    Enum.map(tenants, fn %Tenant{} = tenant ->
       Task.async(fn ->
         email_args = %{
-          "name" => Helpers.full_user_name(tenant.user),
+          "tenant_name" => "#{tenant.user.profile.first_name}",
           "agent_name" => Helpers.full_user_name(agent),
-          "address" => Helpers.address_label(property.address),
-          "cta_url" => "/"
+          "address" => Helpers.address_label(property.address)
         }
 
         %{"type" => "tenant_welcome", "to_address" => tenant.user.profile.email, "email_args" => email_args}

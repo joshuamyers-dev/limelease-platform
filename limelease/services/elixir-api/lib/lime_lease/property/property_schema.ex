@@ -184,7 +184,7 @@ defmodule LimeLease.Property.PropertySchema do
       arg(:photos, list_of(non_null(:create_photo)))
       arg(:tenants, list_of(non_null(:tenant_object)))
       arg(:landlords, non_null(list_of(non_null(:landlord))))
-      arg(:files, list_of(:file))
+      arg(:files, list_of(:create_file))
 
       middleware(Authorize)
       middleware(EctoErrors)
@@ -200,7 +200,7 @@ defmodule LimeLease.Property.PropertySchema do
       arg(:photos, list_of(non_null(:create_photo)))
       arg(:tenants, list_of(non_null(:tenant_object)))
       arg(:landlords, non_null(list_of(non_null(:landlord))))
-      arg(:files, list_of(:file))
+      arg(:files, list_of(:create_file))
 
       middleware(Authorize)
       middleware(EctoErrors)

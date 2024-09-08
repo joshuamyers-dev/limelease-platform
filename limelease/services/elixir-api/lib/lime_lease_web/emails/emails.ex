@@ -19,18 +19,22 @@ defmodule LimeLeaseWeb.Emails do
     })
   end
 
-  def tenant_welcome(email, tenant_name, agent_name, address, cta_link) do
-    new()
-    |> to({tenant_name, email})
-    |> from({"OccuPie", "system@occupie.com.au"})
-    # |> subject("#{address} - Update")
-    |> put_provider_option(:template_alias, "tenant-welcome-email")
-    |> put_provider_option(:template_model, %{
-      address: address,
-      agent_name: agent_name,
-      tenant_name: tenant_name,
-      cta_link: cta_link,
-    })
+  def tenant_welcome(email, args) do
+    with {:ok, mjml_body} <- File.read("#{:code.priv_dir(:lime_lease)}" <> "/static/emails/tenant_welcome.mjml"),
+         mjml_body <- inject_variables_to_template(mjml_body, args),
+         {:ok, html_body} <- Mjml.to_html(mjml_body) do
+      new()
+      |> to({args["tenant_name"], email})
+      |> from({"OccuPie", "system@occupie.com.au"})
+      |> subject("Your new home at #{args["address"]}")
+      |> html_body(html_body)
+    end
+  end
+
+  def inject_variables_to_template(mjml_body, variables) do
+    Enum.reduce(variables, mjml_body, fn {key, value}, acc ->
+      String.replace(acc, "{{#{key}}}", to_string(value))
+    end)
   end
 
   defp morning_or_evening_text() do

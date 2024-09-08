@@ -113,7 +113,19 @@ export const formatMobileNumber = (
 };
 
 export const layoutAnimate = () => {
-  LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  if (Platform.OS === 'android') {
+    // https://github.com/facebook/react-native/issues/13207
+    LayoutAnimation.configureNext({
+      duration: 300,
+      create: {
+        type: LayoutAnimation.Types.easeInEaseOut,
+        property: LayoutAnimation.Properties.opacity,
+      },
+      update: {type: LayoutAnimation.Types.easeInEaseOut},
+    });
+  } else {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  }
 };
 
 export const formatStatusTitle = (title: PropertyRequestState) => {

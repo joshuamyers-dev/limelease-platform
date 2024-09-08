@@ -1,5 +1,6 @@
 defmodule LimeLeaseWeb.Router do
   use LimeLeaseWeb, :router
+  use Honeybadger.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]

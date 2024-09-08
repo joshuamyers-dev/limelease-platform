@@ -132,19 +132,18 @@ export type CreateAddress = {
   unitNumber?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type CreateFile = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  uriPath?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type CreatePhoto = {
   id?: InputMaybe<Scalars['ID']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
   uriPath?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type File = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-  name: Scalars['String']['input'];
-  type: Scalars['String']['input'];
-  uri?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Landlord = {
@@ -424,7 +423,7 @@ export type RootMutationTypeCreateContractorArgs = {
 
 
 export type RootMutationTypeCreatePropertyArgs = {
-  files?: InputMaybe<Array<InputMaybe<File>>>;
+  files?: InputMaybe<Array<InputMaybe<CreateFile>>>;
   landlords: Array<Landlord>;
   leaseDetails?: InputMaybe<LeaseDetails>;
   photos?: InputMaybe<Array<CreatePhoto>>;
@@ -479,7 +478,7 @@ export type RootMutationTypeUpdateProfileArgs = {
 
 
 export type RootMutationTypeUpdatePropertyArgs = {
-  files?: InputMaybe<Array<InputMaybe<File>>>;
+  files?: InputMaybe<Array<InputMaybe<CreateFile>>>;
   landlords: Array<Landlord>;
   leaseDetails?: InputMaybe<LeaseDetails>;
   photos?: InputMaybe<Array<CreatePhoto>>;
@@ -778,7 +777,7 @@ export type MyTeamQuery = { __typename?: 'RootQueryType', myTeam?: { __typename?
 export type CreatePropertyMutationVariables = Exact<{
   propertyDetails: PropertyDetails;
   leaseDetails?: InputMaybe<LeaseDetails>;
-  files?: InputMaybe<Array<InputMaybe<File>> | InputMaybe<File>>;
+  files?: InputMaybe<Array<InputMaybe<CreateFile>> | InputMaybe<CreateFile>>;
   photos?: InputMaybe<Array<CreatePhoto> | CreatePhoto>;
   tenants?: InputMaybe<Array<TenantObject> | TenantObject>;
   landlords: Array<Landlord> | Landlord;
@@ -800,7 +799,7 @@ export type UpdatePropertyMutationVariables = Exact<{
   propertyId: Scalars['ID']['input'];
   propertyDetails: PropertyDetails;
   leaseDetails?: InputMaybe<LeaseDetails>;
-  files?: InputMaybe<Array<InputMaybe<File>> | InputMaybe<File>>;
+  files?: InputMaybe<Array<InputMaybe<CreateFile>> | InputMaybe<CreateFile>>;
   photos?: InputMaybe<Array<CreatePhoto> | CreatePhoto>;
   tenants?: InputMaybe<Array<TenantObject> | TenantObject>;
   landlords: Array<Landlord> | Landlord;
@@ -1542,7 +1541,7 @@ export type MyTeamLazyQueryHookResult = ReturnType<typeof useMyTeamLazyQuery>;
 export type MyTeamSuspenseQueryHookResult = ReturnType<typeof useMyTeamSuspenseQuery>;
 export type MyTeamQueryResult = ApolloReactCommon.QueryResult<MyTeamQuery, MyTeamQueryVariables>;
 export const CreatePropertyDocument = gql`
-    mutation createProperty($propertyDetails: PropertyDetails!, $leaseDetails: LeaseDetails, $files: [File], $photos: [CreatePhoto!], $tenants: [TenantObject!], $landlords: [Landlord!]!) {
+    mutation createProperty($propertyDetails: PropertyDetails!, $leaseDetails: LeaseDetails, $files: [CreateFile], $photos: [CreatePhoto!], $tenants: [TenantObject!], $landlords: [Landlord!]!) {
   createProperty(
     propertyDetails: $propertyDetails
     leaseDetails: $leaseDetails
@@ -1622,7 +1621,7 @@ export type CreateStaticMediaMutationHookResult = ReturnType<typeof useCreateSta
 export type CreateStaticMediaMutationResult = ApolloReactCommon.MutationResult<CreateStaticMediaMutation>;
 export type CreateStaticMediaMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateStaticMediaMutation, CreateStaticMediaMutationVariables>;
 export const UpdatePropertyDocument = gql`
-    mutation updateProperty($propertyId: ID!, $propertyDetails: PropertyDetails!, $leaseDetails: LeaseDetails, $files: [File], $photos: [CreatePhoto!], $tenants: [TenantObject!], $landlords: [Landlord!]!) {
+    mutation updateProperty($propertyId: ID!, $propertyDetails: PropertyDetails!, $leaseDetails: LeaseDetails, $files: [CreateFile], $photos: [CreatePhoto!], $tenants: [TenantObject!], $landlords: [Landlord!]!) {
   updateProperty(
     propertyId: $propertyId
     propertyDetails: $propertyDetails
