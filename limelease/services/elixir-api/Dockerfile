@@ -1,11 +1,4 @@
-ARG ELIXIR_VERSION=1.17.2
-ARG OTP_VERSION=27
-ARG ALPINE_VERSION=3.18.4
-
-ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-alpine"
-ARG RUNNER_IMAGE="alpine:${ALPINE_VERSION}"
-
-FROM ${BUILDER_IMAGE} as builder
+FROM erlang:27-alpine
 
 # install build dependencies
 RUN apk update && apk add --no-cache build-base git curl openssl
