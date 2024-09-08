@@ -1,4 +1,11 @@
-FROM erlang:27-alpine
+ARG ELIXIR_VERSION=1.17.2
+ARG OTP_VERSION=26.1.2
+ARG ALPINE_VERSION=3.18.9
+
+ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-alpine"
+ARG RUNNER_IMAGE="alpine:${ALPINE_VERSION}"
+
+FROM ${BUILDER_IMAGE} as builder
 
 # install build dependencies
 RUN apk update && apk add --no-cache build-base git curl openssl
@@ -49,7 +56,7 @@ RUN mix release
 
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
-FROM erlang:27-alpine
+FROM ${RUNNER_IMAGE}
 
 RUN apk update && apk add --no-cache libstdc++ openssl ncurses-libs
 
