@@ -135,6 +135,7 @@ export type CreateAddress = {
 export type CreateFile = {
   id?: InputMaybe<Scalars['ID']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
   uriPath?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -238,6 +239,7 @@ export type PropertyEdge = {
 export type PropertyFile = {
   __typename?: 'PropertyFile';
   fileName: Scalars['String']['output'];
+  fileType: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   insertedAt: Scalars['DateTime']['output'];
   staticMedia?: Maybe<StaticMedia>;
@@ -813,7 +815,7 @@ export type FetchPropertyQueryVariables = Exact<{
 }>;
 
 
-export type FetchPropertyQuery = { __typename?: 'RootQueryType', fetchProperty: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, lease?: { __typename?: 'Lease', id: string, isActive?: boolean | null, startDate?: any | null, endDate?: any | null, rentPcm?: number | null } | null, tenants?: Array<{ __typename?: 'Tenant', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null> | null, landlords: Array<{ __typename?: 'PropertyLandlord', id: string, email: string, firstName: string, lastName: string, phoneNumber: string }>, files?: Array<{ __typename?: 'PropertyFile', id: string, fileName: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null } | null> | null, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> } };
+export type FetchPropertyQuery = { __typename?: 'RootQueryType', fetchProperty: { __typename?: 'Property', id: string, bathrooms: number, bedrooms: number, carspaces: number, lease?: { __typename?: 'Lease', id: string, isActive?: boolean | null, startDate?: any | null, endDate?: any | null, rentPcm?: number | null } | null, tenants?: Array<{ __typename?: 'Tenant', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null> | null, landlords: Array<{ __typename?: 'PropertyLandlord', id: string, email: string, firstName: string, lastName: string, phoneNumber: string }>, files?: Array<{ __typename?: 'PropertyFile', id: string, fileName: string, fileType: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null } | null> | null, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string }, photos: Array<{ __typename?: 'PropertyPhoto', id: string, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null }> } };
 
 export type FetchPropertyRequestsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']['input']>;
@@ -964,7 +966,7 @@ export type ContractorBaseFragment = { __typename?: 'Contractor', id: string, bu
 
 export type ContractorJobBaseFragment = { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null };
 
-export type FileBaseFragment = { __typename?: 'PropertyFile', id: string, fileName: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null };
+export type FileBaseFragment = { __typename?: 'PropertyFile', id: string, fileName: string, fileType: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null };
 
 export type LandlordBaseFragment = { __typename?: 'PropertyLandlord', id: string, email: string, firstName: string, lastName: string, phoneNumber: string };
 
@@ -1064,6 +1066,7 @@ export const FileBaseFragmentDoc = gql`
     fragment FileBase on PropertyFile {
   id
   fileName
+  fileType
   staticMedia {
     id
     url

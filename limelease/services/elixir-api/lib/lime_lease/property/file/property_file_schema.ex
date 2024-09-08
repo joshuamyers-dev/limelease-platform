@@ -14,12 +14,14 @@ defmodule LimeLease.Property.PropertyFile.PropertyFileSchema do
   input_object :create_file do
     field(:id, :id)
     field(:name, :string)
+    field(:type, :string)
     field(:uri_path, :string)
   end
 
   object :property_file do
     field(:id, non_null(:id))
     field(:file_name, non_null(:string))
+    field(:file_type, non_null(:string))
     field(:inserted_at, non_null(:datetime))
 
     field(:static_media, :static_media) do

@@ -1,0 +1,59 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="Figtree, Trebuchet MS, Tahoma,sans-serif" />
+      <mj-font name="Figtree" href="https://fonts.googleapis.com/css2?family=Figtree" />
+      <mj-class name="centered" align="center" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#f0f0f0">
+    <mj-section>
+      <mj-column>
+      </mj-column>
+    </mj-section>
+    <mj-wrapper padding="0px" border-radius="8px" background-color="#ffffff">
+      <mj-section padding="0">
+        <mj-group>
+          <mj-column vertical-align="middle" padding="0">
+            <mj-image src="https://limelease.s3.ap-southeast-2.amazonaws.com/branding/occupie-logo.png" alt="Logo" width="150px" />
+          </mj-column>
+          <mj-column vertical-align="middle" padding="0">
+            <mj-image src="https://images.squarespace-cdn.com/content/v1/62c675acdc2b2e4c70cc13ca/cd8ca505-4d16-4dfa-b67f-b98f08d01eed/Jellis+Craig+Logo+Square.png" width="100px" />
+          </mj-column>
+        </mj-group>
+      </mj-section>
+      <mj-section padding="0">
+        <mj-column padding="0">
+          <mj-divider border-color="#cccccc" border-width="1px" />
+        </mj-column>
+      </mj-section>
+      <mj-section full-width="full-width" padding="16px" background-color="#ffffff" border-radius="8px">
+        <mj-column css-class="centered">
+          <!-- Title Text -->
+          <mj-text font-size="24px" font-weight="bold" align="center">
+            Hi {{agent_name}}.
+          </mj-text>
+          <mj-text font-size="20px" align="center" line-height="32px">
+            {{agency_name}} has invited you to join the rest of the team on the <strong>OccuPie</strong> app.
+          </mj-text>
+
+          <mj-spacer height="16px" />
+
+          <!-- Description (Paragraph Text) -->
+          <mj-text font-size="16px" align="center" line-height="24px">
+            Manage your properties and tenants, track maintenance requests and inspections, and communicate with your team all in one place.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section full-width="full-width" background-color="#ffffff" border-radius="8px" padding-top="0">
+        <!-- Column 1: App Store Badge -->
+        <mj-column>
+          <mj-button background-color="#2E0CFF" border-radius="8px" font-size="16px" href="{{cta_url}}">
+            Get Started
+          </mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

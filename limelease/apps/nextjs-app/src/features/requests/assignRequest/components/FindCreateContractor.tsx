@@ -79,7 +79,7 @@ const FindCreateContractor = () => {
       {loading && <LoadingSpinner containerStyle={{ margin: 20 }} size={30} />}
       {!loading && searchResultsData?.length === 0 && <Empty description="We couldn't find any contractors matching this name." />}
       {!loading && context?.selectedContractor && (
-        <ResultContainer {...fadeInOutProps} key={3}>
+        <ResultContainer {...cardAnimationProps} key={3}>
           <Heading3>{context?.selectedContractor?.businessName}</Heading3>
           {context?.selectedContractor?.websiteUrl && (
             <DetailRow>

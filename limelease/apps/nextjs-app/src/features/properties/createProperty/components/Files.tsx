@@ -31,6 +31,7 @@ const Files = ({ form, loading, isUpdating = false, propertyDetails }: FilesProp
             id: file?.id,
             url: file?.staticMedia?.url,
             name: file?.fileName,
+            type: file?.type,
           };
         }),
       };

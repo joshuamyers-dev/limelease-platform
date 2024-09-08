@@ -135,6 +135,7 @@ const EditPropertyContainer: React.FC<EditPropertyContainerProps> = ({ propertyI
         return {
           id: file?.id,
           uri_path: file?.response?.temp_path,
+          type: file.type,
           name: file.name,
         };
       });

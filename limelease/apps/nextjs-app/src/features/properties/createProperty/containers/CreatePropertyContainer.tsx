@@ -127,7 +127,7 @@ const CreatePropertyContainer = () => {
 
       const files = filesFormValues?.files?.map((file, index) => {
         return {
-          uri: file?.response?.temp_path,
+          uri_path: file?.response?.temp_path,
           name: file.name,
           type: file.type,
         };
@@ -141,7 +141,7 @@ const CreatePropertyContainer = () => {
             leaseDetails,
             landlords,
             photos,
-            files: filesFormValues ? files : [],
+            files: files ? files : [],
           },
           refetchQueries: [
             {

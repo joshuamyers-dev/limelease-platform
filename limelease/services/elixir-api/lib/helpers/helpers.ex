@@ -101,12 +101,13 @@ defmodule LimeLease.Helpers do
     |> Enum.with_index()
     |> Enum.map(fn {file, index} ->
       Task.async(fn ->
-        with {:ok, file_contents} <- File.read(file.uri),
+        with {:ok, file_contents} <- File.read(file.uri_path),
              {:ok, %StaticMedia{} = static_media} <- StaticMediaService.create_static_media(file.name, file.type),
              {:ok, put_url} <- AWS.generate_presigned_put_url(static_media.s3_key, static_media.mime_type),
              {:ok, %Req.Response{status: 200}} <- Req.put(put_url, body: file_contents) do
           %{
             file_name: file.name,
+            type: file.type,
             static_media_id: static_media.id,
           }
         else

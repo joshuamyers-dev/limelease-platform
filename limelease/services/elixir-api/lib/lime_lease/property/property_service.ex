@@ -71,14 +71,33 @@ defmodule LimeLease.Property.PropertyService do
 
   defp prepare_files(files) do
     for_user_upload = Enum.filter(files, &Map.has_key?(&1, :uri_path))
+    prev_files = Enum.filter(files, &Map.has_key?(&1, :id))
 
     case length(for_user_upload) > 0 do
       true ->
-        files = Helpers.upload_temporary_fs_files(for_user_upload)
+       new_files = Helpers.upload_temporary_fs_files(for_user_upload)
+       |> Enum.map(fn file ->
+          %{
+            type: file.type,
+            file_name: file.file_name,
+            file_type: file.type,
+            static_media_id: file.static_media_id
+          }
+        end)
 
-        {:ok, files}
+        {:ok, prev_files ++ new_files}
 
       false ->
+        files = Enum.map(files, fn file ->
+          %{
+            id: Map.get(file, :id),
+            static_media_id: Map.get(file, :static_media_id),
+            file_name: file.name,
+            file_type: file.type
+          }
+        end
+        )
+
         {:ok, files}
     end
   end

@@ -62,7 +62,7 @@ defmodule LimeLease.MixProject do
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
       {:temp, "~> 0.4"},
-      {:jsonrs, "~> 0.3"},
+      {:jsonrs, "~> 0.3.3"},
       {:uuidv7, "~> 0.2"},
       {:req, "~> 0.4.0"},
       {:exile, "~> 0.8.0"},

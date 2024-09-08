@@ -1,6 +1,7 @@
 fragment FileBase on PropertyFile {
   id
   fileName
+  fileType
   staticMedia {
     id
     url
