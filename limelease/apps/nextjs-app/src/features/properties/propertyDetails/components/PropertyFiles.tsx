@@ -3,7 +3,7 @@ import { PropertyFile } from '@graphql/generated';
 import { fadeInOutProps } from '@utils/AnimationsProps';
 import { Colours } from '@utils/Colours';
 import { dayjs } from '@utils/DayjsTimezone';
-import { Empty } from 'antd';
+import { Empty, message } from 'antd';
 import axios from 'axios';
 
 import React, { useCallback } from 'react';
@@ -15,6 +15,8 @@ interface PropertyFilesProps {
 
 const PropertyFiles: React.FC<PropertyFilesProps> = ({ files }) => {
   const onClickFile = useCallback(async (file: PropertyFile) => {
+    const loading = message.loading({ content: 'Securely accessing file...' });
+
     if (file.staticMedia?.url) {
       const response = await axios.get(file.staticMedia.url, {
         responseType: 'blob',
@@ -23,6 +25,7 @@ const PropertyFiles: React.FC<PropertyFilesProps> = ({ files }) => {
       const newFile = new Blob([response.data], { type: 'application/pdf' });
       const fileURL = URL.createObjectURL(newFile);
 
+      loading();
       window.open(fileURL, '_blank');
     }
   }, []);

@@ -8,7 +8,7 @@ interface LoadingSpinnerProps {
   containerStyle?: CSSProperties;
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 40, containerStyle = {} }) => {
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 24, containerStyle = {} }) => {
   return (
     <Container style={containerStyle}>
       <RotateSpinner size={size} color={Colours.LIME_5} />

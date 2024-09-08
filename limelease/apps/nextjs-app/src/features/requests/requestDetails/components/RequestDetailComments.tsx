@@ -167,7 +167,7 @@ const RequestDetailComments: React.FC<RequestDetailCommentsProps> = ({ requestId
             onTopCommentVisibilityChanged={(visible) => setPollComments(visible)}
           />
         ))}
-        {fetchingComments && !shouldPollComments && <LoadingSpinner size={20} containerStyle={{ padding: 0, margin: 0 }} />}
+        {fetchingComments && !shouldPollComments && <LoadingSpinner size={24} containerStyle={{ padding: 0, margin: 0 }} />}
         <div ref={sentinelRef} />
       </CommentsContainer>
     </Container>

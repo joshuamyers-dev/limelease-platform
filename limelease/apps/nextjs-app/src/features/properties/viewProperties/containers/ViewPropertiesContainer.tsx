@@ -89,7 +89,7 @@ const ViewPropertiesContainer = () => {
 
       <GridContainer>
         <AnimatePresence mode="wait">
-          {loading && <LoadingSpinner key={0} containerStyle={{ marginTop: 50 }} />}
+          {loading && <LoadingSpinner key={0} containerStyle={{ marginTop: 50 }} size={24} />}
 
           {!loading && properties?.length === 0 && (
             <EmptyState
