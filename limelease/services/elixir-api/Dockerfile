@@ -1,5 +1,6 @@
 ARG ELIXIR_VERSION=1.17.2
-ARG OTP_VERSION=26
+ARG OTP_VERSION=27
+ARG ALPINE_VERSION=3.18.4
 
 ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-alpine"
 ARG RUNNER_IMAGE="alpine:${ALPINE_VERSION}"
@@ -55,7 +56,7 @@ RUN mix release
 
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
-FROM ${RUNNER_IMAGE}
+FROM erlang:27-alpine
 
 RUN apk update && apk add --no-cache libstdc++ openssl ncurses-libs
 
