@@ -15,6 +15,10 @@ defmodule LimeLease.AgencyAgent.AgencyAgentSchema do
     field :user, non_null(:user) do
       resolve(dataloader(LimeLease.AgencyAgent.AgencyAgentContext, :user))
     end
+
+    field :properties, list_of(:property) do
+      resolve(dataloader(LimeLease.AgencyAgent.AgencyAgentContext, :properties))
+    end
   end
 
   input_object :team_member_invite_args do

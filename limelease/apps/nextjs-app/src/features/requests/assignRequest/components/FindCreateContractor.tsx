@@ -29,7 +29,7 @@ const FindCreateContractor = () => {
 
   useEffect(() => {
     if (debouncedSearchText !== '') {
-      searchContractorsQuery({ variables: { name: debouncedSearchText, first: 1 }, fetchPolicy: 'cache-and-network' });
+      searchContractorsQuery({ variables: { name: debouncedSearchText, first: 1 }, fetchPolicy: 'cache-first' });
       setCreatingContractor(false);
     }
   }, [debouncedSearchText]);
@@ -48,7 +48,7 @@ const FindCreateContractor = () => {
 
   useEffect(() => {
     if (context?.selectedContractor) {
-      searchContractorsQuery({ variables: { name: context?.selectedContractor?.businessName, first: 1 }, fetchPolicy: 'cache-and-network' });
+      searchContractorsQuery({ variables: { name: context?.selectedContractor?.businessName, first: 1 }, fetchPolicy: 'network-only' });
     }
   }, [context?.selectedContractor?.id]);
 
@@ -59,15 +59,6 @@ const FindCreateContractor = () => {
 
   return (
     <AnimatedContainer {...fadeInOutProps}>
-      <Form form={form} layout="vertical">
-        <Form.Item label="Contractor:" style={{ marginBottom: 0 }}>
-          <Input placeholder="Search" onChange={(event) => setSearchText(event.target.value)} />
-        </Form.Item>
-        <Button type="link" onClick={onClickCantFindContractor}>
-          I can't find the contractor
-        </Button>
-      </Form>
-
       {isCreatingContractor && (
         <CreateContractorStep
           isCreatingContractor={isCreatingContractor}
@@ -76,44 +67,57 @@ const FindCreateContractor = () => {
         />
       )}
 
-      {loading && <LoadingSpinner containerStyle={{ margin: 20 }} size={24} />}
-      {!loading && searchResultsData?.length === 0 && <Empty description="We couldn't find any contractors matching this name." />}
-      {context?.selectedContractor && (
-        <ResultContainer {...cardAnimationProps} key={3}>
-          <Heading3>{context?.selectedContractor?.businessName}</Heading3>
-          {context?.selectedContractor?.websiteUrl && (
-            <DetailRow>
-              <DetailRowTitle>Website</DetailRowTitle>
-              <DetailRowValue>
-                <a href={context?.selectedContractor?.websiteUrl} target="_blank">
-                  {context?.selectedContractor?.websiteUrl}
-                </a>
-              </DetailRowValue>
-            </DetailRow>
-          )}
-          <DetailRow>
-            <DetailRowTitle>Contact Email</DetailRowTitle>
-            <DetailRowValue>
-              <a href={`mailto:${context?.selectedContractor?.contactEmail}`} target="_blank">
-                {context?.selectedContractor?.contactEmail}
-              </a>
-            </DetailRowValue>
-          </DetailRow>
-          <DetailRow>
-            <DetailRowTitle>Contact Number</DetailRowTitle>
-            <DetailRowValue>
-              {context?.selectedContractor?.contactNumber ? formatMobileNumber(context?.selectedContractor?.contactNumber, true) : 'N/A'}
-            </DetailRowValue>
-          </DetailRow>
-          <DetailRow>
-            <DetailRowTitle>Areas served</DetailRowTitle>
-            <DetailRowValue>
-              {context?.selectedContractor?.areasServed?.map(
-                (area, index) => `${area}${index !== context?.selectedContractor?.areasServed?.length - 1 ? ', ' : ''}`
+      {!isCreatingContractor && (
+        <>
+          <Form form={form} layout="vertical">
+            <Form.Item label="Contractor:" style={{ marginBottom: 0 }}>
+              <Input placeholder="Search" onChange={(event) => setSearchText(event.target.value)} />
+            </Form.Item>
+            <Button type="link" onClick={onClickCantFindContractor}>
+              I can't find the contractor
+            </Button>
+          </Form>
+
+          {loading && <LoadingSpinner containerStyle={{ margin: 20 }} size={24} />}
+          {!loading && searchResultsData?.length === 0 && <Empty description="We couldn't find any contractors matching this name." />}
+          {context?.selectedContractor && (
+            <ResultContainer {...cardAnimationProps} key={3}>
+              <Heading3>{context?.selectedContractor?.businessName}</Heading3>
+              {context?.selectedContractor?.websiteUrl && (
+                <DetailRow>
+                  <DetailRowTitle>Website</DetailRowTitle>
+                  <DetailRowValue>
+                    <a href={context?.selectedContractor?.websiteUrl} target="_blank">
+                      {context?.selectedContractor?.websiteUrl}
+                    </a>
+                  </DetailRowValue>
+                </DetailRow>
               )}
-            </DetailRowValue>
-          </DetailRow>
-        </ResultContainer>
+              <DetailRow>
+                <DetailRowTitle>Contact Email</DetailRowTitle>
+                <DetailRowValue>
+                  <a href={`mailto:${context?.selectedContractor?.contactEmail}`} target="_blank">
+                    {context?.selectedContractor?.contactEmail}
+                  </a>
+                </DetailRowValue>
+              </DetailRow>
+              <DetailRow>
+                <DetailRowTitle>Contact Number</DetailRowTitle>
+                <DetailRowValue>
+                  {context?.selectedContractor?.contactNumber ? formatMobileNumber(context?.selectedContractor?.contactNumber, true) : 'N/A'}
+                </DetailRowValue>
+              </DetailRow>
+              <DetailRow>
+                <DetailRowTitle>Areas served</DetailRowTitle>
+                <DetailRowValue>
+                  {context?.selectedContractor?.areasServed?.map(
+                    (area, index) => `${area}${index !== context?.selectedContractor?.areasServed?.length - 1 ? ', ' : ''}`
+                  )}
+                </DetailRowValue>
+              </DetailRow>
+            </ResultContainer>
+          )}
+        </>
       )}
     </AnimatedContainer>
   );

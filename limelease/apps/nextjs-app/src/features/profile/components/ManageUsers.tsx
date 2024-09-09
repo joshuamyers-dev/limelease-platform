@@ -17,7 +17,7 @@ const columns = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Email Address', dataIndex: 'email', key: 'email' },
   { title: 'Role', dataIndex: 'role', key: 'role' },
-  { title: 'Assigned Properties', dataIndex: 'properties', key: 'properties' },
+  { title: 'Assigned Properties', dataIndex: 'properties', key: 'properties', render: (title, _) => `${title}` },
 ];
 
 const ManageUsers: React.FC = () => {
@@ -41,6 +41,7 @@ const ManageUsers: React.FC = () => {
           name: node?.user.profile.firstName + ' ' + node?.user.profile.lastName,
           email: node?.user.profile.email,
           role: formatSnakeCase(node?.role),
+          properties: node?.properties?.map((property) => renderAddressLabel(property?.address, false)),
         };
       });
   }, [myTeamData]);

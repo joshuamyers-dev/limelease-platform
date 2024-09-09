@@ -40,6 +40,7 @@ export type Agency = {
 export type AgencyAgent = {
   __typename?: 'AgencyAgent';
   id: Scalars['ID']['output'];
+  properties?: Maybe<Array<Maybe<Property>>>;
   role: Scalars['String']['output'];
   user: User;
 };
@@ -790,7 +791,7 @@ export type MyTeamQueryVariables = Exact<{
 }>;
 
 
-export type MyTeamQuery = { __typename?: 'RootQueryType', myTeam?: { __typename?: 'AgencyAgentConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'AgencyAgentEdge', cursor?: string | null, node?: { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null } | null> | null } | null };
+export type MyTeamQuery = { __typename?: 'RootQueryType', myTeam?: { __typename?: 'AgencyAgentConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'AgencyAgentEdge', cursor?: string | null, node?: { __typename?: 'AgencyAgent', id: string, role: string, properties?: Array<{ __typename?: 'Property', id: string, address: { __typename?: 'Address', unitNumber?: number | null, streetName: string, streetType: string, streetNumber: number, suburb: string, postcode: number, state: string } } | null> | null, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null } | null> | null } | null };
 
 export type InviteTeamMemberMutationVariables = Exact<{
   input: TeamMemberInviteArgs;
@@ -1524,6 +1525,18 @@ export const MyTeamDocument = gql`
       cursor
       node {
         ...AgencyAgentBase
+        properties {
+          id
+          address {
+            unitNumber
+            streetName
+            streetType
+            streetNumber
+            suburb
+            postcode
+            state
+          }
+        }
       }
     }
   }

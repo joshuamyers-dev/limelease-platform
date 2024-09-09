@@ -7,6 +7,7 @@ import GeneralInformationForm, { CreateContractorFormValues } from '@features/co
 import { useCreateContractorMutation } from '@graphql/generated';
 import useHandleFormError from '@hooks/useHandleFormError';
 import { RequestDetailsContext } from '@features/requests/requestDetails/containers/RequestDetailsContainer';
+import { CardTitleText, Heading3 } from '@components/Headings';
 
 interface CreateContractorStepProps {
   isCreatingContractor: boolean;
@@ -52,7 +53,6 @@ const CreateContractorStep: React.FC<CreateContractorStepProps> = ({ isCreatingC
     <AnimatePresence>
       {isCreatingContractor && (
         <CreateContractorWrapper {...fadeInOutProps}>
-          <Divider />
           <GeneralInformationForm form={form} isLoading={loading} onFormComplete={onFormComplete} onPressCancel={() => setCreatingContractor(false)} />
         </CreateContractorWrapper>
       )}

@@ -10,6 +10,18 @@ query myTeam($first: Int!, $after: String, $before: String, $last: Int, $searchT
       cursor
       node {
         ...AgencyAgentBase
+        properties {
+          id
+          address {
+            unitNumber
+            streetName
+            streetType
+            streetNumber
+            suburb
+            postcode
+            state
+          }
+        }
       }
     }
   }
