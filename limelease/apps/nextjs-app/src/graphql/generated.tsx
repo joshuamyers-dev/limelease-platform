@@ -98,7 +98,6 @@ export type ContractorJob = {
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   request?: Maybe<PropertyRequest>;
-  state: ContractorJobState;
 };
 
 export type ContractorJobConnection = {
@@ -112,16 +111,6 @@ export type ContractorJobEdge = {
   cursor?: Maybe<Scalars['String']['output']>;
   node?: Maybe<ContractorJob>;
 };
-
-export enum ContractorJobState {
-  Archived = 'ARCHIVED',
-  JobBooked = 'JOB_BOOKED',
-  JobCancelled = 'JOB_CANCELLED',
-  JobCompleted = 'JOB_COMPLETED',
-  QuotedPriced = 'QUOTED_PRICED',
-  QuoteBooked = 'QUOTE_BOOKED',
-  Sent = 'SENT'
-}
 
 export type CreateAddress = {
   postcode: Scalars['Int']['input'];
@@ -741,7 +730,7 @@ export type FetchContractorJobsQueryVariables = Exact<{
 }>;
 
 
-export type FetchContractorJobsQuery = { __typename?: 'RootQueryType', jobsForContractor?: { __typename?: 'ContractorJobConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'ContractorJobEdge', node?: { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, request?: { __typename?: 'PropertyRequest', id: string, ticketNumber: string, state: PropertyRequestState, title: string, details: string, urgency: PropertyRequestUrgency, insertedAt: any, category: { __typename?: 'PropertyRequestCategory', id: string, name: string }, photos?: Array<{ __typename?: 'PropertyRequestPhoto', staticMedia: { __typename?: 'StaticMedia', url?: string | null } } | null> | null } | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null } | null } | null> | null } | null };
+export type FetchContractorJobsQuery = { __typename?: 'RootQueryType', jobsForContractor?: { __typename?: 'ContractorJobConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'ContractorJobEdge', node?: { __typename?: 'ContractorJob', id: string, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, request?: { __typename?: 'PropertyRequest', id: string, ticketNumber: string, state: PropertyRequestState, title: string, details: string, urgency: PropertyRequestUrgency, insertedAt: any, category: { __typename?: 'PropertyRequestCategory', id: string, name: string }, photos?: Array<{ __typename?: 'PropertyRequestPhoto', staticMedia: { __typename?: 'StaticMedia', url?: string | null } } | null> | null } | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null } | null } | null> | null } | null };
 
 export type CreateContractorMutationVariables = Exact<{
   address?: InputMaybe<CreateAddress>;
@@ -873,7 +862,7 @@ export type AssignRequestToContractorMutationVariables = Exact<{
 }>;
 
 
-export type AssignRequestToContractorMutation = { __typename?: 'RootMutationType', contractorJobCreate: { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null } };
+export type AssignRequestToContractorMutation = { __typename?: 'RootMutationType', contractorJobCreate: { __typename?: 'ContractorJob', id: string, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null } };
 
 export type SearchContractorsByNameQueryVariables = Exact<{
   name: Scalars['String']['input'];
@@ -923,14 +912,14 @@ export type DeleteContractorJobMutationVariables = Exact<{
 }>;
 
 
-export type DeleteContractorJobMutation = { __typename?: 'RootMutationType', contractorJobDelete: { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null } };
+export type DeleteContractorJobMutation = { __typename?: 'RootMutationType', contractorJobDelete: { __typename?: 'ContractorJob', id: string, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null } };
 
 export type FetchActiveJobForRequestQueryVariables = Exact<{
   requestId: Scalars['ID']['input'];
 }>;
 
 
-export type FetchActiveJobForRequestQuery = { __typename?: 'RootQueryType', contractorJobActive?: { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null } | null };
+export type FetchActiveJobForRequestQuery = { __typename?: 'RootQueryType', contractorJobActive?: { __typename?: 'ContractorJob', id: string, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null } | null };
 
 export type FetchRequestQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -988,7 +977,7 @@ export type AgencyBaseFragment = { __typename?: 'Agency', id: string, name: stri
 
 export type ContractorBaseFragment = { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null };
 
-export type ContractorJobBaseFragment = { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null };
+export type ContractorJobBaseFragment = { __typename?: 'ContractorJob', id: string, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string, websiteUrl?: string | null, contactEmail: string, contactNumber: string, areasServed: Array<string | null>, address?: { __typename?: 'Address', postcode: number, state: string, streetName: string, unitNumber?: number | null, streetNumber: number, streetType: string, suburb: string } | null } | null };
 
 export type FileBaseFragment = { __typename?: 'PropertyFile', id: string, fileName: string, fileType: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null };
 
@@ -1077,7 +1066,6 @@ export const ContractorBaseFragmentDoc = gql`
 export const ContractorJobBaseFragmentDoc = gql`
     fragment ContractorJobBase on ContractorJob {
   id
-  state
   description
   bookingDateStart
   bookingDateEnd

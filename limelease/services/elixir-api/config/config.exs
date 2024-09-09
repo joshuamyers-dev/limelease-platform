@@ -46,7 +46,8 @@ config :lime_lease, Oban,
     {Oban.Plugins.Pruner, max_age: 300},
     {Oban.Plugins.Cron,
      crontab: [
-       {"0 * * * *", LimeLease.Workers.CleaningWorker, queue: :scheduled}
+       {"0 * * * *", LimeLease.Workers.CleaningWorker, queue: :scheduled},
+       {"*/5 * * * *", LimeLease.Workers.JobCleanUpWorker, queue: :scheduled}
      ]},
     Oban.Plugins.Lifeline
   ],

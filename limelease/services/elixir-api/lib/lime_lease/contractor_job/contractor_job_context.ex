@@ -18,6 +18,7 @@ defmodule LimeLease.ContractorJob.ContractorJobContext do
   def get_contractor_job_for_request(%PropertyRequest{} = request) do
     ContractorJob
     |> ContractorJob.with_request_id(request.id)
+    |> ContractorJob.is_active()
     |> ContractorJob.order_by_inserted_desc()
     |> ContractorJob.with_limit(1)
     |> ContractorJob.default_preloads()
@@ -28,6 +29,7 @@ defmodule LimeLease.ContractorJob.ContractorJobContext do
   def get_contractor_job_for_tenant(%User{} = user) do
     ContractorJob
     |> ContractorJob.with_property(user.tenant.property_id)
+    |> ContractorJob.is_active()
     |> ContractorJob.order_by_inserted_desc()
     |> ContractorJob.with_limit(1)
     |> ContractorJob.default_preloads()
@@ -38,14 +40,24 @@ defmodule LimeLease.ContractorJob.ContractorJobContext do
   def get_contractor_job_by_id(id) do
     ContractorJob
     |> ContractorJob.with_id(id)
+    |> ContractorJob.is_active()
     |> ContractorJob.default_preloads()
     |> Repo.one()
     |> Repo.ok_error()
   end
 
-  def update_contractor_job_state(%ContractorJob{} = contractor_job, state) do
+  def get_expired_contractor_jobs() do
+    ContractorJob
+    |> ContractorJob.with_expired_booking_date()
+    |> ContractorJob.is_active()
+    |> ContractorJob.default_preloads()
+    |> Repo.all()
+    |> Repo.ok_error()
+  end
+
+  def archive_contractor_job(%ContractorJob{} = contractor_job) do
     contractor_job
-    |> ContractorJob.update_state_changeset(%{state: state})
+    |> ContractorJob.update_state_changeset(%{archived_at: DateTime.utc_now()})
     |> Repo.update()
     |> Repo.ok_error()
   end

@@ -1,5 +1,6 @@
 import { AnimatedContainer } from '@components/AnimatedContainer';
 import ContractorJobStatusTag from '@components/ContractorJobStatusTag';
+import StatusTag from '@components/StatusTag';
 import UrgencyTag from '@components/UrgencyTag';
 import { ContractorJob, ContractorJobState, PropertyRequestFilter, PropertyRequestUrgency } from '@graphql/generated';
 import { Maybe } from '@types/Maybe';
@@ -41,7 +42,7 @@ const ContractorJobs: React.FC<ContractorJobsProps> = ({ jobs, isFetching, onCha
         requestId: job.request?.ticketNumber,
         requestedOn: dayjs(job.request?.insertedAt).format('DD MMM YYYY'),
         urgency: job.request?.urgency,
-        status: job.state,
+        status: job.request?.state,
         messages: 0,
       };
     });
@@ -90,12 +91,7 @@ const ContractorJobs: React.FC<ContractorJobsProps> = ({ jobs, isFetching, onCha
         title: 'Status',
         key: 'status',
         dataIndex: 'status',
-        render: (_, record) => <ContractorJobStatusTag status={record.status} />,
-      },
-      {
-        title: 'Messages',
-        key: 'messages',
-        dataIndex: 'messages',
+        render: (_, record) => <StatusTag status={record.status} />,
       },
     ];
   }, [jobs]);

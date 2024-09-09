@@ -13,8 +13,8 @@ defmodule LimeLease.ContractorJob.ContractorJob do
   schema "contractor_jobs" do
     field :booking_date_start, :utc_datetime_usec
     field :booking_date_end, :utc_datetime_usec
+    field :archived_at, :utc_datetime_usec
     field :description, :string
-    field :state, Ecto.Enum, values: ~w(sent quote_booked quoted_priced job_booked job_completed archived job_cancelled)a, default: :sent
 
     belongs_to(:contractor, LimeLease.Contractor.Contractor, type: :binary_id)
     belongs_to(:request, LimeLease.PropertyRequest.PropertyRequest, type: :binary_id)
@@ -31,8 +31,7 @@ defmodule LimeLease.ContractorJob.ContractorJob do
 
   def update_state_changeset(contractor_job, attrs) do
     contractor_job
-    |> cast(attrs, [:state])
-    |> validate_inclusion(:state, ~w(sent quote_booked quoted_priced job_booked job_completed archived job_cancelled)a)
+    |> cast(attrs, [:archived_at])
   end
 
   def default_preloads(query) do
@@ -66,19 +65,24 @@ defmodule LimeLease.ContractorJob.ContractorJob do
     |> where([c, r], r.property_id == ^property_id)
   end
 
+  def with_expired_booking_date(query) do
+    query
+    |> where([q], q.booking_date_end < ^Timex.now())
+  end
+
   def order_by_inserted_desc(query) do
     query
     |> order_by([q], desc: q.inserted_at)
   end
 
-  def with_states(query, states) do
+  def is_active(query) do
     query
-    |> where([q], q.state in ^states)
+    |> where([q], is_nil(q.archived_at))
   end
 
-  def with_state(query, state) do
+  def is_archived(query) do
     query
-    |> where([q], q.state == ^state)
+    |> where([q], not is_nil(q.archived_at))
   end
 
   def translate_state_into_filter(query, state) do
@@ -92,13 +96,9 @@ defmodule LimeLease.ContractorJob.ContractorJob do
         query
         |> where([q], q.inserted_at > ^two_weeks)
 
-      :completed ->
-        query
-        |> with_states([:job_completed])
-
       :archived ->
         query
-        |> with_states([:archived, :job_cancelled])
+        |> is_archived()
     end
   end
 end

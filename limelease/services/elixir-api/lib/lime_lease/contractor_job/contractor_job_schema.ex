@@ -8,19 +8,8 @@ defmodule LimeLease.ContractorJob.ContractorJobSchema do
 
   import Absinthe.Resolution.Helpers
 
-  enum :contractor_job_state do
-    value(:sent)
-    value(:quote_booked)
-    value(:quoted_priced)
-    value(:job_booked)
-    value(:job_completed)
-    value(:archived)
-    value(:job_cancelled)
-  end
-
   object :contractor_job do
     field :id, non_null(:id)
-    field :state, non_null(:contractor_job_state)
     field :booking_date_start, :datetime
     field :booking_date_end, :datetime
     field :description, :string
