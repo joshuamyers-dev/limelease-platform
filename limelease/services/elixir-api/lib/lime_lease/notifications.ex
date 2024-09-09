@@ -1,8 +1,12 @@
 defmodule LimeLease.Notifications do
+  alias LimeLease.Profile
   alias LimeLease.Tenant.TenantContext
   alias LimeLease.Property.{Property, PropertyLandlord}
+  alias LimeLease.Agency.Agency
   alias LimeLease.Tenant.Tenant
   alias LimeLease.User.{User, UserContext}
+  alias LimeLease.Profile.Profile
+  alias LimeLease.AgencyAgent.AgencyAgent
   alias LimeLease.PropertyRequest.{PropertyRequest, PropertyRequestService}
   alias LimeLease.PropertyAgent.PropertyAgentContext
 
@@ -48,6 +52,21 @@ defmodule LimeLease.Notifications do
 
         Logger.error(reason)
     end
+  end
+
+  def send_team_member_invite(
+        %AgencyAgent{user: %User{agency: %Agency{} = agency, profile: %Profile{} = profile}},
+        invitation_code
+      ) do
+    email_args = %{
+      "agent_name" => "#{profile.first_name}",
+      "cta_url" => Application.get_env(:lime_lease, :front_end_url) <> "/invite/#{invitation_code}",
+      "agency_name" => agency.name
+    }
+
+    %{"type" => "team_member_invite", "to_address" => profile.email, "email_args" => email_args}
+    |> LimeLease.Workers.EmailDeliveryWorker.new()
+    |> Oban.insert()
   end
 
   def send_tenant_push_notifications(%PropertyRequest{} = request) do

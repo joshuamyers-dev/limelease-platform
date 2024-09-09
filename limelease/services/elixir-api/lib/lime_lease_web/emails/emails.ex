@@ -31,6 +31,18 @@ defmodule LimeLeaseWeb.Emails do
     end
   end
 
+  def team_member_invite(email, args) do
+    with {:ok, mjml_body} <- File.read("#{:code.priv_dir(:lime_lease)}" <> "/static/emails/agent_invite.mjml"),
+         mjml_body <- inject_variables_to_template(mjml_body, args),
+         {:ok, html_body} <- Mjml.to_html(mjml_body) do
+      new()
+      |> to({args["agent_name"], email})
+      |> from({"OccuPie", "system@occupie.com.au"})
+      |> subject("Join #{args["agency_name"]} on OccuPie")
+      |> html_body(html_body)
+    end
+  end
+
   def inject_variables_to_template(mjml_body, variables) do
     Enum.reduce(variables, mjml_body, fn {key, value}, acc ->
       String.replace(acc, "{{#{key}}}", to_string(value))

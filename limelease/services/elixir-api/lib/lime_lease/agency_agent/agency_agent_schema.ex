@@ -17,6 +17,15 @@ defmodule LimeLease.AgencyAgent.AgencyAgentSchema do
     end
   end
 
+  input_object :team_member_invite_args do
+    field(:email, non_null(:string))
+    field(:role, non_null(:string))
+    field(:first_name, non_null(:string))
+    field(:last_name, non_null(:string))
+    field(:phone_number, non_null(:string))
+    field(:assigned_property_ids, non_null(list_of(:string)))
+  end
+
   connection(node_type: :agency_agent)
 
   object :agency_agent_queries do
@@ -31,10 +40,9 @@ defmodule LimeLease.AgencyAgent.AgencyAgentSchema do
   object :agency_agent_mutations do
     @desc "Invite a new team member to your agency."
     field :team_member_invite, :agency_agent do
-      arg(:email, non_null(:string))
-      arg(:role, non_null(:string))
+      arg(:input, non_null(:team_member_invite_args))
       middleware(Authorize)
-      resolve(&LimeLease.AgencyAgent.AgencyAgentResolver.invite_team_member/3)
+      resolve(&LimeLease.AgencyAgent.AgencyAgentResolver.team_member_invite_mutation/3)
     end
   end
 end

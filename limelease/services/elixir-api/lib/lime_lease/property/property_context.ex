@@ -30,6 +30,13 @@ defmodule LimeLease.Property.PropertyContext do
     |> Absinthe.Relay.Connection.from_query(&Repo.all/1, pagination_args)
   end
 
+  def get_properties_by_ids(ids) do
+    Property
+    |> Property.with_id_in(ids)
+    |> Repo.all()
+    |> Repo.ok_error()
+  end
+
   def get_property_by_id_for_user(%User{} = user, id) do
     {:ok, property_ids} = PropertyAgentContext.get_managed_property_ids_for_agent(user.agency_agent)
 

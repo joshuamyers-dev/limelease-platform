@@ -21,11 +21,13 @@ defmodule LimeLease.Workers.EmailDeliveryWorker do
         "tenant_welcome" ->
           Emails.tenant_welcome(
             to_address,
-            %{
-              "tenant_name" => email_args["tenant_name"],
-              "agent_name" => email_args["agent_name"],
-              "address" => email_args["address"]
-            }
+            email_args
+          )
+
+        "team_member_invite" ->
+          Emails.team_member_invite(
+            to_address,
+            email_args
           )
 
         _ ->

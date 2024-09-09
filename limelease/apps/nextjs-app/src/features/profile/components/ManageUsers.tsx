@@ -54,7 +54,7 @@ const ManageUsers: React.FC = () => {
       </AddAgentContainer>
 
       <Modal title="" open={isModalVisible} destroyOnClose onCancel={() => setIsModalVisible(false)} footer={null}>
-        {isModalVisible && <AddTeamMemberForm />}
+        {isModalVisible && <AddTeamMemberForm onComplete={() => setIsModalVisible(false)} />}
       </Modal>
 
       <Table loading={isLoadingTeam} dataSource={data} columns={columns} pagination={false} />

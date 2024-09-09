@@ -55,7 +55,7 @@ defmodule LimeLease.MixProject do
       {:bcrypt_elixir, "~> 3.0"},
       {:guardian, "~> 2.0"},
       {:cors_plug, "~> 3.0"},
-      {:timex, "~> 3.7"},
+      {:timex, "~> 3.7.11"},
       {:ex_aws, "~> 2.1"},
       {:ex_aws_s3, "~> 2.0"},
       {:ex_aws_sns, "~> 2.0"},

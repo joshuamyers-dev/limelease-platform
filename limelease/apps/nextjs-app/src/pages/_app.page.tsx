@@ -23,6 +23,7 @@ import localeData from 'dayjs/plugin/localeData';
 import weekday from 'dayjs/plugin/weekday';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import weekYear from 'dayjs/plugin/weekYear';
+import { useEffect, useState } from 'react';
 
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
@@ -35,6 +36,17 @@ const App = ({ Component, pageProps }: AppProps) => {
   const [getAuthToken] = useStorage();
   const authToken = getAuthToken(LOCAL_STORAGE_AUTH_KEY, 'local');
   const apolloClient = useApollo(pageProps, authToken);
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  // https://stackoverflow.com/questions/75740501/ant-design-v5-causing-flash-unstyled-component-at-first-load
+
+  if (typeof window !== 'undefined') {
+    window.onload = () => {
+      document.getElementById('holderStyle')!.remove();
+    };
+  }
 
   return (
     <ConfigProvider
@@ -82,7 +94,19 @@ const App = ({ Component, pageProps }: AppProps) => {
           <title key="title">OccuPie</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        <Component {...pageProps} />
+        <style
+          id="holderStyle"
+          dangerouslySetInnerHTML={{
+            __html: `
+                    *, *::before, *::after {
+                        transition: none!important;
+                    }
+                    `,
+          }}
+        />
+        <div style={{ visibility: !mounted ? 'hidden' : 'visible', height: '100%' }}>
+          <Component {...pageProps} />
+        </div>
       </ApolloProvider>
     </ConfigProvider>
   );

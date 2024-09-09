@@ -2,6 +2,7 @@ defmodule LimeLease.AgencyAgent.AgencyAgentContext do
   @moduledoc false
 
   require IEx
+  alias LimeLease.Property.PropertyContext
   alias LimeLease.AgencyAgent.AgencyAgent
   alias LimeLease.Repo
 
@@ -13,8 +14,30 @@ defmodule LimeLease.AgencyAgent.AgencyAgentContext do
   end
 
   defp apply_search(query, nil = _search_term), do: query
+
   defp apply_search(query, search_term) when is_binary(search_term) do
     query |> AgencyAgent.search_by_name(search_term)
+  end
+
+  def create_team_member_for_agency(agency_id, args) do
+    {:ok, assigned_properties} = PropertyContext.get_properties_by_ids(args.assigned_property_ids)
+
+    %AgencyAgent{}
+    |> AgencyAgent.changeset(%{
+      agency_id: agency_id,
+      property_agents: Enum.map(assigned_properties, &%{property_id: &1.id}),
+      user: %{
+        profile: %{
+          email: args.email,
+          phone_number: args.phone_number,
+          first_name: args.first_name,
+          last_name: args.last_name
+        }
+      },
+      assigned_properties: assigned_properties
+    })
+    |> Repo.insert()
+    |> Repo.ok_error()
   end
 
   # Dataloader functions

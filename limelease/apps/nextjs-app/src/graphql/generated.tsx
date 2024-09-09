@@ -384,6 +384,8 @@ export type RootMutationType = {
   requestUpdateUrgency: PropertyRequest;
   /** Create a new static media asset. */
   staticMediaCreate: StaticMedia;
+  /** Invite a new team member to your agency. */
+  teamMemberInvite?: Maybe<AgencyAgent>;
   /** Update the current user's profile. */
   updateProfile: Profile;
   /** Update an existing property */
@@ -468,6 +470,11 @@ export type RootMutationTypeStaticMediaCreateArgs = {
   fileName?: InputMaybe<Scalars['String']['input']>;
   mimeType: Scalars['String']['input'];
   s3Key?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type RootMutationTypeTeamMemberInviteArgs = {
+  input: TeamMemberInviteArgs;
 };
 
 
@@ -682,6 +689,15 @@ export type StaticMedia = {
   url?: Maybe<Scalars['String']['output']>;
 };
 
+export type TeamMemberInviteArgs = {
+  assignedPropertyIds: Array<InputMaybe<Scalars['String']['input']>>;
+  email: Scalars['String']['input'];
+  firstName: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
+  phoneNumber: Scalars['String']['input'];
+  role: Scalars['String']['input'];
+};
+
 export type Tenant = {
   __typename?: 'Tenant';
   id: Scalars['ID']['output'];
@@ -775,6 +791,13 @@ export type MyTeamQueryVariables = Exact<{
 
 
 export type MyTeamQuery = { __typename?: 'RootQueryType', myTeam?: { __typename?: 'AgencyAgentConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'AgencyAgentEdge', cursor?: string | null, node?: { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null } | null> | null } | null };
+
+export type InviteTeamMemberMutationVariables = Exact<{
+  input: TeamMemberInviteArgs;
+}>;
+
+
+export type InviteTeamMemberMutation = { __typename?: 'RootMutationType', teamMemberInvite?: { __typename?: 'AgencyAgent', id: string, role: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } } | null };
 
 export type CreatePropertyMutationVariables = Exact<{
   propertyDetails: PropertyDetails;
@@ -1543,6 +1566,39 @@ export type MyTeamQueryHookResult = ReturnType<typeof useMyTeamQuery>;
 export type MyTeamLazyQueryHookResult = ReturnType<typeof useMyTeamLazyQuery>;
 export type MyTeamSuspenseQueryHookResult = ReturnType<typeof useMyTeamSuspenseQuery>;
 export type MyTeamQueryResult = ApolloReactCommon.QueryResult<MyTeamQuery, MyTeamQueryVariables>;
+export const InviteTeamMemberDocument = gql`
+    mutation inviteTeamMember($input: TeamMemberInviteArgs!) {
+  teamMemberInvite(input: $input) {
+    ...AgencyAgentBase
+  }
+}
+    ${AgencyAgentBaseFragmentDoc}`;
+export type InviteTeamMemberMutationFn = ApolloReactCommon.MutationFunction<InviteTeamMemberMutation, InviteTeamMemberMutationVariables>;
+
+/**
+ * __useInviteTeamMemberMutation__
+ *
+ * To run a mutation, you first call `useInviteTeamMemberMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInviteTeamMemberMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [inviteTeamMemberMutation, { data, loading, error }] = useInviteTeamMemberMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useInviteTeamMemberMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<InviteTeamMemberMutation, InviteTeamMemberMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<InviteTeamMemberMutation, InviteTeamMemberMutationVariables>(InviteTeamMemberDocument, options);
+      }
+export type InviteTeamMemberMutationHookResult = ReturnType<typeof useInviteTeamMemberMutation>;
+export type InviteTeamMemberMutationResult = ApolloReactCommon.MutationResult<InviteTeamMemberMutation>;
+export type InviteTeamMemberMutationOptions = ApolloReactCommon.BaseMutationOptions<InviteTeamMemberMutation, InviteTeamMemberMutationVariables>;
 export const CreatePropertyDocument = gql`
     mutation createProperty($propertyDetails: PropertyDetails!, $leaseDetails: LeaseDetails, $files: [CreateFile], $photos: [CreatePhoto!], $tenants: [TenantObject!], $landlords: [Landlord!]!) {
   createProperty(

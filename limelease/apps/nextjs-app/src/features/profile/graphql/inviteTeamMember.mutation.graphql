@@ -1,0 +1,5 @@
+mutation inviteTeamMember($input: TeamMemberInviteArgs!) {
+  teamMemberInvite(input: $input) {
+    ...AgencyAgentBase
+  }
+}
