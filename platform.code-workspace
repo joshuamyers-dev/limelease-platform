@@ -26,6 +26,9 @@
 		}
 	],
 	"settings": {
-		"elixirLS.projectDir": "limelease/services/elixir-api/"
+		"elixirLS.projectDir": "limelease/services/elixir-api/",
+		"files.watcherExclude": {
+			"**/target": true
+		}
 	}
 }

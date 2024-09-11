@@ -14,7 +14,7 @@ defmodule LimeLease.Property.PropertyContext do
 
   def get_paginated_properties_for_user(%User{} = user, filter, search_keywords, pagination_args) do
     case UserContext.admin_of_agency?(user) do
-      {:ok, :is_admin_of_agency} ->
+      :ok ->
         Property
         |> Property.with_agency_id(user.agency.id)
 

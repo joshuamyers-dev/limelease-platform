@@ -1,6 +1,8 @@
 defmodule LimeLease.User.UserContext do
   @moduledoc false
+  alias LimeLease.AgencyAgent.AgencyAgent
   alias LimeLease.ContractorJob.ContractorJob
+  alias LimeLease.Agency.Agency
   alias LimeLease.User.User
   alias LimeLease.Contractor.{Contractor, ContractorContext}
 
@@ -32,23 +34,23 @@ defmodule LimeLease.User.UserContext do
   end
 
   @spec can_assign_request_to_contractor?(LimeLease.User.User.t(), LimeLease.Contractor.Contractor.t()) :: {:error, :unauthorized} | {:ok, :can_assign_request_to_contractor}
-  def can_assign_request_to_contractor?(%User{} = user, %Contractor{} = contractor) do
-    case contractor.agency_id == user.agency.id do
-      true -> {:ok, :can_assign_request_to_contractor}
+  def can_assign_request_to_contractor?(%User{agency: %Agency{id: user_agency_id}}, %Contractor{} = contractor) do
+    case contractor.agency_id == user_agency_id do
+      true -> :ok
       false -> {:error, :unauthorized}
     end
   end
 
-  def admin_of_agency?(%LimeLease.User.User{} = user) do
-    case user.agency_agent.role == "admin" do
-      true -> {:ok, :is_admin_of_agency}
+  def admin_of_agency?(%User{agency_agent: %AgencyAgent{role: role}}) do
+    case role == "admin" do
+      true -> :ok
       false -> {:error, :unauthorized}
     end
   end
 
-  def can_delete_contractor_job?(%User{} = user, %ContractorJob{} = contractor_job) do
-    case contractor_job.contractor.agency_id == user.agency.id do
-      true -> {:ok, :can_delete_contractor_job}
+  def can_delete_contractor_job?(%User{agency: %Agency{id: user_agency_id}}, %ContractorJob{contractor: %Contractor{agency_id: contractor_agency_id}}) do
+    case contractor_agency_id == user_agency_id do
+      true -> :ok
       false -> {:error, :unauthorized}
     end
   end

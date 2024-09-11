@@ -42,12 +42,11 @@ defmodule LimeLeaseWeb.WebhookController do
         true ->
           with {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.update_request_state(request, :contractor_appointment_booked),
                {:ok, %ContractorJob{} = job} <- ContractorJobContext.get_contractor_job_for_request(request),
-               {:ok, %ContractorJob{} = _job} <- ContractorJobContext.update_contractor_job_state(job, :job_booked),
                {:ok, %PropertyRequestComment{} = _comment} <-
                  PropertyRequestCommentService.create_system_comment_for_request(
                    request.id,
                    job.contractor.business_name,
-                   "The contractor has accepted the job on the requested date and time."
+                   "#{job.contractor.business_name} accepted the job."
                  ) do
             spawn(fn ->
               Notifications.send_sms_message(job.contractor.contact_number, "Thank you. We have sent your confirmation to the property manager.")
@@ -63,7 +62,7 @@ defmodule LimeLeaseWeb.WebhookController do
                {:ok, %PropertyRequest{} = request} <- PropertyRequestContext.update_request_state(request, :assigned_to_contractor),
                {:ok, %PropertyRequestComment{} = _comment} <-
                  PropertyRequestCommentContext.create_comment_for_request(request, %{
-                   message_body: "The contractor has declined the job request.",
+                   message_body: "#{job.contractor.business_name} declined the job.",
                    author_name: job.contractor.business_name,
                    system_generated: true
                  }) do

@@ -35,7 +35,7 @@ defmodule LimeLease.User.UserResolver do
     user = user |> Ecto.preload(:agency_agent)
 
     case UserContext.admin_of_agency?(user) do
-      {:ok, :is_admin_of_agency} -> {:ok, true}
+      :ok -> {:ok, true}
       _ -> {:ok, false}
     end
   end

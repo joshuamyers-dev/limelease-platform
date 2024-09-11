@@ -1,5 +1,4 @@
 defmodule LimeLease.Notifications do
-  alias LimeLease.Profile
   alias LimeLease.Tenant.TenantContext
   alias LimeLease.Property.{Property, PropertyLandlord}
   alias LimeLease.Agency.Agency
@@ -11,7 +10,6 @@ defmodule LimeLease.Notifications do
   alias LimeLease.PropertyAgent.PropertyAgentContext
 
   alias LimeLease.Helpers
-  alias LimeLease.FCM
 
   require IEx
   require Logger
@@ -29,28 +27,24 @@ defmodule LimeLease.Notifications do
   end
 
   def dispatch_status_update_for_request(%PropertyRequest{} = request) do
-    with {:ok, "emails_sent"} <- send_status_update_email(request),
-         {:ok, "push_notifications_sent"} <- send_tenant_push_notifications(request) do
-      {:ok, "notifications_sent"}
-    end
+    send_status_update_email(request)
+    send_property_status_update_for_tenants(request)
   end
 
   def send_status_update_email(%PropertyRequest{} = request) do
-    case PropertyRequestService.create_request_status_screenshot(request) do
-      {:ok, screenshot_image_url} ->
-        cta_url = Application.get_env(:lime_lease, :front_end_url) <> "/requests/#{request.ticket_number}"
+    cta_url = Application.get_env(:lime_lease, :front_end_url) <> "/requests/#{request.ticket_number}"
 
-        send_property_status_update_for_managers(request.property, screenshot_image_url, cta_url)
-        send_property_status_update_for_landlords(request.property, screenshot_image_url, cta_url)
-
-        {:ok, "emails_sent"}
-
+    with {:ok, screenshot_image_url} <- PropertyRequestService.create_request_status_screenshot(request),
+         :ok <- send_property_status_update_for_managers(request.property, screenshot_image_url, cta_url),
+         :ok <- send_property_status_update_for_landlords(request.property, screenshot_image_url, cta_url) do
+      :ok
+    else
       {:error, reason} ->
-        Logger.error(
-          "Failed to send status update email for request #{request.id}. Error: Failed to create screenshot."
-        )
-
+        Logger.error("Failed to send status update email for request #{request.id}. Error: Failed to create screenshot.")
         Logger.error(reason)
+
+      err ->
+        Logger.error("Failed to send status update email for request #{request.id}. Error: #{inspect(err)}")
     end
   end
 
@@ -69,18 +63,29 @@ defmodule LimeLease.Notifications do
     |> Oban.insert()
   end
 
-  def send_tenant_push_notifications(%PropertyRequest{} = request) do
+  def send_property_status_update_for_tenants(%PropertyRequest{} = request) do
     with {:ok, tenants} <- TenantContext.get_tenants_for_property_id(request.property_id) do
-      Enum.map(tenants, fn %Tenant{} = tenant ->
+      Enum.map(tenants, fn %Tenant{user: %User{fcm_tokens: tokens}} ->
         Task.async(fn ->
-          Enum.map(tenant.user.fcm_tokens, fn token ->
+          Enum.map(tokens, fn token ->
             send_fcm_message(token, "Request Updated", "Your request '#{request.title}' has a new status update.")
           end)
         end)
       end)
       |> Task.await_many()
+    end
+  end
 
-      {:ok, "push_notifications_sent"}
+  def send_push_notification_for_tenants(%PropertyRequest{} = request, title, body) do
+    with {:ok, tenants} <- TenantContext.get_tenants_for_property_id(request.property_id) do
+      Enum.map(tenants, fn %Tenant{user: %User{fcm_tokens: tokens}} ->
+        Task.async(fn ->
+          Enum.map(tokens, fn token ->
+            send_fcm_message(token, title, body)
+          end)
+        end)
+      end)
+      |> Task.await_many()
     end
   end
 
@@ -105,6 +110,14 @@ defmodule LimeLease.Notifications do
         end)
       end)
       |> Task.await_many()
+      |> Enum.all?(fn
+        {:ok, %Oban.Job{}} -> true
+        _ -> false
+      end)
+      |> case do
+        true -> :ok
+        false -> {:error, "Failed to send status update email to property managers."}
+      end
     end
   end
 
@@ -116,20 +129,24 @@ defmodule LimeLease.Notifications do
         false -> tenants
       end
 
-    Enum.map(tenants, fn %Tenant{} = tenant ->
+    Enum.map(tenants, fn %Tenant{user: %User{profile: %Profile{} = tenant_profile}} ->
       Task.async(fn ->
         email_args = %{
-          "tenant_name" => "#{tenant.user.profile.first_name}",
+          "tenant_name" => "#{tenant_profile.first_name}",
           "agent_name" => Helpers.full_user_name(agent),
           "address" => Helpers.address_label(property.address)
         }
 
-        %{"type" => "tenant_welcome", "to_address" => tenant.user.profile.email, "email_args" => email_args}
+        %{"type" => "tenant_welcome", "to_address" => tenant_profile.email, "email_args" => email_args}
         |> LimeLease.Workers.EmailDeliveryWorker.new()
         |> Oban.insert()
       end)
     end)
     |> Task.await_many()
+    |> Enum.all?(fn
+      {:ok, %Oban.Job{}} -> :ok
+      _ -> {:error, "Failed to queue jobs for tenant welcome emails"}
+    end)
   end
 
   def send_property_status_update_for_landlords(%Property{} = property, screenshot_image_url, cta_url) do
@@ -148,5 +165,9 @@ defmodule LimeLease.Notifications do
       end)
     end)
     |> Task.await_many()
+    |> Enum.all?(fn
+      {:ok, %Oban.Job{}} -> :ok
+      _ -> {:error, "Jobs failed to queue"}
+    end)
   end
 end
