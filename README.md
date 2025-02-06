@@ -22,7 +22,7 @@ LimeLease is built as a **monorepo** with multiple services:
 - **Database:** PostgreSQL
 - **Authentication:** JWT-based authentication
 - **IaC:** AWS using the SST Framework/Pulumi
-  - VPC, ECS (Fargate) with auto scaling, S3, API Gateway (Lambda) for hosting scraping and snapshotting services
+  - VPC, ECS (Fargate) with auto scaling, RDS (PostgreSQL), S3 bucket storage, API Gateway (Lambda) for hosting scraping and snapshotting services
 
 ## 📖 Getting Started
 
