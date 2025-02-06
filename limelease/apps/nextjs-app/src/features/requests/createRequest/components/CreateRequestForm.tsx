@@ -7,7 +7,7 @@ import { Maybe } from '@types/Maybe';
 import { Colours } from '@utils/Colours';
 import { LOCAL_STORAGE_AUTH_KEY } from '@utils/Constants';
 import { normFile, resizeFile } from '@utils/Helpers';
-import { Button, Col, Form, Input, Row, Select, Upload, message } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Upload, message, notification } from 'antd';
 
 import { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
@@ -65,7 +65,12 @@ const CreateRequestForm: React.FC<CreateRequestFormProps> = ({ propertyId, onClo
           ],
         });
 
-        message.success('Your request was added successfully.');
+        notification.success({
+          message: `Request added.`,
+          showProgress: true,
+          placement: 'top',
+          closable: true,
+        });
         onCloseModal();
       } catch (err: any) {
         message.error(err?.message);

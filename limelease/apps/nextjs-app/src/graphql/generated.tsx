@@ -354,6 +354,16 @@ export enum PropertyRequestUrgency {
   MidHigh = 'MID_HIGH'
 }
 
+export type PropertyTask = {
+  __typename?: 'PropertyTask';
+  completed?: Maybe<Scalars['Boolean']['output']>;
+  completedAt?: Maybe<Scalars['DateTime']['output']>;
+  dueDate: Scalars['DateTime']['output'];
+  id: Scalars['ID']['output'];
+  property: Property;
+  task: Task;
+};
+
 export type RootMutationType = {
   __typename?: 'RootMutationType';
   /** Assign a contractor to a property request. */
@@ -366,6 +376,7 @@ export type RootMutationType = {
   createProperty: Property;
   /** Add a new comment to a property request. */
   propertyRequestCommentCreate?: Maybe<PropertyRequestComment>;
+  propertyTaskMarkCompleted?: Maybe<PropertyTask>;
   /** Create a new property request. Expected errors: unauthorized */
   requestCreate: PropertyRequest;
   /** Update the state of multiple property requests. Expected errors: unauthorized */
@@ -431,6 +442,11 @@ export type RootMutationTypePropertyRequestCommentCreateArgs = {
   messageBody: Scalars['String']['input'];
   requestId: Scalars['ID']['input'];
   systemGenerated?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type RootMutationTypePropertyTaskMarkCompletedArgs = {
+  id: Scalars['ID']['input'];
 };
 
 
@@ -546,6 +562,7 @@ export type RootQueryType = {
   propertyRequestComments?: Maybe<PropertyRequestCommentConnection>;
   /** Fetch a count of property request comments by Request ID */
   propertyRequestCommentsCount: Scalars['Int']['output'];
+  propertyTasks?: Maybe<Array<Maybe<PropertyTask>>>;
   /** Fetch a paginated lists of requests for a particular property. Expected errors: unauthorized, not_found */
   requestsForProperty?: Maybe<PropertyRequestConnection>;
   /** Search for contractors by name */
@@ -647,6 +664,11 @@ export type RootQueryTypePropertyRequestCommentsCountArgs = {
 };
 
 
+export type RootQueryTypePropertyTasksArgs = {
+  propertyId: Scalars['ID']['input'];
+};
+
+
 export type RootQueryTypeRequestsForPropertyArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -678,6 +700,20 @@ export type StaticMedia = {
   uploadUrl?: Maybe<Scalars['String']['output']>;
   url?: Maybe<Scalars['String']['output']>;
 };
+
+export type Task = {
+  __typename?: 'Task';
+  frequencyMonths: Scalars['Int']['output'];
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+  type: TaskType;
+};
+
+export enum TaskType {
+  Compliance = 'COMPLIANCE',
+  Routine = 'ROUTINE',
+  Safety = 'SAFETY'
+}
 
 export type TeamMemberInviteArgs = {
   assignedPropertyIds: Array<InputMaybe<Scalars['String']['input']>>;
@@ -840,6 +876,20 @@ export type FetchPropertyRequestsQueryVariables = Exact<{
 
 export type FetchPropertyRequestsQuery = { __typename?: 'RootQueryType', requestsForProperty?: { __typename?: 'PropertyRequestConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor?: string | null, endCursor?: string | null }, edges?: Array<{ __typename?: 'PropertyRequestEdge', node?: { __typename?: 'PropertyRequest', id: string, ticketNumber: string, state: PropertyRequestState, title: string, details: string, urgency: PropertyRequestUrgency, insertedAt: any, category: { __typename?: 'PropertyRequestCategory', id: string, name: string }, photos?: Array<{ __typename?: 'PropertyRequestPhoto', staticMedia: { __typename?: 'StaticMedia', url?: string | null } } | null> | null } | null } | null> | null } | null };
 
+export type FetchPropertyTasksQueryVariables = Exact<{
+  propertyId: Scalars['ID']['input'];
+}>;
+
+
+export type FetchPropertyTasksQuery = { __typename?: 'RootQueryType', propertyTasks?: Array<{ __typename?: 'PropertyTask', id: string, completed?: boolean | null, dueDate: any, completedAt?: any | null, task: { __typename?: 'Task', id: string, name: string, frequencyMonths: number, type: TaskType } } | null> | null };
+
+export type MarkTaskCompletedMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type MarkTaskCompletedMutation = { __typename?: 'RootMutationType', propertyTaskMarkCompleted?: { __typename?: 'PropertyTask', id: string, completed?: boolean | null, dueDate: any, completedAt?: any | null, task: { __typename?: 'Task', id: string, name: string, frequencyMonths: number, type: TaskType } } | null };
+
 export type FetchPropertiesQueryVariables = Exact<{
   first: Scalars['Int']['input'];
   after?: InputMaybe<Scalars['String']['input']>;
@@ -995,9 +1045,13 @@ export type PropertyRequestCategoryBaseFragment = { __typename?: 'PropertyReques
 
 export type PropertyRequestCommentBaseFragment = { __typename?: 'PropertyRequestComment', id: string, messageBody?: string | null, systemGenerated?: boolean | null, authorName: string, insertedAt: any };
 
+export type PropertyTaskBaseFragment = { __typename?: 'PropertyTask', id: string, completed?: boolean | null, dueDate: any, completedAt?: any | null, task: { __typename?: 'Task', id: string, name: string, frequencyMonths: number, type: TaskType } };
+
 export type RequestBaseFragment = { __typename?: 'PropertyRequest', id: string, ticketNumber: string, state: PropertyRequestState, title: string, details: string, urgency: PropertyRequestUrgency, insertedAt: any, category: { __typename?: 'PropertyRequestCategory', id: string, name: string }, photos?: Array<{ __typename?: 'PropertyRequestPhoto', staticMedia: { __typename?: 'StaticMedia', url?: string | null } } | null> | null };
 
 export type StaticMediaBaseFragment = { __typename?: 'StaticMedia', id: string, s3Key?: string | null, uploadUrl?: string | null, url?: string | null };
+
+export type TaskBaseFragment = { __typename?: 'Task', id: string, name: string, frequencyMonths: number, type: TaskType };
 
 export type TenantBaseFragment = { __typename?: 'Tenant', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null }, agency?: { __typename?: 'Agency', id: string, name: string } | null } };
 
@@ -1137,6 +1191,25 @@ export const PropertyRequestCommentBaseFragmentDoc = gql`
   insertedAt
 }
     `;
+export const TaskBaseFragmentDoc = gql`
+    fragment TaskBase on Task {
+  id
+  name
+  frequencyMonths
+  type
+}
+    `;
+export const PropertyTaskBaseFragmentDoc = gql`
+    fragment PropertyTaskBase on PropertyTask {
+  id
+  completed
+  dueDate
+  completedAt
+  task {
+    ...TaskBase
+  }
+}
+    ${TaskBaseFragmentDoc}`;
 export const PropertyRequestCategoryBaseFragmentDoc = gql`
     fragment PropertyRequestCategoryBase on PropertyRequestCategory {
   id
@@ -1841,6 +1914,79 @@ export type FetchPropertyRequestsQueryHookResult = ReturnType<typeof useFetchPro
 export type FetchPropertyRequestsLazyQueryHookResult = ReturnType<typeof useFetchPropertyRequestsLazyQuery>;
 export type FetchPropertyRequestsSuspenseQueryHookResult = ReturnType<typeof useFetchPropertyRequestsSuspenseQuery>;
 export type FetchPropertyRequestsQueryResult = ApolloReactCommon.QueryResult<FetchPropertyRequestsQuery, FetchPropertyRequestsQueryVariables>;
+export const FetchPropertyTasksDocument = gql`
+    query fetchPropertyTasks($propertyId: ID!) {
+  propertyTasks(propertyId: $propertyId) {
+    ...PropertyTaskBase
+  }
+}
+    ${PropertyTaskBaseFragmentDoc}`;
+
+/**
+ * __useFetchPropertyTasksQuery__
+ *
+ * To run a query within a React component, call `useFetchPropertyTasksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFetchPropertyTasksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFetchPropertyTasksQuery({
+ *   variables: {
+ *      propertyId: // value for 'propertyId'
+ *   },
+ * });
+ */
+export function useFetchPropertyTasksQuery(baseOptions: ApolloReactHooks.QueryHookOptions<FetchPropertyTasksQuery, FetchPropertyTasksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<FetchPropertyTasksQuery, FetchPropertyTasksQueryVariables>(FetchPropertyTasksDocument, options);
+      }
+export function useFetchPropertyTasksLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FetchPropertyTasksQuery, FetchPropertyTasksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<FetchPropertyTasksQuery, FetchPropertyTasksQueryVariables>(FetchPropertyTasksDocument, options);
+        }
+export function useFetchPropertyTasksSuspenseQuery(baseOptions?: ApolloReactHooks.SuspenseQueryHookOptions<FetchPropertyTasksQuery, FetchPropertyTasksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<FetchPropertyTasksQuery, FetchPropertyTasksQueryVariables>(FetchPropertyTasksDocument, options);
+        }
+export type FetchPropertyTasksQueryHookResult = ReturnType<typeof useFetchPropertyTasksQuery>;
+export type FetchPropertyTasksLazyQueryHookResult = ReturnType<typeof useFetchPropertyTasksLazyQuery>;
+export type FetchPropertyTasksSuspenseQueryHookResult = ReturnType<typeof useFetchPropertyTasksSuspenseQuery>;
+export type FetchPropertyTasksQueryResult = ApolloReactCommon.QueryResult<FetchPropertyTasksQuery, FetchPropertyTasksQueryVariables>;
+export const MarkTaskCompletedDocument = gql`
+    mutation markTaskCompleted($id: ID!) {
+  propertyTaskMarkCompleted(id: $id) {
+    ...PropertyTaskBase
+  }
+}
+    ${PropertyTaskBaseFragmentDoc}`;
+export type MarkTaskCompletedMutationFn = ApolloReactCommon.MutationFunction<MarkTaskCompletedMutation, MarkTaskCompletedMutationVariables>;
+
+/**
+ * __useMarkTaskCompletedMutation__
+ *
+ * To run a mutation, you first call `useMarkTaskCompletedMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMarkTaskCompletedMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [markTaskCompletedMutation, { data, loading, error }] = useMarkTaskCompletedMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useMarkTaskCompletedMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MarkTaskCompletedMutation, MarkTaskCompletedMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<MarkTaskCompletedMutation, MarkTaskCompletedMutationVariables>(MarkTaskCompletedDocument, options);
+      }
+export type MarkTaskCompletedMutationHookResult = ReturnType<typeof useMarkTaskCompletedMutation>;
+export type MarkTaskCompletedMutationResult = ApolloReactCommon.MutationResult<MarkTaskCompletedMutation>;
+export type MarkTaskCompletedMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkTaskCompletedMutation, MarkTaskCompletedMutationVariables>;
 export const FetchPropertiesDocument = gql`
     query fetchProperties($first: Int!, $after: String, $before: String, $last: Int, $filter: PropertyFilter, $searchKeywords: String) {
   myProperties(

@@ -573,7 +573,7 @@
 				CODE_SIGN_ENTITLEMENTS = OccupieTenant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = FAKEH2V6W4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LimeLeaseTenant/Info.plist;
@@ -607,7 +607,7 @@
 				CODE_SIGN_ENTITLEMENTS = OccupieTenant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = FAKEH2V6W4;
 				INFOPLIST_FILE = LimeLeaseTenant/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OccuPie;

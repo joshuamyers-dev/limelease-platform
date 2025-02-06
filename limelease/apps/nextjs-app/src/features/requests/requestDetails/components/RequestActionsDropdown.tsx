@@ -1,5 +1,5 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Menu, MenuProps, Modal, Space, message } from 'antd';
+import { Button, Dropdown, Menu, MenuProps, Modal, Space, message, notification } from 'antd';
 
 import { requestActionsMenuItems } from '../utils/Constants';
 import { useCallback, useContext, useMemo } from 'react';
@@ -46,7 +46,12 @@ const RequestActionsDropdown = () => {
       refetchQueries,
     });
 
-    message.success('This request has been marked as complete.', 2.5);
+    notification.success({
+      message: `#${context.request?.ticketNumber} completed and closed out.`,
+      showProgress: true,
+      placement: 'top',
+      closable: true,
+    });
   }, [context?.request.id]);
 
   const changeStatus = useCallback(
@@ -59,7 +64,12 @@ const RequestActionsDropdown = () => {
         refetchQueries,
       });
 
-      message.success('This request has been updated.', 2.5);
+      notification.success({
+        message: `#${context.request?.ticketNumber} updated.`,
+        showProgress: true,
+        placement: 'top',
+        closable: true,
+      });
     },
     [context?.request.id]
   );
@@ -74,7 +84,12 @@ const RequestActionsDropdown = () => {
         refetchQueries,
       });
 
-      message.success('This request has been updated.', 2.5);
+      notification.success({
+        message: `#${context.request?.ticketNumber} updated.`,
+        showProgress: true,
+        placement: 'top',
+        closable: true,
+      });
     },
     [context.request.id]
   );
@@ -103,7 +118,12 @@ const RequestActionsDropdown = () => {
 
   const handleCopyLink = useCallback(() => {
     navigator.clipboard.writeText(window.location.href);
-    message.success('Link copied to clipboard.', 2.5);
+    notification.success({
+      message: `Link copied.`,
+      showProgress: true,
+      placement: 'top',
+      closable: true,
+    });
   }, []);
 
   const handleEditRequest = useCallback(() => {
@@ -126,7 +146,12 @@ const RequestActionsDropdown = () => {
           refetchQueries,
         });
 
-        message.success('This request has been archived.', 2.5);
+        notification.success({
+          message: `#${context.request?.ticketNumber} was archived.`,
+          showProgress: true,
+          placement: 'top',
+          closable: true,
+        });
       },
     });
   }, [context.request]);

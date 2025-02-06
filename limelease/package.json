@@ -5,23 +5,26 @@
     "author": "Joshua Nissenbaum <REDACTED_EMAIL>",
     "private": true,
     "pnpm": {
-      "workspaces": [
-        "packages/*",
-        "services/*",
-        "apps/*"
-      ]
+        "workspaces": [
+            "packages/*",
+            "services/*",
+            "apps/*"
+        ]
     },
     "scripts": {
-      "start:nextjs": "pnpm --filter @limelease/nextjs-app dev",
-      "start:elixir-api": "cd limelease/services/elixir-api && iex -S mix phx.server"
+        "start:nextjs": "pnpm --filter @limelease/nextjs-app dev",
+        "start:elixir-api": "cd limelease/services/elixir-api && iex -S mix phx.server"
     },
     "dependencies": {
         "sst": "^3.0.13"
     },
     "preconstruct": {
-      "packages": [
-        "packages/*",
-        "services/*"
-      ]
+        "packages": [
+            "packages/*",
+            "services/*"
+        ]
+    },
+    "devDependencies": {
+        "typescript": "^5.6.2"
     }
-  }
+}

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Modal, Form, Row, Col, Input, Select, Button, message } from 'antd';
+import { Modal, Form, Row, Col, Input, Select, Button, message, notification } from 'antd';
 import { MyTeamDocument, useFetchPropertiesQuery, useInviteTeamMemberMutation } from '@graphql/generated';
 import { renderAddressLabel } from '@utils/Helpers';
 import { Maybe } from '@types/Maybe';
@@ -80,7 +80,13 @@ const AddTeamMemberForm: React.FC<AddTeamMemberFormProps> = ({ onComplete }) => 
 
   useEffect(() => {
     if (teamMemberData?.teamMemberInvite) {
-      message.success(`${teamMemberData.teamMemberInvite.user.profile.firstName} was sent an invitation.`);
+      notification.success({
+        message: 'Invite Sent',
+        description: `An email has been sent to ${teamMemberData.teamMemberInvite.user.profile.email}.`,
+        showProgress: true,
+        placement: 'top',
+        closable: true,
+      });
       onComplete();
     }
   }, [teamMemberData]);

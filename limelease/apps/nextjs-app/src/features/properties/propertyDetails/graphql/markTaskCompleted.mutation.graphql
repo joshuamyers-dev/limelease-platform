@@ -1,0 +1,5 @@
+mutation markTaskCompleted($id: ID!) {
+  propertyTaskMarkCompleted(id: $id) {
+    ...PropertyTaskBase
+  }
+}

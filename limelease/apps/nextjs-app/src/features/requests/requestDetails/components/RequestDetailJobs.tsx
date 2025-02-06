@@ -9,7 +9,7 @@ import {
 import { Colours } from '@utils/Colours';
 import { DEVICE_TIMEZONE } from '@utils/Constants';
 import { dayjs } from '@utils/DayjsTimezone';
-import { Button, Modal, message } from 'antd';
+import { Button, Modal, message, notification } from 'antd';
 import { useCallback, useContext, useMemo } from 'react';
 import styled from 'styled-components';
 import { RequestDetailsContext } from '../containers/RequestDetailsContainer';
@@ -104,7 +104,12 @@ const RequestDetailJobs: React.FC<RequestDetailJobsProps> = ({ requestId }) => {
           awaitRefetchQueries: true,
         });
 
-        message.success('This job has been deleted.');
+        notification.success({
+          message: `Job was archived.`,
+          showProgress: true,
+          placement: 'top',
+          closable: true,
+        });
       },
     });
   }, [jobData?.contractorJobActive, requestId]);

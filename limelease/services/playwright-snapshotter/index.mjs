@@ -23,8 +23,8 @@ export const handler = async (event) => {
     await page.goto(url);
 
     await page.setViewportSize({
-      width: 390,
-      height: 844,
+      width: 844,
+      height: 1042,
     });
 
     await page.waitForLoadState("networkidle");

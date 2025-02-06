@@ -81,6 +81,17 @@ const RequestDetailComments: React.FC<RequestDetailCommentsProps> = ({ requestId
           authorName: formValues.authorName,
           messageBody: formValues.commentBody,
         },
+        optimisticResponse: {
+          __typename: 'RootMutationType',
+          propertyRequestCommentCreate: {
+            __typename: 'PropertyRequestComment',
+            id: 'temp-id',
+            authorName: formValues.authorName,
+            messageBody: formValues.commentBody,
+            insertedAt: new Date().toISOString(),
+            systemGenerated: false,
+          },
+        },
         refetchQueries: [
           {
             query: FetchRequestCommentsDocument,
@@ -96,10 +107,8 @@ const RequestDetailComments: React.FC<RequestDetailCommentsProps> = ({ requestId
             },
           },
         ],
-        awaitRefetchQueries: true,
       });
 
-      message.success('Your comment was added.');
       setAddCommentVisible(false);
       form.resetFields();
     },

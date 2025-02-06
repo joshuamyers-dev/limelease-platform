@@ -6,7 +6,7 @@ import { Maybe } from '@types/Maybe';
 import { fadeInOutProps } from '@utils/AnimationsProps';
 import { Colours } from '@utils/Colours';
 import { renderAddressLabel } from '@utils/Helpers';
-import { Button, Modal, Table, message } from 'antd';
+import { Button, Modal, Table, message, notification } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { TableRowSelection } from 'antd/es/table/interface';
 import dayjs from 'dayjs';
@@ -151,7 +151,12 @@ const ViewRequestsTableList: React.FC<ViewRequestsTableListProps> = ({ requests,
           ],
         });
 
-        message.success('These Requests have been marked as complete.');
+        notification.success({
+          message: `Requests updated.`,
+          showProgress: true,
+          placement: 'top',
+          closable: true,
+        });
       },
     });
   }, [selectedRequestIds]);

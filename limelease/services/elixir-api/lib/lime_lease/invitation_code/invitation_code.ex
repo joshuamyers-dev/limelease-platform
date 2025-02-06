@@ -7,7 +7,7 @@ defmodule LimeLease.InvitationCode.InvitationCode do
   import Ecto.Query
   import LimeLease.ChangesetHelpers
 
-  @primary_key {:id, UUIDv7, autogenerate: true}
+  @primary_key false
 
   schema "invitation_codes" do
     field :code, :string

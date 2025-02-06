@@ -1,0 +1,5 @@
+query fetchPropertyTasks($propertyId: ID!) {
+  propertyTasks(propertyId: $propertyId) {
+    ...PropertyTaskBase
+  }
+}

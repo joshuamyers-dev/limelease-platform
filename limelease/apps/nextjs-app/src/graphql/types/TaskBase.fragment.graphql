@@ -1,0 +1,6 @@
+fragment TaskBase on Task {
+  id
+  name
+  frequencyMonths
+  type
+}

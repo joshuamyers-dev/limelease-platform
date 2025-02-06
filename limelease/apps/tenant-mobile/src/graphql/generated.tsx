@@ -38,6 +38,7 @@ export type Agency = {
 export type AgencyAgent = {
   __typename?: 'AgencyAgent';
   id: Scalars['ID'];
+  properties?: Maybe<Array<Maybe<Property>>>;
   role: Scalars['String'];
   user: User;
 };
@@ -95,7 +96,6 @@ export type ContractorJob = {
   description?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   request?: Maybe<PropertyRequest>;
-  state: ContractorJobState;
 };
 
 export type ContractorJobConnection = {
@@ -110,16 +110,6 @@ export type ContractorJobEdge = {
   node?: Maybe<ContractorJob>;
 };
 
-export enum ContractorJobState {
-  Archived = 'ARCHIVED',
-  JobBooked = 'JOB_BOOKED',
-  JobCancelled = 'JOB_CANCELLED',
-  JobCompleted = 'JOB_COMPLETED',
-  QuotedPriced = 'QUOTED_PRICED',
-  QuoteBooked = 'QUOTE_BOOKED',
-  Sent = 'SENT'
-}
-
 export type CreateAddress = {
   postcode: Scalars['Int'];
   state: Scalars['String'];
@@ -130,19 +120,19 @@ export type CreateAddress = {
   unitNumber?: InputMaybe<Scalars['Int']>;
 };
 
+export type CreateFile = {
+  id?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+  uriPath?: InputMaybe<Scalars['String']>;
+};
+
 export type CreatePhoto = {
   id?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
   type?: InputMaybe<Scalars['String']>;
   uriPath?: InputMaybe<Scalars['String']>;
   url?: InputMaybe<Scalars['String']>;
-};
-
-export type File = {
-  id?: InputMaybe<Scalars['ID']>;
-  name: Scalars['String'];
-  type: Scalars['String'];
-  uri?: InputMaybe<Scalars['String']>;
 };
 
 export type Landlord = {
@@ -237,6 +227,7 @@ export type PropertyEdge = {
 export type PropertyFile = {
   __typename?: 'PropertyFile';
   fileName: Scalars['String'];
+  fileType: Scalars['String'];
   id: Scalars['ID'];
   insertedAt: Scalars['DateTime'];
   staticMedia?: Maybe<StaticMedia>;
@@ -381,6 +372,8 @@ export type RootMutationType = {
   requestUpdateUrgency: PropertyRequest;
   /** Create a new static media asset. */
   staticMediaCreate: StaticMedia;
+  /** Invite a new team member to your agency. */
+  teamMemberInvite?: Maybe<AgencyAgent>;
   /** Update the current user's profile. */
   updateProfile: Profile;
   /** Update an existing property */
@@ -422,7 +415,7 @@ export type RootMutationTypeCreateContractorArgs = {
 
 
 export type RootMutationTypeCreatePropertyArgs = {
-  files?: InputMaybe<Array<InputMaybe<File>>>;
+  files?: InputMaybe<Array<InputMaybe<CreateFile>>>;
   landlords: Array<Landlord>;
   leaseDetails?: InputMaybe<LeaseDetails>;
   photos?: InputMaybe<Array<CreatePhoto>>;
@@ -468,6 +461,11 @@ export type RootMutationTypeStaticMediaCreateArgs = {
 };
 
 
+export type RootMutationTypeTeamMemberInviteArgs = {
+  input: TeamMemberInviteArgs;
+};
+
+
 export type RootMutationTypeUpdateProfileArgs = {
   email: Scalars['String'];
   firstName: Scalars['String'];
@@ -477,7 +475,7 @@ export type RootMutationTypeUpdateProfileArgs = {
 
 
 export type RootMutationTypeUpdatePropertyArgs = {
-  files?: InputMaybe<Array<InputMaybe<File>>>;
+  files?: InputMaybe<Array<InputMaybe<CreateFile>>>;
   landlords: Array<Landlord>;
   leaseDetails?: InputMaybe<LeaseDetails>;
   photos?: InputMaybe<Array<CreatePhoto>>;
@@ -679,6 +677,15 @@ export type StaticMedia = {
   url?: Maybe<Scalars['String']>;
 };
 
+export type TeamMemberInviteArgs = {
+  assignedPropertyIds: Array<InputMaybe<Scalars['String']>>;
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  phoneNumber: Scalars['String'];
+  role: Scalars['String'];
+};
+
 export type Tenant = {
   __typename?: 'Tenant';
   id: Scalars['ID'];
@@ -720,12 +727,12 @@ export type MyActivityQuery = { __typename?: 'RootQueryType', myActivity?: { __t
 export type MyLeaseQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyLeaseQuery = { __typename?: 'RootQueryType', myLease?: { __typename?: 'Lease', id: string, startDate?: any | null, endDate?: any | null, rentPcm?: number | null, property: { __typename?: 'Property', files?: Array<{ __typename?: 'PropertyFile', id: string, fileName: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null } | null> | null, agents?: Array<{ __typename?: 'PropertyAgent', id: string, agent?: { __typename?: 'AgencyAgent', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null } } } | null } | null> | null } } | null };
+export type MyLeaseQuery = { __typename?: 'RootQueryType', myLease?: { __typename?: 'Lease', id: string, startDate?: any | null, endDate?: any | null, rentPcm?: number | null, property: { __typename?: 'Property', files?: Array<{ __typename?: 'PropertyFile', id: string, fileName: string, fileType: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null } | null> | null, agents?: Array<{ __typename?: 'PropertyAgent', id: string, agent?: { __typename?: 'AgencyAgent', id: string, user: { __typename?: 'User', id: string, profile: { __typename?: 'Profile', id: string, email?: string | null, firstName?: string | null, lastName?: string | null, phoneNumber?: string | null } } } | null } | null> | null } } | null };
 
 export type MyUpcomingJobsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyUpcomingJobsQuery = { __typename?: 'RootQueryType', myUpcomingJobs?: { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, request?: { __typename?: 'PropertyRequest', id: string } | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string } | null } | null };
+export type MyUpcomingJobsQuery = { __typename?: 'RootQueryType', myUpcomingJobs?: { __typename?: 'ContractorJob', id: string, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, request?: { __typename?: 'PropertyRequest', id: string } | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string } | null } | null };
 
 export type SendOtpMutationVariables = Exact<{
   number: Scalars['String'];
@@ -786,7 +793,7 @@ export type FetchActiveJobForRequestQueryVariables = Exact<{
 }>;
 
 
-export type FetchActiveJobForRequestQuery = { __typename?: 'RootQueryType', contractorJobActive?: { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string } | null } | null };
+export type FetchActiveJobForRequestQuery = { __typename?: 'RootQueryType', contractorJobActive?: { __typename?: 'ContractorJob', id: string, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string } | null } | null };
 
 export type FetchRequestQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -822,9 +829,9 @@ export type MyRequestsQuery = { __typename?: 'RootQueryType', myRequests?: { __t
 
 export type ContractorBaseFragment = { __typename?: 'Contractor', id: string, businessName: string };
 
-export type ContractorJobBaseFragment = { __typename?: 'ContractorJob', id: string, state: ContractorJobState, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string } | null };
+export type ContractorJobBaseFragment = { __typename?: 'ContractorJob', id: string, description?: string | null, bookingDateStart?: any | null, bookingDateEnd?: any | null, contractor?: { __typename?: 'Contractor', id: string, businessName: string } | null };
 
-export type FileBaseFragment = { __typename?: 'PropertyFile', id: string, fileName: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null };
+export type FileBaseFragment = { __typename?: 'PropertyFile', id: string, fileName: string, fileType: string, insertedAt: any, staticMedia?: { __typename?: 'StaticMedia', id: string, url?: string | null } | null };
 
 export type LeaseBaseFragment = { __typename?: 'Lease', id: string, startDate?: any | null, endDate?: any | null, rentPcm?: number | null };
 
@@ -849,7 +856,6 @@ export const ContractorBaseFragmentDoc = gql`
 export const ContractorJobBaseFragmentDoc = gql`
     fragment ContractorJobBase on ContractorJob {
   id
-  state
   description
   bookingDateStart
   bookingDateEnd
@@ -862,6 +868,7 @@ export const FileBaseFragmentDoc = gql`
     fragment FileBase on PropertyFile {
   id
   fileName
+  fileType
   staticMedia {
     id
     url

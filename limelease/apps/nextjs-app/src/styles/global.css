@@ -24,6 +24,16 @@ body {
   box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, 0.04);
 }
 
+
+.ant-table-row {
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out; 
+}
+
+.ant-table-row.completed {
+  background-color: #c9e8ba;
+}
+
 .ant-btn-link {
   font-weight: bold;
   padding-left: 0;

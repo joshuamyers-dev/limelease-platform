@@ -53,8 +53,8 @@ defmodule LimeLeaseWeb.Emails do
     {:ok, datetime} = DateTime.now("Australia/Sydney")
 
     case datetime.hour do
-      hour when hour in 0..11 -> "Good Morning,"
-      hour when hour in 12..23 -> "Good Evening,"
+      hour when hour in 0..11 -> "Good morning,"
+      hour when hour in 12..23 -> "Good evening,"
     end
   end
 end

@@ -1,0 +1,9 @@
+fragment PropertyTaskBase on PropertyTask {
+  id
+  completed
+  dueDate
+  completedAt
+  task {
+    ...TaskBase
+  }
+}

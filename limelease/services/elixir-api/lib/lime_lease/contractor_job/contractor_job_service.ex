@@ -74,7 +74,7 @@ defmodule LimeLease.ContractorJob.ContractorJobService do
     with {:ok, %ContractorJob{} = contractor_job} <- ContractorJobContext.get_contractor_job_by_id(id),
          :ok <- UserContext.can_delete_contractor_job?(user, contractor_job) do
       changeset_attrs = %{
-        message_body: "The job assigned to #{contractor_job.contractor.business_name} was removed.",
+        message_body: "The job assigned to #{contractor_job.contractor.business_name} was archived.",
         author_name: "#{user.profile.first_name} #{user.profile.last_name}",
         system_generated: true
       }

@@ -3,6 +3,7 @@ defmodule LimeLease.ContractorJob.ContractorJobContext do
 
   alias LimeLease.PropertyRequest.PropertyRequest
   alias LimeLease.User.User
+  alias LimeLease.Tenant.Tenant
   alias LimeLease.Contractor.Contractor
   alias LimeLease.ContractorJob.ContractorJob
 
@@ -26,9 +27,9 @@ defmodule LimeLease.ContractorJob.ContractorJobContext do
     |> Repo.ok_error()
   end
 
-  def get_contractor_job_for_tenant(%User{} = user) do
+  def get_contractor_job_for_tenant(%User{tenant: %Tenant{property_id: property_id}}) do
     ContractorJob
-    |> ContractorJob.with_property(user.tenant.property_id)
+    |> ContractorJob.with_property(property_id)
     |> ContractorJob.is_active()
     |> ContractorJob.order_by_inserted_desc()
     |> ContractorJob.with_limit(1)

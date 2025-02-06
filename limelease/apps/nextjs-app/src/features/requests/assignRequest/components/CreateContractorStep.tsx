@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { Form, Button, Divider, message } from 'antd';
+import { Form, Button, Divider, message, notification } from 'antd';
 import { AnimatePresence, motion } from 'framer-motion';
 import { fadeInOutProps } from '@utils/AnimationsProps';
 import styled from 'styled-components';
@@ -43,7 +43,12 @@ const CreateContractorStep: React.FC<CreateContractorStepProps> = ({ isCreatingC
 
   useEffect(() => {
     if (createContractorData?.createContractor) {
-      message.success('The contractor has been added successfully.');
+      notification.success({
+        message: `${createContractorData.createContractor.businessName} was added.`,
+        showProgress: true,
+        placement: 'top',
+        closable: true,
+      });
       context?.setSelectedContractor(createContractorData?.createContractor);
       onContractorCreated();
     }
