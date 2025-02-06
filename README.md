@@ -1,4 +1,4 @@
-# 🍋 LimeLease/Occupie
+# 🍋 LimeLease
 
 **LimeLease** (or Occupie) is a **compliance-first lease management platform** designed for **landlords, tenants, and agencies** to streamline tenant requests, lease agreements, documentation, and compliance tracking.
 
