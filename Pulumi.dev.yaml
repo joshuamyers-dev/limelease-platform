@@ -1,0 +1,5 @@
+config:
+  aws:region: ap-southeast-2
+  limelease-platform:dbPassword:
+    secure: AAABABHbfkDCCXQBDxUkYFQHQHhRGJnHzLXQJLOKVYKCHjxlKcXlvg==
+  limelease-platform:environment: dev

@@ -19,7 +19,7 @@ export const handler = async (event) => {
       isMobile: true,
       deviceScaleFactor: 2,
     });
-    
+
     await page.goto(url);
 
     await page.setViewportSize({

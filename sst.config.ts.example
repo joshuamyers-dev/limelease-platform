@@ -1,0 +1,24 @@
+import { SSTConfig } from "sst";
+import { VpcStack } from "./stacks/vpc-with-fcknat";
+import { ApiStack } from "./stacks/api";
+import { StorageStack } from "./stacks/storage";
+import { DatabaseStack } from "./stacks/database";
+
+export default {
+  config(input) {
+    return {
+      name: "platform",
+      region: "ap-southeast-2",
+      removal: input.stage === "production" ? "retain" : "remove",
+    };
+  },
+  stacks(app) {
+    // Deploy the VPC with fck-nat first
+    app.stack(VpcStack);
+    
+    // Then deploy other stacks that depend on the VPC
+    app.stack(StorageStack);
+    app.stack(DatabaseStack);
+    app.stack(ApiStack);
+  },
+} satisfies SSTConfig;

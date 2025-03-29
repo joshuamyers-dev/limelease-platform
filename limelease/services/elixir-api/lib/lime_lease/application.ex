@@ -20,7 +20,7 @@ defmodule LimeLease.Application do
       LimeLeaseWeb.Endpoint,
       {Absinthe.Subscription, LimeLeaseWeb.Endpoint},
       # Firebase Cloud Messaging
-      {LimeLease.FCM, fcm_opts()}
+      # {LimeLease.FCM, fcm_opts()}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

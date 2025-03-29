@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :lime_lease, LimeLease.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   hostname: "localhost",
   database: "lime_lease_dev",
   stacktrace: true,

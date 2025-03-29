@@ -1,86 +1,63 @@
-name: CI
+name: Build and Deploy to AWS
 
-# 1
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push events but only for the master branch
+  # Triggers the workflow on push events but only for the main branch
   push:
     branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Image version'
+      stage:
+        description: 'Deployment stage (dev, staging, prod)'
         required: true
-#2
+        default: 'joshuanissenbaum'
+        type: choice
+        options:
+          - joshuanissenbaum
+          - staging
+          - prod
+
 env:
-  REGISTRY: "registry.digitalocean.com/limelease"
-  ELIXIR_IMAGE_NAME: "elixir-api"
-  WEB_IMAGE_NAME: "nextjs-app"
+  AWS_REGION: ap-southeast-2
 
-#3
 jobs:
-  build_and_push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repo 
-        uses: actions/checkout@v2
-        
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-    
-      - name: Log in to DigitalOcean Container Registry with short-lived credentials
-        run: doctl registry login --expiry-seconds 600
-
-      # Build and push Elixir API image
-      - name: Build Elixir API container image
-        run: docker build -f ./limelease/services/elixir-api/Dockerfile -t $REGISTRY/$ELIXIR_IMAGE_NAME:latest ./limelease/services/elixir-api
-
-      # Build and push Next.js web app image
-      - name: Build Next.js web app container image
-        run: docker build -f ./limelease/apps/nextjs-app/Dockerfile -t $REGISTRY/$WEB_IMAGE_NAME:latest ./limelease/apps/nextjs-app
-        
-      - name: Remove all old images
-        run: |
-          IMAGE_NAME=$REGISTRY/$WEB_IMAGE_NAME
-          if [ ! -z "$(doctl registry repository list | grep "$(echo $IMAGE_NAME)")" ]; then
-            TAGS=$(doctl registry repository list-tags $(echo $IMAGE_NAME) --format Tag --no-header | grep -o "sha.*")
-            for TAG in $TAGS; do
-              doctl registry repository delete-manifest $(echo $IMAGE_NAME) $TAG --force
-            done
-          else
-            echo "No repository"
-          fi
-
-      - name: Push Next.js web app image to DigitalOcean Container Registry
-        run: docker push $REGISTRY/$WEB_IMAGE_NAME:latest
-
-      - name: Push Elixir API image to DigitalOcean Container Registry
-        run: docker push $REGISTRY/$ELIXIR_IMAGE_NAME:latest
-
-      - name: Run registry garbage collection
-        run: doctl registry garbage-collection start --include-untagged-manifests --force
-        
   deploy:
     runs-on: ubuntu-latest
-    needs: build_and_push
-    
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - name: Deploy to Digital Ocean droplet via SSH action
-        uses: fifsky/ssh-action@v0.0.6
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          host: ${{ secrets.HOST }}
-          user: root
-          key: ${{ secrets.SSHKEY }}
-          command: |
-            # Login to registry
-            docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
-            cd ~/apps/web
-            docker compose pull
-            docker compose down && docker compose up -d
-            cd ~/apps/api
-            docker compose pull
-            docker compose down && docker compose up -d
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # Deploy using SST
+      - name: Deploy with SST
+        run: |
+          STAGE=${{ github.event.inputs.stage || 'joshuanissenbaum' }}
+          npx sst deploy --stage $STAGE
+        env:
+          CI: true
