@@ -1,10 +1,12 @@
 # 🍋 LimeLease
 
-**LimeLease** is a **compliance-first lease management platform** designed for **landlords, tenants, and businesses** to streamline lease agreements, documentation, and compliance tracking.
+**LimeLease** (or Occupie) is a **compliance-first lease management platform** designed for **landlords, tenants, and agencies** to streamline tenant requests, lease agreements, documentation, and compliance tracking.
 
 ## 🚀 Features
 
+- 🏠 **Property Management** - Add properties and assign tenants to the properties.
 - 📜 **Lease Management** – Store, manage, and access lease agreements in one place.
+- 🔧 **Manage Tenant Requests** – Tenants submit requests and these requests can be assigned to contractors who can mark the request as completed through SMS.
 - ✅ **Compliance Tracking** – Ensure adherence to legal requirements with automated tracking.
 - 🔔 **Notifications & Reminders** – Get alerts for lease renewals, compliance deadlines, and document updates.
 - 📂 **Document Storage** – Securely store and manage important leasing documents.
@@ -14,51 +16,13 @@
 LimeLease is built as a **monorepo** with multiple services:
 
 - **Backend:** Elixir (Phoenix Framework with Absinthe for GraphQL)
-- **Frontend:** Next.js
-- **Tenant Application:** React Native
-- **Services:** AWS Lambda (Node.js) for scraping real estate listing data
+- **Frontend (Web):** Next.js
+- **Frontend (Mobile):** React Native
+- **Services:** AWS Lambda (Node.js) for scraping real estate listing data using Puppeteer
 - **Database:** PostgreSQL
-- **Authentication:** OAuth / JWT-based authentication
-- **Hosting:** AWS
-
-## 📖 Getting Started
-
-### Prerequisites
-
-- [Elixir & Phoenix](https://www.phoenixframework.org/)
-- [Node.js](https://nodejs.org/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [Docker](https://www.docker.com/)
-
-### Installation
-
-1. Clone the repository:
-
-   ```sh
-   git clone https://github.com/your-username/limelease.git
-   cd limelease
-# 🍋 LimeLease
-
-**LimeLease** is a **compliance-first lease management platform** designed for **landlords, tenants, and businesses** to streamline lease agreements, documentation, and compliance tracking.
-
-## 🚀 Features
-
-- 📜 **Lease Management** – Store, manage, and access lease agreements in one place.
-- ✅ **Compliance Tracking** – Ensure adherence to legal requirements with automated tracking.
-- 🔔 **Notifications & Reminders** – Get alerts for lease renewals, compliance deadlines, and document updates.
-- 📂 **Document Storage** – Securely store and manage important leasing documents.
-
-## 🛠 Tech Stack
-
-LimeLease is built as a **monorepo** with multiple services:
-
-- **Backend:** Elixir (Phoenix Framework with Absinthe for GraphQL)
-- **Frontend:** Next.js
-- **Tenant Application:** React Native
-- **Services:** AWS Lambda (Node.js) for scraping real estate listing data
-- **Database:** PostgreSQL
-- **Authentication:** OAuth / JWT-based authentication
-- **Hosting:** AWS
+- **Authentication:** JWT-based authentication
+- **IaC:** AWS using the SST Framework/Pulumi
+  - VPC, ECS (Fargate) with auto scaling and ELB for the GraphQL API and Next.js application, RDS (PostgreSQL), S3 for bucket storage, API Gateway (Lambda) for hosting scraping and snapshotting services
 
 ## 📖 Getting Started
 
@@ -85,13 +49,19 @@ LimeLease is built as a **monorepo** with multiple services:
 git clone https://github.com/your-username/limelease.git
 cd limelease
 
-# Install frontend dependencies
-cd apps/frontend
+# Install frontend (web) dependencies
+cd apps/nextjs-app
 npm install
 npm run dev
 
+# Install frontend (mobile) dependencies
+cd ../apps/tenant-mobile
+npm install && cd ios && pod install
+iOS - npm run ios
+Android - npm run android
+
 # Install backend dependencies and start the server
-cd ../backend
+cd ../services/elixir-api
 mix deps.get
 mix ecto.setup
 mix phx.server
