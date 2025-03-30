@@ -8,6 +8,7 @@ declare module "sst" {
     "ElixirService": {
       "service": string
       "type": "sst.aws.Service"
+      "url": string
     }
     "LimeLeaseVPC": {
       "type": "sst.aws.Vpc"
@@ -15,6 +16,7 @@ declare module "sst" {
     "NextjsApp": {
       "service": string
       "type": "sst.aws.Service"
+      "url": string
     }
     "Postgresql": {
       "database": string
