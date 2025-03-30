@@ -162,7 +162,10 @@ export default $config({
         capacity: "spot",
         loadBalancer: {
           health: {
-            path: "/health",
+            "80/http": {
+              path: "/health",
+              interval: "10 seconds",
+            },
           },
           domain: "api.occupie.com.au",
           rules: [
@@ -199,7 +202,6 @@ export default $config({
       { dependsOn: [database] }
     );
 
-
     const nextAppTaskDefinition = new sst.aws.Service("NextjsApp", {
       cluster: cluster,
       image: {
@@ -209,7 +211,10 @@ export default $config({
       loadBalancer: {
         domain: "app.occupie.com.au",
         health: {
-          path: "/login",
+          "3000/http": {
+            path: "/login",
+            interval: "10 seconds",
+          },
         },
         rules: [
           { listen: "80/http" },
