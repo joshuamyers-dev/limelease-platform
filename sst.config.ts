@@ -178,6 +178,7 @@ export default $config({
         AWS_BUCKET: "limelease",
         AWS_STATIC_FOLDER: "static-files",
         POSTMARK_API_KEY: "REDACTED_POSTMARK_KEY_1",
+        API_GATEWAY_ENDPOINT: api.url,
       },
     });
 
