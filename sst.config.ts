@@ -217,14 +217,14 @@ export default $config({
           aliases: ["app.occupie.com.au"],
         },
         health: {
-          "80/http": {
+          "3000/http": {
             path: "/login",
             interval: "10 seconds",
           },
         },
         rules: [
-          { listen: "80/http" },
-          { listen: "443/https", forward: "80/http" },
+          { listen: "3000/http" },
+          { listen: "443/https", forward: "3000/http" },
         ],
       },
       health: {
