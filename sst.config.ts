@@ -161,6 +161,9 @@ export default $config({
         },
         capacity: "spot",
         loadBalancer: {
+          health: {
+            path: "/health",
+          },
           domain: "api.occupie.com.au",
           rules: [
             { listen: "80/http" },
@@ -205,6 +208,9 @@ export default $config({
       capacity: "spot",
       loadBalancer: {
         domain: "app.occupie.com.au",
+        health: {
+          path: "/login",
+        },
         rules: [
           { listen: "80/http" },
           { listen: "443/https", forward: "80/http" },
