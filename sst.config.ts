@@ -89,69 +89,6 @@ export default $config({
       }
     );
 
-    const ecsTaskExecutionRole = new aws.default.iam.Role(
-      "EcsTaskExecutionRole",
-      {
-        assumeRolePolicy: JSON.stringify({
-          Version: "2012-10-17",
-          Statement: [
-            {
-              Action: "sts:AssumeRole",
-              Principal: {
-                Service: "ecs-tasks.amazonaws.com",
-              },
-              Effect: "Allow",
-              Sid: "",
-            },
-          ],
-        }),
-      }
-    );
-
-    // Attach AWS Managed Policies
-    new aws.default.iam.RolePolicyAttachment(
-      "EcsTaskExecutionRoleAmazonECSTaskExecutionRolePolicy",
-      {
-        role: ecsTaskExecutionRole,
-        policyArn:
-          "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
-      }
-    );
-
-    new aws.default.iam.RolePolicyAttachment(
-      "EcsTaskExecutionRoleRDSFullAccess",
-      {
-        role: ecsTaskExecutionRole,
-        policyArn: "arn:aws:iam::aws:policy/AmazonRDSFullAccess",
-      }
-    );
-
-    new aws.default.iam.RolePolicyAttachment(
-      "EcsTaskExecutionRoleCloudWatchFullAccess",
-      {
-        role: ecsTaskExecutionRole,
-        policyArn: "arn:aws:iam::aws:policy/CloudWatchFullAccess",
-      }
-    );
-
-    const customPolicy = new aws.default.iam.Policy("CustomPolicy", {
-      policy: JSON.stringify({
-        Version: "2012-10-17",
-        Statement: [
-          {
-            Action: ["secretsmanager:GetSecretValue", "ssm:GetParameters"],
-            Resource: "*",
-            Effect: "Allow",
-          },
-        ],
-      }),
-    });
-
-    new aws.default.iam.RolePolicyAttachment("CustomPolicyAttachment", {
-      role: ecsTaskExecutionRole,
-      policyArn: customPolicy.arn,
-    });
-
     new sst.aws.Service(
       "ElixirService",
       {
