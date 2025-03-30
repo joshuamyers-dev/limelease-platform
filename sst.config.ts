@@ -30,7 +30,7 @@ export default $config({
       public: false,
     });
 
-    const database = new sst.aws.Postgres("Postgresql", {
+    const database = new sst.aws.Postgres("Postgres", {
       vpc,
       username: "root",
       password: "REDACTED_DB_PASSWORD",
