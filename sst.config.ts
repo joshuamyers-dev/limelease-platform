@@ -167,6 +167,16 @@ export default $config({
             { listen: "443/https", forward: "80/http" },
           ],
         },
+        health: {
+          command: [
+            "CMD-SHELL",
+            "curl -f http://localhost:80/health || exit 1",
+          ],
+          startPeriod: "60 seconds",
+          timeout: "5 seconds",
+          interval: "30 seconds",
+          retries: 3,
+        },
         environment: {
           DATABASE_URL: pulumi.interpolate`postgresql://root:REDACTED_DB_PASSWORD@${database.host}/${database.database}`,
           SECRET_KEY_BASE:
@@ -186,135 +196,6 @@ export default $config({
       { dependsOn: [database] }
     );
 
-    const zone = await aws.default.route53.getZone({
-      name: "occupie.com.au",
-      privateZone: false,
-    });
-
-    const apiCertificate = new aws.default.acm.Certificate("ApiCertificate", {
-      domainName: "api.occupie.com.au",
-      validationMethod: "DNS",
-    });
-
-    const appCertificate = new aws.default.acm.Certificate("AppCertificate", {
-      domainName: "app.occupie.com.au",
-      validationMethod: "DNS",
-    });
-
-    const rootCertificate = new aws.default.acm.Certificate("RootCertificate", {
-      domainName: "occupie.com.au",
-      validationMethod: "DNS",
-    });
-
-    const apiValidationRecord = new aws.default.route53.Record(
-      "ApiValidationRecord",
-      {
-        zoneId: zone.id,
-        name: apiCertificate.domainValidationOptions[0].resourceRecordName,
-        type: apiCertificate.domainValidationOptions[0].resourceRecordType,
-        records: [
-          apiCertificate.domainValidationOptions[0].resourceRecordValue,
-        ],
-        ttl: 300,
-      }
-    );
-
-    const appValidationRecord = new aws.default.route53.Record(
-      "AppValidationRecord",
-      {
-        zoneId: zone.id,
-        name: appCertificate.domainValidationOptions[0].resourceRecordName,
-        type: appCertificate.domainValidationOptions[0].resourceRecordType,
-        records: [
-          appCertificate.domainValidationOptions[0].resourceRecordValue,
-        ],
-        ttl: 300,
-      }
-    );
-
-    const rootValidationRecord = new aws.default.route53.Record(
-      "RootValidationRecord",
-      {
-        zoneId: zone.id,
-        name: rootCertificate.domainValidationOptions[0].resourceRecordName,
-        type: rootCertificate.domainValidationOptions[0].resourceRecordType,
-        records: [
-          rootCertificate.domainValidationOptions[0].resourceRecordValue,
-        ],
-        ttl: 300,
-      }
-    );
-
-    const apiCertificateValidation = new aws.default.acm.CertificateValidation(
-      "ApiCertificateValidation",
-      {
-        certificateArn: apiCertificate.arn,
-        validationRecordFqdns: [apiValidationRecord.fqdn],
-      }
-    );
-
-    const appCertificateValidation = new aws.default.acm.CertificateValidation(
-      "AppCertificateValidation",
-      {
-        certificateArn: appCertificate.arn,
-        validationRecordFqdns: [appValidationRecord.fqdn],
-      }
-    );
-
-    const rootCertificateValidation = new aws.default.acm.CertificateValidation(
-      "RootCertificateValidation",
-      {
-        certificateArn: rootCertificate.arn,
-        validationRecordFqdns: [rootValidationRecord.fqdn],
-      }
-    );
-
-    const alb = new aws.default.lb.LoadBalancer("ElixirApiAlb", {
-      securityGroups: [securityGroup.id],
-      subnets: vpc.publicSubnets,
-      loadBalancerType: "application",
-    });
-
-    const targetGroup = new aws.default.lb.TargetGroup("ElixirApiTargetGroup", {
-      port: 80,
-      protocol: "HTTP",
-      targetType: "ip",
-      vpcId: vpc.id,
-      healthCheck: {
-        path: "/health",
-        enabled: true,
-      },
-    });
-
-    const listener = new aws.default.lb.Listener("ElixirApiListener", {
-      loadBalancerArn: alb.arn,
-      port: 443,
-      protocol: "HTTPS",
-      sslPolicy: "ELBSecurityPolicy-2016-08",
-      certificateArn: apiCertificateValidation.certificateArn,
-      defaultActions: [
-        {
-          type: "forward",
-          targetGroupArn: targetGroup.arn,
-        },
-      ],
-    });
-
-    const apiSubdomainRecord = new aws.default.route53.Record(
-      "LimeLeaseApiSubDomain",
-      {
-        zoneId: zone.id,
-        name: "api.occupie.com.au",
-        type: "A",
-        aliases: [
-          {
-            name: alb.dnsName,
-            zoneId: alb.zoneId,
-            evaluateTargetHealth: false,
-          },
-        ],
-      }
-    );
 
     const nextAppTaskDefinition = new sst.aws.Service("NextjsApp", {
       cluster: cluster,
@@ -330,7 +211,7 @@ export default $config({
         ],
       },
       health: {
-        command: ["CMD-SHELL", "curl -f http://localhost:80/health || exit 1"],
+        command: ["CMD-SHELL", "curl -f http://localhost:80/login || exit 1"],
         startPeriod: "60 seconds",
         timeout: "5 seconds",
         interval: "30 seconds",
@@ -344,72 +225,6 @@ export default $config({
         NEXT_PUBLIC_PROPERTY_FETCHER_LAMBDA_URL: pulumi.interpolate`${api.url}/scrape`,
       },
     });
-
-    const appAlb = new aws.default.lb.LoadBalancer("AppAlb", {
-      securityGroups: [securityGroup.id],
-      subnets: vpc.publicSubnets,
-      loadBalancerType: "application",
-    });
-
-    const appTargetGroup = new aws.default.lb.TargetGroup("AppTargetGroup", {
-      port: 80,
-      protocol: "HTTP",
-      targetType: "ip",
-      vpcId: vpc.id,
-      healthCheck: {
-        path: "/login",
-        enabled: true,
-      },
-    });
-
-    const appListener = new aws.default.lb.Listener("AppListener", {
-      loadBalancerArn: appAlb.arn,
-      port: 443,
-      protocol: "HTTPS",
-      sslPolicy: "ELBSecurityPolicy-2016-08",
-      certificateArn: appCertificateValidation.certificateArn,
-      defaultActions: [
-        {
-          type: "forward",
-          targetGroupArn: appTargetGroup.arn,
-        },
-      ],
-    });
-
-    const httpRedirectListener = new aws.default.lb.Listener(
-      "HttpRedirectListener",
-      {
-        loadBalancerArn: appAlb.arn,
-        port: 80,
-        protocol: "HTTP",
-        defaultActions: [
-          {
-            type: "redirect",
-            redirect: {
-              protocol: "HTTPS",
-              port: "443",
-              statusCode: "HTTP_301",
-            },
-          },
-        ],
-      }
-    );
-
-    const appSubdomainRecord = new aws.default.route53.Record(
-      "LimeLeaseAppSubDomain",
-      {
-        zoneId: zone.id,
-        name: "app.occupie.com.au",
-        type: "A",
-        aliases: [
-          {
-            name: appAlb.dnsName,
-            zoneId: appAlb.zoneId,
-            evaluateTargetHealth: false,
-          },
-        ],
-      }
-    );
 
     api.route("POST /scrape", {
       handler: "limelease/services/playwright-scraper/index.handler",
