@@ -37,7 +37,10 @@ export default $config({
       database: "lime_lease_prod",
     });
 
-    const cluster = new sst.aws.Cluster("MyCluster", { vpc });
+    const cluster = new sst.aws.Cluster("MyCluster", {
+      vpc,
+      forceUpgrade: "v2",
+    });
 
     new sst.aws.Service(
       "ElixirService",
