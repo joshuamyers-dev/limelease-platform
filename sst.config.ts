@@ -22,7 +22,7 @@ export default $config({
     const api = new sst.aws.ApiGatewayV2("Services");
 
     // Use EC2 NAT instances instead of AWS NAT Gateways for cost savings
-    const vpc = new sst.aws.Vpc("LimeLeaseVPC", {
+    const vpc = new sst.aws.Vpc("OccupieVPC", {
       nat: "ec2",
     });
 
