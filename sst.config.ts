@@ -152,35 +152,39 @@ export default $config({
       policyArn: customPolicy.arn,
     });
 
-    new sst.aws.Service("ElixirService", {
-      cluster,
-      image: {
-        context: "limelease/services/elixir-api/.",
+    new sst.aws.Service(
+      "ElixirService",
+      {
+        cluster,
+        image: {
+          context: "limelease/services/elixir-api/.",
+        },
+        capacity: "spot",
+        loadBalancer: {
+          domain: "api.occupie.com.au",
+          rules: [
+            { listen: "80/http" },
+            { listen: "443/https", forward: "80/http" },
+          ],
+        },
+        environment: {
+          DATABASE_URL: `postgresql://root:REDACTED_DB_PASSWORD@${database.host}/${database.database}`,
+          SECRET_KEY_BASE:
+            "REDACTED_SECRET_KEY_BASE",
+          PORT: "80",
+          CLICKSEND_API_USERNAME: "REDACTED_EMAIL",
+          CLICKSEND_API_KEY: "REDACTED_CLICKSEND_KEY",
+          FRONT_END_URL: "http://localhost:3000",
+          AWS_KEY_ID: "REDACTED_AWS_ACCESS_KEY_ID",
+          AWS_SECRET_KEY: "REDACTED_AWS_SECRET_KEY",
+          AWS_BUCKET: "limelease",
+          AWS_STATIC_FOLDER: "static-files",
+          POSTMARK_API_KEY: "REDACTED_POSTMARK_KEY_1",
+          API_GATEWAY_ENDPOINT: api.url,
+        },
       },
-      capacity: "spot",
-      loadBalancer: {
-        domain: "api.occupie.com.au",
-        rules: [
-          { listen: "80/http" },
-          { listen: "443/https", forward: "80/http" },
-        ],
-      },
-      environment: {
-        DATABASE_URL: `postgresql://root:REDACTED_DB_PASSWORD@${database.host}/${database.database}`,
-        SECRET_KEY_BASE:
-          "REDACTED_SECRET_KEY_BASE",
-        PORT: "80",
-        CLICKSEND_API_USERNAME: "REDACTED_EMAIL",
-        CLICKSEND_API_KEY: "REDACTED_CLICKSEND_KEY",
-        FRONT_END_URL: "http://localhost:3000",
-        AWS_KEY_ID: "REDACTED_AWS_ACCESS_KEY_ID",
-        AWS_SECRET_KEY: "REDACTED_AWS_SECRET_KEY",
-        AWS_BUCKET: "limelease",
-        AWS_STATIC_FOLDER: "static-files",
-        POSTMARK_API_KEY: "REDACTED_POSTMARK_KEY_1",
-        API_GATEWAY_ENDPOINT: api.url,
-      },
-    });
+      { dependsOn: [database] }
+    );
 
     const zone = await aws.default.route53.getZone({
       name: "occupie.com.au",
