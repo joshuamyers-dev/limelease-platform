@@ -329,6 +329,13 @@ export default $config({
           { listen: "443/https", forward: "80/http" },
         ],
       },
+      health: {
+        command: ["CMD-SHELL", "curl -f http://localhost:80/health || exit 1"],
+        startPeriod: "60 seconds",
+        timeout: "5 seconds",
+        interval: "30 seconds",
+        retries: 3,
+      },
       environment: {
         NEXT_PUBLIC_API_URL: "https://api.occupie.com.au",
         NEXT_PUBLIC_WS_ADDRESS: "api.occupie.com.au",
