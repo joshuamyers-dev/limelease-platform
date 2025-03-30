@@ -211,7 +211,7 @@ export default $config({
         ],
       },
       health: {
-        command: ["CMD-SHELL", "curl -f http://localhost:80/login || exit 1"],
+        command: ["CMD-SHELL", "curl -f http://localhost:3000/login || exit 1"],
         startPeriod: "60 seconds",
         timeout: "5 seconds",
         interval: "30 seconds",
