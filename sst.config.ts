@@ -168,7 +168,7 @@ export default $config({
           ],
         },
         environment: {
-          DATABASE_URL: `postgresql://root:REDACTED_DB_PASSWORD@${database.host}/${database.database}`,
+          DATABASE_URL: pulumi.interpolate`postgresql://root:REDACTED_DB_PASSWORD@${database.host}/${database.database}`,
           SECRET_KEY_BASE:
             "REDACTED_SECRET_KEY_BASE",
           PORT: "80",
@@ -334,7 +334,7 @@ export default $config({
         NEXT_PUBLIC_WS_ADDRESS: "api.occupie.com.au",
         NEXT_PUBLIC_DOMAIN_API_KEY: "REDACTED_DOMAIN_API_KEY",
         NEXT_PUBLIC_FRONT_END_URL: "https://www.occupie.com.au",
-        NEXT_PUBLIC_PROPERTY_FETCHER_LAMBDA_URL: `${api.url}/scrape`,
+        NEXT_PUBLIC_PROPERTY_FETCHER_LAMBDA_URL: pulumi.interpolate`${api.url}/scrape`,
       },
     });
 
