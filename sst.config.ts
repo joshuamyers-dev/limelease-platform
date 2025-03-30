@@ -30,42 +30,6 @@ export default $config({
       public: false,
     });
 
-    // Use the dynamically imported AWS module
-    const securityGroup = new aws.default.ec2.SecurityGroup(
-      "ElixirApiSecurityGroup",
-      {
-        vpcId: vpc.id,
-        ingress: [
-          {
-            protocol: "tcp",
-            fromPort: 80,
-            toPort: 80,
-            cidrBlocks: ["0.0.0.0/0"],
-          },
-          {
-            protocol: "tcp",
-            fromPort: 443,
-            toPort: 443,
-            cidrBlocks: ["0.0.0.0/0"],
-          },
-          {
-            fromPort: 3000,
-            toPort: 3000,
-            protocol: "tcp",
-            cidrBlocks: ["0.0.0.0/0"],
-          },
-        ],
-        egress: [
-          {
-            fromPort: 0,
-            toPort: 0,
-            protocol: "-1",
-            cidrBlocks: ["0.0.0.0/0"],
-          },
-        ],
-      }
-    );
-
     const database = new sst.aws.Postgres("Postgresql", {
       vpc,
       username: "root",
@@ -74,20 +38,6 @@ export default $config({
     });
 
     const cluster = new sst.aws.Cluster("MyCluster", { vpc });
-
-    const apiRepoistory = new aws.default.ecr.Repository(
-      "ElixirApiRepository",
-      {
-        name: "elixir-api",
-      }
-    );
-
-    const nextAppRepository = new aws.default.ecr.Repository(
-      "NextJsAppRepository",
-      {
-        name: "nextjs-app",
-      }
-    );
 
     new sst.aws.Service(
       "ElixirService",
