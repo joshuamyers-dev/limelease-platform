@@ -58,8 +58,7 @@ export default $config({
             },
           },
           domain: {
-            name: "occupie.com.au",
-            aliases: ["api.occupie.com.au"],
+            name: "api.occupie.com.au",
           },
           rules: [
             { listen: "80/http" },
@@ -103,8 +102,7 @@ export default $config({
       capacity: "spot",
       loadBalancer: {
         domain: {
-          name: "occupie.com.au",
-          aliases: ["app.occupie.com.au"],
+          name: "app.occupie.com.au",
         },
         health: {
           "3000/http": {
