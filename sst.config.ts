@@ -116,7 +116,10 @@ export default $config({
         ],
       },
       health: {
-        command: ["CMD-SHELL", "curl -f http://127.0.0.1:3000/login || exit 1"],
+        command: [
+          "CMD-SHELL",
+          "curl -s --fail -I http://127.0.0.1:3000/login || exit 1",
+        ],
         startPeriod: "60 seconds",
         timeout: "5 seconds",
         interval: "30 seconds",
