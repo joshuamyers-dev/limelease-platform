@@ -114,8 +114,12 @@ export default $config({
         rules: [
           { listen: "3000/http" },
           { listen: "443/https", forward: "3000/http" },
+          { listen: "80/http", forward: "3000/http" },
         ],
       },
+      // serviceRegistry: {
+      //   port: 3000,
+      // },
       health: {
         command: ["CMD-SHELL", "curl -f http://127.0.0.1:3000/ || exit 1"],
         startPeriod: "120 seconds",
