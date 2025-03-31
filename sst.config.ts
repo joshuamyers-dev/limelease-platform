@@ -106,18 +106,18 @@ export default $config({
           name: "app.occupie.com.au",
         },
         health: {
-          "80/http": {
+          "3000/http": {
             path: "/login",
             interval: "10 seconds",
           },
         },
         rules: [
-          { listen: "80/http" },
-          { listen: "443/https", forward: "80/http" },
+          { listen: "3000/http" },
+          { listen: "443/https", forward: "3000/http" },
         ],
       },
       health: {
-        command: ["CMD-SHELL", "curl -f http://127.0.0.1:80/ || exit 1"],
+        command: ["CMD-SHELL", "curl -f http://127.0.0.1:3000/ || exit 1"],
         startPeriod: "120 seconds",
         timeout: "10 seconds",
         interval: "60 seconds",
