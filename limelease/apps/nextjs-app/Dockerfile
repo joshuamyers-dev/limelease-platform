@@ -57,6 +57,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # Install curl
 RUN apk add --no-cache curl
 
+RUN chmod -R 755 /usr/bin/curl
+
 USER nextjs
 
 EXPOSE 3000

@@ -70,9 +70,9 @@ export default $config({
             "CMD-SHELL",
             "curl -f http://127.0.0.1:80/health || exit 1",
           ],
-          startPeriod: "60 seconds",
-          timeout: "5 seconds",
-          interval: "30 seconds",
+          startPeriod: "120 seconds",
+          timeout: "10 seconds",
+          interval: "60 seconds",
           retries: 3,
         },
         environment: {
@@ -117,8 +117,8 @@ export default $config({
       },
       health: {
         command: ["CMD-SHELL", "curl -f http://127.0.0.1:3000/login || exit 1"],
-        startPeriod: "60 seconds",
-        timeout: "5 seconds",
+        startPeriod: "120 seconds",
+        timeout: "10 seconds",
         interval: "60 seconds",
         retries: 3,
       },
