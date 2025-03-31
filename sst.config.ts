@@ -122,7 +122,7 @@ export default $config({
         ],
         startPeriod: "60 seconds",
         timeout: "5 seconds",
-        interval: "30 seconds",
+        interval: "60 seconds",
         retries: 3,
       },
       environment: {
