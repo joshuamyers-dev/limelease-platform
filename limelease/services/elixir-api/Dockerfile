@@ -1,76 +1,66 @@
-ARG ELIXIR_VERSION=1.17.2
-ARG OTP_VERSION=26.1.2
-ARG ALPINE_VERSION=3.18.9
+# syntax=docker.io/docker/dockerfile:1
 
-ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-alpine-${ALPINE_VERSION}"
-ARG RUNNER_IMAGE="alpine:${ALPINE_VERSION}"
+FROM node:18-alpine AS base
 
-FROM ${BUILDER_IMAGE} as builder
-
-# install build dependencies
-RUN apk update && apk add --no-cache build-base git curl openssl
-
-# prepare build dir
+# Install dependencies only when needed
+FROM base AS deps
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# install hex + rebar
-RUN mix local.hex --force && \
-    mix local.rebar --force
+# Install dependencies based on the preferred package manager
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
 
-# set build ENV
-ENV MIX_ENV="prod"
 
-# install mix dependencies
-COPY mix.exs mix.lock ./
-RUN mix deps.get --only $MIX_ENV
-RUN mkdir config
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
-# copy compile-time config files before we compile dependencies
-# to ensure any relevant config change will trigger the dependencies
-# to be re-compiled.
-COPY config/config.exs config/${MIX_ENV}.exs config/
-RUN mix deps.compile
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry during the build.
+# ENV NEXT_TELEMETRY_DISABLED=1
 
+RUN \
+  if [ -f yarn.lock ]; then yarn run build; \
+  elif [ -f package-lock.json ]; then npm run build; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
+
+# Production image, copy all the files and run next
+FROM base AS runner
 WORKDIR /app
 
-COPY priv priv
+ENV NODE_ENV=production
+# Uncomment the following line in case you want to disable telemetry during runtime.
+# ENV NEXT_TELEMETRY_DISABLED=1
 
-COPY lib lib
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-COPY assets assets
+COPY --from=builder /app/public ./public
 
-# compile assets
-RUN mix assets.deploy
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Compile the release
-RUN mix compile
+USER nextjs
 
-# Changes to config/runtime.exs don't require recompiling the code
-COPY config/runtime.exs config/
+EXPOSE 3000
 
-# Change the working directory back to /app
-WORKDIR /app
+ENV PORT=3000
 
-COPY rel rel
-RUN mix release
-
-# start a new build stage so that the final image will only contain
-# the compiled release and other runtime necessities
-FROM ${RUNNER_IMAGE}
-
-RUN apk update && apk add --no-cache libstdc++ openssl ncurses-libs curl
-
-WORKDIR "/app"
-# RUN chown nobody /app
-
-# set runner ENV
-ENV MIX_ENV="prod"
-
-# Only copy the final release from the build stage
-COPY --from=builder /app/_build/${MIX_ENV}/rel/lime_lease ./
-
-WORKDIR "/app"
-
-# USER nobody
-
-CMD ["/bin/sh", "-c", "/app/bin/lime_lease eval LimeLease.Release.migrate && /app/bin/server"]
+# server.js is created by next build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/config/next-config-js/output
+ENV HOSTNAME="0.0.0.0"
+CMD ["node", "server.js"]

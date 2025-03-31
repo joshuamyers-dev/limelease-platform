@@ -1503,13 +1503,22 @@
         "hash": "sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A=="
       }
     },
-    "npm:@emnapi/runtime": {
+    "npm:@emnapi/runtime@0.45.0": {
       "type": "npm",
-      "name": "npm:@emnapi/runtime",
+      "name": "npm:@emnapi/runtime@0.45.0",
       "data": {
         "version": "0.45.0",
         "packageName": "@emnapi/runtime",
         "hash": "sha512-Txumi3td7J4A/xTTwlssKieHKTGl3j4A1tglBx72auZ49YK7ePY6XZricgIg9mnZT4xPfA+UPCUdnhRuEFDL+w=="
+      }
+    },
+    "npm:@emnapi/runtime@1.4.0": {
+      "type": "npm",
+      "name": "npm:@emnapi/runtime@1.4.0",
+      "data": {
+        "version": "1.4.0",
+        "packageName": "@emnapi/runtime",
+        "hash": "sha512-64WYIf4UYcdLnbKn/umDlNjQDSS8AgZrI/R9+x5ilkUVFxXcA1Ebl+gQLc/6mERA4407Xof0R7wEyEuj091CVw=="
       }
     },
     "npm:@emotion/hash": {
@@ -2718,175 +2727,346 @@
         "hash": "sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA=="
       }
     },
-    "npm:@img/sharp-darwin-arm64": {
+    "npm:@img/sharp-darwin-arm64@0.33.2": {
       "type": "npm",
-      "name": "npm:@img/sharp-darwin-arm64",
+      "name": "npm:@img/sharp-darwin-arm64@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-darwin-arm64",
         "hash": "sha512-itHBs1rPmsmGF9p4qRe++CzCgd+kFYktnsoR1sbIAfsRMrJZau0Tt1AH9KVnufc2/tU02Gf6Ibujx+15qRE03w=="
       }
     },
-    "npm:@img/sharp-darwin-x64": {
+    "npm:@img/sharp-darwin-arm64": {
       "type": "npm",
-      "name": "npm:@img/sharp-darwin-x64",
+      "name": "npm:@img/sharp-darwin-arm64",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-darwin-arm64",
+        "hash": "sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ=="
+      }
+    },
+    "npm:@img/sharp-darwin-x64@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-darwin-x64@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-darwin-x64",
         "hash": "sha512-/rK/69Rrp9x5kaWBjVN07KixZanRr+W1OiyKdXcbjQD6KbW+obaTeBBtLUAtbBsnlTTmWthw99xqoOS7SsySDg=="
       }
     },
-    "npm:@img/sharp-libvips-darwin-arm64": {
+    "npm:@img/sharp-darwin-x64@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-libvips-darwin-arm64",
+      "name": "npm:@img/sharp-darwin-x64@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-darwin-x64",
+        "hash": "sha512-fyHac4jIc1ANYGRDxtiqelIbdWkIuQaI84Mv45KvGRRxSAa7o7d1ZKAOBaYbnepLC1WqxfpimdeWfvqqSGwR2Q=="
+      }
+    },
+    "npm:@img/sharp-libvips-darwin-arm64@1.0.1": {
+      "type": "npm",
+      "name": "npm:@img/sharp-libvips-darwin-arm64@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "@img/sharp-libvips-darwin-arm64",
         "hash": "sha512-kQyrSNd6lmBV7O0BUiyu/OEw9yeNGFbQhbxswS1i6rMDwBBSX+e+rPzu3S+MwAiGU3HdLze3PanQ4Xkfemgzcw=="
       }
     },
-    "npm:@img/sharp-libvips-darwin-x64": {
+    "npm:@img/sharp-libvips-darwin-arm64": {
       "type": "npm",
-      "name": "npm:@img/sharp-libvips-darwin-x64",
+      "name": "npm:@img/sharp-libvips-darwin-arm64",
+      "data": {
+        "version": "1.0.4",
+        "packageName": "@img/sharp-libvips-darwin-arm64",
+        "hash": "sha512-XblONe153h0O2zuFfTAbQYAX2JhYmDHeWikp1LM9Hul9gVPjFY427k6dFEcOL72O01QxQsWi761svJ/ev9xEDg=="
+      }
+    },
+    "npm:@img/sharp-libvips-darwin-x64@1.0.1": {
+      "type": "npm",
+      "name": "npm:@img/sharp-libvips-darwin-x64@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "@img/sharp-libvips-darwin-x64",
         "hash": "sha512-eVU/JYLPVjhhrd8Tk6gosl5pVlvsqiFlt50wotCvdkFGf+mDNBJxMh+bvav+Wt3EBnNZWq8Sp2I7XfSjm8siog=="
       }
     },
-    "npm:@img/sharp-libvips-linux-arm64": {
+    "npm:@img/sharp-libvips-darwin-x64@1.0.4": {
       "type": "npm",
-      "name": "npm:@img/sharp-libvips-linux-arm64",
+      "name": "npm:@img/sharp-libvips-darwin-x64@1.0.4",
+      "data": {
+        "version": "1.0.4",
+        "packageName": "@img/sharp-libvips-darwin-x64",
+        "hash": "sha512-xnGR8YuZYfJGmWPvmlunFaWJsb9T/AO2ykoP3Fz/0X5XV2aoYBPkX6xqCQvUTKKiLddarLaxpzNe+b1hjeWHAQ=="
+      }
+    },
+    "npm:@img/sharp-libvips-linux-arm64@1.0.1": {
+      "type": "npm",
+      "name": "npm:@img/sharp-libvips-linux-arm64@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "@img/sharp-libvips-linux-arm64",
         "hash": "sha512-bnGG+MJjdX70mAQcSLxgeJco11G+MxTz+ebxlz8Y3dxyeb3Nkl7LgLI0mXupoO+u1wRNx/iRj5yHtzA4sde1yA=="
       }
     },
-    "npm:@img/sharp-libvips-linux-arm": {
+    "npm:@img/sharp-libvips-linux-arm64@1.0.4": {
       "type": "npm",
-      "name": "npm:@img/sharp-libvips-linux-arm",
+      "name": "npm:@img/sharp-libvips-linux-arm64@1.0.4",
+      "data": {
+        "version": "1.0.4",
+        "packageName": "@img/sharp-libvips-linux-arm64",
+        "hash": "sha512-9B+taZ8DlyyqzZQnoeIvDVR/2F4EbMepXMc/NdVbkzsJbzkUjhXv/70GQJ7tdLA4YJgNP25zukcxpX2/SueNrA=="
+      }
+    },
+    "npm:@img/sharp-libvips-linux-arm@1.0.1": {
+      "type": "npm",
+      "name": "npm:@img/sharp-libvips-linux-arm@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "@img/sharp-libvips-linux-arm",
         "hash": "sha512-FtdMvR4R99FTsD53IA3LxYGghQ82t3yt0ZQ93WMZ2xV3dqrb0E8zq4VHaTOuLEAuA83oDawHV3fd+BsAPadHIQ=="
       }
     },
-    "npm:@img/sharp-libvips-linux-s390x": {
+    "npm:@img/sharp-libvips-linux-arm@1.0.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-libvips-linux-s390x",
+      "name": "npm:@img/sharp-libvips-linux-arm@1.0.5",
+      "data": {
+        "version": "1.0.5",
+        "packageName": "@img/sharp-libvips-linux-arm",
+        "hash": "sha512-gvcC4ACAOPRNATg/ov8/MnbxFDJqf/pDePbBnuBDcjsI8PssmjoKMAz4LtLaVi+OnSb5FK/yIOamqDwGmXW32g=="
+      }
+    },
+    "npm:@img/sharp-libvips-linux-s390x@1.0.1": {
+      "type": "npm",
+      "name": "npm:@img/sharp-libvips-linux-s390x@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "@img/sharp-libvips-linux-s390x",
         "hash": "sha512-3+rzfAR1YpMOeA2zZNp+aYEzGNWK4zF3+sdMxuCS3ey9HhDbJ66w6hDSHDMoap32DueFwhhs3vwooAB2MaK4XQ=="
       }
     },
-    "npm:@img/sharp-libvips-linux-x64": {
+    "npm:@img/sharp-libvips-linux-s390x@1.0.4": {
       "type": "npm",
-      "name": "npm:@img/sharp-libvips-linux-x64",
+      "name": "npm:@img/sharp-libvips-linux-s390x@1.0.4",
+      "data": {
+        "version": "1.0.4",
+        "packageName": "@img/sharp-libvips-linux-s390x",
+        "hash": "sha512-u7Wz6ntiSSgGSGcjZ55im6uvTrOxSIS8/dgoVMoiGE9I6JAfU50yH5BoDlYA1tcuGS7g/QNtetJnxA6QEsCVTA=="
+      }
+    },
+    "npm:@img/sharp-libvips-linux-x64@1.0.1": {
+      "type": "npm",
+      "name": "npm:@img/sharp-libvips-linux-x64@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "@img/sharp-libvips-linux-x64",
         "hash": "sha512-3NR1mxFsaSgMMzz1bAnnKbSAI+lHXVTqAHgc1bgzjHuXjo4hlscpUxc0vFSAPKI3yuzdzcZOkq7nDPrP2F8Jgw=="
       }
     },
-    "npm:@img/sharp-libvips-linuxmusl-arm64": {
+    "npm:@img/sharp-libvips-linux-x64@1.0.4": {
       "type": "npm",
-      "name": "npm:@img/sharp-libvips-linuxmusl-arm64",
+      "name": "npm:@img/sharp-libvips-linux-x64@1.0.4",
+      "data": {
+        "version": "1.0.4",
+        "packageName": "@img/sharp-libvips-linux-x64",
+        "hash": "sha512-MmWmQ3iPFZr0Iev+BAgVMb3ZyC4KeFc3jFxnNbEPas60e1cIfevbtuyf9nDGIzOaW9PdnDciJm+wFFaTlj5xYw=="
+      }
+    },
+    "npm:@img/sharp-libvips-linuxmusl-arm64@1.0.1": {
+      "type": "npm",
+      "name": "npm:@img/sharp-libvips-linuxmusl-arm64@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "@img/sharp-libvips-linuxmusl-arm64",
         "hash": "sha512-5aBRcjHDG/T6jwC3Edl3lP8nl9U2Yo8+oTl5drd1dh9Z1EBfzUKAJFUDTDisDjUwc7N4AjnPGfCA3jl3hY8uDg=="
       }
     },
-    "npm:@img/sharp-libvips-linuxmusl-x64": {
+    "npm:@img/sharp-libvips-linuxmusl-arm64@1.0.4": {
       "type": "npm",
-      "name": "npm:@img/sharp-libvips-linuxmusl-x64",
+      "name": "npm:@img/sharp-libvips-linuxmusl-arm64@1.0.4",
+      "data": {
+        "version": "1.0.4",
+        "packageName": "@img/sharp-libvips-linuxmusl-arm64",
+        "hash": "sha512-9Ti+BbTYDcsbp4wfYib8Ctm1ilkugkA/uscUn6UXK1ldpC1JjiXbLfFZtRlBhjPZ5o1NCLiDbg8fhUPKStHoTA=="
+      }
+    },
+    "npm:@img/sharp-libvips-linuxmusl-x64@1.0.1": {
+      "type": "npm",
+      "name": "npm:@img/sharp-libvips-linuxmusl-x64@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "@img/sharp-libvips-linuxmusl-x64",
         "hash": "sha512-dcT7inI9DBFK6ovfeWRe3hG30h51cBAP5JXlZfx6pzc/Mnf9HFCQDLtYf4MCBjxaaTfjCCjkBxcy3XzOAo5txw=="
       }
     },
-    "npm:@img/sharp-linux-arm64": {
+    "npm:@img/sharp-libvips-linuxmusl-x64@1.0.4": {
       "type": "npm",
-      "name": "npm:@img/sharp-linux-arm64",
+      "name": "npm:@img/sharp-libvips-linuxmusl-x64@1.0.4",
+      "data": {
+        "version": "1.0.4",
+        "packageName": "@img/sharp-libvips-linuxmusl-x64",
+        "hash": "sha512-viYN1KX9m+/hGkJtvYYp+CCLgnJXwiQB39damAO7WMdKWlIhmYTfHjwSbQeUK/20vY154mwezd9HflVFM1wVSw=="
+      }
+    },
+    "npm:@img/sharp-linux-arm64@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-linux-arm64@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-linux-arm64",
         "hash": "sha512-pz0NNo882vVfqJ0yNInuG9YH71smP4gRSdeL09ukC2YLE6ZyZePAlWKEHgAzJGTiOh8Qkaov6mMIMlEhmLdKew=="
       }
     },
-    "npm:@img/sharp-linux-arm": {
+    "npm:@img/sharp-linux-arm64@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-linux-arm",
+      "name": "npm:@img/sharp-linux-arm64@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-linux-arm64",
+        "hash": "sha512-JMVv+AMRyGOHtO1RFBiJy/MBsgz0x4AWrT6QoEVVTyh1E39TrCUpTRI7mx9VksGX4awWASxqCYLCV4wBZHAYxA=="
+      }
+    },
+    "npm:@img/sharp-linux-arm@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-linux-arm@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-linux-arm",
         "hash": "sha512-Fndk/4Zq3vAc4G/qyfXASbS3HBZbKrlnKZLEJzPLrXoJuipFNNwTes71+Ki1hwYW5lch26niRYoZFAtZVf3EGA=="
       }
     },
-    "npm:@img/sharp-linux-s390x": {
+    "npm:@img/sharp-linux-arm@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-linux-s390x",
+      "name": "npm:@img/sharp-linux-arm@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-linux-arm",
+        "hash": "sha512-JTS1eldqZbJxjvKaAkxhZmBqPRGmxgu+qFKSInv8moZ2AmT5Yib3EQ1c6gp493HvrvV8QgdOXdyaIBrhvFhBMQ=="
+      }
+    },
+    "npm:@img/sharp-linux-s390x@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-linux-s390x@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-linux-s390x",
         "hash": "sha512-MBoInDXDppMfhSzbMmOQtGfloVAflS2rP1qPcUIiITMi36Mm5YR7r0ASND99razjQUpHTzjrU1flO76hKvP5RA=="
       }
     },
-    "npm:@img/sharp-linux-x64": {
+    "npm:@img/sharp-linux-s390x@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-linux-x64",
+      "name": "npm:@img/sharp-linux-s390x@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-linux-s390x",
+        "hash": "sha512-y/5PCd+mP4CA/sPDKl2961b+C9d+vPAveS33s6Z3zfASk2j5upL6fXVPZi7ztePZ5CuH+1kW8JtvxgbuXHRa4Q=="
+      }
+    },
+    "npm:@img/sharp-linux-x64@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-linux-x64@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-linux-x64",
         "hash": "sha512-xUT82H5IbXewKkeF5aiooajoO1tQV4PnKfS/OZtb5DDdxS/FCI/uXTVZ35GQ97RZXsycojz/AJ0asoz6p2/H/A=="
       }
     },
-    "npm:@img/sharp-linuxmusl-arm64": {
+    "npm:@img/sharp-linux-x64@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-linuxmusl-arm64",
+      "name": "npm:@img/sharp-linux-x64@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-linux-x64",
+        "hash": "sha512-opC+Ok5pRNAzuvq1AG0ar+1owsu842/Ab+4qvU879ippJBHvyY5n2mxF1izXqkPYlGuP/M556uh53jRLJmzTWA=="
+      }
+    },
+    "npm:@img/sharp-linuxmusl-arm64@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-linuxmusl-arm64@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-linuxmusl-arm64",
         "hash": "sha512-F+0z8JCu/UnMzg8IYW1TMeiViIWBVg7IWP6nE0p5S5EPQxlLd76c8jYemG21X99UzFwgkRo5yz2DS+zbrnxZeA=="
       }
     },
-    "npm:@img/sharp-linuxmusl-x64": {
+    "npm:@img/sharp-linuxmusl-arm64@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-linuxmusl-x64",
+      "name": "npm:@img/sharp-linuxmusl-arm64@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-linuxmusl-arm64",
+        "hash": "sha512-XrHMZwGQGvJg2V/oRSUfSAfjfPxO+4DkiRh6p2AFjLQztWUuY/o8Mq0eMQVIY7HJ1CDQUJlxGGZRw1a5bqmd1g=="
+      }
+    },
+    "npm:@img/sharp-linuxmusl-x64@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-linuxmusl-x64@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-linuxmusl-x64",
         "hash": "sha512-+ZLE3SQmSL+Fn1gmSaM8uFusW5Y3J9VOf+wMGNnTtJUMUxFhv+P4UPaYEYT8tqnyYVaOVGgMN/zsOxn9pSsO2A=="
       }
     },
-    "npm:@img/sharp-wasm32": {
+    "npm:@img/sharp-linuxmusl-x64@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-wasm32",
+      "name": "npm:@img/sharp-linuxmusl-x64@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-linuxmusl-x64",
+        "hash": "sha512-WT+d/cgqKkkKySYmqoZ8y3pxx7lx9vVejxW/W4DOFMYVSkErR+w7mf2u8m/y4+xHe7yY9DAXQMWQhpnMuFfScw=="
+      }
+    },
+    "npm:@img/sharp-wasm32@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-wasm32@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-wasm32",
         "hash": "sha512-fLbTaESVKuQcpm8ffgBD7jLb/CQLcATju/jxtTXR1XCLwbOQt+OL5zPHSDMmp2JZIeq82e18yE0Vv7zh6+6BfQ=="
       }
     },
-    "npm:@img/sharp-win32-ia32": {
+    "npm:@img/sharp-wasm32@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-win32-ia32",
+      "name": "npm:@img/sharp-wasm32@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-wasm32",
+        "hash": "sha512-ykUW4LVGaMcU9lu9thv85CbRMAwfeadCJHRsg2GmeRa/cJxsVY9Rbd57JcMxBkKHag5U/x7TSBpScF4U8ElVzg=="
+      }
+    },
+    "npm:@img/sharp-win32-ia32@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-win32-ia32@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-win32-ia32",
         "hash": "sha512-okBpql96hIGuZ4lN3+nsAjGeggxKm7hIRu9zyec0lnfB8E7Z6p95BuRZzDDXZOl2e8UmR4RhYt631i7mfmKU8g=="
       }
     },
-    "npm:@img/sharp-win32-x64": {
+    "npm:@img/sharp-win32-ia32@0.33.5": {
       "type": "npm",
-      "name": "npm:@img/sharp-win32-x64",
+      "name": "npm:@img/sharp-win32-ia32@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-win32-ia32",
+        "hash": "sha512-T36PblLaTwuVJ/zw/LaH0PdZkRz5rd3SmMHX8GSmR7vtNSP5Z6bQkExdSK7xGWyxLw4sUknBuugTelgw2faBbQ=="
+      }
+    },
+    "npm:@img/sharp-win32-x64@0.33.2": {
+      "type": "npm",
+      "name": "npm:@img/sharp-win32-x64@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "@img/sharp-win32-x64",
         "hash": "sha512-E4magOks77DK47FwHUIGH0RYWSgRBfGdK56kIHSVeB9uIS4pPFr4N2kIVsXdQQo4LzOsENKV5KAhRlRL7eMAdg=="
+      }
+    },
+    "npm:@img/sharp-win32-x64@0.33.5": {
+      "type": "npm",
+      "name": "npm:@img/sharp-win32-x64@0.33.5",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "@img/sharp-win32-x64",
+        "hash": "sha512-MpY/o8/8kj+EcnxwvrP4aTJSWw/aZ7JIGR4aBeZkZw5B7/Jn+tY9/VNwtcoGmdT7GfggGIU4kygOMSbYnOrAbg=="
       }
     },
     "npm:@intercom/messenger-js-sdk": {
@@ -3226,9 +3406,9 @@
       "type": "npm",
       "name": "npm:@next/env",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/env",
-        "hash": "sha512-3EtkY5VDkuV2+lNmKlbkibIJxcO4oIHEhBWne6PaAp+76J9KoSsGvNikp6ivzAT8dhhBMYrm6op2pS1ApG0Hzg=="
+        "hash": "sha512-+SFtMgoiYP3WoSswuNmxJOCwi06TdWE733D+WPjpXIe4LXGULwEaofiiAy6kbS0+XjM5xF5n3lKuBwN2SnqD9g=="
       }
     },
     "npm:@next/eslint-plugin-next": {
@@ -3244,81 +3424,72 @@
       "type": "npm",
       "name": "npm:@next/swc-darwin-arm64",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/swc-darwin-arm64",
-        "hash": "sha512-AH3mO4JlFUqsYcwFUHb1wAKlebHU/Hv2u2kb1pAuRanDZ7pD/A/KPD98RHZmwsJpdHQwfEc/06mgpSzwrJYnNg=="
+        "hash": "sha512-1AnMfs655ipJEDC/FHkSr0r3lXBgpqKo4K1kiwfUf3iE68rDFXZ1TtHdMvf7D0hMItgDZ7Vuq3JgNMbt/+3bYw=="
       }
     },
     "npm:@next/swc-darwin-x64": {
       "type": "npm",
       "name": "npm:@next/swc-darwin-x64",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/swc-darwin-x64",
-        "hash": "sha512-QVadW73sWIO6E2VroyUjuAxhWLZWEpiFqHdZdoQ/AMpN9YWGuHV8t2rChr0ahy+irKX5mlDU7OY68k3n4tAZTg=="
+        "hash": "sha512-3qK2zb5EwCwxnO2HeO+TRqCubeI/NgCe+kL5dTJlPldV/uwCnUgC7VbEzgmxbfrkbjehL4H9BPztWOEtsoMwew=="
       }
     },
     "npm:@next/swc-linux-arm64-gnu": {
       "type": "npm",
       "name": "npm:@next/swc-linux-arm64-gnu",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/swc-linux-arm64-gnu",
-        "hash": "sha512-KT6GUrb3oyCfcfJ+WliXuJnD6pCpZiosx2X3k66HLR+DMoilRb76LpWPGb4tZprawTtcnyrv75ElD6VncVamUQ=="
+        "hash": "sha512-HFN6GKUcrTWvem8AZN7tT95zPb0GUGv9v0d0iyuTb303vbXkkbHDp/DxufB04jNVD+IN9yHy7y/6Mqq0h0YVaQ=="
       }
     },
     "npm:@next/swc-linux-arm64-musl": {
       "type": "npm",
       "name": "npm:@next/swc-linux-arm64-musl",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/swc-linux-arm64-musl",
-        "hash": "sha512-Alv8/XGSs/ytwQcbCHwze1HmiIkIVhDHYLjczSVrf0Wi2MvKn/blt7+S6FJitj3yTlMwMxII1gIJ9WepI4aZ/A=="
+        "hash": "sha512-Oioa0SORWLwi35/kVB8aCk5Uq+5/ZIumMK1kJV+jSdazFm2NzPDztsefzdmzzpx5oGCJ6FkUC7vkaUseNTStNA=="
       }
     },
     "npm:@next/swc-linux-x64-gnu": {
       "type": "npm",
       "name": "npm:@next/swc-linux-x64-gnu",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/swc-linux-x64-gnu",
-        "hash": "sha512-ze0ShQDBPCqxLImzw4sCdfnB3lRmN3qGMB2GWDRlq5Wqy4G36pxtNOo2usu/Nm9+V2Rh/QQnrRc2l94kYFXO6Q=="
+        "hash": "sha512-yb5WTRaHdkgOqFOZiu6rHV1fAEK0flVpaIN2HB6kxHVSy/dIajWbThS7qON3W9/SNOH2JWkVCyulgGYekMePuw=="
       }
     },
     "npm:@next/swc-linux-x64-musl": {
       "type": "npm",
       "name": "npm:@next/swc-linux-x64-musl",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/swc-linux-x64-musl",
-        "hash": "sha512-8dwC0UJoc6fC7PX70csdaznVMNr16hQrTDAMPvLPloazlcaWfdPogq+UpZX6Drqb1OBlwowz8iG7WR0Tzk/diQ=="
+        "hash": "sha512-Dcdv/ix6srhkM25fgXiyOieFUkz+fOYkHlydWCtB0xMST6X9XYI3yPDKBZt1xuhOytONsIFJFB08xXYsxUwJLw=="
       }
     },
     "npm:@next/swc-win32-arm64-msvc": {
       "type": "npm",
       "name": "npm:@next/swc-win32-arm64-msvc",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/swc-win32-arm64-msvc",
-        "hash": "sha512-jxyg67NbEWkDyvM+O8UDbPAyYRZqGLQDTPwvrBBeOSyVWW/jFQkQKQ70JDqDSYg1ZDdl+E3nkbFbq8xM8E9x8A=="
-      }
-    },
-    "npm:@next/swc-win32-ia32-msvc": {
-      "type": "npm",
-      "name": "npm:@next/swc-win32-ia32-msvc",
-      "data": {
-        "version": "14.2.4",
-        "packageName": "@next/swc-win32-ia32-msvc",
-        "hash": "sha512-twrmN753hjXRdcrZmZttb/m5xaCBFa48Dt3FbeEItpJArxriYDunWxJn+QFXdJ3hPkm4u7CKxncVvnmgQMY1ag=="
+        "hash": "sha512-dW0i7eukvDxtIhCYkMrZNQfNicPDExt2jPb9AZPpL7cfyUo7QSNl1DjsHjmmKp6qNAqUESyT8YFl/Aw91cNJJg=="
       }
     },
     "npm:@next/swc-win32-x64-msvc": {
       "type": "npm",
       "name": "npm:@next/swc-win32-x64-msvc",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "@next/swc-win32-x64-msvc",
-        "hash": "sha512-tkLrjBzqFTP8DVrAAQmZelEahfR9OxWpFR++vAI9FBhCiIxtwHwBHC23SBHCTURBtwB4kc/x44imVOnkKGNVGg=="
+        "hash": "sha512-SbnWkJmkS7Xl3kre8SdMF6F/XDh1DTFEhp0jRTj/uB8iPKoU2bb2NDfcu+iifv1+mxQEd1g2vvSxcZbXSKyWiQ=="
       }
     },
     "npm:@nicolo-ribaudo/eslint-scope-5-internals": {
@@ -4891,9 +5062,9 @@
       "type": "npm",
       "name": "npm:@swc/helpers",
       "data": {
-        "version": "0.5.5",
+        "version": "0.5.15",
         "packageName": "@swc/helpers",
-        "hash": "sha512-KGYxvIOXcceOAbEk4bi/dVLEK9z8sZ0uBB3Il5b1rhfClSpcX0yfRO0KmTkqR2cnQDymwLB+25ZyMzICg/cm/A=="
+        "hash": "sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g=="
       }
     },
     "npm:@szmarczak/http-timer": {
@@ -7542,18 +7713,18 @@
         "hash": "sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg=="
       }
     },
-    "npm:cross-inspect@1.0.0": {
+    "npm:cross-inspect": {
       "type": "npm",
-      "name": "npm:cross-inspect@1.0.0",
+      "name": "npm:cross-inspect",
       "data": {
         "version": "1.0.0",
         "packageName": "cross-inspect",
         "hash": "sha512-4PFfn4b5ZN6FMNGSZlyb7wUhuN8wvj8t/VQHZdM4JsDcruGJ8L2kf9zao98QIrBPFCpdk27qst/AGTl7pL3ypQ=="
       }
     },
-    "npm:cross-inspect": {
+    "npm:cross-inspect@1.0.1": {
       "type": "npm",
-      "name": "npm:cross-inspect",
+      "name": "npm:cross-inspect@1.0.1",
       "data": {
         "version": "1.0.1",
         "packageName": "cross-inspect",
@@ -12289,9 +12460,9 @@
       "type": "npm",
       "name": "npm:next",
       "data": {
-        "version": "14.2.4",
+        "version": "15.2.4",
         "packageName": "next",
-        "hash": "sha512-R8/V7vugY+822rsQGQCjoLhMuC9oFj9SOi4Cl4b2wjDrseD0LRZ10W7R6Czo4w9ZznVSshKjuIomsRjvm9EKJQ=="
+        "hash": "sha512-VwL+LAaPSxEkd3lU2xWbgEOtrM8oedmyhBqaVNmgKB+GvZlCy9rgaEc+y2on0wv+l0oSFqLtYD6dcC1eAedUaQ=="
       }
     },
     "npm:nextjs-progressbar": {
@@ -14967,6 +15138,15 @@
         "hash": "sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w=="
       }
     },
+    "npm:semver@7.7.1": {
+      "type": "npm",
+      "name": "npm:semver@7.7.1",
+      "data": {
+        "version": "7.7.1",
+        "packageName": "semver",
+        "hash": "sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA=="
+      }
+    },
     "npm:send@0.18.0": {
       "type": "npm",
       "name": "npm:send@0.18.0",
@@ -15093,13 +15273,22 @@
         "hash": "sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ=="
       }
     },
-    "npm:sharp": {
+    "npm:sharp@0.33.2": {
       "type": "npm",
-      "name": "npm:sharp",
+      "name": "npm:sharp@0.33.2",
       "data": {
         "version": "0.33.2",
         "packageName": "sharp",
         "hash": "sha512-WlYOPyyPDiiM07j/UO+E720ju6gtNtHjEGg5vovUk1Lgxyjm2LFO+37Nt/UI3MMh2l6hxTWQWi7qk3cXJTutcQ=="
+      }
+    },
+    "npm:sharp": {
+      "type": "npm",
+      "name": "npm:sharp",
+      "data": {
+        "version": "0.33.5",
+        "packageName": "sharp",
+        "hash": "sha512-haPVm1EkS9pgvHrQ/F3Xy+hgcuMV0Wm9vfIBSiwZ05k+xgb0PkBQpGsAA/oWdDobNaZTH5ppvHtzCFbnSEwHVw=="
       }
     },
     "npm:shebang-command@1.2.0": {
@@ -15889,9 +16078,9 @@
       "type": "npm",
       "name": "npm:styled-jsx",
       "data": {
-        "version": "5.1.1",
+        "version": "5.1.6",
         "packageName": "styled-jsx",
-        "hash": "sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw=="
+        "hash": "sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA=="
       }
     },
     "npm:stylis@4.3.2": {
@@ -16297,6 +16486,15 @@
         "version": "2.6.3",
         "packageName": "tslib",
         "hash": "sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ=="
+      }
+    },
+    "npm:tslib@2.8.1": {
+      "type": "npm",
+      "name": "npm:tslib@2.8.1",
+      "data": {
+        "version": "2.8.1",
+        "packageName": "tslib",
+        "hash": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
       }
     },
     "npm:tsutils": {
@@ -20518,7 +20716,12 @@
       "type": "static"
     },
     {
-      "source": "npm:@emnapi/runtime",
+      "source": "npm:@emnapi/runtime@0.45.0",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@emnapi/runtime@1.4.0",
       "target": "npm:tslib",
       "type": "static"
     },
@@ -23984,7 +24187,7 @@
     },
     {
       "source": "npm:@graphql-tools/utils@10.2.2",
-      "target": "npm:cross-inspect@1.0.0",
+      "target": "npm:cross-inspect",
       "type": "static"
     },
     {
@@ -24009,7 +24212,7 @@
     },
     {
       "source": "npm:@graphql-tools/utils@10.5.4",
-      "target": "npm:cross-inspect",
+      "target": "npm:cross-inspect@1.0.1",
       "type": "static"
     },
     {
@@ -24178,48 +24381,93 @@
       "type": "static"
     },
     {
+      "source": "npm:@img/sharp-darwin-arm64@0.33.2",
+      "target": "npm:@img/sharp-libvips-darwin-arm64@1.0.1",
+      "type": "static"
+    },
+    {
       "source": "npm:@img/sharp-darwin-arm64",
       "target": "npm:@img/sharp-libvips-darwin-arm64",
       "type": "static"
     },
     {
-      "source": "npm:@img/sharp-darwin-x64",
-      "target": "npm:@img/sharp-libvips-darwin-x64",
+      "source": "npm:@img/sharp-darwin-x64@0.33.2",
+      "target": "npm:@img/sharp-libvips-darwin-x64@1.0.1",
       "type": "static"
     },
     {
-      "source": "npm:@img/sharp-linux-arm64",
-      "target": "npm:@img/sharp-libvips-linux-arm64",
+      "source": "npm:@img/sharp-darwin-x64@0.33.5",
+      "target": "npm:@img/sharp-libvips-darwin-x64@1.0.4",
       "type": "static"
     },
     {
-      "source": "npm:@img/sharp-linux-arm",
-      "target": "npm:@img/sharp-libvips-linux-arm",
+      "source": "npm:@img/sharp-linux-arm64@0.33.2",
+      "target": "npm:@img/sharp-libvips-linux-arm64@1.0.1",
       "type": "static"
     },
     {
-      "source": "npm:@img/sharp-linux-s390x",
-      "target": "npm:@img/sharp-libvips-linux-s390x",
+      "source": "npm:@img/sharp-linux-arm64@0.33.5",
+      "target": "npm:@img/sharp-libvips-linux-arm64@1.0.4",
       "type": "static"
     },
     {
-      "source": "npm:@img/sharp-linux-x64",
-      "target": "npm:@img/sharp-libvips-linux-x64",
+      "source": "npm:@img/sharp-linux-arm@0.33.2",
+      "target": "npm:@img/sharp-libvips-linux-arm@1.0.1",
       "type": "static"
     },
     {
-      "source": "npm:@img/sharp-linuxmusl-arm64",
-      "target": "npm:@img/sharp-libvips-linuxmusl-arm64",
+      "source": "npm:@img/sharp-linux-arm@0.33.5",
+      "target": "npm:@img/sharp-libvips-linux-arm@1.0.5",
       "type": "static"
     },
     {
-      "source": "npm:@img/sharp-linuxmusl-x64",
-      "target": "npm:@img/sharp-libvips-linuxmusl-x64",
+      "source": "npm:@img/sharp-linux-s390x@0.33.2",
+      "target": "npm:@img/sharp-libvips-linux-s390x@1.0.1",
       "type": "static"
     },
     {
-      "source": "npm:@img/sharp-wasm32",
-      "target": "npm:@emnapi/runtime",
+      "source": "npm:@img/sharp-linux-s390x@0.33.5",
+      "target": "npm:@img/sharp-libvips-linux-s390x@1.0.4",
+      "type": "static"
+    },
+    {
+      "source": "npm:@img/sharp-linux-x64@0.33.2",
+      "target": "npm:@img/sharp-libvips-linux-x64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:@img/sharp-linux-x64@0.33.5",
+      "target": "npm:@img/sharp-libvips-linux-x64@1.0.4",
+      "type": "static"
+    },
+    {
+      "source": "npm:@img/sharp-linuxmusl-arm64@0.33.2",
+      "target": "npm:@img/sharp-libvips-linuxmusl-arm64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:@img/sharp-linuxmusl-arm64@0.33.5",
+      "target": "npm:@img/sharp-libvips-linuxmusl-arm64@1.0.4",
+      "type": "static"
+    },
+    {
+      "source": "npm:@img/sharp-linuxmusl-x64@0.33.2",
+      "target": "npm:@img/sharp-libvips-linuxmusl-x64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:@img/sharp-linuxmusl-x64@0.33.5",
+      "target": "npm:@img/sharp-libvips-linuxmusl-x64@1.0.4",
+      "type": "static"
+    },
+    {
+      "source": "npm:@img/sharp-wasm32@0.33.2",
+      "target": "npm:@emnapi/runtime@0.45.0",
+      "type": "static"
+    },
+    {
+      "source": "npm:@img/sharp-wasm32@0.33.5",
+      "target": "npm:@emnapi/runtime@1.4.0",
       "type": "static"
     },
     {
@@ -28974,12 +29222,7 @@
     },
     {
       "source": "npm:@swc/helpers",
-      "target": "npm:@swc/counter",
-      "type": "static"
-    },
-    {
-      "source": "npm:@swc/helpers",
-      "target": "npm:tslib",
+      "target": "npm:tslib@2.8.1",
       "type": "static"
     },
     {
@@ -32318,12 +32561,12 @@
       "type": "static"
     },
     {
-      "source": "npm:cross-inspect@1.0.0",
+      "source": "npm:cross-inspect",
       "target": "npm:tslib",
       "type": "static"
     },
     {
-      "source": "npm:cross-inspect",
+      "source": "npm:cross-inspect@1.0.1",
       "target": "npm:tslib",
       "type": "static"
     },
@@ -38184,6 +38427,11 @@
     },
     {
       "source": "npm:next",
+      "target": "npm:@swc/counter",
+      "type": "static"
+    },
+    {
+      "source": "npm:next",
       "target": "npm:@swc/helpers",
       "type": "static"
     },
@@ -38195,11 +38443,6 @@
     {
       "source": "npm:next",
       "target": "npm:caniuse-lite",
-      "type": "static"
-    },
-    {
-      "source": "npm:next",
-      "target": "npm:graceful-fs",
       "type": "static"
     },
     {
@@ -38259,17 +38502,17 @@
     },
     {
       "source": "npm:next",
-      "target": "npm:@next/swc-win32-ia32-msvc",
-      "type": "static"
-    },
-    {
-      "source": "npm:next",
       "target": "npm:@next/swc-win32-x64-msvc",
       "type": "static"
     },
     {
       "source": "npm:next",
       "target": "npm:@opentelemetry/api",
+      "type": "static"
+    },
+    {
+      "source": "npm:next",
+      "target": "npm:sharp",
       "type": "static"
     },
     {
@@ -42133,6 +42376,116 @@
       "type": "static"
     },
     {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:color",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:detect-libc",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:semver",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-darwin-arm64@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-darwin-x64@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-libvips-darwin-arm64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-libvips-darwin-x64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-libvips-linux-arm@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-libvips-linux-arm64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-libvips-linux-s390x@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-libvips-linux-x64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-libvips-linuxmusl-arm64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-libvips-linuxmusl-x64@1.0.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-linux-arm@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-linux-arm64@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-linux-s390x@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-linux-x64@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-linuxmusl-arm64@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-linuxmusl-x64@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-wasm32@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-win32-ia32@0.33.2",
+      "type": "static"
+    },
+    {
+      "source": "npm:sharp@0.33.2",
+      "target": "npm:@img/sharp-win32-x64@0.33.2",
+      "type": "static"
+    },
+    {
       "source": "npm:sharp",
       "target": "npm:color",
       "type": "static"
@@ -42144,7 +42497,7 @@
     },
     {
       "source": "npm:sharp",
-      "target": "npm:semver",
+      "target": "npm:semver@7.7.1",
       "type": "static"
     },
     {
@@ -42154,7 +42507,7 @@
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-darwin-x64",
+      "target": "npm:@img/sharp-darwin-x64@0.33.5",
       "type": "static"
     },
     {
@@ -42164,82 +42517,82 @@
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-libvips-darwin-x64",
+      "target": "npm:@img/sharp-libvips-darwin-x64@1.0.4",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-libvips-linux-arm",
+      "target": "npm:@img/sharp-libvips-linux-arm@1.0.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-libvips-linux-arm64",
+      "target": "npm:@img/sharp-libvips-linux-arm64@1.0.4",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-libvips-linux-s390x",
+      "target": "npm:@img/sharp-libvips-linux-s390x@1.0.4",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-libvips-linux-x64",
+      "target": "npm:@img/sharp-libvips-linux-x64@1.0.4",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-libvips-linuxmusl-arm64",
+      "target": "npm:@img/sharp-libvips-linuxmusl-arm64@1.0.4",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-libvips-linuxmusl-x64",
+      "target": "npm:@img/sharp-libvips-linuxmusl-x64@1.0.4",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-linux-arm",
+      "target": "npm:@img/sharp-linux-arm@0.33.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-linux-arm64",
+      "target": "npm:@img/sharp-linux-arm64@0.33.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-linux-s390x",
+      "target": "npm:@img/sharp-linux-s390x@0.33.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-linux-x64",
+      "target": "npm:@img/sharp-linux-x64@0.33.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-linuxmusl-arm64",
+      "target": "npm:@img/sharp-linuxmusl-arm64@0.33.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-linuxmusl-x64",
+      "target": "npm:@img/sharp-linuxmusl-x64@0.33.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-wasm32",
+      "target": "npm:@img/sharp-wasm32@0.33.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-win32-ia32",
+      "target": "npm:@img/sharp-win32-ia32@0.33.5",
       "type": "static"
     },
     {
       "source": "npm:sharp",
-      "target": "npm:@img/sharp-win32-x64",
+      "target": "npm:@img/sharp-win32-x64@0.33.5",
       "type": "static"
     },
     {
