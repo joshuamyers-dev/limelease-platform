@@ -106,7 +106,7 @@ export default $config({
           name: "app.occupie.com.au",
         },
         health: {
-          "3000/http": {
+          "80/http": {
             path: "/login",
             interval: "10 seconds",
           },
