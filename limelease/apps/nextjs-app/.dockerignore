@@ -1,5 +1,8 @@
-
-# sst
 .sst
+Dockerfile
+.dockerignore
 node_modules
-package.json
+npm-debug.log
+README.md
+.next
+.git
