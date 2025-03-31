@@ -121,7 +121,7 @@ export default $config({
       //   port: 3000,
       // },
       health: {
-        command: ["CMD-SHELL", "curl -f http://127.0.0.1:3000/ || exit 1"],
+        command: ["CMD-SHELL", "curl -f http://127.0.0.1:80/login || exit 1"],
         startPeriod: "120 seconds",
         timeout: "10 seconds",
         interval: "60 seconds",
