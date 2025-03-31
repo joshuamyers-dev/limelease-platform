@@ -68,7 +68,7 @@ export default $config({
         health: {
           command: [
             "CMD-SHELL",
-            "curl -f http://localhost:80/health || exit 1",
+            "curl -f http://127.0.0.1:80/health || exit 1",
           ],
           startPeriod: "60 seconds",
           timeout: "5 seconds",
@@ -82,7 +82,7 @@ export default $config({
           PORT: "80",
           CLICKSEND_API_USERNAME: "REDACTED_EMAIL",
           CLICKSEND_API_KEY: "REDACTED_CLICKSEND_KEY",
-          FRONT_END_URL: "http://localhost:3000",
+          FRONT_END_URL: "https://app.occupie.com.au",
           AWS_KEY_ID: "REDACTED_AWS_ACCESS_KEY_ID",
           AWS_SECRET_KEY: "REDACTED_AWS_SECRET_KEY",
           AWS_BUCKET: "limelease",
@@ -116,7 +116,7 @@ export default $config({
         ],
       },
       health: {
-        command: ["CMD-SHELL", "curl -f http://localhost:3000/login || exit 1"],
+        command: ["CMD-SHELL", "curl -f http://127.0.0.1:3000/login || exit 1"],
         startPeriod: "60 seconds",
         timeout: "5 seconds",
         interval: "30 seconds",
