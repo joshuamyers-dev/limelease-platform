@@ -58,7 +58,7 @@ RUN mix release
 # the compiled release and other runtime necessities
 FROM ${RUNNER_IMAGE}
 
-RUN apk update && apk add --no-cache libstdc++ openssl ncurses-libs
+RUN apk update && apk add --no-cache libstdc++ openssl ncurses-libs curl
 
 WORKDIR "/app"
 # RUN chown nobody /app
