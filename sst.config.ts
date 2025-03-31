@@ -114,12 +114,8 @@ export default $config({
         rules: [
           { listen: "3000/http" },
           { listen: "443/https", forward: "3000/http" },
-          { listen: "80/http", forward: "3000/http" },
         ],
       },
-      // serviceRegistry: {
-      //   port: 3000,
-      // },
       health: {
         command: ["CMD-SHELL", "curl -f http://127.0.0.1:80/login || exit 1"],
         startPeriod: "120 seconds",
@@ -128,6 +124,7 @@ export default $config({
         retries: 3,
       },
       environment: {
+        HOSTNAME: "0.0.0.0",
         NEXT_PUBLIC_API_URL: "https://api.occupie.com.au",
         NEXT_PUBLIC_WS_ADDRESS: "api.occupie.com.au",
         NEXT_PUBLIC_DOMAIN_API_KEY: "REDACTED_DOMAIN_API_KEY",
