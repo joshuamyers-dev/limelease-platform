@@ -24,6 +24,7 @@ export default $config({
     // Use EC2 NAT instances instead of AWS NAT Gateways for cost savings
     const vpc = new sst.aws.Vpc("OccupieVPC", {
       nat: "ec2",
+      bastion: true,
     });
 
     const bucket = new sst.aws.Bucket("Storage", {
@@ -111,8 +112,8 @@ export default $config({
           },
         },
         rules: [
-          { listen: "3000/http" },
-          { listen: "443/https", forward: "3000/http" },
+          { listen: "80/http" },
+          { listen: "443/https", forward: "80/http" },
         ],
       },
       health: {
