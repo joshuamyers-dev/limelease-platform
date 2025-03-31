@@ -81,7 +81,7 @@ config :lime_lease,
 
 config :lime_lease, LimeLease.Guardian,
   issuer: "limelease",
-  secret_key: "iV2NUJ0/XbsKLMMWJ1IT7oALJR5mwXbIGAcY8ADmQ+4fNTTaPqKAmdqnMtl9+al9"
+  secret_key: "REDACTED_SECRET_KEY_BASE"
 
 config :ex_aws,
   access_key_id: "REDACTED_AWS_ACCESS_KEY_ID",
