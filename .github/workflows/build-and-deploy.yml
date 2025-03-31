@@ -73,6 +73,6 @@ jobs:
       - name: Deploy with SST
         run: |
           STAGE=${{ github.event.inputs.stage || 'staging' }}
-          npx sst deploy --stage $STAGE
+          npx sst refresh --stage $STAGE && npx sst deploy --stage $STAGE
         env:
           CI: true

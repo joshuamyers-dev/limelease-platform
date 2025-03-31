@@ -18,6 +18,9 @@ declare module "sst" {
       "type": "sst.aws.Service"
       "url": string
     }
+    "OccupieVPC": {
+      "type": "sst.aws.Vpc"
+    }
     "Postgresql": {
       "database": string
       "host": string
