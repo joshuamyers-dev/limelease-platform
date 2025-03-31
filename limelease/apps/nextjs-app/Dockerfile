@@ -54,6 +54,9 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Install curl
+RUN apk add --no-cache curl
+
 USER nextjs
 
 EXPOSE 3000

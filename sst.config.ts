@@ -116,10 +116,7 @@ export default $config({
         ],
       },
       health: {
-        command: [
-          "CMD-SHELL",
-          "curl -f http://ip-10-0-0-198.ap-southeast-2.compute.internal:3000/login || exit 1",
-        ],
+        command: ["CMD-SHELL", "curl -f http://127.0.0.1:3000/login || exit 1"],
         startPeriod: "60 seconds",
         timeout: "5 seconds",
         interval: "60 seconds",
