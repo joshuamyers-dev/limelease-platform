@@ -24,8 +24,6 @@ defmodule LimeLease.Services.AWS do
 
   def bucket_config() do
     %{
-      access_key_id: Application.get_env(:ex_aws, :access_key_id),
-      secret_access_key: Application.get_env(:ex_aws, :secret_access_key),
       bucket_name: "#{get_bucket_name()}/#{get_root_dir()}",
       region: Application.get_env(:ex_aws, :region)
     }
@@ -37,8 +35,6 @@ defmodule LimeLease.Services.AWS do
 
     :s3
     |> ExAws.Config.new(%{
-      access_key_id: bucket_config().access_key_id,
-      secret_access_key: bucket_config().secret_access_key,
       region: bucket_config().region
     })
     |> ExAws.S3.presigned_url(:put, bucket_config().bucket_name, s3_key, presign_options)
@@ -47,8 +43,6 @@ defmodule LimeLease.Services.AWS do
   def generate_presigned_get_url(s3_key) do
     :s3
     |> ExAws.Config.new(%{
-      access_key_id: bucket_config().access_key_id,
-      secret_access_key: bucket_config().secret_access_key,
       region: bucket_config().region
     })
     |> ExAws.S3.presigned_url(:get, bucket_config().bucket_name, s3_key, expires_in: 604_800)

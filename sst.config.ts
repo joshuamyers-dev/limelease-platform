@@ -76,6 +76,20 @@ export default $config({
           interval: "60 seconds",
           retries: 3,
         },
+        permissions: [
+          {
+            actions: ["s3:ListBucket"],
+            resources: [bucket.arn],
+          },
+          {
+            actions: ["s3:GetObject"],
+            resources: [`${bucket.arn}/*`],
+          },
+          {
+            actions: ["s3:PutObject"],
+            resources: [`${bucket.arn}/*`],
+          },
+        ],
         environment: {
           DATABASE_URL: pulumi.interpolate`postgresql://root:REDACTED_DB_PASSWORD@${database.host}/${database.database}`,
           SECRET_KEY_BASE:
