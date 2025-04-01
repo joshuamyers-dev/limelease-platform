@@ -79,15 +79,15 @@ export default $config({
         permissions: [
           {
             actions: ["s3:ListBucket"],
-            resources: [pulumi.interpolate`${bucket.arn}`],
+            resources: ["*"],
           },
           {
             actions: ["s3:GetObject"],
-            resources: [pulumi.interpolate`${bucket.arn}/*`],
+            resources: ["*"],
           },
           {
             actions: ["s3:PutObject"],
-            resources: [pulumi.interpolate`${bucket.arn}/*`],
+            resources: ["*"],
           },
         ],
         environment: {
