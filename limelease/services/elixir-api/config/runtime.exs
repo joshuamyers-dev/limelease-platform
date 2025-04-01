@@ -73,8 +73,6 @@ if config_env() == :prod do
     secret_key: secret_key_base
 
   config :ex_aws,
-    access_key_id: System.fetch_env!("AWS_KEY_ID"),
-    secret_access_key: System.fetch_env!("AWS_SECRET_KEY"),
     region: "ap-southeast-2",
     bucket: System.fetch_env!("AWS_BUCKET"),
     static_folder: System.fetch_env!("AWS_STATIC_FOLDER"),
