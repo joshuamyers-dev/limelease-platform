@@ -1,23 +1,23 @@
-import { chromium as playwright } from "playwright-extra";
-import chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
 import slugify from "slugify";
+import chromium from "@sparticuz/chromium";
 
-const stealth = require("puppeteer-extra-plugin-stealth")();
-
-playwright.use(stealth);
+// Add stealth plugin to puppeteer
+puppeteer.use(StealthPlugin());
 
 async function setupRequestInterception(page, allowedDomain) {
-  await page.route("**/*", (route) => {
-    const request = route.request();
+  await page.setRequestInterception(true);
+  page.on("request", (request) => {
     const url = new URL(request.url());
     const isDifferentDomain = !url.host.endsWith(allowedDomain);
     if (
       request.resourceType() === "image" ||
       (isDifferentDomain && request.resourceType() === "script")
     ) {
-      route.abort();
+      request.abort();
     } else {
-      route.continue();
+      request.continue();
     }
   });
 }
@@ -28,8 +28,8 @@ export const handler = async (event) => {
     statusCode: 200,
   };
 
-  const authorizationHeader =
-    event.headers["Authorization"] || event.headers["authorization"];
+  // const authorizationHeader =
+  //   event.headers["Authorization"] || event.headers["authorization"];
 
   // if (!authorizationHeader) {
   //   response.statusCode = 401;
@@ -49,49 +49,49 @@ export const handler = async (event) => {
       lower: true,
     });
 
-    const browser = await playwright.launch({
+    // Launch the browser
+    browser = await puppeteer.launch({
       args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
       executablePath: await chromium.executablePath(),
-      headless: true,
+      headless: chromium.headless,
     });
-    const context = await browser.newContext();
 
-    context.on("page", async (page) => {
-      await setupRequestInterception(page, "domain.com.au");
-    });
+    // Create a new page
+    const page = await browser.newPage();
+    // await setupRequestInterception(page, "domain.com.au");
 
     console.log(
       `Navigating to ${`https://www.domain.com.au/property-profile/${address}`}`
     );
 
-    const page = await browser.newPage();
+    // Navigate to the URL
     await page.goto(`https://www.domain.com.au/property-profile/${address}`, {
       waitUntil: "networkidle0",
     });
 
-    await page.waitForSelector(
-      '[data-testid="property-features-text-container"]'
-    );
+    await page.click('a[class="css-p593q1"]');
 
+    // Wait for the features container to load
+    await page.waitForSelector('[data-testid="property-features-wrapper"]');
+
+    // Extract the features
     const featuresTexts = await page.$$eval(
       '[data-testid="property-features-feature"]',
       (elements) => elements.map((element) => element.textContent)
     );
 
-    await page.click(
-      '[data-testid="propertyid-details-property-hero-image-gradient"]'
-    );
-    await page.waitForSelector("button.css-12p5ldm");
-    await page.click("button.css-12p5ldm");
+    // Click on the image to open gallery
+    await page.click('button[class="css-1azjcl"]');
 
+    // Wait for images to load
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    let imageSrcs = await page.$$eval("img.css-c690t6", (images) =>
+    const imageSrcs = await page.$$eval('img[class="css-c690t6"]', (images) =>
       images.map((img) => img.src)
     );
 
-    imageSrcs = imageSrcs.filter((src, index) => index !== 1);
-
+    // Prepare the response
     response.body = JSON.stringify({
       propertyFeatures: {
         bedrooms: parseInt(
@@ -104,6 +104,9 @@ export const handler = async (event) => {
       },
       imageUrls: imageSrcs,
     });
+
+    // Close the browser
+    await browser.close();
   } catch (error) {
     console.error("Error occurred", error.message);
     response.statusCode = 500;
@@ -111,7 +114,14 @@ export const handler = async (event) => {
       message: "Error occurred during scrape",
       error: error.message,
     });
+
+    // Make sure to close the browser in case of error
+    if (browser) {
+      await browser.close();
+    }
   }
 
   return response;
 };
+
+handler();
