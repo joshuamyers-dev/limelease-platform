@@ -167,7 +167,7 @@ export default $config({
     api.route("POST /snapshot", {
       handler: "limelease/services/playwright-snapshotter/index.handler",
       nodejs: {
-        install: ["@sparticuz/chromium", "playwright-core"],
+        install: ["@sparticuz/chromium", "playwright", "playwright-extra"],
       },
       runtime: "nodejs18.x",
       timeout: "60 seconds",
