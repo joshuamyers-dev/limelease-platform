@@ -6,7 +6,7 @@ const { page, browser } = await connect({
   headless: chromium.headless,
   disableXvfb: true,
   customConfig: {
-    ...chromium.args,
+    chromeFlags: chromium.args,
     chromePath: await chromium.executablePath(),
   },
   connectOption: {
