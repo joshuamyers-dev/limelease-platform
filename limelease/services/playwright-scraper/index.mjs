@@ -1,7 +1,7 @@
 import slugify from "slugify";
 import { connect } from "puppeteer-real-browser";
-import chromium from "@sparticuz/chromium";
 import express from "express";
+import { chromium } from "playwright-extra";
 
 const app = express();
 app.use(express.json());

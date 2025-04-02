@@ -160,7 +160,7 @@ export default $config({
           },
           health: {
             "3000/http": {
-              path: "/scrape",
+              path: "/health",
               interval: "10 seconds",
             },
           },
@@ -172,7 +172,7 @@ export default $config({
         health: {
           command: [
             "CMD-SHELL",
-            "curl -f http://127.0.0.1:3000/scrape || exit 1",
+            "curl -f http://127.0.0.1:3000/health || exit 1",
           ],
           startPeriod: "120 seconds",
           timeout: "10 seconds",
