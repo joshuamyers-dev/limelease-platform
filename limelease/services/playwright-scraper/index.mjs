@@ -5,7 +5,7 @@ import chromium from "@sparticuz/chromium";
 const { page, browser } = await connect({
   headless: chromium.headless,
   customConfig: {
-    ...args,
+    ...chromium.args,
     chromePath: await chromium.executablePath(),
   },
   connectOption: {
@@ -91,7 +91,7 @@ export const handler = async (event) => {
 
     let imageSrcs = [];
 
-    for (let i = 0; i < totalImageCount / 2; i++) {
+    for (let i = 0; i < totalImageCount; i++) {
       await page.click('button[aria-label="next"]');
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
