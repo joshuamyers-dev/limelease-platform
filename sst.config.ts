@@ -145,31 +145,68 @@ export default $config({
       },
     });
 
-    api.route("POST /scrape", {
-      handler: "limelease/services/playwright-scraper/index.handler",
-      nodejs: {
-        install: [
-          "@sparticuz/chromium",
-          "playwright",
-          "playwright-extra",
-          "puppeteer-real-browser",
-          "slugify",
-        ],
-      },
-      runtime: "nodejs18.x",
-      timeout: "60 seconds",
-      memory: "2048 MB",
-      url: {
-        cors: true,
-      },
-    });
+    const playwrightScraperTaskDefinition = new sst.aws.Service(
+      "PlaywrightScraper",
+      {
+        cluster: cluster,
+        image: {
+          context: "limelease/services/playwright-scraper/.",
+        },
+        capacity: "spot",
+        memory: "2 GB",
+        loadBalancer: {
+          domain: {
+            name: "scrape.occupie.com.au",
+          },
+          health: {
+            "3000/http": {
+              path: "/scrape",
+              interval: "10 seconds",
+            },
+          },
+          rules: [
+            { listen: "3000/http" },
+            { listen: "443/https", forward: "3000/http" },
+          ],
+        },
+        health: {
+          command: [
+            "CMD-SHELL",
+            "curl -f http://127.0.0.1:3000/scrape || exit 1",
+          ],
+          startPeriod: "120 seconds",
+          timeout: "10 seconds",
+          interval: "60 seconds",
+          retries: 3,
+        },
+      }
+    );
+
+    // api.route("POST /scrape", {
+    //   handler: "limelease/services/playwright-scraper/index.handler",
+    //   nodejs: {
+    //     install: [
+    //       "@sparticuz/chromium",
+    //       "playwright",
+    //       "playwright-extra",
+    //       "puppeteer-real-browser",
+    //       "slugify",
+    //     ],
+    //   },
+    //   runtime: "nodejs22.x",
+    //   timeout: "60 seconds",
+    //   memory: "2048 MB",
+    //   url: {
+    //     cors: true,
+    //   },
+    // });
 
     api.route("POST /snapshot", {
       handler: "limelease/services/playwright-snapshotter/index.handler",
       nodejs: {
         install: ["@sparticuz/chromium", "playwright", "playwright-extra"],
       },
-      runtime: "nodejs18.x",
+      runtime: "nodejs22.x",
       timeout: "60 seconds",
       memory: "2048 MB",
       url: {
