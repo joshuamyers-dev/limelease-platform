@@ -1,6 +1,6 @@
 import slugify from "slugify";
 import { connect } from "puppeteer-real-browser";
-import chromium from "@sparticuz/chromium";
+import chromium from "chrome-aws-lambda";
 
 const { page, browser } = await connect({
   headless: chromium.headless,
