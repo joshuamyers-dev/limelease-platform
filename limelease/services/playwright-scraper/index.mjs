@@ -16,12 +16,8 @@ async function initBrowser() {
   try {
     const { page } = await connect({
       headless: true,
-      args: chromium.args,
       customConfig: {
-        chromePath: await chromium.executablePath(),
-      },
-      connectOption: {
-        defaultViewport: chromium.defaultViewport,
+        chromePath: chromium.executablePath(),
       },
     });
     browserPage = page;
