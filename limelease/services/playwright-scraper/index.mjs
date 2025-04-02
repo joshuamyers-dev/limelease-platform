@@ -4,9 +4,13 @@ import chromium from "@sparticuz/chromium";
 
 const { page, browser } = await connect({
   headless: chromium.headless,
-  args: chromium.args,
-  defaultViewport: chromium.defaultViewport,
-  executablePath: await chromium.executablePath(),
+  customConfig: {
+    ...args,
+    chromePath: await chromium.executablePath(),
+  },
+  connectOption: {
+    defaultViewport: chromium.defaultViewport,
+  },
 });
 
 export const handler = async (event) => {
