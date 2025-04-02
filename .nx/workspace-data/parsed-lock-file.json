@@ -5814,18 +5814,18 @@
         "hash": "sha512-WKj/lI4QjnLuPrim0cfO7i+HsDSXHxNv1y0CrJhdntuO3hxWZmnXCwNDnwOvry11OjRin6cgWNF+j/9Pn8TN4w=="
       }
     },
-    "npm:@whatwg-node/events@0.0.3": {
+    "npm:@whatwg-node/events": {
       "type": "npm",
-      "name": "npm:@whatwg-node/events@0.0.3",
+      "name": "npm:@whatwg-node/events",
       "data": {
         "version": "0.0.3",
         "packageName": "@whatwg-node/events",
         "hash": "sha512-IqnKIDWfXBJkvy/k6tzskWTc2NK3LcqHlb+KHGCrjOCH4jfQckRX0NAiIcC/vIqQkzLYw2r2CTSwAxcrtcD6lA=="
       }
     },
-    "npm:@whatwg-node/events": {
+    "npm:@whatwg-node/events@0.1.1": {
       "type": "npm",
-      "name": "npm:@whatwg-node/events",
+      "name": "npm:@whatwg-node/events@0.1.1",
       "data": {
         "version": "0.1.1",
         "packageName": "@whatwg-node/events",
@@ -5868,18 +5868,18 @@
         "hash": "sha512-hbccmaSZaItdsRuBKBEEhLoO+5oXJPxiyd0kG2xXd0Dh3Rt+vZn4pADHxuSiSHLd9CM+S2z4+IxlEGbWUgiz9g=="
       }
     },
-    "npm:@whatwg-node/node-fetch@0.3.6": {
+    "npm:@whatwg-node/node-fetch": {
       "type": "npm",
-      "name": "npm:@whatwg-node/node-fetch@0.3.6",
+      "name": "npm:@whatwg-node/node-fetch",
       "data": {
         "version": "0.3.6",
         "packageName": "@whatwg-node/node-fetch",
         "hash": "sha512-w9wKgDO4C95qnXZRwZTfCmLWqyRnooGjcIwG0wADWjw9/HN0p7dtvtgSvItZtUyNteEvgTrd8QojNEqV6DAGTA=="
       }
     },
-    "npm:@whatwg-node/node-fetch": {
+    "npm:@whatwg-node/node-fetch@0.5.11": {
       "type": "npm",
-      "name": "npm:@whatwg-node/node-fetch",
+      "name": "npm:@whatwg-node/node-fetch@0.5.11",
       "data": {
         "version": "0.5.11",
         "packageName": "@whatwg-node/node-fetch",
@@ -7830,18 +7830,18 @@
         "hash": "sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg=="
       }
     },
-    "npm:cross-inspect": {
+    "npm:cross-inspect@1.0.0": {
       "type": "npm",
-      "name": "npm:cross-inspect",
+      "name": "npm:cross-inspect@1.0.0",
       "data": {
         "version": "1.0.0",
         "packageName": "cross-inspect",
         "hash": "sha512-4PFfn4b5ZN6FMNGSZlyb7wUhuN8wvj8t/VQHZdM4JsDcruGJ8L2kf9zao98QIrBPFCpdk27qst/AGTl7pL3ypQ=="
       }
     },
-    "npm:cross-inspect@1.0.1": {
+    "npm:cross-inspect": {
       "type": "npm",
-      "name": "npm:cross-inspect@1.0.1",
+      "name": "npm:cross-inspect",
       "data": {
         "version": "1.0.1",
         "packageName": "cross-inspect",
@@ -12168,18 +12168,18 @@
         "hash": "sha512-aisnrDP4GNe06UcKFnV5bfMNPBUw4jsLGaWwWfnH3v02GnBuXX2MCVn5RbrWo0j3pczUilYblq7fQ7Nw2t5XKw=="
       }
     },
-    "npm:mem@4.3.0": {
+    "npm:mem": {
       "type": "npm",
-      "name": "npm:mem@4.3.0",
+      "name": "npm:mem",
       "data": {
         "version": "4.3.0",
         "packageName": "mem",
         "hash": "sha512-qX2bG48pTqYRVmDB37rn/6PT7LcR8T7oAX3bf99u1Tt1nzxYfxkgqDwUwolPlXweM0XzBOBFzSx4kfp7KP1s/w=="
       }
     },
-    "npm:mem": {
+    "npm:mem@5.1.1": {
       "type": "npm",
-      "name": "npm:mem",
+      "name": "npm:mem@5.1.1",
       "data": {
         "version": "5.1.1",
         "packageName": "mem",
@@ -12456,18 +12456,18 @@
         "hash": "sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg=="
       }
     },
-    "npm:mimic-response@1.0.1": {
+    "npm:mimic-response": {
       "type": "npm",
-      "name": "npm:mimic-response@1.0.1",
+      "name": "npm:mimic-response",
       "data": {
         "version": "1.0.1",
         "packageName": "mimic-response",
         "hash": "sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ=="
       }
     },
-    "npm:mimic-response": {
+    "npm:mimic-response@3.1.0": {
       "type": "npm",
-      "name": "npm:mimic-response",
+      "name": "npm:mimic-response@3.1.0",
       "data": {
         "version": "3.1.0",
         "packageName": "mimic-response",
@@ -13770,15 +13770,6 @@
         "hash": "sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA=="
       }
     },
-    "npm:playwright-core@1.44.1": {
-      "type": "npm",
-      "name": "npm:playwright-core@1.44.1",
-      "data": {
-        "version": "1.44.1",
-        "packageName": "playwright-core",
-        "hash": "sha512-wh0JWtYTrhv1+OSsLPgFzGzt67Y7BE/ZS3jEqgGBlp2ppp1ZDj8c+9IARNW4dwf1poq5MgHreEM2KV/GuR4cFA=="
-      }
-    },
     "npm:playwright-core": {
       "type": "npm",
       "name": "npm:playwright-core",
@@ -13786,6 +13777,15 @@
         "version": "1.51.1",
         "packageName": "playwright-core",
         "hash": "sha512-/crRMj8+j/Nq5s8QcvegseuyeZPxpQCZb6HNk3Sos3BlZyAknRjoyJPFWkpNn8v0+P3WiwqFF8P+zQo4eqiNuw=="
+      }
+    },
+    "npm:playwright-extra-plugin-stealth": {
+      "type": "npm",
+      "name": "npm:playwright-extra-plugin-stealth",
+      "data": {
+        "version": "0.0.1",
+        "packageName": "playwright-extra-plugin-stealth",
+        "hash": "sha512-eI0Ujf4MXbcupzlVEXaaOnb+Exjt1sFi7t/3KxIA5pVww+WRAXRWdhqTz0glX62jJq2YM8fLu+GyvULpjTpZrw=="
       }
     },
     "npm:playwright-extra": {
@@ -24682,7 +24682,7 @@
     },
     {
       "source": "npm:@graphql-tools/utils@10.2.2",
-      "target": "npm:cross-inspect",
+      "target": "npm:cross-inspect@1.0.0",
       "type": "static"
     },
     {
@@ -24707,7 +24707,7 @@
     },
     {
       "source": "npm:@graphql-tools/utils@10.5.4",
-      "target": "npm:cross-inspect@1.0.1",
+      "target": "npm:cross-inspect",
       "type": "static"
     },
     {
@@ -30517,7 +30517,7 @@
     },
     {
       "source": "npm:@whatwg-node/fetch",
-      "target": "npm:@whatwg-node/node-fetch@0.3.6",
+      "target": "npm:@whatwg-node/node-fetch",
       "type": "static"
     },
     {
@@ -30537,7 +30537,7 @@
     },
     {
       "source": "npm:@whatwg-node/fetch@0.9.18",
-      "target": "npm:@whatwg-node/node-fetch",
+      "target": "npm:@whatwg-node/node-fetch@0.5.11",
       "type": "static"
     },
     {
@@ -30566,36 +30566,6 @@
       "type": "static"
     },
     {
-      "source": "npm:@whatwg-node/node-fetch@0.3.6",
-      "target": "npm:@whatwg-node/events@0.0.3",
-      "type": "static"
-    },
-    {
-      "source": "npm:@whatwg-node/node-fetch@0.3.6",
-      "target": "npm:busboy",
-      "type": "static"
-    },
-    {
-      "source": "npm:@whatwg-node/node-fetch@0.3.6",
-      "target": "npm:fast-querystring",
-      "type": "static"
-    },
-    {
-      "source": "npm:@whatwg-node/node-fetch@0.3.6",
-      "target": "npm:fast-url-parser",
-      "type": "static"
-    },
-    {
-      "source": "npm:@whatwg-node/node-fetch@0.3.6",
-      "target": "npm:tslib",
-      "type": "static"
-    },
-    {
-      "source": "npm:@whatwg-node/node-fetch",
-      "target": "npm:@kamilkisiela/fast-url-parser",
-      "type": "static"
-    },
-    {
       "source": "npm:@whatwg-node/node-fetch",
       "target": "npm:@whatwg-node/events",
       "type": "static"
@@ -30612,6 +30582,36 @@
     },
     {
       "source": "npm:@whatwg-node/node-fetch",
+      "target": "npm:fast-url-parser",
+      "type": "static"
+    },
+    {
+      "source": "npm:@whatwg-node/node-fetch",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@whatwg-node/node-fetch@0.5.11",
+      "target": "npm:@kamilkisiela/fast-url-parser",
+      "type": "static"
+    },
+    {
+      "source": "npm:@whatwg-node/node-fetch@0.5.11",
+      "target": "npm:@whatwg-node/events@0.1.1",
+      "type": "static"
+    },
+    {
+      "source": "npm:@whatwg-node/node-fetch@0.5.11",
+      "target": "npm:busboy",
+      "type": "static"
+    },
+    {
+      "source": "npm:@whatwg-node/node-fetch@0.5.11",
+      "target": "npm:fast-querystring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@whatwg-node/node-fetch@0.5.11",
       "target": "npm:tslib",
       "type": "static"
     },
@@ -32817,7 +32817,7 @@
     },
     {
       "source": "npm:clone-response",
-      "target": "npm:mimic-response@1.0.1",
+      "target": "npm:mimic-response",
       "type": "static"
     },
     {
@@ -33186,12 +33186,12 @@
       "type": "static"
     },
     {
-      "source": "npm:cross-inspect",
+      "source": "npm:cross-inspect@1.0.0",
       "target": "npm:tslib",
       "type": "static"
     },
     {
-      "source": "npm:cross-inspect@1.0.1",
+      "source": "npm:cross-inspect",
       "target": "npm:tslib",
       "type": "static"
     },
@@ -33322,7 +33322,7 @@
     },
     {
       "source": "npm:decompress-response",
-      "target": "npm:mimic-response",
+      "target": "npm:mimic-response@3.1.0",
       "type": "static"
     },
     {
@@ -38516,32 +38516,32 @@
       "type": "static"
     },
     {
-      "source": "npm:mem@4.3.0",
+      "source": "npm:mem",
       "target": "npm:map-age-cleaner",
       "type": "static"
     },
     {
-      "source": "npm:mem@4.3.0",
+      "source": "npm:mem",
       "target": "npm:mimic-fn",
       "type": "static"
     },
     {
-      "source": "npm:mem@4.3.0",
+      "source": "npm:mem",
       "target": "npm:p-is-promise",
       "type": "static"
     },
     {
-      "source": "npm:mem",
+      "source": "npm:mem@5.1.1",
       "target": "npm:map-age-cleaner",
       "type": "static"
     },
     {
-      "source": "npm:mem",
+      "source": "npm:mem@5.1.1",
       "target": "npm:mimic-fn",
       "type": "static"
     },
     {
-      "source": "npm:mem",
+      "source": "npm:mem@5.1.1",
       "target": "npm:p-is-promise",
       "type": "static"
     },
@@ -39897,7 +39897,7 @@
     },
     {
       "source": "npm:os-locale",
-      "target": "npm:mem",
+      "target": "npm:mem@5.1.1",
       "type": "static"
     },
     {
@@ -40212,22 +40212,7 @@
     },
     {
       "source": "npm:playwright-extra",
-      "target": "npm:debug@4.3.5",
-      "type": "static"
-    },
-    {
-      "source": "npm:playwright-extra",
-      "target": "npm:playwright",
-      "type": "static"
-    },
-    {
-      "source": "npm:playwright-extra",
-      "target": "npm:playwright-core@1.44.1",
-      "type": "static"
-    },
-    {
-      "source": "npm:playwright-extra",
-      "target": "npm:debug@4.3.5",
+      "target": "npm:debug",
       "type": "static"
     },
     {
@@ -44997,7 +44982,7 @@
     },
     {
       "source": "npm:username",
-      "target": "npm:mem@4.3.0",
+      "target": "npm:mem",
       "type": "static"
     },
     {

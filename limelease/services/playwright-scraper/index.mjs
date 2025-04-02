@@ -1,26 +1,13 @@
-import puppeteer from "puppeteer-extra";
-import StealthPlugin from "puppeteer-extra-plugin-stealth";
 import slugify from "slugify";
+import { connect } from "puppeteer-real-browser";
 import chromium from "@sparticuz/chromium";
 
-// Add stealth plugin to puppeteer
-puppeteer.use(StealthPlugin());
-
-async function setupRequestInterception(page, allowedDomain) {
-  await page.setRequestInterception(true);
-  page.on("request", (request) => {
-    const url = new URL(request.url());
-    const isDifferentDomain = !url.host.endsWith(allowedDomain);
-    if (
-      request.resourceType() === "image" ||
-      (isDifferentDomain && request.resourceType() === "script")
-    ) {
-      request.abort();
-    } else {
-      request.continue();
-    }
-  });
-}
+const { page, browser } = await connect({
+  headless: chromium.headless,
+  args: chromium.args,
+  defaultViewport: chromium.defaultViewport,
+  executablePath: await chromium.executablePath(),
+});
 
 export const handler = async (event) => {
   let browser = null;
@@ -43,64 +30,77 @@ export const handler = async (event) => {
   try {
     let { address } = JSON.parse(event.body);
 
-    console.log(`Input address: ${address}`);
-
     address = slugify(address.replace("/", "-"), {
       lower: true,
     });
 
-    // Launch the browser
-    browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-    });
-
-    // Create a new page
-    const page = await browser.newPage();
-    // await setupRequestInterception(page, "domain.com.au");
-
-    console.log(
-      `Navigating to ${`https://www.domain.com.au/property-profile/${address}`}`
-    );
-
-    // Navigate to the URL
-    await page.goto(`https://www.domain.com.au/property-profile/${address}`, {
+    await page.goto("https://www.property.com.au", {
       waitUntil: "networkidle0",
     });
+    await page.waitForSelector(
+      'button[data-testid="home-page-multi-intent-search-modal-button"]'
+    );
+    await page.click(
+      'button[data-testid="home-page-multi-intent-search-modal-button"]'
+    );
+    await page.waitForSelector(
+      'input[id="multi-intent-search-modal-default-screen"]'
+    );
+    await page.type(
+      'input[id="multi-intent-search-modal-default-screen"]',
+      address
+    );
+    await page.waitForSelector(
+      'div[class="styles__ListboxWrapper-sc-1sw1a31-0 ccOqvP location-suggest-listbox-wrapper"]'
+    );
+    await Promise.all([
+      page.waitForNavigation(),
+      page.click(
+        'div[class="styles__ListboxWrapper-sc-1sw1a31-0 ccOqvP location-suggest-listbox-wrapper"]'
+      ),
+    ]);
 
-    await page.click('a[class="css-p593q1"]');
-
-    // Wait for the features container to load
-    await page.waitForSelector('[data-testid="property-features-wrapper"]');
-
-    // Extract the features
-    const featuresTexts = await page.$$eval(
-      '[data-testid="property-features-feature"]',
-      (elements) => elements.map((element) => element.textContent)
+    const bedrooms = await page.$eval(
+      'div[title="Bedrooms"]',
+      (el) => el.innerText
+    );
+    const baths = await page.$eval(
+      'div[title="Bathrooms"]',
+      (el) => el.innerText
+    );
+    const carSpaces = await page.$eval(
+      'div[title="Car spaces"]',
+      (el) => el.innerText
     );
 
-    // Click on the image to open gallery
-    await page.click('button[class="css-1azjcl"]');
+    await Promise.all([
+      page.waitForNavigation(),
+      page.click('button[aria-label="Open Media Gallery Lightbox"]'),
+    ]);
 
-    // Wait for images to load
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    const imageSrcs = await page.$$eval('img[class="css-c690t6"]', (images) =>
-      images.map((img) => img.src)
+    const imageCountElement = await page.$eval(
+      ".carousel.media-gallery-carousel p",
+      (element) => element.innerText
     );
+
+    const totalImageCount = imageCountElement.split("/")[1];
+
+    let imageSrcs = [];
+
+    for (let i = 0; i < totalImageCount / 2; i++) {
+      await page.click('button[aria-label="next"]');
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      imageSrcs.push(await page.$eval("picture img", (img) => img.src));
+    }
 
     // Prepare the response
     response.body = JSON.stringify({
       propertyFeatures: {
-        bedrooms: parseInt(
-          featuresTexts[0].replace("Beds", "").replace(" ", "")
-        ),
-        bath: parseInt(featuresTexts[1].replace("Baths", "").replace(" ", "")),
-        carSpaces: parseInt(
-          featuresTexts[2].replace("Parking", "").replace(" ", "")
-        ),
+        bedrooms: parseInt(bedrooms),
+        bath: parseInt(baths),
+        carSpaces: parseInt(carSpaces),
       },
       imageUrls: imageSrcs,
     });
@@ -123,5 +123,3 @@ export const handler = async (event) => {
 
   return response;
 };
-
-handler();

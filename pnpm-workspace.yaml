@@ -1,4 +1,6 @@
 packages:
-  - 'limelease/apps/*'
-  - 'limelease/services/*'
-  - 'limelease/packages/*'
+  - 'packages/*'
+  - 'apps/*'
+  - 'infra/*'
+  - '!**/node_modules/**'
+  - '!**/dist/**'
