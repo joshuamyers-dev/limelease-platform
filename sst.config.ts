@@ -150,8 +150,10 @@ export default $config({
       nodejs: {
         install: [
           "@sparticuz/chromium",
-          "playwright-core",
-          "puppeteer-extra-plugin-stealth",
+          "playwright",
+          "playwright-extra",
+          "puppeteer-real-browser",
+          "slugify",
         ],
       },
       runtime: "nodejs18.x",
