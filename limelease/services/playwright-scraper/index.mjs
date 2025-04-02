@@ -91,7 +91,7 @@ export const handler = async (event) => {
 
     let imageSrcs = [];
 
-    for (let i = 0; i < totalImageCount; i++) {
+    for (let i = 0; i < Math.max(totalImageCount, 5); i++) {
       await page.click('button[aria-label="next"]');
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
