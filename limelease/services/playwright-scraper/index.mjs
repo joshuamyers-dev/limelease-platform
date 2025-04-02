@@ -4,7 +4,6 @@ import chromium from "@sparticuz/chromium";
 
 const { page } = await connect({
   headless: chromium.headless,
-  disableXvfb: true,
   customConfig: {
     chromeFlags: chromium.args,
     chromePath: await chromium.executablePath(),
