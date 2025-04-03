@@ -9,23 +9,12 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
 // Initialize browser connection outside of handler for connection reuse
-let browserPage;
-
-async function initBrowser() {
-  try {
-    const { page } = await connect({
-      headless: false,
-      disableXvfb: false,
-      turnstile: true,
-      ignoreAllFlags: true,
-    });
-    browserPage = page;
-    console.log("Browser initialized successfully");
-  } catch (error) {
-    console.error("Failed to initialize browser:", error);
-    throw error;
-  }
-}
+const { page } = await connect({
+  headless: false,
+  disableXvfb: false,
+  turnstile: true,
+  ignoreAllFlags: true,
+});
 
 // The scraper function (former Lambda handler)
 async function scrapeProperty(address) {
@@ -34,51 +23,56 @@ async function scrapeProperty(address) {
       lower: true,
     });
 
-    await browserPage.goto("https://www.property.com.au", {
+    await page.goto("https://www.property.com.au", {
       waitUntil: "networkidle0",
     });
-    await browserPage.waitForSelector(
+
+    await page.click(
       'button[data-testid="home-page-multi-intent-search-modal-button"]'
     );
-    await browserPage.click(
-      'button[data-testid="home-page-multi-intent-search-modal-button"]'
+
+    console.log(
+      await page.$eval(
+        'input[placeholder="Search by suburb, postcode or area"]'
+      )
     );
-    await browserPage.waitForSelector(
+
+    await page.waitForSelector(
       'input[placeholder="Search by suburb, postcode or area"]'
     );
-    await browserPage.type(
+    await page.type(
       'input[placeholder="Search by suburb, postcode or area"]',
       address
     );
-    await browserPage.waitForSelector(
+    await page.waitForSelector(
       'div[class="styles__ListboxWrapper-sc-1sw1a31-0 ccOqvP location-suggest-listbox-wrapper"]'
     );
     await Promise.all([
-      browserPage.waitForNavigation(),
-      browserPage.click(
+      page.waitForNavigation(),
+      page.click(
         'div[class="styles__ListboxWrapper-sc-1sw1a31-0 ccOqvP location-suggest-listbox-wrapper"]'
       ),
     ]);
 
-    const bedrooms = await browserPage.$eval(
+    const bedrooms = await page.$eval(
       'div[title="Bedrooms"]',
       (el) => el.innerText
     );
-    const baths = await browserPage.$eval(
+    const baths = await page.$eval(
       'div[title="Bathrooms"]',
       (el) => el.innerText
     );
-    const carSpaces = await browserPage.$eval(
+    const carSpaces = await page.$eval(
       'div[title="Car spaces"]',
       (el) => el.innerText
     );
 
     await Promise.all([
-      browserPage.waitForNavigation(),
-      browserPage.click('button[aria-label="Open Media Gallery Lightbox"]'),
+      page.waitForNavigation(),
+      page.click('button[aria-label="Open Media Gallery Lightbox"]'),
     ]);
 
-    const imageCountElement = await browserPage.$eval(
+    const imageCountElement = await page.$eval(
       ".carousel.media-gallery-carousel p",
       (element) => element.innerText
     );
@@ -88,11 +82,11 @@ async function scrapeProperty(address) {
     let imageSrcs = [];
 
     for (let i = 0; i < Math.max(totalImageCount, 5); i++) {
-      await browserPage.click('button[aria-label="next"]');
+      await page.click('button[aria-label="next"]');
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      imageSrcs.push(await browserPage.$eval("picture img", (img) => img.src));
+      imageSrcs.push(await page.$eval("picture img", (img) => img.src));
     }
 
     return {
@@ -137,7 +131,6 @@ app.get("/health", (req, res) => {
 // Start server
 async function startServer() {
   try {
-    await initBrowser();
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
