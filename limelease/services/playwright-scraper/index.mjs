@@ -1,7 +1,6 @@
 import slugify from "slugify";
 import { connect } from "puppeteer-real-browser";
 import express from "express";
-import { chromium } from "playwright-extra";
 
 const app = express();
 app.use(express.json());
@@ -15,10 +14,8 @@ let browserPage;
 async function initBrowser() {
   try {
     const { page } = await connect({
-      headless: true,
-      // customConfig: {
-      //   chromePath: chromium.executablePath(),
-      // },
+      headless: false,
+      disableXvfb: false,
     });
     browserPage = page;
     console.log("Browser initialized successfully");
