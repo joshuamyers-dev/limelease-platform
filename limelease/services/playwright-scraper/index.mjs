@@ -16,6 +16,8 @@ async function initBrowser() {
     const { page } = await connect({
       headless: false,
       disableXvfb: false,
+      turnstile: true,
+      ignoreAllFlags: true,
     });
     browserPage = page;
     console.log("Browser initialized successfully");
