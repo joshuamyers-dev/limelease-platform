@@ -1,13 +1,9 @@
-import chromium from "@sparticuz/chromium";
 import express from "express";
 import { connect } from "puppeteer-real-browser";
 
 const { page } = await connect({
   headless: false,
   disableXvfb: false,
-  customConfig: {
-    chromePath: chromium.executablePath,
-  },
 });
 
 const app = express();
