@@ -16,9 +16,9 @@ async function initBrowser() {
   try {
     const { page } = await connect({
       headless: true,
-      customConfig: {
-        chromePath: chromium.executablePath(),
-      },
+      // customConfig: {
+      //   chromePath: chromium.executablePath(),
+      // },
     });
     browserPage = page;
     console.log("Browser initialized successfully");
