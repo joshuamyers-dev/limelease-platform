@@ -1,6 +1,14 @@
-import slugify from "slugify";
-import { connect } from "puppeteer-real-browser";
+import chromium from "@sparticuz/chromium";
 import express from "express";
+import { connect } from "puppeteer-real-browser";
+
+const { page } = await connect({
+  headless: false,
+  disableXvfb: false,
+  customConfig: {
+    chromePath: chromium.executablePath,
+  },
+});
 
 const app = express();
 app.use(express.json());
@@ -8,21 +16,9 @@ app.use(express.json());
 // Configure port from environment or default to 3000
 const PORT = process.env.PORT || 3000;
 
-// Initialize browser connection outside of handler for connection reuse
-const { page } = await connect({
-  headless: false,
-  disableXvfb: false,
-  turnstile: true,
-  ignoreAllFlags: true,
-});
-
 // The scraper function (former Lambda handler)
 async function scrapeProperty(address) {
   try {
-    address = slugify(address.replace("/", "-"), {
-      lower: true,
-    });
-
     await page.goto("https://www.property.com.au", {
       waitUntil: "networkidle0",
     });
@@ -31,28 +27,27 @@ async function scrapeProperty(address) {
       'button[data-testid="home-page-multi-intent-search-modal-button"]'
     );
 
-    console.log(
-      await page.$eval(
-        'input[placeholder="Search by suburb, postcode or area"]'
-      )
-    );
-
     await page.waitForSelector(
-      'input[placeholder="Search by suburb, postcode or area"]'
+      'input[placeholder="Search an address, suburb or state"]'
     );
     await page.type(
-      'input[placeholder="Search by suburb, postcode or area"]',
-      address
+      'input[placeholder="Search an address, suburb or state"]',
+      address,
+      {
+        delay: Math.random() * 100,
+      }
     );
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     await page.waitForSelector(
       'div[class="styles__ListboxWrapper-sc-1sw1a31-0 ccOqvP location-suggest-listbox-wrapper"]'
     );
-    await Promise.all([
-      page.waitForNavigation(),
-      page.click(
-        'div[class="styles__ListboxWrapper-sc-1sw1a31-0 ccOqvP location-suggest-listbox-wrapper"]'
-      ),
-    ]);
+
+    await page.click(
+      'li[id="multi-intent-search-modal-default-screen-item-0"]'
+    );
+    await page.waitForNavigation();
 
     const bedrooms = await page.$eval(
       'div[title="Bedrooms"]',
@@ -67,10 +62,7 @@ async function scrapeProperty(address) {
       (el) => el.innerText
     );
 
-    await Promise.all([
-      page.waitForNavigation(),
-      page.click('button[aria-label="Open Media Gallery Lightbox"]'),
-    ]);
+    await page.click('button[aria-label="Open Media Gallery Lightbox"]');
 
     const imageCountElement = await page.$eval(
       ".carousel.media-gallery-carousel p",
@@ -81,7 +73,7 @@ async function scrapeProperty(address) {
 
     let imageSrcs = [];
 
-    for (let i = 0; i < Math.max(totalImageCount, 5); i++) {
+    for (let i = 0; i < Math.floor(totalImageCount / 3); i++) {
       await page.click('button[aria-label="next"]');
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
