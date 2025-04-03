@@ -6,6 +6,7 @@ RUN apk add --update --no-cache \
             coreutils \
             git \
             bash \
+            curl \
             nodejs \
             npm \
             docker \
