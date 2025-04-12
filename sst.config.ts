@@ -209,6 +209,7 @@ export default $config({
       runtime: "nodejs22.x",
       timeout: "60 seconds",
       memory: "3008 MB",
+      architecture: "arm64",
       url: {
         cors: true,
       },
