@@ -208,7 +208,7 @@ export default $config({
       },
       runtime: "nodejs22.x",
       timeout: "60 seconds",
-      memory: "2048 MB",
+      memory: "3048 MB",
       url: {
         cors: true,
       },
