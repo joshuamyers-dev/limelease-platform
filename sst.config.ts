@@ -33,9 +33,9 @@ export default $config({
 
     const database = new sst.aws.Postgres("Postgres", {
       vpc,
-      username: "root",
-      password: "REDACTED_DB_PASSWORD",
-      database: "lime_lease_prod",
+      username: process.env.DB_USERNAME || "root",
+      password: process.env.DB_PASSWORD || (() => { throw new Error("DB_PASSWORD environment variable is required") })(),
+      database: process.env.DB_NAME || "lime_lease_prod",
     });
 
     const cluster = new sst.aws.Cluster("MyCluster", {
@@ -91,16 +91,15 @@ export default $config({
           },
         ],
         environment: {
-          DATABASE_URL: pulumi.interpolate`postgresql://root:REDACTED_DB_PASSWORD@${database.host}/${database.database}`,
-          SECRET_KEY_BASE:
-            "REDACTED_SECRET_KEY_BASE",
+          DATABASE_URL: pulumi.interpolate`postgresql://${process.env.DB_USERNAME || "root"}:${process.env.DB_PASSWORD}@${database.host}/${database.database}`,
+          SECRET_KEY_BASE: process.env.SECRET_KEY_BASE || (() => { throw new Error("SECRET_KEY_BASE environment variable is required") })(),
           PORT: "80",
-          CLICKSEND_API_USERNAME: "REDACTED_EMAIL",
-          CLICKSEND_API_KEY: "REDACTED_CLICKSEND_KEY",
-          FRONT_END_URL: "https://app.occupie.com.au",
-          AWS_BUCKET: "occupie",
-          AWS_STATIC_FOLDER: "public",
-          POSTMARK_API_KEY: "REDACTED_POSTMARK_KEY_1",
+          CLICKSEND_API_USERNAME: process.env.CLICKSEND_API_USERNAME || (() => { throw new Error("CLICKSEND_API_USERNAME environment variable is required") })(),
+          CLICKSEND_API_KEY: process.env.CLICKSEND_API_KEY || (() => { throw new Error("CLICKSEND_API_KEY environment variable is required") })(),
+          FRONT_END_URL: process.env.FRONT_END_URL || "https://app.occupie.com.au",
+          AWS_BUCKET: process.env.AWS_BUCKET || "occupie",
+          AWS_STATIC_FOLDER: process.env.AWS_STATIC_FOLDER || "public",
+          POSTMARK_API_KEY: process.env.POSTMARK_API_KEY || (() => { throw new Error("POSTMARK_API_KEY environment variable is required") })(),
           API_GATEWAY_ENDPOINT: api.url,
         },
       },
@@ -137,10 +136,10 @@ export default $config({
       },
       environment: {
         HOSTNAME: "0.0.0.0",
-        NEXT_PUBLIC_API_URL: "https://api.occupie.com.au",
-        NEXT_PUBLIC_WS_ADDRESS: "api.occupie.com.au",
-        NEXT_PUBLIC_DOMAIN_API_KEY: "REDACTED_DOMAIN_API_KEY",
-        NEXT_PUBLIC_FRONT_END_URL: "https://www.occupie.com.au",
+        NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "https://api.occupie.com.au",
+        NEXT_PUBLIC_WS_ADDRESS: process.env.NEXT_PUBLIC_WS_ADDRESS || "api.occupie.com.au",
+        NEXT_PUBLIC_DOMAIN_API_KEY: process.env.NEXT_PUBLIC_DOMAIN_API_KEY || (() => { throw new Error("NEXT_PUBLIC_DOMAIN_API_KEY environment variable is required") })(),
+        NEXT_PUBLIC_FRONT_END_URL: process.env.NEXT_PUBLIC_FRONT_END_URL || "https://www.occupie.com.au",
         NEXT_PUBLIC_PROPERTY_FETCHER_LAMBDA_URL: pulumi.interpolate`${api.url}/scrape`,
       },
     });

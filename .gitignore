@@ -23,6 +23,23 @@ node_modules
 
 # If the VM crashes, it generates a dump, let's ignore it too.
 erl_crash.dump
+**/erl_crash.dump
+
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Private keys and certificates
+*.pem
+*.key
+**/priv/keys/
+*.p12
+*.pfx
+keys*.json
 
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
