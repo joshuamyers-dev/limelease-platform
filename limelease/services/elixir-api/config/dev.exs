@@ -75,25 +75,25 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 config :lime_lease,
-  clicksend_api_username: "REDACTED_EMAIL",
-  clicksend_api_key: "REDACTED_CLICKSEND_KEY",
-  front_end_url: "http://localhost:3000"
+  clicksend_api_username: System.get_env("CLICKSEND_API_USERNAME") || "your_clicksend_username",
+  clicksend_api_key: System.get_env("CLICKSEND_API_KEY") || "your_clicksend_api_key",
+  front_end_url: System.get_env("FRONT_END_URL") || "http://localhost:3000"
 
 config :lime_lease, LimeLease.Guardian,
   issuer: "limelease",
-  secret_key: "REDACTED_SECRET_KEY_BASE"
+  secret_key: System.get_env("GUARDIAN_SECRET_KEY") || "your_guardian_secret_key_min_64_chars"
 
 config :ex_aws,
-  access_key_id: "REDACTED_AWS_ACCESS_KEY_ID",
-  secret_access_key: "REDACTED_AWS_SECRET_KEY",
-  region: "ap-southeast-2",
-  bucket: "limelease",
-  static_folder: "static-files",
-  api_gateway_endpoint: "https://0e0zk4oupa.execute-api.ap-southeast-2.amazonaws.com"
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID") || "your_aws_access_key_id",
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY") || "your_aws_secret_access_key",
+  region: System.get_env("AWS_REGION") || "ap-southeast-2",
+  bucket: System.get_env("AWS_BUCKET") || "limelease",
+  static_folder: System.get_env("AWS_STATIC_FOLDER") || "static-files",
+  api_gateway_endpoint: System.get_env("API_GATEWAY_ENDPOINT") || "https://your-api-gateway-endpoint"
 
 config :lime_lease, LimeLease.Mailer,
   adapter: Swoosh.Adapters.Postmark,
-  api_key: "REDACTED_POSTMARK_KEY_2"
+  api_key: System.get_env("POSTMARK_API_KEY") || "your_postmark_api_key"
 
 config :honeybadger,
   environment_name: :dev

@@ -10,18 +10,21 @@ declare module "sst" {
       "type": "sst.aws.Service"
       "url": string
     }
-    "LimeLeaseVPC": {
-      "type": "sst.aws.Vpc"
-    }
     "NextjsApp": {
       "service": string
       "type": "sst.aws.Service"
       "url": string
     }
     "OccupieVPC": {
+      "bastion": string
       "type": "sst.aws.Vpc"
     }
-    "Postgresql": {
+    "PlaywrightScraper": {
+      "service": string
+      "type": "sst.aws.Service"
+      "url": string
+    }
+    "Postgres": {
       "database": string
       "host": string
       "password": string

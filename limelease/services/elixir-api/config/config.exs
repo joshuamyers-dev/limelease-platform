@@ -58,7 +58,7 @@ config :lime_lease, LimeLease.FCM,
   project_id: "limelease"
 
 config :honeybadger,
-  api_key: "REDACTED_HONEYBADGER_KEY",
+  api_key: System.get_env("HONEYBADGER_API_KEY"),
   ecto_repos: [LimeLease.Repo],
   filter_args: false
 

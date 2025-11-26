@@ -55,7 +55,7 @@ The following credentials were previously committed to git and **MUST be rotated
 2. **ClickSend API Key**: `REDACTED_CLICKSEND_KEY`
    - Regenerate at https://dashboard.clicksend.com/
    
-3. **Postmark API Key**: `REDACTED_POSTMARK_KEY_1`
+3. **Postmark API Key**: `REDACTED_POSTMARK_KEY_1` and `REDACTED_POSTMARK_KEY_2`
    - Regenerate at https://account.postmarkapp.com/
    
 4. **Domain API Key**: `REDACTED_DOMAIN_API_KEY`
@@ -64,6 +64,13 @@ The following credentials were previously committed to git and **MUST be rotated
 5. **Phoenix Secret Key Base**: `REDACTED_SECRET_KEY_BASE`
    - Generate new: `mix phx.gen.secret` (in Elixir project)
    - Or: `openssl rand -base64 64`
+
+6. **AWS Access Keys**: `REDACTED_AWS_ACCESS_KEY_ID` / `REDACTED_AWS_SECRET_KEY`
+   - Regenerate in AWS IAM Console
+   - Update `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+
+7. **Honeybadger API Key**: `REDACTED_HONEYBADGER_KEY`
+   - Regenerate at https://app.honeybadger.io/
 
 ## Generating New Secrets
 
